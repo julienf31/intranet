@@ -1,0 +1,294 @@
+<html lang="fr">
+
+<head>
+	<title>Intranet ynov</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="asset/style.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="asset/font-awesome/css/font-awesome.min.css">
+	<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+	<script>
+		tinymce.init({
+			selector: '#text',
+			height : 300,
+			plugins: [
+				'advlist autolink lists link image charmap print preview anchor',
+				'searchreplace visualblocks code fullscreen',
+				'insertdatetime media table contextmenu paste code'
+			],
+			toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			content_css: '//www.tinymce.com/css/codepen.min.css'
+		});
+	</script>
+	<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<img src="img/logo_ynovcampus_couleur.png" width="195px">
+			</div>
+			<div class="col-md-5 col-md-offset-1 date">
+				nous sommes le Jeudi 7 décembre 2016
+				<br/> il est 13:22
+			</div>
+			<div class="col-md-4 meteo">
+				météo du jour : TOULOUSE
+				<br/> 14 C°
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- page de news -->
+		<div class="row">
+			<!-- Debut contenu-->
+			<h3>Actualité</h3>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+
+					<div class="item active">
+						<img src="http://placehold.it/1200x440/dddddd/333333" width="1200 px" height="500 px">
+						<div class="carousel-caption">
+							<h3>Lol CUP</h3>
+							<p>N'oubliez pas de vous inscrire pour la Lol Cup le 35 Aout 6543</p>
+						</div>
+					</div>
+					<!-- End Item -->
+
+					<div class="item">
+						<img src="http://placehold.it/1200x440/999999/cccccc">
+						<div class="carousel-caption">
+							<h3>Headline</h3>
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+						</div>
+					</div>
+					<!-- End Item -->
+
+					<div class="item">
+						<img src="http://placehold.it/1200x440/dddddd/333333">
+						<div class="carousel-caption">
+							<h3>Headline</h3>
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+						</div>
+					</div>
+					<!-- End Item -->
+
+					<div class="item">
+						<img src="http://placehold.it/1200x440/999999/cccccc">
+						<div class="carousel-caption">
+							<h3>Headline</h3>
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+						</div>
+					</div>
+					<!-- End Item -->
+
+				</div>
+				<!-- End Carousel Inner -->
+
+
+				<ul class="nav nav-pills nav-justified">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#">About<small>Lorem ipsum dolor sit</small></a></li>
+					<li data-target="#myCarousel" data-slide-to="1"><a href="#">Projects<small>Lorem ipsum dolor sit</small></a></li>
+					<li data-target="#myCarousel" data-slide-to="2"><a href="#">Portfolio<small>Lorem ipsum dolor sit</small></a></li>
+					<li data-target="#myCarousel" data-slide-to="3"><a href="#">Services<small>Lorem ipsum dolor sit</small></a></li>
+				</ul>
+
+
+			</div>
+			<!-- End Carousel -->
+		</div>
+	</div>
+	<div class="container">
+		<!-- page de news -->
+		<div class="row">
+			<!-- Debut contenu-->
+			<div class="col-md-8 col-md-offset-2">
+				<h3>Accueil</h3>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- page de news -->
+		<div class="row">
+			<!-- Debut contenu-->
+			<article class="col-md-8 col-md-offset-2">
+				<h3>Titre de la news</h3>
+				<p class="article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis feugiat tincidunt. Duis ullamcorper imperdiet eros non consectetur. Cras vel consectetur tellus. Duis quis efficitur quam, a venenatis lacus. Vestibulum in efficitur urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ornare, libero in placerat congue, diam mi eleifend ex, suscipit fermentum orci eros eu velit. Vivamus ac feugiat sem. Pellentesque sed tempor ipsum. Nulla massa nisl, pretium at nunc sit amet, luctus maximus metus. Curabitur urna nisi, viverra et viverra malesuada, imperdiet sed orci. Phasellus non lectus efficitur, aliquam sapien ac, sollicitudin est. Sed non finibus felis, vel commodo tortor. Ut condimentum lectus tortor, sit amet rutrum ipsum consequat id. Pellentesque molestie consequat est, a consectetur enim tempor eu. Curabitur at orci varius, scelerisque mauris et, venenatis lorem. Nullam dictum vestibulum vehicula. Sed sit amet libero id diam commodo sodales vel a dolor. Vestibulum augue ante, ultrices vel ligula et, consequat fermentum leo. In sed mi faucibus libero imperdiet molestie id non massa. Fusce eget massa in felis molestie blandit. Morbi scelerisque commodo egestas. Donec in suscipit nisl, ut fermentum felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent varius elit at massa posuere tempor. Aliquam aliquet iaculis arcu eget cursus. Vivamus laoreet egestas orci, sit amet aliquet massa dignissim id. Cras fringilla mi quis ornare sagittis. Sed dui mi, accumsan quis sollicitudin vitae, accumsan in nibh. Proin eget bibendum ipsum, quis sagittis quam. Vivamus eleifend porttitor quam, lobortis consectetur arcu tincidunt fringilla. Etiam nec orci in est dignissim finibus. Maecenas lobortis egestas massa id sollicitudin. Morbi sagittis dignissim lorem, sit amet fringilla metus pretium ultricies. Donec arcu tortor, sodales eget porta sed, commodo ut dui. Etiam id tellus purus. Aenean id pharetra dui. Maecenas ultrices nec odio in lobortis. Ut accumsan pretium rhoncus. Quisque non sagittis arcu. Sed varius pellentesque pretium.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- page de connexion -->
+		<div class="row">
+			<!-- Debut contenu-->
+			<div class="col-md-8 col-md-offset-2">
+				<h3>Connexion à l'interface d'administration</h3>
+				<div class="col-md-6 col-md-offset-3">
+					<form>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Connexion</label>
+							<div class="input-group">
+								<div class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></div>
+								<input type="text" class="form-control" id="login" placeholder="login">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></div>
+								<input type="password" class="form-control" id="password" placeholder="password">
+							</div>
+							<a href="#">Mot de passe oublié ?</a>
+						</div>
+						<button type="submit" class="btn btn-success"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</button>
+						<button type="reset" class="btn btn-warning"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- contenu liste news -->
+		<div class="row">
+			<!-- Debut contenu-->
+			<div class="col-md-8 col-md-offset-2">
+				<h3>Liste des news</h3>
+				<table class="table table-striped">
+					<tr>
+						<th>#</th>
+						<th>titre</th>
+						<th>ajoutée le</th>
+						<th>créée par</th>
+						<th>visible</th>
+						<th>action</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>news 1</td>
+						<td>12/12/2012</td>
+						<td>julien</td>
+						<td><i class="fa fa-times red" aria-hidden="true"></i></td>
+						<td><a href="#">editer</a> | <a href="#">supprimer</a></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>news 2</td>
+						<td>18/11/2015</td>
+						<td>julien</td>
+						<td><i class="fa fa-check green" aria-hidden="true"></i></td>
+						<td><a href="#">editer</a> | <a href="#">supprimer</a></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>news 3</td>
+						<td>07/02/2017</td>
+						<td>jonathan</td>
+						<td><i class="fa fa-check green" aria-hidden="true"></i></td>
+						<td><a href="#">editer</a> | <a href="#">supprimer</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="text-center">
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-2 col-md-offset-8">
+				<button type="button" class="btn btn-success">Creer une news</button>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- contenu edition news -->
+		<div class="row">
+			<!-- Debut contenu-->
+			<div class="col-md-8 col-md-offset-2">
+				<h3>Edition d'une news</h3>
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Titre</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="titre">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputFile">Image de fond</label>
+						<input type="file" id="exampleInputFile">
+						<p class="help-block">L'image doit avoir idéalement une taille de 1200 * 440.</p>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"> Rendre cette news visible
+						</label>
+					</div>
+				</form>
+				<form method="post">
+					<textarea id="text"></textarea>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-8">
+				<button type="button" class="btn btn-success">Enregistrer</button>
+				<button type="button" class="btn btn-danger">Annuler</button>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<a href="index.html" class="lien footer">LOGIN</a>
+	</footer>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script>
+		$('#myCarousel').carousel({
+			interval: 4000
+		});
+
+		var clickEvent = false;
+		$('#myCarousel').on('click', '.nav a', function () {
+			clickEvent = true;
+			$('.nav li').removeClass('active');
+			$(this).parent().addClass('active');
+		}).on('slid.bs.carousel', function (e) {
+			if (!clickEvent) {
+				var count = $('.nav').children().length - 1;
+				var current = $('.nav li.active');
+				current.removeClass('active').next().addClass('active');
+				var id = parseInt(current.data('slide-to'));
+				if (count == id) {
+					$('.nav li').first().addClass('active');
+				}
+			}
+			clickEvent = false;
+		});
+	</script>
+</body>
+
+</html>
