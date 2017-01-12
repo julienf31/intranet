@@ -30,8 +30,7 @@ $weather=json_decode($json,true);
 				content_css: '//www.tinymce.com/css/codepen.min.css'
 			});
 		</script>
-		<script src="http://code.jquery.com/jquery-latest.js">
-		</script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script language=javascript>
 			function updateDiv($div) {
 				$($div).load(window.location.href + " " + $div);
