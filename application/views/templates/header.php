@@ -5,8 +5,7 @@ $url="http://api.openweathermap.org/data/2.5/weather?q=".$city.",".$country."&AP
 $json=file_get_contents($url);
 $weather=json_decode($json,true);
 ?>
-	<html lang="fr">
-
+<html lang="fr">
 	<head>
 		<title>Intranet ynov</title>
 		<meta charset="utf-8">
@@ -42,10 +41,36 @@ $weather=json_decode($json,true);
 			setInterval('updateDiv("#date")', 900000); //15 minutes
 			setInterval('updateDiv("#carouselreload")', 120000); //2 minutes
 		</script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
+		<script>
+			$('#myCarousel').carousel({
+				interval: 4000
+			});
+			var clickEvent = false;
+			$('#myCarousel').on('click', '.nav a', function () {
+				clickEvent = true;
+				$('.nav li').removeClass('active');
+				$(this).parent().addClass('active');
+			}).on('slid.bs.carousel', function (e) {
+				if (!clickEvent) {
+					var count = $('.nav').children().length - 1;
+					var current = $('.nav li.active');
+					current.removeClass('active').next().addClass('active');
+					var id = parseInt(current.data('slide-to'));
+					if (count == id) {
+						$('.nav li').first().addClass('active');
+					}
+				}
+				clickEvent = false;
+			});
+		</script>
 		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    	<![endif]-->
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
 		<!-- Include Google Maps JS API -->
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDyEmDNOcnLCO8PFxJR4W5qtQN9dNHcvwg">
 		</script>
@@ -54,7 +79,6 @@ $weather=json_decode($json,true);
 		<!-- We'll detail this file in the article -->
 		<script type="text/javascript" src="<?php echo base_url();?>/asset/js/autocomplete.js"></script>
 	</head>
-
 	<body>
 		<div class="container-fluid" id="head">
 			<div class="row">
@@ -62,34 +86,34 @@ $weather=json_decode($json,true);
 					<a href="<?php echo site_url('home/admin'); ?>"><img src="<?php echo base_url();?>img/logo_ynovcampus_couleur.png" width="220px"></a>
 				</div>
 				<div class="col-md-4 col-md-offset-1 date">
-				<div id="heure">
-					Nous sommes le
-					<strong>
-				<?php 
-				setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-				echo (strftime("%A %d %B %Y")); 
-				?>
-				</strong>
-					<br/> il est <strong><?php $datestring = '%H:%i'; $time = time(); echo mdate($datestring, $time);?></strong>
-				</div>
+					<div id="heure">
+						Nous sommes le
+						<strong>
+						<?php
+						setlocale (LC_TIME, 'fr_FR.utf8','fra');
+						echo (strftime("%A %d %B %Y"));
+						?>
+						</strong>
+						<br/> il est <strong><?php $datestring = '%H:%i'; $time = time(); echo mdate($datestring, $time);?></strong>
+					</div>
 				</div>
 				<div class="col-md-4 col-md-offset-1 meteo row">
 					<div class="col-md-3  nomarge">
 						<!-- <img src="http://openweathermap.org/img/w/<?php echo $weather['weather'][0]['icon'];?>.png"> -->
 						<?php
-					if($weather['weather'][0]['id']==800)
+						if($weather['weather'][0]['id']==800)
 						echo '<i class="step icon-sun size-72 pull-right" style="color: orange;"></i>';
-					else if($weather['weather'][0]['id']== 801)
+						else if($weather['weather'][0]['id']== 801)
 						echo '<i class="step icon-sun size-72 pull-right" style="color: orange;"></i>';
-					else
+						else
 						echo '<i class="step icon-cloud size-72 pull-right" style="color: grey;"></i>';
-					?>
+						?>
 					</div>
 					<div class="col-md-8" style="padding-left: 5px;">
 						<strong><?php echo $weather['name']; ?></strong>
 						<br/>
 						<?php echo "Temp : ".$weather['main']['temp']." C° ".$weather['weather'][0]['description']."<br/>"; ?>
-							<?php echo "Humidité : ".$weather['main']['humidity']."%"; ?>
+						<?php echo "Humidité : ".$weather['main']['humidity']."%"; ?>
 					</div>
 				</div>
 			</div>
