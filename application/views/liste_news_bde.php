@@ -35,7 +35,7 @@
 						else{
 							echo '<td><a href="'.site_url('home/update_state_bde/'.$data['id'].'/1').'" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>';
 						}
-						echo '<td><a href="'.site_url('home/edit_data_bde/'.$data['id']).'">editer</a> | <a href="'.site_url('home/delete_data_bde/'.$data['id']).'"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>';
+						echo '<td><a href="'.site_url('home/edit_data_bde/'.$data['id']).'">editer</a> | <a href="#myModal-'.$data['id'].'">supprimer</a></td>';
 						echo '</tr>';
 					
 					  $i++;
@@ -44,8 +44,27 @@
 						echo "<td colspan=\"7\" align=\"center\" >Pas de News à afficher</td>";
 				
 				endif;
-				?>
-
+				                foreach ($view_data as $key => $data) {
+									?>
+				
+<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+			<?php } ?>
 
 					</table>
 					<div class="row">
