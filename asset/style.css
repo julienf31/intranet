@@ -2,6 +2,10 @@ body{
 	font-family: "Montserrat";
 }
 
+.no-scroll{
+	overflow: hidden;
+}
+
 .meteo{
 	text-align : left;
 	color: #ec4363;

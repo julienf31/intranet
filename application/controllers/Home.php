@@ -17,7 +17,6 @@ class Home extends CI_Controller {
 		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('index');
-		$this->load->view('templates/footer',$data);
 	}	
 	
 	public function bde(){
@@ -25,9 +24,8 @@ class Home extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
 		$this->load->helper('date');
-		$this->load->view('templates/header');
+		$this->load->view('templates/header_bde');
 		$this->load->view('index_bde');
-		$this->load->view('templates/footer',$data);
 	}
 	
 	function changelog()
@@ -59,7 +57,7 @@ class Home extends CI_Controller {
 	 {
 	   $this->session->unset_userdata('logged_in');
 	   session_destroy();
-	   redirect('home', 'refresh');
+	   redirect('home/admin', 'refresh');
 	 }
 
 	//  Affichage liste news
@@ -154,6 +152,7 @@ class Home extends CI_Controller {
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
+						  'afficher_titre'                 => $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
@@ -188,6 +187,7 @@ class Home extends CI_Controller {
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
+						  'afficher_titre'                 => $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
@@ -247,6 +247,7 @@ class Home extends CI_Controller {
     $data['username'] = $session_data['username'];
     $data = array('titre'                    => $this->input->post('titre'),
                   'visible'                  => $this->input->post('visible'),
+                  'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
     $this->db->where('id', $id);
     $this->db->update('news', $data);
@@ -266,6 +267,7 @@ class Home extends CI_Controller {
     $data['username'] = $session_data['username'];
     $data = array('titre'                    => $this->input->post('titre'),
                   'visible'                  => $this->input->post('visible'),
+                  'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
     $this->db->where('id', $id);
     $this->db->update('news_bde', $data);
@@ -292,11 +294,28 @@ class Home extends CI_Controller {
     $this->db->delete('news_bde');
     $this->session->set_flashdata('message', 'News supprimée avec succés');
     redirect('home/liste_bde');
+    }	
+	public function update_state($id,$state)
+    {  
+    $this->db->where('id', $id);
+    $this->db->set('visible', $state, FALSE);
+	$this->db->update('news');
+    $this->session->set_flashdata('message', 'News actualisée avec succés');
+    redirect('home/liste');
+    }	
+	public function update_state_bde($id,$state)
+    {  
+    $this->db->where('id', $id);
+    $this->db->set('visible', $state, FALSE);
+	$this->db->update('news_bde');
+    $this->session->set_flashdata('message', 'News actualisée avec succés');
+    redirect('home/liste_bde');
     }
 	public function meteo()
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
+		$this->load->helper('xml');
 		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('meteo');

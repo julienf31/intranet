@@ -8,6 +8,7 @@
 				<div class="form-group">
 					<label>Titre</label>
 					<input type="text" class="form-control" name="titre" value="<?php echo $data['titre']; ?>" required>
+					<input type="checkbox" name="afficher_titre" <?php if($data[ 'afficher_titre']=='1' ) { echo 'checked'; } ?> value="1"> Afficher le titre dans la news
 				</div>
 				<div class="form-group">
 					<label>Options</label>

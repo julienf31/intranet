@@ -22,7 +22,7 @@
 						</tr>
 						<?php
                 if(isset($view_data) && is_array($view_data) && count($view_data)): $i=1;
-                foreach ($view_data as $key => $data) {
+                foreach($view_data as $key => $data) {
 						echo'<tr';
 						if($i%2==0){echo 'class="even">';}else{echo'class="odd">';}
 						echo '<td>'.$i.'</td>';
@@ -30,34 +30,13 @@
 						echo '<td>'.$data['date'].'</td>';
 						echo '<td>'.$data['auteur'].'</td>';
 						if($data['visible']){
-							echo '<td><i class="fa fa-check green" aria-hidden="true"></i></td>';
+							echo '<td><a href="'.site_url('home/update_state/'.$data['id'].'/0').'" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>';
 						}
 						else{
-							echo '<td><i class="fa fa-times red" aria-hidden="true"></i></td>';
+							echo '<td><a href="'.site_url('home/update_state/'.$data['id'].'/1').'" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>';
 						}
-						echo '<td><a href="'.site_url('home/edit_data/'. $data['id'].'').'">editer</a> | <a data-toggle="modal" href="#myModal">supprimer</a></td>';
+						echo '<td><a href="'.site_url('home/edit_data/'.$data['id']).'">editer</a> | <a href="'.site_url('home/delete_data/'.$data['id']).'"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>';
 						echo '</tr>';
-						?>
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title" id="myModalLabel">Supprimer la news ?</h4>
-										</div>
-										<div class="modal-body">
-											Vous etes sur le point de supprimer la news : <strong><?php echo $data['titre']; ?></strong>
-											<br /> créée par
-											<?php echo '<strong>'.$data['auteur'].'</strong> le <strong>'.$data['date'].'</strong>'; ?>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-											<a type="button" href="<?php echo site_url('home/delete_data/'.$data['id']) ?>" class="btn btn-success" role="button">Confirmer</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<?php 
 					
 					  $i++;
                       }
@@ -81,3 +60,11 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+      $(document).on('click','#myModal',function(e){
+          $('#blockidval').val($(this).data('id'));
+      });
+  });
+</script>

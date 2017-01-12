@@ -1,5 +1,15 @@
 <div class="container">
 	<div class="row">
+		<h3 class="changelog">Version 1.02 - A venir</h3>
+		<ul class="add">
+			<li>Changer visibilité au clic sur l'icone</li>
+			<li>Systéme de "phrase du jour" aléatoire</li>
+		</ul>
+		<ul class="remove">
+		</ul>
+		<ul class="other">
+		</ul>
+	</div>	<div class="row">
 		<h3 class="changelog">Version 1.01 - A venir</h3>
 		<ul class="add">
 			<li>Ajout d'une confirmation à la supression des news</li>

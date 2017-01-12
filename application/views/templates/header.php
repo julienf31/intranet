@@ -35,14 +35,6 @@ $weather=json_decode($json,true);
 		<script src="http://code.jquery.com/jquery-latest.js">
 		</script>
 		<script language=javascript>
-			function ConfirmMessage() {
-				if (confirm("Voulez-vous changer la couleur de fond de page ?")) { // Clic sur OK
-					document.bgColor = "silver";
-				}
-			}
-
-		
-			
 			function updateDiv($div) {
 				$($div).load(window.location.href + " " + $div);
 			}
@@ -67,7 +59,7 @@ $weather=json_decode($json,true);
 		<div class="container-fluid" id="head">
 			<div class="row">
 				<div class="col-md-2">
-					<a href="<?php echo site_url('home'); ?>"><img src="<?php echo base_url();?>img/logo_ynovcampus_couleur.png" width="220px"></a>
+					<a href="<?php echo site_url('home/admin'); ?>"><img src="<?php echo base_url();?>img/logo_ynovcampus_couleur.png" width="220px"></a>
 				</div>
 				<div class="col-md-4 col-md-offset-1 date">
 				<div id="heure">
@@ -78,7 +70,7 @@ $weather=json_decode($json,true);
 				echo (strftime("%A %d %B %Y")); 
 				?>
 				</strong>
-					<br/> il est <strong><?php $datestring = '%H:%i:%s'; $time = time(); echo mdate($datestring, $time);?></strong>
+					<br/> il est <strong><?php $datestring = '%H:%i'; $time = time(); echo mdate($datestring, $time);?></strong>
 				</div>
 				</div>
 				<div class="col-md-4 col-md-offset-1 meteo row">
@@ -89,14 +81,14 @@ $weather=json_decode($json,true);
 						echo '<i class="step icon-sun size-72 pull-right" style="color: orange;"></i>';
 					else if($weather['weather'][0]['id']== 801)
 						echo '<i class="step icon-sun size-72 pull-right" style="color: orange;"></i>';
-					else if($weather['weather'][0]['id']== 802 || $weather['weather'][0]['id']== 803 || $weather['weather'][0]['id']== 804)
+					else
 						echo '<i class="step icon-cloud size-72 pull-right" style="color: grey;"></i>';
 					?>
 					</div>
 					<div class="col-md-8" style="padding-left: 5px;">
 						<strong><?php echo $weather['name']; ?></strong>
 						<br/>
-						<?php echo "Temp : ".$weather['main']['temp']." C° ".$weather['weather'][0]['description']." ("; echo $weather['clouds']['all']." %)<br/>"; ?>
+						<?php echo "Temp : ".$weather['main']['temp']." C° ".$weather['weather'][0]['description']."<br/>"; ?>
 							<?php echo "Humidité : ".$weather['main']['humidity']."%"; ?>
 					</div>
 				</div>

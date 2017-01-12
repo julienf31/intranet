@@ -1,3 +1,8 @@
+<style>
+	.body{
+		overflow: hidden;
+	}
+</style>
 <div class="container-fluid">
 <div id="carouselreload">
 	<!-- page de news -->
@@ -27,9 +32,9 @@
 					?>
 
 						<div class="item <?php if($i==0){ echo('active');} ?>">
-							<img src="<?php echo base_url();?>/uploads/<?php echo $row->image; ?>" style="background-size: cover; width: 100%; height: 550px;">
+							<img src="<?php echo base_url();?>/uploads/<?php echo $row->image; ?>" style="background-size: cover; width: 100%; height: 410px;">
 							<div class="carousel-caption">
-								<h3 class="titrenews"><?php echo $row->titre; ?></h3>
+								<h3 class="titrenews"><?php if($row->afficher_titre=='1' ) {  echo $row->titre; }?></h3>
 								<p><?php echo $row->texte; ?></p>
 							</div>
 						</div>

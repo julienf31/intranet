@@ -10,7 +10,6 @@ class VerifyLogin extends CI_Controller {
 
  function index()
  {
-   //This method will have the credentials validation
    $this->load->library('form_validation');
 
    $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
@@ -18,7 +17,6 @@ class VerifyLogin extends CI_Controller {
 
    if($this->form_validation->run() == FALSE)
    {
-     //Field validation failed.  User redirected to login page
 	$this->load->helper('date');
 	$this->load->view('templates/header');
 	$this->load->view('login');
@@ -26,7 +24,6 @@ class VerifyLogin extends CI_Controller {
    }
    else
    {
-     //Go to private area
      redirect('home/admin', 'refresh');
    }
 
@@ -34,10 +31,8 @@ class VerifyLogin extends CI_Controller {
 
  function check_database($password)
  {
-   //Field validation succeeded.  Validate against database
    $username = $this->input->post('username');
 
-   //query the database
    $result = $this->user->login($username, $password);
 
    if($result)

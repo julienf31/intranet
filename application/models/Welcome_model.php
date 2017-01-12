@@ -6,7 +6,6 @@ class Welcome_model extends CI_Model
         parent::__construct();
     }
 
-   /**************************  START INSERT QUERY ***************/
     public function insert_data($data){
         $this->db->insert('news', $data); 
         return TRUE;
@@ -16,10 +15,7 @@ class Welcome_model extends CI_Model
         $this->db->insert('news_bde', $data); 
         return TRUE;
     }
-    /**************************  END INSERT QUERY ****************/
 
-    
-    /*************  START SELECT or VIEW ALL QUERY ***************/
     public function view_data(){
         $query=$this->db->query("SELECT *
                                  FROM news n
@@ -33,10 +29,7 @@ class Welcome_model extends CI_Model
                                  ORDER BY n.id ASC");
         return $query->result_array();
     }
-    /***************  END SELECT or VIEW ALL QUERY ***************/
 
-    
-    /*************  START EDIT PARTICULER DATA QUERY *************/
     public function edit_data($id){
         $query=$this->db->query("SELECT *
                                  FROM news n
@@ -49,6 +42,5 @@ class Welcome_model extends CI_Model
                                  WHERE n.id = $id");
         return $query->result_array();
     }
-    /*************  END EDIT PARTICULER DATA QUERY ***************/
 
 }
