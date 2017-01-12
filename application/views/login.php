@@ -5,12 +5,20 @@
 			<div class="col-md-8 col-md-offset-2">
 				<h3>Connexion à l'interface d'administration</h3>
 				<div class="col-md-6 col-md-offset-3">
+			<!-- 	Ici c'est la syntaxe php qui ne vas pas et t'oblige a faire plein d'echo			
 				<?php if(validation_errors()) { 
 							echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 							echo validation_errors();
 							echo '</div>';
-						}?>
-				<?php echo form_open('verifylogin'); ?>
+				}?> 
+			-->
+					<?php if (validation_errors()) : ?> 
+						<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<?php echo validation_errors(); ?>
+						</div>
+					<?php endif; ?>
+					<?php echo form_open('verifylogin'); ?>
 					<form>
 						<div class="form-group">
 							<label for="connexion">Connexion</label>

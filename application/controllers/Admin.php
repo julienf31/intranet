@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //session_start(); désactivé car beug boucle infinie
-class Home extends CI_Controller {
+class Admin extends CI_Controller {
  
 	function __construct()
 	 {
@@ -10,45 +10,7 @@ class Home extends CI_Controller {
 
 	 }
 
-	public function index(){
-
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('index');
-	}
-
-	public function news(){
-
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('index');
-	}		
-	
-	public function bde(){
-
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
-		$this->load->view('templates/header_bde');
-		$this->load->view('index_bde');
-		$this->load->view('templates/footer', $data);
-
-	}
-	
-	function changelog()
-	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('changelog');
-		$this->load->view('templates/footer',$data);
-	}
-	function admin()
+	public function index()
 	 {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
@@ -63,16 +25,49 @@ class Home extends CI_Controller {
 		 redirect('login', 'refresh');
 	   }
 	 }
- 
-	function logout()
-	 {
-	   $this->session->unset_userdata('logged_in');
-	   session_destroy();
-	   redirect('home/admin', 'refresh');
-	 }
+
+	// Administrer la lite news
+	public function liste_news()
+    {
+		   if($this->session->userdata('logged_in'))
+		   {
+				$session_data = $this->session->userdata('logged_in');
+				$data['username'] = $session_data['username'];
+				$this->data['view_data']= $this->welcome->view_data();
+				$this->load->helper('date');
+				$this->load->view('templates/header');
+				$this->load->view('liste_news', $this->data, FALSE);
+				$this->load->view('templates/footer',$data);
+		   }
+		   else
+		   {
+			 redirect('login', 'refresh');
+		   }
+  
+	} 		
+	
+	// Administrer la lite bde
+	public function liste_bde()
+    {
+		   if($this->session->userdata('logged_in'))
+		   {
+				$session_data = $this->session->userdata('logged_in');
+				$data['username'] = $session_data['username'];
+				$this->data['view_data']= $this->welcome->view_data_bde();
+				$this->load->helper('date');
+				$this->load->view('templates/header');
+				$this->load->view('liste_news_bde', $this->data, FALSE);
+				$this->load->view('templates/footer',$data);
+		   }
+		   else
+		   {
+			 redirect('login', 'refresh');
+		   }
+  
+	}
 	
     // Ajout de news
-    public function add_data()
+    public function add_news()
     {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
@@ -87,7 +82,7 @@ class Home extends CI_Controller {
 		}
     }
 	
-	public function add_data_bde()
+	public function add_bde()
     {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
@@ -283,6 +278,24 @@ class Home extends CI_Controller {
     $this->session->set_flashdata('message', 'News actualisée avec succés');
     redirect('home/liste_bde');
     }
+
+	function changelog()
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$this->load->helper('date');
+		$this->load->view('templates/header');
+		$this->load->view('changelog');
+		$this->load->view('templates/footer',$data);
+	}
+ 
+	function logout()
+	 {
+	   $this->session->unset_userdata('logged_in');
+	   session_destroy();
+	   redirect('home/admin', 'refresh');
+	 }
+	
 	public function meteo()
 	{
 		$session_data = $this->session->userdata('logged_in');

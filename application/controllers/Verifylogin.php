@@ -24,7 +24,7 @@ class VerifyLogin extends CI_Controller {
    }
    else
    {
-     redirect('home/admin', 'refresh');
+     redirect('admin', 'refresh');
    }
 
  }
