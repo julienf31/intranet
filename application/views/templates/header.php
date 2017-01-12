@@ -39,7 +39,7 @@ $weather=json_decode($json,true);
 			}
 			setInterval('updateDiv("#heure")', 1000);
 			setInterval('updateDiv("#date")', 900000); //15 minutes
-			setInterval('updateDiv("#carouselreload")', 120000); //2 minutes
+			setInterval('updateDiv("#carouselreload")', 15000); //2 minutes
 		</script>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
