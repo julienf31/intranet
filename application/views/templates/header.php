@@ -84,7 +84,7 @@ $weather=json_decode($json,true);
 		<div class="container-fluid" id="head">
 			<div class="row">
 				<div class="col-md-2">
-					<a href="<?php echo site_url('home/admin'); ?>"><img src="<?php echo base_url();?>img/logo_ynovcampus_couleur.png" width="220px"></a>
+					<a href="<?php echo site_url('home/admin'); ?>"><img src="<?php echo base_url();?>asset/img/logo_ynovcampus_couleur.png" width="220px"></a>
 				</div>
 				<div class="col-md-4 col-md-offset-1 date">
 					<div id="heure">
