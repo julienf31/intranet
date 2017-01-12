@@ -39,7 +39,7 @@
 			<a href="<?php echo site_url('home/configmeteo'); ?>" class="btn btn-success disabled" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Paramétres météo
 			</a>
-			<a href="<?php echo site_url('home/meteo'); ?>" class="btn btn-info disabled" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('home/meteo'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
 				Afficher la météo
 			</a>
 			<h4>Gestion du site</h4>
