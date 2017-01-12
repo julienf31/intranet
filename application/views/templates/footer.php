@@ -24,12 +24,13 @@
 <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 <script>
 	$('#myCarousel').carousel({
-		interval: 4000
+		interval: 2000;
 	});
 
 	var clickEvent = false;
 	$('#myCarousel').on('click', '.nav a', function () {
 		clickEvent = true;
+		console.log('weqjdnqw');
 		$('.nav li').removeClass('active');
 		$(this).parent().addClass('active');
 	}).on('slid.bs.carousel', function (e) {

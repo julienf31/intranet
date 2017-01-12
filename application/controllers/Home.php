@@ -26,6 +26,8 @@ class Home extends CI_Controller {
 		$this->load->helper('date');
 		$this->load->view('templates/header_bde');
 		$this->load->view('index_bde');
+		$this->load->view('templates/footer', $data);
+
 	}
 	
 	function changelog()
