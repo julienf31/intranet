@@ -15,7 +15,6 @@ $weather=json_decode($json,true);
 		<link href="<?php echo base_url();?>asset/style.css" rel="stylesheet">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="<?php echo base_url();?>asset/font-awesome/css/font-awesome.min.css">
-		<link href="<?php echo base_url();?>owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="<?php echo base_url();?>/asset/icon/iconvault-preview.css" />
 		<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 		<script>
@@ -37,9 +36,12 @@ $weather=json_decode($json,true);
 			function updateDiv($div) {
 				$($div).load(window.location.href + " " + $div);
 			}
+			function updateSlide($func1,$func2){
+
+			}
 			setInterval('updateDiv("#heure")', 1000);
 			setInterval('updateDiv("#date")', 900000); //15 minutes
-			// setInterval('updateDiv("#carouselreload")', 15000); //2 minutes rechargement fait bug
+			setInterval('updateDiv("#carouselreload") ', 6000); //2 minutes rechargement fait bug
 		</script>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

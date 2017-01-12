@@ -8,7 +8,6 @@
 		<link href="<?php echo base_url();?>asset/style.css" rel="stylesheet">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="<?php echo base_url();?>asset/font-awesome/css/font-awesome.min.css">
-		<link href="<?php echo base_url();?>owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="<?php echo base_url();?>/asset/icon/iconvault-preview.css" />
 		<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 		<script>
