@@ -14,7 +14,6 @@ class Home extends CI_Controller {
 
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('index');
 	}	
@@ -23,7 +22,6 @@ class Home extends CI_Controller {
 
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
 		$this->load->view('templates/header_bde');
 		$this->load->view('index_bde');
 	}
@@ -32,7 +30,6 @@ class Home extends CI_Controller {
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('changelog');
 		$this->load->view('templates/footer',$data);
@@ -42,7 +39,6 @@ class Home extends CI_Controller {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('admin', $data);
 			$this->load->view('templates/footer',$data);
@@ -68,7 +64,6 @@ class Home extends CI_Controller {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
 				$this->data['view_data']= $this->welcome->view_data();
-				$this->load->helper('date');
 				$this->load->view('templates/header');
 				$this->load->view('liste_news', $this->data, FALSE);
 				$this->load->view('templates/footer',$data);
@@ -87,7 +82,6 @@ class Home extends CI_Controller {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
 				$this->data['view_data']= $this->welcome->view_data_bde();
-				$this->load->helper('date');
 				$this->load->view('templates/header');
 				$this->load->view('liste_news_bde', $this->data, FALSE);
 				$this->load->view('templates/footer',$data);
@@ -105,7 +99,6 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('add');
 			$this->load->view('templates/footer',$data);
@@ -120,7 +113,6 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('add_bde');
 			$this->load->view('templates/footer',$data);
@@ -143,7 +135,7 @@ class Home extends CI_Controller {
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
-         	$image = $data_upload_files[full_path];
+         	$image = $data_upload_files['full_path'];
 			$file = basename($image);
 			if($file == 'uploads'){
 				$file = 'default/white.png';
@@ -152,10 +144,10 @@ class Home extends CI_Controller {
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
-						  'afficher_titre'                 => $this->input->post('afficher_titre'),
+						  'afficher_titre'			=> $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $file);
+						  'image'					=> $file);
 
 			$insert = $this->welcome->insert_data($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
@@ -178,7 +170,7 @@ class Home extends CI_Controller {
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
-         	$image = $data_upload_files[full_path];
+         	$image = $data_upload_files['full_path'];
 			$file = basename($image);
 			if($file == 'uploads'){
 				$file = 'default/white.png';
@@ -187,10 +179,10 @@ class Home extends CI_Controller {
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
-						  'afficher_titre'                 => $this->input->post('afficher_titre'),
+						  'afficher_titre'			=> $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $file);
+						  'image'					=> $file);
 
 			$insert = $this->welcome->insert_data_bde($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
@@ -210,7 +202,6 @@ class Home extends CI_Controller {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
     $this->data['edit_data']= $this->welcome->edit_data($id);
-	$this->load->helper('date');
 	$this->load->view('templates/header');
     $this->load->view('edit', $this->data, FALSE);
 	$this->load->view('templates/footer',$data);
@@ -227,7 +218,6 @@ class Home extends CI_Controller {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
     $this->data['edit_data']= $this->welcome->edit_data_bde($id);
-	$this->load->helper('date');
 	$this->load->view('templates/header');
     $this->load->view('edit_bde', $this->data, FALSE);
 	$this->load->view('templates/footer',$data);
@@ -245,10 +235,10 @@ class Home extends CI_Controller {
    {
 	$session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $data = array('titre'                    => $this->input->post('titre'),
-                  'visible'                  => $this->input->post('visible'),
-                  'afficher_titre'                 => $this->input->post('afficher_titre'),
-                  'texte'                    => $this->input->post('texte'));
+    $data = array('titre'					=> $this->input->post('titre'),
+                  'visible'					=> $this->input->post('visible'),
+                  'afficher_titre'			=> $this->input->post('afficher_titre'),
+                  'texte'					=> $this->input->post('texte'));
     $this->db->where('id', $id);
     $this->db->update('news', $data);
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
@@ -265,10 +255,10 @@ class Home extends CI_Controller {
    {
 	$session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $data = array('titre'                    => $this->input->post('titre'),
-                  'visible'                  => $this->input->post('visible'),
-                  'afficher_titre'                 => $this->input->post('afficher_titre'),
-                  'texte'                    => $this->input->post('texte'));
+    $data = array('titre'					=> $this->input->post('titre'),
+                  'visible'					=> $this->input->post('visible'),
+                  'afficher_titre'			=> $this->input->post('afficher_titre'),
+                  'texte'					=> $this->input->post('texte'));
     $this->db->where('id', $id);
     $this->db->update('news_bde', $data);
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
@@ -316,7 +306,6 @@ class Home extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
 		$this->load->helper('xml');
-		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('meteo');
 		$this->load->view('templates/footer',$data);
@@ -326,7 +315,6 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('config');
 			$this->load->view('templates/footer',$data);

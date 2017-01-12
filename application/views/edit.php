@@ -18,8 +18,8 @@
 				</div>
 				<div class="form-group">
 					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label>
-					<input type="file" id="image">
-					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
+					<input type="file" id="image" disabled>
+					<p class="help-block">Temporairement indisponible en mode edition de news</p>
 				</div>
 				<label>Contenu de la News</label>
 				<textarea id="text" name="texte" class="form-control" rows="6" >

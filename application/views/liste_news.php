@@ -55,7 +55,7 @@
 						else{
 							echo '<td><a href="'.site_url('home/update_state/'.$data['id'].'/1').'" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>';
 						}
-						echo '<td><a href="'.site_url('home/edit_data_bde/'.$data['id']).'">editer</a> | <a href="#myModal-'.$data['id'].'" data-toggle="modal" >supprimer</a></td>';
+						echo '<td><a href="'.site_url('home/edit_data/'.$data['id']).'">editer</a> | <a href="#myModal-'.$data['id'].'" data-toggle="modal" >supprimer</a></td>';
 					echo '</tr>';
 					
 					$i++;
