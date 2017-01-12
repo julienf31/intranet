@@ -44,7 +44,7 @@
 				foreach ($query->result() as $row)
 				{
 				?>
-				<li data-target="#myCarousel" data-slide-to="<?php echo $i; ?>" class="<?php echo $i; ?> <?php if($i==0){ echo( 'active');}?>"><a href="#"><?php echo $row->titre; ?></a></li>
+				<li data-target="#myCarousel" data-slide-to="<?php echo $i; ?>" class="<?php if($i==0){ echo( 'active');}?>"><a href="#"><?php echo $row->titre; ?></a></li>
 				<!-- <small>Lorem ipsum dolor sit</small></a></li> -->
 				<?php $i++; } ?>
 			</ul>
