@@ -62,7 +62,7 @@
 			<a href="<?php echo site_url('add_bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
-			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
 				Afficher Accueil BDE
 			</a>
 				<?php } ?>
