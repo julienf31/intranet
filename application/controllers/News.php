@@ -6,7 +6,7 @@ class News extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->helper('url');
-		 $this->load->model('Welcome_model','welcome');
+		 $this->load->model('News_model','news');
 
 	 }
 
@@ -53,7 +53,7 @@ class News extends CI_Controller {
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
 
-			$insert = $this->welcome->insert_data($data);
+			$this->news->insert_data($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			redirect('liste_news');
 		}
@@ -73,8 +73,7 @@ class News extends CI_Controller {
                   'visible'                  => $this->input->post('visible'),
                   'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
-    $this->db->where('id', $id);
-    $this->db->update('news', $data);
+    $this->news->update_data($id, $data);
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
     redirect('liste_news');
 	   	   	    }
@@ -86,9 +85,8 @@ class News extends CI_Controller {
 
 	public function update_news_state($id,$state)
     {  
-    $this->db->where('id', $id);
-    $this->db->set('visible', $state, FALSE);
-	$this->db->update('news');
+    
+	$this->news->update_state($id, $state);
     $this->session->set_flashdata('message', 'News actualisée avec succés');
     redirect('liste_news');
     }
@@ -96,8 +94,7 @@ class News extends CI_Controller {
     //Supression de news
     public function delete_news($id)
     {  
-    $this->db->where('id', $id);
-    $this->db->delete('news');
+    $this->news->delete($id);
     $this->session->set_flashdata('message', 'News supprimée avec succés');
     redirect('liste_news');
     }    
@@ -113,13 +110,6 @@ class News extends CI_Controller {
 		$this->load->view('changelog');
 		$this->load->view('templates/footer',$data);
 	}
- 
-	function logout()
-	 {
-	   $this->session->unset_userdata('logged_in');
-	   session_destroy();
-	   redirect('admin', 'refresh');
-	 }
 	
 	public function meteo()
 	{

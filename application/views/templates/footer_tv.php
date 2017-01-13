@@ -7,7 +7,7 @@
 <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 <script>
 	$('#myCarousel').carousel({
-		interval: 2000;
+		interval: 6000
 	});
 
 	var clickEvent = false;

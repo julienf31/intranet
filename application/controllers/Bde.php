@@ -7,7 +7,7 @@ class Bde extends CI_Controller {
 		 parent::__construct();
 		 $this->load->helper('url');
 		$this->load->helper('date');
-		 $this->load->model('Welcome_model','welcome');
+		 $this->load->model('Bde_model','bde');
 
 	 }
 
@@ -115,12 +115,6 @@ class Bde extends CI_Controller {
 		$this->load->view('templates/footer',$data);
 	}
  
-	function logout()
-	 {
-	   $this->session->unset_userdata('logged_in');
-	   session_destroy();
-	   redirect('admin', 'refresh');
-	 }
 	
 	public function meteo()
 	{

@@ -2,12 +2,12 @@
 	<div class="col-md-6 col-md-offset-3" style="text-align: center;">
 		<?php 
 	if($this->session->userdata('logged_in')){ 
-		echo "<a href=\"" .site_url('home/logout')."\" class=\"lien footer\"></br> ";
+		echo "<a href=\"" .site_url('logout')."\" class=\"lien footer\"></br> ";
 		echo "<span class=\"majuscule\">";
 		echo (isset($username))?$username :"Guest </br>";
 		echo "</span>";
 		echo " (<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> Déconnexion)</a></br>";
-		echo "<a href=\"" .site_url('home/admin')."\" class=\"lien footer\"> Administration</a></br> ";
+		echo "<a href=\"" .site_url('admin')."\" class=\"lien footer\"> Administration</a></br> ";
 	}
 	else{
 		echo"<a href=\"" .site_url('login')."\" class=\"lien footer\"><i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i> Connexion</a></br>";
@@ -23,9 +23,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 <script>
-	$('#myCarousel').carousel({
-		interval: 2000;
-	});
 
 	var clickEvent = false;
 	$('#myCarousel').on('click', '.nav a', function () {
