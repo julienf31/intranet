@@ -28,11 +28,11 @@
 						<td><?php echo $data['date']; ?></td>
 						<td><?php echo $data['auteur']; ?></td>
 						<?php if($data['visible']): ?>
-							<td><a href="<?php echo site_url('update_news_state/').$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('home/update_state/').$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
 						<?php else : ?>
-							<td><a href="<?php echo site_url('update_news_state/').$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('home/update_state/').$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
-						<td><a href="<?php echo site_url('edit_news/').$data['id']; ?>">editer</a> | <a href="<?php echo site_url('delete_news/').$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
+						<td><a href="<?php echo site_url('home/edit_data/').$data['id']; ?>">editer</a> | <a href="<?php echo site_url('home/delete_data/').$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
@@ -69,7 +69,7 @@
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
 					<div class="pull-right">
-						<a href="<?php echo  site_url('add_news'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
+						<a href="<?php echo  site_url('home/add_data'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
 					</div>
 				</div>
 		</div>

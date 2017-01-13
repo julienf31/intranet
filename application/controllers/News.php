@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //session_start(); désactivé car beug boucle infinie
-class Admin extends CI_Controller {
+class News extends CI_Controller {
  
 	function __construct()
 	 {
@@ -26,46 +26,6 @@ class Admin extends CI_Controller {
 	   }
 	 }
 
-	// Administrer la lite news
-	public function liste_news()
-    {
-		   if($this->session->userdata('logged_in'))
-		   {
-				$session_data = $this->session->userdata('logged_in');
-				$data['username'] = $session_data['username'];
-				$this->data['view_data']= $this->welcome->view_data();
-				$this->load->helper('date');
-				$this->load->view('templates/header');
-				$this->load->view('liste_news', $this->data, FALSE);
-				$this->load->view('templates/footer',$data);
-		   }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
-  
-	} 		
-	
-	// Administrer la lite bde
-	public function liste_bde()
-    {
-		   if($this->session->userdata('logged_in'))
-		   {
-				$session_data = $this->session->userdata('logged_in');
-				$data['username'] = $session_data['username'];
-				$this->data['view_data']= $this->welcome->view_data_bde();
-				$this->load->helper('date');
-				$this->load->view('templates/header');
-				$this->load->view('liste_bde', $this->data, FALSE);
-				$this->load->view('templates/footer',$data);
-		   }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
-  
-	}
-	
     // Ajout de news
     public function add_news()
     {
@@ -81,22 +41,42 @@ class Admin extends CI_Controller {
 			 redirect('login', 'refresh');
 		}
     }
-	
-	public function add_bde()
+    
+    // Insert news
+    public function insert_news()
     {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
-			$this->load->view('templates/header');
-			$this->load->view('add_bde');
-			$this->load->view('templates/footer',$data);
-	    }
+			
+			$config['upload_path'] = 'uploads/';
+        	$config['allowed_types'] = 'gif|jpg|png|jpeg';
+        	$this->load->library('upload', $config);
+        	$this->upload->do_upload('imageup');
+        	$data_upload_files = $this->upload->data();
+
+         	$image = $data_upload_files[full_path];
+			$file = basename($image);
+			if($file == 'uploads'){
+				$file = 'default/white.png';
+			}
+			
+			$data = array('titre'                   => $this->input->post('titre'),
+						  'auteur'                  => $data['username'],
+						  'visible'                 => $this->input->post('visible'),
+						  'afficher_titre'                 => $this->input->post('afficher_titre'),
+						  'texte'                   => $this->input->post('texte'),
+						  'date'              		=> date("Y-m-d h:i:s"),
+						  'image'				=> $file);
+
+			$insert = $this->welcome->insert_data($data);
+			$this->session->set_flashdata('message', 'News créée avec succés');
+			redirect('liste_news');
+		}
 		else{
-			 redirect('login', 'refresh');
+			redirect('login', 'refresh');
 		}
     }
-    
 
     public function edit_news($id)
     {
@@ -107,7 +87,7 @@ class Admin extends CI_Controller {
     $this->data['edit_data']= $this->welcome->edit_data($id);
 	$this->load->helper('date');
 	$this->load->view('templates/header');
-    $this->load->view('edit_news', $this->data, FALSE);
+    $this->load->view('edit', $this->data, FALSE);
 	$this->load->view('templates/footer',$data);
 	   	    }
 		   else
@@ -115,24 +95,48 @@ class Admin extends CI_Controller {
 			 redirect('login', 'refresh');
 		   }
     }    
-	public function edit_bde($id)
+	
+    // Edition de news
+    public function update_news($id)
     {
-		if($this->session->userdata('logged_in'))
+				if($this->session->userdata('logged_in'))
    {
-    $session_data = $this->session->userdata('logged_in');
+	$session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $this->data['edit_data']= $this->welcome->edit_data_bde($id);
-	$this->load->helper('date');
-	$this->load->view('templates/header');
-    $this->load->view('edit_bde', $this->data, FALSE);
-	$this->load->view('templates/footer',$data);
-	   	    }
+    $data = array('titre'                    => $this->input->post('titre'),
+                  'visible'                  => $this->input->post('visible'),
+                  'afficher_titre'                 => $this->input->post('afficher_titre'),
+                  'texte'                    => $this->input->post('texte'));
+    $this->db->where('id', $id);
+    $this->db->update('news', $data);
+    $this->session->set_flashdata('message', 'News mise à jour avec succés');
+    redirect('liste_news');
+	   	   	    }
 		   else
 		   {
 			 redirect('login', 'refresh');
 		   }
     }
+
+	public function update_news_state($id,$state)
+    {  
+    $this->db->where('id', $id);
+    $this->db->set('visible', $state, FALSE);
+	$this->db->update('news');
+    $this->session->set_flashdata('message', 'News actualisée avec succés');
+    redirect('liste_news');
+    }
+
+    //Supression de news
+    public function delete_news($id)
+    {  
+    $this->db->where('id', $id);
+    $this->db->delete('news');
+    $this->session->set_flashdata('message', 'News supprimée avec succés');
+    redirect('liste_news');
+    }    
 	
+
 
 	function changelog()
 	{

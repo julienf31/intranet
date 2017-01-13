@@ -4,7 +4,7 @@
 			<?php if(isset($edit_data) && is_array($edit_data) && count($edit_data)): $i=1;
 			foreach ($edit_data as $key => $data) { ?>
 				<h3>Edition de " <?php echo $data['titre']; ?> "</h2>
-				<form method="post" action="<?php echo site_url('home/update_data_bde/'.$data['id'].''); ?>" name="data_register">
+				<form method="post" action="<?php echo site_url('update_bde/'.$data['id'].''); ?>" name="data_register">
 				<div class="form-group">
 					<label>Titre</label>
 					<input type="text" class="form-control" name="titre" value="<?php echo $data['titre']; ?>" required>
@@ -26,7 +26,7 @@
 				<?php echo $data['texte']; ?>
 				</textarea><br />
 				<div class="pull-left">
-				<a href="<?php echo  site_url('home/liste_bde'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				<a href="<?php echo  site_url('liste_bde'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 			</div>
 				<div class="pull-right">
 					<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>

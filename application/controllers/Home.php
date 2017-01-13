@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 		$data['username'] = $session_data['username'];
 		$this->load->helper('date');
 		$this->load->view('templates/header');
-		$this->load->view('index');
+		$this->load->view('index_news');
 	}		
 	
 	public function bde(){

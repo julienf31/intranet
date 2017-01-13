@@ -3,7 +3,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h3>Créer une News </h3>
 			<br>
-			<form method="post" action="<?php echo site_url('home/submit_data_bde'); ?>" name="data_register" enctype="multipart/form-data">
+			<form method="post" action="<?php echo site_url('insert_bde'); ?>" name="data_register" enctype="multipart/form-data">
 			
 				<div class="form-group">
 					<label>Titre</label>
@@ -25,7 +25,7 @@
 				<textarea id="text" class="form-control" name="texte"></textarea>
 				<br />
 				<div class="pull-left">
-					<a href="<?php echo  site_url('home/liste_bde'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					<a href="<?php echo  site_url('liste_bde'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 				</div>
 				<div class="pull-right">
 					<button type="submit" class="btn btn-success" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
