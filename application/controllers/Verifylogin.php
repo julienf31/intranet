@@ -6,6 +6,7 @@ class VerifyLogin extends CI_Controller {
  {
    parent::__construct();
    $this->load->model('user','',TRUE);
+   $this->load->helper('date');
  }
 
  function index()
@@ -17,7 +18,6 @@ class VerifyLogin extends CI_Controller {
 
    if($this->form_validation->run() == FALSE)
    {
-	$this->load->helper('date');
 	$this->load->view('templates/header');
 	$this->load->view('login');
 	$this->load->view('templates/footer');
@@ -34,21 +34,12 @@ class VerifyLogin extends CI_Controller {
    $username = $this->input->post('username');
 
    $result = $this->user->login($username, $password);
-
-   if($result)
-   {
-     $sess_array = array();
-     foreach($result as $row)
-     {
-       $sess_array = array(
-         'id' => $row->id,
-         'username' => $row->username
-       );
-       $this->session->set_userdata('logged_in', $sess_array);
-     }
-     return TRUE;
-   }
-   else
+   if($result){
+    $sess_array = array('id' => $result[0]->id,'username' => $result[0]->username);
+    $this->session->set_userdata('logged_in', $sess_array);
+    return TRUE;
+  }
+    else
    {
      $this->form_validation->set_message('check_database', 'Mauvais identifiant ou mot de passe');
      return false;

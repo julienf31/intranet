@@ -28,11 +28,11 @@
 						<td><?php echo $data['date']; ?></td>
 						<td><?php echo $data['auteur']; ?></td>
 						<?php if($data['visible']): ?>
-							<td><a href="<?php echo site_url('home/update_state/').$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('update_bde_state/').$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
 						<?php else : ?>
-							<td><a href="<?php echo site_url('home/update_state/').$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('update_bde_state/').$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
-						<td><a href="<?php echo site_url('home/edit_data/').$data['id']; ?>">editer</a> | <a href="<?php echo site_url('home/delete_data/').$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
+						<td><a href="<?php echo site_url('edit_bde/').$data['id']; ?>">editer</a> | <a href="<?php echo site_url('home/delete_data/').$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>

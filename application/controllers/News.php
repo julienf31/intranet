@@ -26,22 +26,6 @@ class News extends CI_Controller {
 	   }
 	 }
 
-    // Ajout de news
-    public function add_news()
-    {
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
-			$this->load->view('templates/header');
-			$this->load->view('add_news');
-			$this->load->view('templates/footer',$data);
-	    }
-		else{
-			 redirect('login', 'refresh');
-		}
-    }
-    
     // Insert news
     public function insert_news()
     {
@@ -76,25 +60,7 @@ class News extends CI_Controller {
 		else{
 			redirect('login', 'refresh');
 		}
-    }
-
-    public function edit_news($id)
-    {
-		if($this->session->userdata('logged_in'))
-   {
-    $session_data = $this->session->userdata('logged_in');
-    $data['username'] = $session_data['username'];
-    $this->data['edit_data']= $this->welcome->edit_data($id);
-	$this->load->helper('date');
-	$this->load->view('templates/header');
-    $this->load->view('edit', $this->data, FALSE);
-	$this->load->view('templates/footer',$data);
-	   	    }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
-    }    
+    }   
 	
     // Edition de news
     public function update_news($id)

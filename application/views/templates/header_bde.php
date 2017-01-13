@@ -30,7 +30,7 @@
 		function updateDiv($div) {
 			$($div).load(window.location.href + " " + $div);
 		}
-		setInterval('updateDiv("#heure")', 1000);
+		setInterval('updateDiv("#heure")', 60000);
 		setInterval('updateDiv("#date")', 900000); //15 minutes
 		setInterval('updateDiv("#carouselreload")', 120000); //2 minutes
 	</script>

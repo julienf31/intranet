@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->helper('url');
+		 $this->load->helper('date');
 		 $this->load->model('Welcome_model','welcome');
 
 	 }
@@ -15,7 +16,6 @@ class Admin extends CI_Controller {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('admin', $data);
 			$this->load->view('templates/footer',$data);
@@ -34,7 +34,6 @@ class Admin extends CI_Controller {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
 				$this->data['view_data']= $this->welcome->view_data();
-				$this->load->helper('date');
 				$this->load->view('templates/header');
 				$this->load->view('liste_news', $this->data, FALSE);
 				$this->load->view('templates/footer',$data);
@@ -54,7 +53,6 @@ class Admin extends CI_Controller {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
 				$this->data['view_data']= $this->welcome->view_data_bde();
-				$this->load->helper('date');
 				$this->load->view('templates/header');
 				$this->load->view('liste_bde', $this->data, FALSE);
 				$this->load->view('templates/footer',$data);
@@ -72,7 +70,6 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('add_news');
 			$this->load->view('templates/footer',$data);
@@ -87,7 +84,6 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('add_bde');
 			$this->load->view('templates/footer',$data);
@@ -105,7 +101,6 @@ class Admin extends CI_Controller {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
     $this->data['edit_data']= $this->welcome->edit_data($id);
-	$this->load->helper('date');
 	$this->load->view('templates/header');
     $this->load->view('edit_news', $this->data, FALSE);
 	$this->load->view('templates/footer',$data);
@@ -122,7 +117,6 @@ class Admin extends CI_Controller {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
     $this->data['edit_data']= $this->welcome->edit_data_bde($id);
-	$this->load->helper('date');
 	$this->load->view('templates/header');
     $this->load->view('edit_bde', $this->data, FALSE);
 	$this->load->view('templates/footer',$data);
@@ -138,7 +132,6 @@ class Admin extends CI_Controller {
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('changelog');
 		$this->load->view('templates/footer',$data);
@@ -155,9 +148,8 @@ class Admin extends CI_Controller {
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
-		$this->load->helper('xml');
-		$this->load->helper('date');
 		$this->load->view('templates/header');
+		$this->load->helper('xml');
 		$this->load->view('meteo');
 		$this->load->view('templates/footer',$data);
 	}
@@ -166,7 +158,6 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('config');
 			$this->load->view('templates/footer',$data);

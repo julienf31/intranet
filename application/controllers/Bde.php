@@ -6,6 +6,7 @@ class Bde extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->helper('url');
+		$this->load->helper('date');
 		 $this->load->model('Welcome_model','welcome');
 
 	 }
@@ -15,7 +16,6 @@ class Bde extends CI_Controller {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('admin', $data);
 			$this->load->view('templates/footer',$data);
@@ -26,21 +26,6 @@ class Bde extends CI_Controller {
 	   }
 	 }
 	
-    // Ajout de news
-    public function add_bde()
-    {
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
-			$this->load->view('templates/header');
-			$this->load->view('add_bde');
-			$this->load->view('templates/footer',$data);
-	    }
-		else{
-			 redirect('login', 'refresh');
-		}
-    }
     
     // Insert news
     public function insert_bde()
@@ -69,7 +54,7 @@ class Bde extends CI_Controller {
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
 
-			$insert = $this->welcome->insert_data($data);
+			$insert = $this->welcome->insert_data_bde($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			redirect('liste_bde');
 		}
@@ -78,24 +63,6 @@ class Bde extends CI_Controller {
 		}
     }
 
-    public function edit_bde($id)
-    {
-		if($this->session->userdata('logged_in'))
-   {
-    $session_data = $this->session->userdata('logged_in');
-    $data['username'] = $session_data['username'];
-    $this->data['edit_data']= $this->welcome->edit_data($id);
-	$this->load->helper('date');
-	$this->load->view('templates/header');
-    $this->load->view('edit_bde', $this->data, FALSE);
-	$this->load->view('templates/footer',$data);
-	   	    }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
-    }    
-	
     // Edition de news
     public function update_bde($id)
     {
@@ -108,7 +75,7 @@ class Bde extends CI_Controller {
                   'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
     $this->db->where('id', $id);
-    $this->db->update('news', $data);
+    $this->db->update('news_bde', $data);
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
     redirect('liste_bde');
 	   	   	    }
@@ -121,17 +88,17 @@ class Bde extends CI_Controller {
 	public function update_bde_state($id,$state)
     {  
     $this->db->where('id', $id);
-    $this->db->set('visible', $state, FALSE);
-	$this->db->update('news');
+    $this->db->set('visible', $state);
+	$this->db->update('news_bde');
     $this->session->set_flashdata('message', 'News actualisée avec succés');
     redirect('liste_bde');
     }
 
     //Supression de news
-    public function delete_bdes($id)
+    public function delete_bde($id)
     {  
     $this->db->where('id', $id);
-    $this->db->delete('news');
+    $this->db->delete('news_bde');
     $this->session->set_flashdata('message', 'News supprimée avec succés');
     redirect('liste_bde');
     }    
