@@ -13,7 +13,6 @@
 	var clickEvent = false;
 	$('#myCarousel').on('click', '.nav a', function () {
 		clickEvent = true;
-		console.log('weqjdnqw');
 		$('.nav li').removeClass('active');
 		$(this).parent().addClass('active');
 	}).on('slid.bs.carousel', function (e) {
