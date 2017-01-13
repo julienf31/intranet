@@ -50,6 +50,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'login';
-/*$route['home/login'] = 'login';*/
-$route['news'] = 'news';
 $route['404_override'] = '';
+
+##### AFFICHAGE TV #####
+$route['news'] = 'home/news';
+$route['bde'] = 'home/bde';
+
+##### ADMINISTRATION #####
+$route['admin'] = 'admin/index';
+####### Gestion des listes 
+$route['liste_news'] = 'admin/liste_news';
+$route['liste_bde'] = 'admin/liste_bde';
+####### Ajout déléments
+$route['add_news'] = 'admin/add_news';
+$route['add_bde'] = 'admin/add_bde';
+###### Edition
+$route['edit_news/([0-9]+)'] = 'admin/edit_news/$1';
+$route['edit_bde/([0-9]+)'] = 'admin/edit_bde/$1';
+
+$route['update_news/([0-9]+)'] = 'news/update_news/$1';
+$route['update_bde/([0-9]+)'] = 'bde/update_bde/$1';
