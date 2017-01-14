@@ -90,3 +90,5 @@ $route['insert_bde'] = 'bde/insert_bde';
 $route['update_bde/([0-9]+)'] = 'bde/update_bde/$1';
 $route['update_bde_state/([0-9]+)/([0-9]+)'] = 'bde/update_bde_state/$1/$2';
 $route['delete_bde/([0-9]+)'] = 'bde/delete_bde/$1';
+
+
