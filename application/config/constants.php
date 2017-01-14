@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+
+define('ASSETS','http://local.ynov-tv.fr/assets');
+define('VENDORS','http://local.ynov-tv.fr/vendors');
+
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

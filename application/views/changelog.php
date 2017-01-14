@@ -1,6 +1,18 @@
 <div class="container">
 	<div class="row">
-		<h3 class="changelog">Version 1.02 - A venir</h3>
+		<h3 class="changelog">Version 2 - A venir</h3>
+		<ul class="add">
+		</ul>
+		<ul class="remove">
+		</ul>
+		<ul class="other">
+			<li>Grosse restructuration du code, modèle MVC</li>
+			<li>Alègement du code pour amélioratio des performances</li>
+
+		</ul>
+	</div>		
+	<div class="row">
+		<h3 class="changelog">Version 1.02 - En pause</h3>
 		<ul class="add">
 			<li>Changer visibilité au clic sur l'icone</li>
 			<li>Systéme de "phrase du jour" aléatoire</li>
@@ -9,8 +21,9 @@
 		</ul>
 		<ul class="other">
 		</ul>
-	</div>	<div class="row">
-		<h3 class="changelog">Version 1.01 - A venir</h3>
+	</div>	
+	<div class="row">
+		<h3 class="changelog">Version 1.01 - En pause</h3>
 		<ul class="add">
 			<li>Ajout d'une confirmation à la supression des news</li>
 			<li>Ajout des icones dynamique de la météo</li>
@@ -42,7 +55,7 @@
 	</div>
 	<div class="row">
 		<div class="pull-left">
-			<a href="<?php echo  site_url('home/admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 		</div>
 	</div>
 </div>

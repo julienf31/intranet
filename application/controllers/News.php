@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-//session_start(); désactivé car beug boucle infinie
 class News extends CI_Controller {
  
 	function __construct()
@@ -99,41 +98,5 @@ class News extends CI_Controller {
     redirect('liste_news');
     }    
 	
-
-
-	function changelog()
-	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('changelog');
-		$this->load->view('templates/footer',$data);
-	}
-	
-	public function meteo()
-	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('xml');
-		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('meteo');
-		$this->load->view('templates/footer',$data);
-	}
-	public function config()
-	{
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
-			$this->load->view('templates/header');
-			$this->load->view('config');
-			$this->load->view('templates/footer',$data);
-	    }
-		else{
-			 redirect('login', 'refresh');
-		}
-	}
 }
 ?>

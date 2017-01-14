@@ -12,12 +12,12 @@ $weather=json_decode($json,true);
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<link href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="<?php echo base_url();?>asset/style.css" rel="stylesheet">
+		<link href="<?= constant('VENDORS') ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<?= constant('ASSETS') ?>/style.css" rel="stylesheet">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="<?php echo base_url();?>asset/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?= constant('ASSETS') ?>/font-awesome/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="<?php echo base_url();?>/asset/icon/iconvault-preview.css" />
+		<link rel="stylesheet" href="<?= constant('ASSETS') ?>/icon/iconvault-preview.css" />
 		<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 		<script>
 			tinymce.init({
@@ -52,14 +52,14 @@ $weather=json_decode($json,true);
 		<!-- Custom JS code to bind to Autocomplete API -->
 		<!-- find it here: https://github.com/lewagon/google-place-autocomplete/blob/gh-pages/autocomplete.js -->
 		<!-- We'll detail this file in the article -->
-		<script type="text/javascript" src="<?php echo base_url();?>/asset/js/autocomplete.js"></script>
+		<script type="text/javascript" src="<?= constant('ASSETS') ?>/js/autocomplete.js"></script>
 	</head>
 
 	<body>
 		<div class="container-fluid" id="head">
 			<div class="row">
 				<div class="col-md-2">
-					<a href="<?php echo site_url('home/admin'); ?>"><img src="<?php echo base_url();?>img/logo_ynovcampus_couleur.png" width="220px"></a>
+					<a href="<?php echo site_url('admin'); ?>"><img src="<?= constant('ASSETS') ?>/img/logo_ynovcampus_couleur.png" width="220px"></a>
 				</div>
 				<div class="col-md-4 col-md-offset-1 date">
 				<div id="heure">
