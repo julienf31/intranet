@@ -69,7 +69,7 @@
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
 					<div class="pull-right">
-						<a href="<?php echo  site_url('add_news'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
+						<a href="<?php echo  site_url('add_bde'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
 					</div>
 				</div>
 		</div>

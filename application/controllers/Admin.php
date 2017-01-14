@@ -100,9 +100,9 @@ class Admin extends CI_Controller {
    {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $this->data['edit_data']= $this->welcome->edit_data($id);
+    $data['edit_data']= $this->welcome->edit_data($id);
 	$this->load->view('templates/header');
-    $this->load->view('edit_news', $this->data, FALSE);
+    $this->load->view('edit_news', $data);
 	$this->load->view('templates/footer',$data);
 	   	    }
 		   else
@@ -116,9 +116,9 @@ class Admin extends CI_Controller {
    {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $this->data['edit_data']= $this->welcome->edit_data_bde($id);
+    $data['edit_data']= $this->welcome->edit_data_bde($id);
 	$this->load->view('templates/header');
-    $this->load->view('edit_bde', $this->data, FALSE);
+    $this->load->view('edit_bde', $data);
 	$this->load->view('templates/footer',$data);
 	   	    }
 		   else

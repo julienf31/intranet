@@ -34,13 +34,13 @@ class Welcome_model extends CI_Model
         $query=$this->db->query("SELECT *
                                  FROM news n
                                  WHERE n.id = $id");
-        return $query->result_array();
+        return $query->row_array();
     }
 	public function edit_data_bde($id){
         $query=$this->db->query("SELECT *
                                  FROM news_bde n
                                  WHERE n.id = $id");
-        return $query->result_array();
+        return $query->row_array();
     }
 
 }

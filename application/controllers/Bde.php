@@ -8,6 +8,9 @@ class Bde extends CI_Controller {
 		 $this->load->helper('url');
 		$this->load->helper('date');
 		 $this->load->model('Bde_model','bde');
+		 $config['upload_path'] = 'uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$this->load->library('upload', $config);
 
 	 }
 
@@ -33,28 +36,28 @@ class Bde extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			
-			$config['upload_path'] = 'uploads/';
-        	$config['allowed_types'] = 'gif|jpg|png|jpeg';
-        	$this->load->library('upload', $config);
+		
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
+var_dump($data_upload_files);
+die();
 
-         	$image = $data_upload_files[full_path];
+         	$image = $data_upload_files['full_path'];
 			$file = basename($image);
 			if($file == 'uploads'){
 				$file = 'default/white.png';
 			}
-			
-			$data = array('titre'                   => $this->input->post('titre'),
-						  'auteur'                  => $data['username'],
-						  'visible'                 => $this->input->post('visible'),
-						  'afficher_titre'                 => $this->input->post('afficher_titre'),
-						  'texte'                   => $this->input->post('texte'),
-						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $file);
+			$data = array(
+			'titre'=>$this->input->post('titre'),
+			'auteur'=>$data['username'],
+			'visible'=> $this->input->post('visible'),
+			'afficher_titre'=>$this->input->post('afficher_titre'),
+			'texte'=> $this->input->post('texte'),
+			'date'=> date("Y-m-d h:i:s"),
+			'image'=> $file
+			);
 
-			$insert = $this->welcome->insert_data_bde($data);
+			$this->bde->insert_data($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			redirect('liste_bde');
 		}
@@ -64,25 +67,37 @@ class Bde extends CI_Controller {
     }
 
     // Edition de news
-    public function update_bde($id)
-    {
-				if($this->session->userdata('logged_in'))
-   {
-	$session_data = $this->session->userdata('logged_in');
-    $data['username'] = $session_data['username'];
-    $data = array('titre'                    => $this->input->post('titre'),
-                  'visible'                  => $this->input->post('visible'),
-                  'afficher_titre'                 => $this->input->post('afficher_titre'),
-                  'texte'                    => $this->input->post('texte'));
-    $this->db->where('id', $id);
-    $this->db->update('news_bde', $data);
-    $this->session->set_flashdata('message', 'News mise à jour avec succés');
-    redirect('liste_bde');
-	   	   	    }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
+    public function update_bde($id){
+
+		if($this->session->userdata('logged_in')){
+
+		$session_data = $this->session->userdata('logged_in');
+	    $data['username'] = $session_data['username'];
+
+
+		$this->upload->do_upload('image');
+		$data_upload_files = $this->upload->data();
+var_dump($data_upload_files);
+die();
+
+		$data = array(
+		'titre'=>$this->input->post('titre'),
+		'auteur'=>$data['username'],
+		'visible'=> $this->input->post('visible'),
+		'afficher_titre'=>$this->input->post('afficher_titre'),
+		'texte'=> $this->input->post('texte'),
+		'date'=> date("Y-m-d h:i:s"),
+		'image'=> $file
+		);
+
+	    $this->db->where('id', $id);
+	    $this->db->update('news_bde', $data);
+	    $this->session->set_flashdata('message', 'News mise à jour avec succés');
+	    redirect('liste_bde');
+
+	   	}else{
+			redirect('login', 'refresh');
+		}
     }
 
 	public function update_bde_state($id,$state)
