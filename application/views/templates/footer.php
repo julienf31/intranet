@@ -2,8 +2,8 @@
 	<div class="col-md-6 col-md-offset-3" style="text-align: center;">
 		<?php if($this->session->userdata('logged_in')): ?> 
 			<a href="<?php echo site_url('logout'); ?>" class="lien footer"></br>
-			<span class="majuscule"><?php  echo $username; ?></br></span>
-			<i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></br>
+			<span class="majuscule"><?php  echo $username; ?></span>
+			<i class="fa fa-sign-out" aria-hidden="true"></i> (Déconnexion)</a></br>
 			<a href="<?php echo site_url('admin'); ?>" class="lien footer"> Administration</a></br>
 		<?php else: ?>
 			<a href="<?php echo site_url('login'); ?>" class="lien footer"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></br>
