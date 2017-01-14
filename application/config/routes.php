@@ -50,6 +50,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'login';
-/*$route['home/login'] = 'login';*/
-$route['news'] = 'news';
 $route['404_override'] = '';
+
+
+##### AFFICHAGE TV #####
+$route['news'] = 'home/news';
+$route['bde'] = 'home/bde';
+
+
+##### ACCEUIL ET CONF #####
+$route['logout'] = 'home/logout';
+$route['meteo'] = 'home/meteo';
+$route['meteo_config'] = 'home/meteo_config';
+$route['config'] = 'home/config';
+$route['changelog'] = 'home/changelog';
+
+
+##### ADMINISTRATION #####
+$route['admin'] = 'admin/index';
+####### Gestion des listes 
+$route['liste_news'] = 'admin/liste_news';
+$route['liste_bde'] = 'admin/liste_bde';
+####### Ajout d'éléments
+$route['add_news'] = 'admin/add_news';
+$route['add_bde'] = 'admin/add_bde';
+###### Mise a jour d'éléments
+$route['edit_news/([0-9]+)'] = 'admin/edit_news/$1';
+$route['edit_bde/([0-9]+)'] = 'admin/edit_bde/$1';
+
+
+######## GESTION DATAS #####
+#############  NEWS  ##################
+$route['insert_news'] = 'news/insert_news';
+$route['update_news/([0-9]+)'] = 'news/update_news/$1';
+$route['update_news_state/([0-9]+)/([0-9]+)'] = 'news/update_news_state/$1/$2';
+$route['delete_news/([0-9]+)'] = 'news/delete_news/$1';
+############### BDE  #################
+$route['insert_bde'] = 'bde/insert_bde';
+$route['update_bde/([0-9]+)'] = 'bde/update_bde/$1';
+$route['update_bde_state/([0-9]+)/([0-9]+)'] = 'bde/update_bde_state/$1/$2';
+$route['delete_bde/([0-9]+)'] = 'bde/delete_bde/$1';
