@@ -19,21 +19,26 @@ class Home extends CI_Controller {
 
 	public function news(){
 
+		$this->load->model('News_model','news');
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
+		$data['news_list'] = $this->news->view_data();
 		$this->load->helper('date');
 		$this->load->view('templates/header');
-		$this->load->view('index_news');
+		$this->load->view('index_news', $data);
 		$this->load->view('templates/footer_tv', $data);
 	}		
 	
 	public function bde(){
 
+		$this->load->model('Bde_model','bde');
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
+		$data['bde_list'] = $this->bde->view_data();
+
 		$this->load->helper('date');
 		$this->load->view('templates/header_bde');
-		$this->load->view('index_bde');
+		$this->load->view('index_bde', $data);
 		$this->load->view('templates/footer_tv', $data);
 
 	}

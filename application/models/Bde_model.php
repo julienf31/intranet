@@ -7,12 +7,11 @@ Class Bde_model extends CI_Model
 
     }
 
-
     public function view_data(){
-        $query=$this->db->query("SELECT *
-                                 FROM news_bde n
-                                 ORDER BY n.id ASC");
-        return $query->result_array();
+        $this->db->from('news_bde');
+          $this->db->where('visible',1);          
+          $query = $this->db->get();
+          return $query->result_array();
     }
   
     public function insert_data($data){

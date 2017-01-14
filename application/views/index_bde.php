@@ -9,55 +9,35 @@
 		<!-- Debut contenu-->
 			<!-- Debut contenu-->
 			<h3>Actualités BDE</h3>
-			<?php
-				$this->db->from('news_bde');
-					$this->db->where('visible',1);					
-					$query = $this->db->get();
-    				$nb_news = $query->num_rows();
-				if($nb_news == 0){
-					echo '<h3 class="titrenews">Il n\'y a pas d\'actualités à afficher, revenez plus tard ! :)</h3>';
-				}
-				else{
-			?>
+			<?php if(count($bde_list) == 0): ?>
+				<h3 class="titrenews">Il n'y a pas d'actualités à afficher, revenez plus tard ! :)</h3>
+
+			<?php else: ?>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
 
 					<!-- End Item -->
-					<?php
-					$i = 0;
-					foreach ($query->result() as $row)
-					{
-					?>
-
-						<div class="item <?php if($i==0){ echo('active');} ?>">
-							<img src="<?php echo base_url();?>/uploads/<?php echo $row->image; ?>" style="background-size: cover; width: 100%; height: 520px;">
+					<?php foreach ($bde_list as $key => $item): ?>
+						<div class="item <?php if($key==0){ echo('active');} ?>">
+							<img src="<?php echo base_url();?>/uploads/<?php echo $item['image']; ?>" style="background-size: cover; width: 100%; height: 520px;">
 							<div class="carousel-caption">
-								<h3 class="titrenews"><?php if($row->afficher_titre=='1' ) {  echo $row->titre; }?></h3>
-								<p><?php echo $row->texte; ?></p>
+								<h3 class="titrenews"><?php if($item['afficher_titre']=='1' ) {  echo $item['titre']; }?></h3>
+								<p><?php echo $item['texte']; ?></p>
 							</div>
 						</div>
-						<?php $i++; } ?>
+					<?php endforeach; ?>
 				</div>
 				<!-- End Carousel Inner -->
 				<ul class="nav nav-pills nav-justified">
-					<?php
-				$i = 0;
-				foreach ($query->result() as $row)
-					{
-					?>
-						<li data-target="#myCarousel" data-slide-to="<?php echo $i; ?>" <?php if($i==0){ echo( 'class="active"');}?>><a href="#"><?php echo $row->titre; ?>
+					<?php foreach ($bde_list as $key => $item): ?>
+						<li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>" <?php if($key==0){ echo( 'class="active"');}?>><a href="#"><?php echo $item['titre']; ?>
 						<!-- <small>Lorem ipsum dolor sit</small></a></li> -->
-						<?php $i++; } ?>
+					<?php endforeach; ?>
 				</ul>
-
-
-
 			</div>
-			<?php
-				}
-			?>
-	</div>
+		<?php endif; ?>
+		</div>
 
 			<!-- End Carousel -->

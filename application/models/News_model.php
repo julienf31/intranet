@@ -6,13 +6,11 @@ Class News_model extends CI_Model
         parent::__construct();
     }
 
-
-
     public function view_data(){
-        $query=$this->db->query("SELECT *
-                                 FROM news n
-                                 ORDER BY n.id ASC");
-        return $query->result_array();
+        $this->db->from('news');
+          $this->db->where('visible',1);          
+          $query = $this->db->get();
+          return $query->result_array();
     }
   
     public function insert_data($data){
