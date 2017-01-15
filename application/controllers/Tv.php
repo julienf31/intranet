@@ -16,10 +16,11 @@ class Tv extends CI_Controller {
 		$this->load->helper('url');
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
+		$data['item_type'] = 'meteo';
 		$this->load->helper('xml');
 		$this->load->helper('date');
 		$this->template->set('title', 'Acceuil');
-		$this->template->load('templates/admin', 'meteo', $data);
+		$this->template->load('templates/tv', 'meteo', $data);
 	}
 	
 
