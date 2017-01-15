@@ -10,10 +10,10 @@
 			<li>Chargement de librairies, helpers, modeles inutiles</li>
 		</ul>
 		<ul class="other">
-			<li>Coorections de syntaxe php dans les vues</li>
+			<li>Corections de syntaxe php dans les vues</li>
 			<li>Optimisation du format des données</li>
 			<li>Grosse restructuration du code, modèle MVC</li>
-			<li>Alègement du code pour amélioration des performances</li>
+			<li>Alègement du code pour amélioration des performances (BestPractices CodeIgniter)</li>
 
 		</ul>
 	</div>		
