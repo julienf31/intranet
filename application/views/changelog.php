@@ -2,12 +2,18 @@
 	<div class="row">
 		<h3 class="changelog">Version 2 - A venir</h3>
 		<ul class="add">
+			<li>Véritable systeme de template</li>
+			<li>Systeme de "microservices" à la demande</li>
 		</ul>
 		<ul class="remove">
+			<li>Toute les vues doublons</li>
+			<li>Chargement de librairies, helpers, modeles inutiles</li>
 		</ul>
 		<ul class="other">
+			<li>Coorections de syntaxe php dans les vues</li>
+			<li>Optimisation du format des données</li>
 			<li>Grosse restructuration du code, modèle MVC</li>
-			<li>Alègement du code pour amélioratio des performances</li>
+			<li>Alègement du code pour amélioration des performances</li>
 
 		</ul>
 	</div>		
