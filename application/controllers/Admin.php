@@ -15,9 +15,7 @@ class Admin extends CI_Controller {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->view('templates/header');
-			$this->load->view('admin', $data);
-			$this->load->view('templates/footer',$data);
+			$this->template->load('templates/admin', 'admin', $data);
 	   }
 	   else
 	   {
@@ -128,10 +126,22 @@ class Admin extends CI_Controller {
     }
 	
 
+	public function meteo()
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data['username'] = $session_data['username'];
+		$this->load->helper('xml');
+		$this->load->helper('date');
+		$this->load->view('templates/header');
+		$this->load->view('meteo');
+		$this->load->view('templates/footer',$data);
+	}
+	
 	function changelog()
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
+		$this->load->helper('date');
 		$this->load->view('templates/header');
 		$this->load->view('changelog');
 		$this->load->view('templates/footer',$data);
@@ -143,21 +153,14 @@ class Admin extends CI_Controller {
 	   session_destroy();
 	   redirect('admin', 'refresh');
 	 }
+
 	
-	public function meteo()
-	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->view('templates/header');
-		$this->load->helper('xml');
-		$this->load->view('meteo');
-		$this->load->view('templates/footer',$data);
-	}
 	public function config()
 	{
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$this->load->helper('date');
 			$this->load->view('templates/header');
 			$this->load->view('config');
 			$this->load->view('templates/footer',$data);

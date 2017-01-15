@@ -59,13 +59,11 @@ $route['bde'] = 'home/bde';
 
 
 ##### ACCEUIL ET CONF #####
-$route['logout'] = 'home/logout';
-$route['meteo'] = 'home/meteo';
-$route['meteo_config'] = 'home/meteo_config';
-$route['config'] = 'home/config';
-$route['changelog'] = 'home/changelog';
-
-
+$route['logout'] = 'admin/logout';
+$route['meteo'] = 'admin/meteo';
+$route['meteo_config'] = 'admin/meteo_config';
+$route['config'] = 'admin/config';
+$route['changelog'] = 'admin/changelog';
 ##### ADMINISTRATION #####
 $route['admin'] = 'admin/index';
 ####### Gestion des listes 

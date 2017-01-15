@@ -34,14 +34,6 @@ $weather=json_decode($json,true);
 		</script>
 		<script src="http://code.jquery.com/jquery-latest.js">
 		</script>
-		<script language=javascript>
-			function updateDiv($div) {
-				$($div).load(window.location.href + " " + $div);
-			}
-			setInterval('updateDiv("#heure")', 60000);
-			setInterval('updateDiv("#date")', 900000); //15 minutes
-			setInterval('updateDiv("#carouselreload")', 120000); //2 minutes
-		</script>
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -91,3 +83,32 @@ $weather=json_decode($json,true);
 				</div>
 			</div>
 		</div>
+
+<?= $contents ?>
+
+<footer>
+	<div class="col-md-6 col-md-offset-3" style="text-align: center;">
+		<?php if($this->session->userdata('logged_in')): ?> 
+			<a href="<?php echo site_url('logout'); ?>" class="lien footer"></br>
+			<span class="majuscule"><?php  echo $username; ?></span>
+			<i class="fa fa-sign-out" aria-hidden="true"></i> (Déconnexion)</a></br>
+			<a href="<?php echo site_url('admin'); ?>" class="lien footer"> Administration</a></br>
+		<?php else: ?>
+			<a href="<?php echo site_url('login'); ?>" class="lien footer"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></br>
+		<?php endif; ?>
+			<span class="footer">Page générée en <strong>{elapsed_time}</strong> secondes</span>
+			<br/>
+			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v1.0</span>
+	</div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="<?= constant('VENDORS') ?>/bootstrap/js/bootstrap.min.js"></script>
+<script>
+
+</script>
+
+</body>
+
+</html>
