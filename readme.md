@@ -1,6 +1,6 @@
 # Intranet
 
-### Librairie de template
+Librairie de template :
 http://jeromejaglale.com/doc/php/codeigniter_template
 
 Intranet YNOV
