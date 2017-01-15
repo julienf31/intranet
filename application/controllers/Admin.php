@@ -31,12 +31,9 @@ class Admin extends CI_Controller {
 		   {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
-				if($item_type=='bde'){
-				$data['liste_items']= $this->bde_model->list_data();
-				}
-				if($item_type=='news'){
-				$data['liste_items']= $this->news_model->list_data();
-				}
+
+				$data['liste_items']= $this->data_model->list_data($item_type);
+
 				$data['item_type'] = $item_type;
 				$this->template->set('title', 'Liste');
 				$this->template->load('templates/admin', 'liste', $data);
@@ -69,12 +66,8 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
     		$session_data = $this->session->userdata('logged_in');
     		$data['username'] = $session_data['username'];
-    		if ($item_type=='bde') {
-    			$data['current_data']= $this->bde_model->get_data($id);
-    		}
-    		if ($item_type=='news') {
-    			$data['current_data']= $this->news_model->get_data($id);
-    		}
+    			$data['current_data']= $this->data_model->get_data($item_type,$id);
+
     		$data['item_type'] = $item_type;
     		$this->template->set('title', 'Edition');
 			$this->template->load('templates/admin', 'edit', $data);

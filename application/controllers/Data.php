@@ -44,12 +44,7 @@ class Data extends CI_Controller {
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
 
-			if ($item_type=='bde') {
-				$this->bde_model->insert_data($data);
-			}
-			if ($item_type=='news') {
-				$this->news_model->insert_data($data);
-			}
+			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			$link='liste/'.$item_type;
 			redirect($link);
@@ -70,12 +65,10 @@ class Data extends CI_Controller {
                   'visible'                  => $this->input->post('visible'),
                   'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
-	if ($item_type=='bde') {
-		$this->bde_model->update_data($id, $data);
-	}
-	if ($item_type=='news') {
-		$this->news_model->update_data($id, $data);
-	}
+
+
+	$this->data_model->update_data($item_type,$id, $data);
+
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
 	$link='liste/'.$item_type;
 	redirect($link);
@@ -88,14 +81,8 @@ class Data extends CI_Controller {
 
 	public function update_state($item_type,$id,$state)
     {  
-    
-    if ($item_type=='bde') {
-    	$this->bde_model->update_state($id, $state);
-    }
-    if ($item_type=='news') {
-    	$this->news_model->update_state($id, $state);
-    }
-	
+    $this->data_model->update_state($item_type,$id,$state);
+   
     $this->session->set_flashdata('message', 'News actualisée avec succés');
 	$link='liste/'.$item_type;
 	redirect($link);
@@ -105,12 +92,8 @@ class Data extends CI_Controller {
     public function delete($item_type,$id)
     {  
 
-    if ($item_type=='bde') {
-    	$this->bde_model->delete($id);
-    }
-    if ($item_type=='news') {
-    	$this->news_model->delete($id);
-    }
+   	$this->data_model->delete($item_type,$id);
+
     $this->session->set_flashdata('message', 'News supprimée avec succés');
 	$link='liste/'.$item_type;
 	redirect($link);
