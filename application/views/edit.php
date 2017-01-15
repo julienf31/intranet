@@ -1,8 +1,8 @@
 <div id="container" class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-				<h3>Edition de " <?php echo $current_data['titre']; ?> "</h2>
-				<form method="post" action="<?php echo site_url('update_news/'.$current_data['id'].''); ?>" name="data_register">
+				<h3>Edition de " <?php echo $current_data['titre']; ?> " - <?php echo $item_type; ?></h2>
+				<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register">
 				<div class="form-group">
 					<label>Titre</label>
 					<input type="text" class="form-control" name="titre" value="<?php echo $current_data['titre']; ?>" required>
@@ -24,7 +24,7 @@
 				<?php echo $current_data['texte']; ?>
 				</textarea><br />
 				<div class="pull-left">
-				<a href="<?php echo  site_url('liste_news'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 			</div>
 				<div class="pull-right">
 					<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>

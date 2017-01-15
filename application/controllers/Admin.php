@@ -21,39 +21,23 @@ class Admin extends CI_Controller {
 	   {
 		 redirect('login', 'refresh');
 	   }
-	 }
-
-	// Administrer la lite news
-	public function liste_news()
-    {
-		   if($this->session->userdata('logged_in'))
-		   {
-				$session_data = $this->session->userdata('logged_in');
-				$data['username'] = $session_data['username'];
-				$data['liste_news']= $this->news_model->list_data();
-
-				$this->load->view('templates/header');
-				$this->load->view('liste_news', $data);
-				$this->load->view('templates/footer',$data);
-		   }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
-  
-	} 		
+	 }	
 	
-	// Administrer la lite bde
-	public function liste_bde()
+	// Administrer les diferents items
+	public function liste($item_type)
     {
 		   if($this->session->userdata('logged_in'))
 		   {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
-				$data['liste_bde']= $this->bde_model->list_data();
-				$this->load->view('templates/header');
-				$this->load->view('liste_bde', $data);
-				$this->load->view('templates/footer',$data);
+				if($item_type=='bde'){
+				$data['liste_items']= $this->bde_model->list_data();
+				}
+				if($item_type=='news'){
+				$data['liste_items']= $this->news_model->list_data();
+				}
+				$data['item_type'] = $item_type;
+				$this->template->load('templates/admin', 'liste', $data);
 		   }
 		   else
 		   {
@@ -63,88 +47,45 @@ class Admin extends CI_Controller {
 	}
 	
     // Ajout de news
-    public function add_news()
+    public function add($item_type)
     {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$this->load->view('templates/header');
-			$this->load->view('add_news');
-			$this->load->view('templates/footer',$data);
+			$data['item_type'] = $item_type;
+			$this->template->load('templates/admin', 'add', $data);
 	    }
 		else{
 			 redirect('login', 'refresh');
 		}
     }
 	
-	public function add_bde()
-    {
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$this->load->view('templates/header');
-			$this->load->view('add_bde');
-			$this->load->view('templates/footer',$data);
-	    }
-		else{
-			 redirect('login', 'refresh');
-		}
-    }
     
-
-    public function edit_news($id)
+    public function edit($item_type,$id)
     {
-		if($this->session->userdata('logged_in'))
-   {
-    $session_data = $this->session->userdata('logged_in');
-    $data['username'] = $session_data['username'];
-    $data['current_data']= $this->news_model->get_data($id);
-	$this->load->view('templates/header');
-    $this->load->view('edit_news', $data);
-	$this->load->view('templates/footer',$data);
-	   	    }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
+		if($this->session->userdata('logged_in')){
+    		$session_data = $this->session->userdata('logged_in');
+    		$data['username'] = $session_data['username'];
+    		if ($item_type=='bde') {
+    			$data['current_data']= $this->bde_model->get_data($id);
+    		}
+    		if ($item_type=='news') {
+    			$data['current_data']= $this->news_model->get_data($id);
+    		}
+    		$data['item_type'] = $item_type;
+			$this->template->load('templates/admin', 'edit', $data);
+	   	}else{
+			redirect('login', 'refresh');
+		}
     }    
-	public function edit_bde($id)
-    {
-		if($this->session->userdata('logged_in'))
-   {
-    $session_data = $this->session->userdata('logged_in');
-    $data['username'] = $session_data['username'];
-    $data['current_data']= $this->bde_model->get_data($id);
-	$this->load->view('templates/header');
-    $this->load->view('edit_bde', $data);
-	$this->load->view('templates/footer',$data);
-	   	    }
-		   else
-		   {
-			 redirect('login', 'refresh');
-		   }
-    }
-	
 
-	public function meteo()
-	{
-		$session_data = $this->session->userdata('logged_in');
-		$data['username'] = $session_data['username'];
-		$this->load->helper('xml');
-		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('meteo');
-		$this->load->view('templates/footer',$data);
-	}
 	
 	function changelog()
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
 		$this->load->helper('date');
-		$this->load->view('templates/header');
-		$this->load->view('changelog');
-		$this->load->view('templates/footer',$data);
+		$this->template->load('templates/admin', 'changelog', $data);
 	}
  
 	function logout()
@@ -161,9 +102,7 @@ class Admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$this->load->helper('date');
-			$this->load->view('templates/header');
-			$this->load->view('config');
-			$this->load->view('templates/footer',$data);
+			$this->template->load('templates/admin', 'config', $data);
 	    }
 		else{
 			 redirect('login', 'refresh');

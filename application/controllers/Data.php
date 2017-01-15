@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class News extends CI_Controller {
+class Data extends CI_Controller {
  
 	function __construct()
 	 {
@@ -14,22 +14,11 @@ class News extends CI_Controller {
 
 	public function index()
 	 {
-	 	$session_data = $this->session->userdata('logged_in');
-	   if($session_data){
-			$data['username'] = $session_data['username'];
-			$this->load->helper('date');
-			$this->load->view('templates/header');
-			$this->load->view('admin', $data);
-			$this->load->view('templates/footer',$data);
-	   }
-	   else
-	   {
-		 redirect('login', 'refresh');
-	   }
+
 	 }
 
     // Insert news
-    public function insert_news()
+    public function insert($item_type)
     {
     	$session_data = $this->session->userdata('logged_in');
 		if($session_data){
@@ -55,9 +44,15 @@ class News extends CI_Controller {
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
 
-			$this->news_model->insert_data($data);
+			if ($item_type=='bde') {
+				$this->bde_model->insert_data($data);
+			}
+			if ($item_type=='news') {
+				$this->news_model->insert_data($data);
+			}
 			$this->session->set_flashdata('message', 'News créée avec succés');
-			redirect('liste_news');
+			$link='liste/'.$item_type;
+			redirect($link);
 		}
 		else{
 			redirect('login', 'refresh');
@@ -65,7 +60,7 @@ class News extends CI_Controller {
     }   
 	
     // Edition de news
-    public function update_news($id)
+    public function update($item_type, $id)
     {
     $session_data = $this->session->userdata('logged_in');
 	if($session_data)
@@ -75,9 +70,15 @@ class News extends CI_Controller {
                   'visible'                  => $this->input->post('visible'),
                   'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
-    $this->news_model->update_data($id, $data);
+	if ($item_type=='bde') {
+		$this->bde_model->update_data($id, $data);
+	}
+	if ($item_type=='news') {
+		$this->news_model->update_data($id, $data);
+	}
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
-    redirect('liste_news');
+	$link='liste/'.$item_type;
+	redirect($link);
 	   	   	    }
 		   else
 		   {
@@ -85,20 +86,34 @@ class News extends CI_Controller {
 		   }
     }
 
-	public function update_news_state($id,$state)
+	public function update_state($item_type,$id,$state)
     {  
     
-	$this->news_model->update_state($id, $state);
+    if ($item_type=='bde') {
+    	$this->bde_model->update_state($id, $state);
+    }
+    if ($item_type=='news') {
+    	$this->news_model->update_state($id, $state);
+    }
+	
     $this->session->set_flashdata('message', 'News actualisée avec succés');
-    redirect('liste_news');
+	$link='liste/'.$item_type;
+	redirect($link);
     }
 
     //Supression de news
-    public function delete_news($id)
+    public function delete($item_type,$id)
     {  
-    $this->news_model->delete($id);
+
+    if ($item_type=='bde') {
+    	$this->bde_model->delete($id);
+    }
+    if ($item_type=='news') {
+    	$this->news_model->delete($id);
+    }
     $this->session->set_flashdata('message', 'News supprimée avec succés');
-    redirect('liste_news');
+	$link='liste/'.$item_type;
+	redirect($link);
     }    
 	
 }

@@ -56,37 +56,29 @@ $route['404_override'] = '';
 ##### AFFICHAGE TV #####
 $route['news'] = 'home/news';
 $route['bde'] = 'home/bde';
+$route['meteo'] = 'home/index';
 
 
 ##### ACCEUIL ET CONF #####
 $route['logout'] = 'admin/logout';
-$route['meteo'] = 'admin/meteo';
 $route['meteo_config'] = 'admin/meteo_config';
 $route['config'] = 'admin/config';
 $route['changelog'] = 'admin/changelog';
 ##### ADMINISTRATION #####
 $route['admin'] = 'admin/index';
 ####### Gestion des listes 
-$route['liste_news'] = 'admin/liste_news';
-$route['liste_bde'] = 'admin/liste_bde';
+$route['liste/(:any)'] = 'admin/liste/$1';
 ####### Ajout d'éléments
-$route['add_news'] = 'admin/add_news';
-$route['add_bde'] = 'admin/add_bde';
+$route['add/(:any)'] = 'admin/add/$1';
 ###### Mise a jour d'éléments
-$route['edit_news/([0-9]+)'] = 'admin/edit_news/$1';
-$route['edit_bde/([0-9]+)'] = 'admin/edit_bde/$1';
+$route['edit/(:any)/([0-9]+)'] = 'admin/edit/$1/$2';
 
 
 ######## GESTION DATAS #####
-#############  NEWS  ##################
-$route['insert_news'] = 'news/insert_news';
-$route['update_news/([0-9]+)'] = 'news/update_news/$1';
-$route['update_news_state/([0-9]+)/([0-9]+)'] = 'news/update_news_state/$1/$2';
-$route['delete_news/([0-9]+)'] = 'news/delete_news/$1';
-############### BDE  #################
-$route['insert_bde'] = 'bde/insert_bde';
-$route['update_bde/([0-9]+)'] = 'bde/update_bde/$1';
-$route['update_bde_state/([0-9]+)/([0-9]+)'] = 'bde/update_bde_state/$1/$2';
-$route['delete_bde/([0-9]+)'] = 'bde/delete_bde/$1';
+$route['insert/(:any)'] = 'data/insert/$1';
+$route['update/(:any)/([0-9]+)'] = 'data/update/$1/$2';
+$route['update_state/(:any)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1/$2/$3';
+$route['delete/(:any)/([0-9]+)'] = 'data/delete/$1/$2';
+
 
 

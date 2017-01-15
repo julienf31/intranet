@@ -16,10 +16,10 @@
 			?>
 			<h4>Gestion des news <span class="badge"><?php echo $nb_news; ?></span></h4>
 			<!-- Pour tous les URL, masquer au plus les noms de tes controlers/fonctions, pour cela, configurer des routes -->
-			<a href="<?php echo site_url('liste_news'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('liste/news'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 				Liste des news
 			</a>
-			<a href="<?php echo site_url('add_news'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('add/news'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
 <!-- 			<a href="<?php echo site_url('home/news'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
@@ -30,10 +30,10 @@
 			</a>
 			<br />
 			<h4>Gestion des news BDE <span class="badge"><?php echo $nb_news_bde; ?></span></h4>
-			<a href="<?php echo site_url('liste_bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('liste/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 				News du BDE
 			</a>
-			<a href="<?php echo site_url('add_bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('add/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
 			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>

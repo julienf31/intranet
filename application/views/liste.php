@@ -10,7 +10,7 @@
 					<?php echo $this->session->flashdata('message')?>
 				</div>
 			<?php endif; ?>
-			<h3>Liste des news</h3>
+			<h3>Liste des articles - <?php echo $item_type; ?></h3>
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>#</th>
@@ -20,23 +20,23 @@
 					<th>Visible</th>
 					<th>Actions</th>
 				</tr>
-				<?php if(count($liste_news) > 0): ?>
-                <?php foreach($liste_news as $key => $data) : ?>
+				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
+                <?php foreach($liste_items as $key => $data) : ?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
 						<td><?php echo $key; ?></td>
 						<td><?php echo $data['titre']; ?></td>
 						<td><?php echo $data['date']; ?></td>
 						<td><?php echo $data['auteur']; ?></td>
 						<?php if($data['visible']): ?>
-							<td><a href="<?php echo site_url('update_news_state/').$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
 						<?php else : ?>
-							<td><a href="<?php echo site_url('update_news_state/').$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
-						<td><a href="<?php echo site_url('edit_news/').$data['id']; ?>">editer</a> | <a href="<?php echo site_url('delete_news/').$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
+						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="<?php echo site_url('delete/').$item_type.'/'.$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
-					<td colspan=\"7\" align=\"center\" >Pas de News à afficher</td>
+					<td colspan="7" align="center" >Pas de News à afficher</td>
 				<?php endif; ?>
 <!-- SYNTAXE PAS BONNE, du coup obligé d'echo chaque ligne						<?php
                 if(isset($view_data) && is_array($view_data) && count($view_data)): $i=1;
@@ -69,7 +69,7 @@
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
 					<div class="pull-right">
-						<a href="<?php echo  site_url('add_news'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
+						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
 					</div>
 				</div>
 		</div>
