@@ -1,9 +1,25 @@
 # Intranet
 
+### Librairie de template
+http://jeromejaglale.com/doc/php/codeigniter_template
+
 Intranet YNOV
 BUG TRACKER : http://task.julien-fournier.fr
 
 ## Changelog
+
+### Version 2.0 - En cours
+
++ Véritable systeme de template
++ Systeme de "microservices" à la demande
+
+- Toute les vues doublons
+- Chargement de librairies, helpers, modeles inutiles
+
+* Corections de syntaxe php dans les vues
+* Optimisation du format des données
+* Grosse restructuration du code, modèle MVC
+* Alègement du code pour amélioration des performances (BestPractices CodeIgniter)
 
 ### Version 1.02 - A venir
 
