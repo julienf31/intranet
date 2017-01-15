@@ -10,11 +10,11 @@ BUG TRACKER : http://task.julien-fournier.fr
 
 ### Version 2.0 - En cours
 
-+ Véritable systeme de template
-+ Systeme de "microservices" à la demande
++ Ajout Véritable systeme de template
++ Ajout Systeme de "microservices" à la demande
 
-- Toute les vues doublons
-- Chargement de librairies, helpers, modeles inutiles
+- Retrait Toute les vues doublons
+- Retrait Chargement de librairies, helpers, modeles inutiles
 
 * Corections de syntaxe php dans les vues
 * Optimisation du format des données
