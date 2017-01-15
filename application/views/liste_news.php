@@ -20,8 +20,8 @@
 					<th>Visible</th>
 					<th>Actions</th>
 				</tr>
-				<?php if(isset($view_data) && is_array($view_data) && count($view_data)): ?>
-                <?php foreach($view_data as $key => $data) : ?>
+				<?php if(count($liste_news) > 0): ?>
+                <?php foreach($liste_news as $key => $data) : ?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
 						<td><?php echo $key; ?></td>
 						<td><?php echo $data['titre']; ?></td>

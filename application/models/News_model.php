@@ -12,6 +12,13 @@ Class News_model extends CI_Model
           $query = $this->db->get();
           return $query->result_array();
     }
+
+      public function list_data(){
+      $query=$this->db->query("SELECT *
+                               FROM news n
+                               ORDER BY n.id ASC");
+      return $query->result_array();
+  }
   
     public function insert_data($data){
         $this->db->insert('news', $data); 

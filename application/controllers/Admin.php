@@ -33,9 +33,10 @@ class Admin extends CI_Controller {
 		   {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
-				$this->data['view_data']= $this->welcome->view_data();
+				$data['liste_news']= $this->news_model->list_data();
+
 				$this->load->view('templates/header');
-				$this->load->view('liste_news', $this->data, FALSE);
+				$this->load->view('liste_news', $data);
 				$this->load->view('templates/footer',$data);
 		   }
 		   else
@@ -52,9 +53,9 @@ class Admin extends CI_Controller {
 		   {
 				$session_data = $this->session->userdata('logged_in');
 				$data['username'] = $session_data['username'];
-				$this->data['view_data']= $this->welcome->view_data_bde();
+				$data['liste_bde']= $this->bde_model->list_data();
 				$this->load->view('templates/header');
-				$this->load->view('liste_bde', $this->data, FALSE);
+				$this->load->view('liste_bde', $data);
 				$this->load->view('templates/footer',$data);
 		   }
 		   else

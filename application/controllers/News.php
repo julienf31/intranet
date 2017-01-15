@@ -5,14 +5,17 @@ class News extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->helper('url');
-		 $this->load->model('News_model','news');
+		 $config['upload_path'] = 'uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$this->load->library('upload', $config);
+
 
 	 }
 
 	public function index()
 	 {
-	   if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
+	 	$session_data = $this->session->userdata('logged_in');
+	   if($session_data){
 			$data['username'] = $session_data['username'];
 			$this->load->helper('date');
 			$this->load->view('templates/header');
@@ -28,8 +31,8 @@ class News extends CI_Controller {
     // Insert news
     public function insert_news()
     {
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
+    	$session_data = $this->session->userdata('logged_in');
+		if($session_data){
 			$data['username'] = $session_data['username'];
 			
 			$config['upload_path'] = 'uploads/';
@@ -52,7 +55,7 @@ class News extends CI_Controller {
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
 
-			$this->news->insert_data($data);
+			$this->news_model->insert_data($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			redirect('liste_news');
 		}
@@ -64,15 +67,15 @@ class News extends CI_Controller {
     // Edition de news
     public function update_news($id)
     {
-				if($this->session->userdata('logged_in'))
+    $session_data = $this->session->userdata('logged_in');
+	if($session_data)
    {
-	$session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
     $data = array('titre'                    => $this->input->post('titre'),
                   'visible'                  => $this->input->post('visible'),
                   'afficher_titre'                 => $this->input->post('afficher_titre'),
                   'texte'                    => $this->input->post('texte'));
-    $this->news->update_data($id, $data);
+    $this->news_model->update_data($id, $data);
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
     redirect('liste_news');
 	   	   	    }
@@ -85,7 +88,7 @@ class News extends CI_Controller {
 	public function update_news_state($id,$state)
     {  
     
-	$this->news->update_state($id, $state);
+	$this->news_model->update_state($id, $state);
     $this->session->set_flashdata('message', 'News actualisée avec succés');
     redirect('liste_news');
     }
@@ -93,7 +96,7 @@ class News extends CI_Controller {
     //Supression de news
     public function delete_news($id)
     {  
-    $this->news->delete($id);
+    $this->news_model->delete($id);
     $this->session->set_flashdata('message', 'News supprimée avec succés');
     redirect('liste_news');
     }    

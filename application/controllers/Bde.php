@@ -7,17 +7,17 @@ class Bde extends CI_Controller {
 		 parent::__construct();
 		 $this->load->helper('url');
 		$this->load->helper('date');
-		 $this->load->model('Bde_model','bde');
 		 $config['upload_path'] = 'uploads/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$this->load->library('upload', $config);
+
 
 	 }
 
 	public function index()
 	 {
-	   if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
+	 	$session_data = $this->session->userdata('logged_in');
+	   if($session_data){
 			$data['username'] = $session_data['username'];
 			$this->load->view('templates/header');
 			$this->load->view('admin', $data);
@@ -33,8 +33,8 @@ class Bde extends CI_Controller {
     // Insert news
     public function insert_bde()
     {
-		if($this->session->userdata('logged_in')){
-			$session_data = $this->session->userdata('logged_in');
+    	$session_data = $this->session->userdata('logged_in');
+		if($session_data){
 			$data['username'] = $session_data['username'];
 		
         	$this->upload->do_upload('imageup');
@@ -57,7 +57,7 @@ die();
 			'image'=> $file
 			);
 
-			$this->bde->insert_data($data);
+			$this->bde_model->insert_data($data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			redirect('liste_bde');
 		}
@@ -69,7 +69,8 @@ die();
     // Edition de news
     public function update_bde($id){
 
-		if($this->session->userdata('logged_in')){
+		$session_data = $this->session->userdata('logged_in');
+		if($session_data){
 
 		$session_data = $this->session->userdata('logged_in');
 	    $data['username'] = $session_data['username'];
@@ -89,9 +90,7 @@ die();
 		'date'=> date("Y-m-d h:i:s"),
 		'image'=> $file
 		);
-
-	    $this->db->where('id', $id);
-	    $this->db->update('news_bde', $data);
+	    $this->bde_model->update_data($id, $data);
 	    $this->session->set_flashdata('message', 'News mise à jour avec succés');
 	    redirect('liste_bde');
 
@@ -102,9 +101,7 @@ die();
 
 	public function update_bde_state($id,$state)
     {  
-    $this->db->where('id', $id);
-    $this->db->set('visible', $state);
-	$this->db->update('news_bde');
+    $this->bde_model->update_state($id, $state);
     $this->session->set_flashdata('message', 'News actualisée avec succés');
     redirect('liste_bde');
     }
@@ -112,8 +109,7 @@ die();
     //Supression de news
     public function delete_bde($id)
     {  
-    $this->db->where('id', $id);
-    $this->db->delete('news_bde');
+    $this->bde_model->delete($id);
     $this->session->set_flashdata('message', 'News supprimée avec succés');
     redirect('liste_bde');
     }    

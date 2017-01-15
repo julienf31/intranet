@@ -1,7 +1,6 @@
 <div id="container" class="container">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<?php var_dump($edit_data); ?> 
+		<div class="col-md-8 col-md-offset-2"> 
 				<h3>Edition de " <?php echo $edit_data['titre']; ?> "</h2>
 				<form method="post" action="<?php echo site_url('update_bde/').$edit_data['id']; ?>" name="data_register">
 				<div class="form-group">
