@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Home extends CI_Controller {
+class Tv extends CI_Controller {
  
 	function __construct()
 	 {
@@ -9,11 +9,16 @@ class Home extends CI_Controller {
 	 }
 
 	public function index(){
+
+	}
+
+		public function meteo(){
 		$this->load->helper('url');
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
 		$this->load->helper('xml');
 		$this->load->helper('date');
+		$this->template->set('title', 'Acceuil');
 		$this->template->load('templates/admin', 'meteo', $data);
 	}
 	
@@ -21,17 +26,21 @@ class Home extends CI_Controller {
 	public function news(){
 
 		$this->load->model('News_model','news');
-		$data['news_views'] = $this->news->view_data();
+		$data['views'] = $this->news->view_data();
 		$this->load->helper('date');
-		$this->template->load('templates/tv_news', 'tv_news', $data);
+		$data['item_type'] = 'news';
+		$this->template->set('title', 'News');
+		$this->template->load('templates/tv', 'tv', $data);
 
 	}		
 	
 	public function bde(){
 
 		$this->load->model('Bde_model','bde');
-		$data['bde_views'] = $this->bde->view_data();
-		$this->template->load('templates/tv_bde', 'tv_bde', $data);
+		$data['views'] = $this->bde->view_data();
+		$data['item_type'] = 'bde';
+		$this->template->set('title', 'News BDE');
+		$this->template->load('templates/tv', 'tv', $data);
 
 	}
 	

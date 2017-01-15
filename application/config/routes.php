@@ -54,9 +54,9 @@ $route['404_override'] = '';
 
 
 ##### AFFICHAGE TV #####
-$route['news'] = 'home/news';
-$route['bde'] = 'home/bde';
-$route['meteo'] = 'home/index';
+$route['news'] = 'tv/news';
+$route['bde'] = 'tv/bde';
+$route['meteo'] = 'tv/meteo';
 
 
 ##### ACCEUIL ET CONF #####

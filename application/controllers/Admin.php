@@ -15,6 +15,7 @@ class Admin extends CI_Controller {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$this->template->set('title', 'Administration');
 			$this->template->load('templates/admin', 'admin', $data);
 	   }
 	   else
@@ -37,6 +38,7 @@ class Admin extends CI_Controller {
 				$data['liste_items']= $this->news_model->list_data();
 				}
 				$data['item_type'] = $item_type;
+				$this->template->set('title', 'Liste');
 				$this->template->load('templates/admin', 'liste', $data);
 		   }
 		   else
@@ -53,6 +55,7 @@ class Admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['item_type'] = $item_type;
+			$this->template->set('title', 'Ajout');
 			$this->template->load('templates/admin', 'add', $data);
 	    }
 		else{
@@ -73,6 +76,7 @@ class Admin extends CI_Controller {
     			$data['current_data']= $this->news_model->get_data($id);
     		}
     		$data['item_type'] = $item_type;
+    		$this->template->set('title', 'Edition');
 			$this->template->load('templates/admin', 'edit', $data);
 	   	}else{
 			redirect('login', 'refresh');
@@ -85,6 +89,7 @@ class Admin extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$data['username'] = $session_data['username'];
 		$this->load->helper('date');
+		$this->template->set('title', 'Changelog');
 		$this->template->load('templates/admin', 'changelog', $data);
 	}
  
@@ -102,6 +107,7 @@ class Admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$this->load->helper('date');
+			$this->template->set('title', 'Config');
 			$this->template->load('templates/admin', 'config', $data);
 	    }
 		else{

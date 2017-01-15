@@ -14,6 +14,7 @@ class Login extends CI_Controller {
 
 	$session_data = $this->session->userdata('logged_in');
 	$data['username'] = $session_data['username'];
+	$this->template->set('title', 'Login');
 	$this->template->load('templates/admin', 'login', $data);
  }
 

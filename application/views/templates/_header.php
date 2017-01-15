@@ -5,10 +5,8 @@ $url="http://api.openweathermap.org/data/2.5/weather?q=".$city.",".$country."&AP
 $json=file_get_contents($url);
 $weather=json_decode($json,true);
 ?>
-	<html lang="fr">
-
 	<head>
-		<title>Intranet ynov</title>
+		<title><?= $title ?></title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -34,14 +32,6 @@ $weather=json_decode($json,true);
 		</script>
 		<script src="http://code.jquery.com/jquery-latest.js">
 		</script>
-		<script language=javascript>
-			function updateDiv($div) {
-				$($div).load(window.location.href + " " + $div);
-			}
-			setInterval('updateDiv("#heure")', 60000);
-			setInterval('updateDiv("#date")', 900000); //15 minutes
-			setInterval('updateDiv("#carouselreload")', 120000); //2 minutes
-		</script>
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -54,41 +44,3 @@ $weather=json_decode($json,true);
 		<!-- We'll detail this file in the article -->
 		<script type="text/javascript" src="<?= constant('ASSETS') ?>/js/autocomplete.js"></script>
 	</head>
-
-	<body>
-
-
-<?= $contents ?>
-
-<footer>
-
-</footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="<?= constant('VENDORS') ?>/bootstrap/js/bootstrap.min.js"></script>
-<script>
-	$('#myCarousel').carousel({
-		interval: 6000
-	});
-
-	var clickEvent = false;
-	$('#myCarousel').on('click', '.nav a', function () {
-		clickEvent = true;
-		$('.nav li').removeClass('active');
-		$(this).parent().addClass('active');
-	}).on('slid.bs.carousel', function (e) {
-		if (!clickEvent) {
-			var count = $('.nav').children().length - 1;
-			var current = $('.nav li.active');
-			current.removeClass('active').next().addClass('active');
-			var id = parseInt(current.data('slide-to'));
-			if (count == id) {
-				$('.nav li').first().addClass('active');
-			}
-		}
-		clickEvent = false;
-	});
-</script>
-	</body>
-</html>
