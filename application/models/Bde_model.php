@@ -20,6 +20,14 @@ Class Bde_model extends CI_Model
                              ORDER BY n.id ASC");
     return $query->result_array();
 }
+
+    public function get_data($id){
+        $query=$this->db->query("SELECT *
+                                 FROM news_bde n
+                                 WHERE n.id = $id");
+        return $query->row_array();
+    }
+
     public function insert_data($data){
         $this->db->insert('news_bde', $data); 
         return TRUE;

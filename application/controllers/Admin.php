@@ -7,7 +7,6 @@ class Admin extends CI_Controller {
 		 parent::__construct();
 		 $this->load->helper('url');
 		 $this->load->helper('date');
-		 $this->load->model('Welcome_model','welcome');
 
 	 }
 
@@ -101,7 +100,7 @@ class Admin extends CI_Controller {
    {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $data['edit_data']= $this->welcome->edit_data($id);
+    $data['current_data']= $this->news_model->get_data($id);
 	$this->load->view('templates/header');
     $this->load->view('edit_news', $data);
 	$this->load->view('templates/footer',$data);
@@ -117,7 +116,7 @@ class Admin extends CI_Controller {
    {
     $session_data = $this->session->userdata('logged_in');
     $data['username'] = $session_data['username'];
-    $data['edit_data']= $this->welcome->edit_data_bde($id);
+    $data['current_data']= $this->bde_model->get_data($id);
 	$this->load->view('templates/header');
     $this->load->view('edit_bde', $data);
 	$this->load->view('templates/footer',$data);

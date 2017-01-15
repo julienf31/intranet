@@ -20,6 +20,13 @@ Class News_model extends CI_Model
       return $query->result_array();
   }
   
+    public function get_data($id){
+        $query=$this->db->query("SELECT *
+                                 FROM news n
+                                 WHERE n.id = $id");
+        return $query->row_array();
+    }
+
     public function insert_data($data){
         $this->db->insert('news', $data); 
         return TRUE;
