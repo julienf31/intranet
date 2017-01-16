@@ -1,5 +1,4 @@
 <div class="container">
-<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
 <?php foreach ($liste_items as $key => $data) : ?>
 	<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -20,7 +19,6 @@
 		</div>
 	</div>
 	<?php endforeach; ?>
-	<?php endif; ?>
 	<!-- contenu liste news -->
 	<div class="row">
 		<!-- Debut contenu-->
@@ -54,7 +52,7 @@
 						<?php else : ?>
 							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
-						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="#myModal-'.$data['id'].'" data-toggle="modal" >supprimer</a></td>
+						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="#myModal-<?php echo $data['id']; ?>'" data-toggle="modal" >supprimer</a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
