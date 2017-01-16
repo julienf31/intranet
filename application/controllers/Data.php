@@ -27,7 +27,7 @@ class Data extends CI_Controller {
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
-			$image = $data_upload_files[full_path];
+			$image = $data_upload_files['full_path'];
 			$file = basename($image);
 			if($file == 'uploads'){
 				$file = 'default/white.png';
@@ -39,7 +39,7 @@ class Data extends CI_Controller {
 						  'afficher_titre'                 => $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $fie);
+						  'image'				=> $file);
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
