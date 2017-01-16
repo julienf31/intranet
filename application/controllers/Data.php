@@ -24,9 +24,6 @@ class Data extends CI_Controller {
 		if($session_data){
 			$data['username'] = $session_data['username'];
 			
-			$config['upload_path'] = 'uploads/';
-        	$config['allowed_types'] = 'gif|jpg|png|jpeg';
-        	$this->load->library('upload', $config);
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
@@ -42,7 +39,7 @@ class Data extends CI_Controller {
 						  'afficher_titre'                 => $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $image);
+						  'image'				=> $fie);
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
