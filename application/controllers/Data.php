@@ -32,9 +32,9 @@ class Data extends CI_Controller {
 
          	$image = $data_upload_files[full_path];
 			$file = basename($image);
-			if($file == 'uploads'){
-				$file = 'default/white.png';
-			}
+			//if($file == 'uploads'){
+			//	$file = 'default/white.png';
+			//}
 			
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
