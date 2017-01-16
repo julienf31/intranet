@@ -30,11 +30,11 @@ class Data extends CI_Controller {
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
-         	$image = $data_upload_files[full_path];
+			$image = $data_upload_files[full_path];
 			$file = basename($image);
-			//if($file == 'uploads'){
-			//	$file = 'default/white.png';
-			//}
+			if($file == 'uploads'){
+				$file = 'default/white.png';
+			}
 			
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
@@ -42,7 +42,7 @@ class Data extends CI_Controller {
 						  'afficher_titre'                 => $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $file);
+						  'image'				=> $data_upload_files);
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
