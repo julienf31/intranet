@@ -13,7 +13,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-					<a href="<?php echo base_url('delete/'). $item_type.'/'. $data['id']; ?>" type="button" class="btn btn-success">Confirmer</a>
+					<a href="<?php echo site_url('delete/'). $item_type.'/'. $data['id']; ?>" type="button" class="btn btn-success">Confirmer</a>
 				</div>
 			</div>
 		</div>
