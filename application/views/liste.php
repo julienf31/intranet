@@ -43,7 +43,7 @@
 				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
                 <?php foreach($liste_items as $key => $data) : ?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
-						<td><?php echo $key; ?></td>
+						<td><?php echo $key+1; ?></td>
 						<td><?php echo $data['titre']; ?></td>
 						<td><?php echo $data['date']; ?></td>
 						<td><?php echo $data['auteur']; ?></td>
