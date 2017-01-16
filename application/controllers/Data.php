@@ -42,7 +42,7 @@ class Data extends CI_Controller {
 						  'afficher_titre'                 => $this->input->post('afficher_titre'),
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $data_upload_files);
+						  'image'				=> $image);
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
