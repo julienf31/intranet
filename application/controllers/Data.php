@@ -30,7 +30,7 @@ class Data extends CI_Controller {
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
-         	$image = $data_upload_files[full_path];
+         	$image = $data_upload_files['full_path'];
 			$file = basename($image);
 			if($file == 'uploads'){
 				$file = 'default/white.png';
