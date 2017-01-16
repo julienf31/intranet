@@ -1,4 +1,5 @@
 <div class="container">
+<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
 <?php foreach ($liste_items as $key => $data) : ?>
 	<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -19,6 +20,7 @@
 		</div>
 	</div>
 	<?php endforeach; ?>
+	<?php endif; ?>
 	<!-- contenu liste news -->
 	<div class="row">
 		<!-- Debut contenu-->
