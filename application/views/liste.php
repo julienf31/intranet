@@ -1,4 +1,24 @@
 <div class="container">
+<?php foreach ($view_data as $key => $data) { ?>
+	<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+				</div>
+				<div class="modal-body">
+					Voulez vous vraiment supprimer la news <strong><?php echo $data['titre']; ?></strong><br/>
+					Créée par <strong><?php echo $data['auteur']; ?></strong> le <strong><?php echo $data['date']; ?></strong> ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+					<a href="<?php echo site_url('home/delete_data/'.$data['id']); ?>" type="button" class="btn btn-success">Confirmer</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
 	<!-- contenu liste news -->
 	<div class="row">
 		<!-- Debut contenu-->
@@ -32,7 +52,7 @@
 						<?php else : ?>
 							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
-						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="<?php echo site_url('delete/').$item_type.'/'.$data['id']; ?>"  onClick="return confirm(\'Voulez vous vraiment supprimer cette news ?\')">supprimer</a></td>
+						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="#myModal-'.$data['id'].'" data-toggle="modal" >supprimer</a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
