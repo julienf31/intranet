@@ -22,7 +22,7 @@
 	<!-- contenu liste news -->
 	<div class="row">
 		<!-- Debut contenu-->
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
 <!-- Remarque les léger changement de syntaxe sur les balises php-->			
 			<?php if($this->session->flashdata('message')): ?>
 				<div class="alert alert-success">
@@ -44,7 +44,7 @@
                 <?php foreach($liste_items as $key => $data) : ?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
 						<td><?php echo $key+1; ?></td>
-						<td><?php echo $data['titre']; ?></td>
+						<td><?php echo substr($data['titre'],0,35); if(strlen($data['titre'])>35){echo ('...');} ?></td>
 						<td><?php echo $data['date']; ?></td>
 						<td><?php echo $data['auteur']; ?></td>
 						<?php if($data['visible']): ?>
