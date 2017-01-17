@@ -14,7 +14,7 @@
 			<div class="carousel-inner">
 				<?php foreach ($views as $key => $item): ?>
 				<div class="item <?php if($key==0){ echo('active');} ?>">
-					<img src="<?php echo base_url();?>uploads/<?php echo $item['image']; ?>" style="background-size: cover; width: 100%; height: 520px;">
+					<img src="<?php echo base_url();?>uploads/<?php echo $item['image']; ?>" style="background-size: cover; width: 100%; height: <?php if($item_type == 'news'){echo '410px';} else {echo '520px';} ?>;">
 					<div class="carousel-caption">
 						<h3 class="titrenews"><?php if($item['afficher_titre']=='1' ) {  echo $item['titre']; }?></h3>
 						<p><?php echo $item['texte']; ?></p>
