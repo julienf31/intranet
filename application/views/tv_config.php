@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h3>Paramétres de l'ecran <?php echo $current_config['logo']; ?></h3>
+			<h3>Paramétres de l'ecran <?php echo $item_type; ?></h3>
 			<form method="post" action="<?php echo site_url('update/config_tv/').$item_type; ?>" name="data_register">
 			<div class="panel">
 				<div class="panel-heading">
