@@ -49,6 +49,15 @@ Class Data_model extends CI_Model
         return $query->row_array();
     }
 
+    public function get_config_tv($item_type){
+        $this->db->select('*');
+        $this->db->from('config_tv');
+        $this->db->where('item_type', $item_type);
+        $query = $this->db->get();
+
+        return $query->row_array();
+    }
+
     public function insert_data($item_type,$data){
       if ($item_type=='bde') {
         $this->db->insert('news_bde', $data);
@@ -84,6 +93,13 @@ Class Data_model extends CI_Model
     if ($item_type=='news') {
     $this->db->update('news', $data);
     }
+    }
+
+    public function update_config_tv($item_type, $data){
+      $this->db->where('item_type', $item_type);
+      
+    $this->db->update('config_tv', $data);
+    
     }
 
   public function update_state($item_type,$id, $state){

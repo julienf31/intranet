@@ -20,7 +20,7 @@
 <script src="<?= constant('VENDORS') ?>/bootstrap/js/bootstrap.min.js"></script>
 <script>
 	$('#myCarousel').carousel({
-		interval: 6000
+		interval: <?php echo $config['tps_affichage']; ?>
 	});
 
 	var clickEvent = false;

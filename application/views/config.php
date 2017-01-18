@@ -24,7 +24,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="panel">
+<!-- 			<div class="panel">
 				<div class="panel-heading">
 					<h3 class="panel-title">Paramétres des News</h3>
 				</div>
@@ -38,12 +38,14 @@
 						<span id="url" class="help-block">Temps d'affichages des news en ms</span>
 					</div>
 				</div>
-			</div>
+			</div> -->
 					<div class="row">
 					<div class="pull-left">
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
-
+				<div class="pull-right">
+					<button type="submit" class="btn btn-success" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+				</div>
 				</div>
 			
 		</div>

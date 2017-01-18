@@ -76,6 +76,27 @@ class Data extends CI_Controller {
 		   }
     }
 
+        public function update_config_tv($item_type)
+    {
+    $session_data = $this->session->userdata('logged_in');
+	if($session_data)
+   {
+    $data['username'] = $session_data['username'];
+    $data = array('tps_affichage'=> $this->input->post('tps_affichage'));
+
+
+	$this->data_model->update_config_tv($item_type, $data);
+
+    $this->session->set_flashdata('message', 'Configuration mise à jour avec succés');
+	$link='liste/'.$item_type;
+	redirect('admin');
+	   	   	    }
+		   else
+		   {
+			 redirect('login', 'refresh');
+		   }
+    }
+
 	public function update_state($item_type,$id,$state)
     {  
     $this->data_model->update_state($item_type,$id,$state);

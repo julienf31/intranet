@@ -30,6 +30,7 @@ class Tv extends CI_Controller {
 		$data['views'] = $this->news->view_data();
 		$this->load->helper('date');
 		$data['item_type'] = 'news';
+		$data['config'] = $this->data_model->get_config_tv('news');
 		$data['taille_carousel'] = '410px';
 		$this->template->set('title', 'News');
 		$this->template->load('templates/tv', 'tv', $data);
@@ -42,6 +43,7 @@ class Tv extends CI_Controller {
 		$data['views'] = $this->bde->view_data();
 		$data['item_type'] = 'bde';
 		$this->template->set('title', 'News BDE');
+		$data['config'] = $this->data_model->get_config_tv('bde');
 		$data['taille_carousel'] = '410px';
 		$this->template->set('title', 'BDE');
 		$this->template->load('templates/tv', 'tv', $data);
