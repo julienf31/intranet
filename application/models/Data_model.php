@@ -8,17 +8,17 @@ Class Data_model extends CI_Model
     }
 
     public function view_data($item_type){
-      if ($item_type=='bde') {
-        $this->db->from('news_bde');
-          $this->db->where('visible',1);          
-          $query = $this->db->get();
+        if ($item_type=='bde') {
+            $this->db->from('news_bde');
+            $this->db->where('visible',1);
+            $query = $this->db->get();
         }
         if ($item_type=='news') {
-                  $this->db->from('news');
-          $this->db->where('visible',1);          
-          $query = $this->db->get();
+            $this->db->from('news');
+            $this->db->where('visible',1);
+            $query = $this->db->get();
         }
-          return $query->result_array();
+        return $query->result_array();
     }
   
     public function list_data($item_type){

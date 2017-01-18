@@ -40,10 +40,11 @@
 		}
 		clickEvent = false;
 	});
-	function refresh() {
-      location.reload();
-}
-	setInterval('refresh()', 120000); //2 minutes
+//	function refresh() {
+//      location.reload();
+//}
+	//setInterval('refresh()', 120000); //2 minutes
+	//
 </script>
 	</body>
 </html>

@@ -37,10 +37,13 @@ class Tv extends CI_Controller {
 
 	}		
 	
-	public function bde(){
-
-		$this->load->model('Bde_model','bde');
-		$data['views'] = $this->bde->view_data();
+	public function bde($key = null){
+		$this->load->model('Data_model','bde');
+		$news = $this->bde->view_data('bde');
+		if(count($news)){
+			$data['nextview'] = (isset($news[$key + 1 ])) ? $key + 1 : 0;
+			$data['view'] = $news[$key];
+		}
 		$data['item_type'] = 'bde';
 		$this->template->set('title', 'News BDE');
 		$data['config'] = $this->data_model->get_config_tv('bde');
