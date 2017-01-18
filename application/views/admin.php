@@ -22,12 +22,13 @@
 			<a href="<?php echo site_url('add/news'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
-<!-- 			<a href="<?php echo site_url('home/news'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
-				Afficher Accueil
-			</a> -->
-			<a href="<?php echo site_url('news'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
-				Afficher Accueil
+			<a href="<?php echo site_url('config/tv/news'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+				Parametres News
 			</a>
+			<a href="<?php echo site_url('news'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+				Afficher News
+			</a>
+
 			<br />
 			<h4>Gestion des news BDE <span class="badge"><?php echo $nb_news_bde; ?></span></h4>
 			<a href="<?php echo site_url('liste/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
@@ -36,9 +37,13 @@
 			<a href="<?php echo site_url('add/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
-			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
-				Afficher Accueil BDE
+			<a href="<?php echo site_url('config/tv/bde'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+				Parametres BDE
 			</a>
+			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+				Afficher BDE
+			</a>
+
 			<h4>Gestion de la météo</h4>
 			<a href="<?php echo site_url('meteo_config'); ?>" class="btn btn-success disabled" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Paramétres météo
@@ -62,9 +67,13 @@
 			<a href="<?php echo site_url('add_bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
-			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
-				Afficher Accueil BDE
+			<a href="<?php echo site_url('config/tv/bde'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+				Parametres BDE
 			</a>
+			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+				Afficher BDE
+			</a>
+
 				<?php } ?>
 		</div>
 	</div>

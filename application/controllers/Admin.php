@@ -107,5 +107,20 @@ class Admin extends CI_Controller {
 			 redirect('login', 'refresh');
 		}
 	}
+
+	public function tv_config($item_type)
+	{
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$data['item_type'] = $item_type;
+			$this->load->helper('date');
+			$this->template->set('title', 'Config');
+			$this->template->load('templates/admin', 'tv_config', $data);
+	    }
+		else{
+			 redirect('login', 'refresh');
+		}
+	}
 }
 ?>

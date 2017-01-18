@@ -63,6 +63,7 @@ $route['meteo'] = 'tv/meteo';
 $route['logout'] = 'admin/logout';
 $route['meteo_config'] = 'admin/meteo_config';
 $route['config'] = 'admin/config';
+$route['config/(:any)'] = 'admin/tv_config/$1';
 $route['changelog'] = 'admin/changelog';
 ##### ADMINISTRATION #####
 $route['admin'] = 'admin/index';
