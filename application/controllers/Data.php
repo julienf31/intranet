@@ -24,13 +24,10 @@ class Data extends CI_Controller {
 		if($session_data){
 			$data['username'] = $session_data['username'];
 			
-			$config['upload_path'] = 'uploads/';
-        	$config['allowed_types'] = 'gif|jpg|png|jpeg';
-        	$this->load->library('upload', $config);
         	$this->upload->do_upload('imageup');
         	$data_upload_files = $this->upload->data();
 
-         	$image = $data_upload_files[full_path];
+			$image = $data_upload_files['full_path'];
 			$file = basename($image);
 			if($file == 'uploads'){
 				$file = 'default/white.png';

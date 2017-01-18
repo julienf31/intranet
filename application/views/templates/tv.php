@@ -40,7 +40,7 @@
 	function refresh() {
       location.reload();
 }
-	setInterval('refresh()', 1000000); //2 minutes
+	setInterval('refresh()', 120000); //2 minutes
 </script>
 	</body>
 </html>
