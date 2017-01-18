@@ -20,6 +20,7 @@ Class Data_model extends CI_Model
         }
           return $query->result_array();
     }
+    
   
     public function list_data($item_type){
       if ($item_type=='bde') {
