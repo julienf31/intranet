@@ -39,6 +39,12 @@
 					</div>
 				</div>
 			</div>
+					<div class="row">
+					<div class="pull-left">
+						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					</div>
+
+				</div>
 		</div>
 	</div>
 </div>
