@@ -8,10 +8,5 @@ $weather=json_decode($json,true);
 		<div class="container-fluid" id="head">
 			<div class="row">
 		<?php  include('_logo.php'); ?>
-		<?php  include('_date.php'); ?>
-		<?php  include('_meteo.php'); ?>
-
-
-
 			</div>
 		</div>

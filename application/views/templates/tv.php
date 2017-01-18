@@ -7,7 +7,7 @@
 	<?php  include('_header.php'); ?>
 <?php  endif; ?>
 <?php  if ($item_type=='bde'): ?>
-	<?php  include('_logo.php'); ?>
+	<?php  include('_header_bde.php'); ?>
 <?php  endif; ?>
 <?= $contents ?>
 
