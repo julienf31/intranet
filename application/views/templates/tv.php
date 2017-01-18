@@ -1,10 +1,13 @@
 <html lang="fr">
 
-<?php  include('_header.php'); ?>
+<?php  include('_head.php'); ?>
 <body>
 
 <?php  if ($item_type=='news' | $item_type=='meteo'): ?>
-	<?php  include('_meteo.php'); ?>
+	<?php  include('_header.php'); ?>
+<?php  endif; ?>
+<?php  if ($item_type=='bde'): ?>
+	<?php  include('_logo.php'); ?>
 <?php  endif; ?>
 <?= $contents ?>
 

@@ -11,5 +11,7 @@ $weather=json_decode($json,true);
 		<?php  include('_date.php'); ?>
 		<?php  include('_meteo.php'); ?>
 
+
+
 			</div>
 		</div>
