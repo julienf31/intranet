@@ -21,60 +21,45 @@ $temp_min = $xml->forecast->time->temperature['min'];
 				<h3>Infos :</h3>
 				<div class="row">
 				<div class="col-md-12" style="color: white;background-color: #ec4363;">
-					<h4 style="margin-left:5px;">Météo de <?php echo $location; ?></h4>
-					<ul>Températures du jour :
-						<ul>Mini : <?php echo $temp_min; ?></ul>
-						<ul>Maxi : <?php echo $temp_max; ?></ul>
-					</ul>
-					<ul><i class="step icon-sunrise size-48"></i> Lever du soleil : <?php echo substr($sunrise,11,5); ?></ul>
-					<ul><i class="step icon-sunset size-48"></i> Coucher du soleil : <?php echo substr($sunset,11,5); ?></ul>
+					<div class="col-md-6">
+						<h4 style="margin-left:5px;">Météo de <?php echo $location; ?></h4>
+						<ul>Températures du jour :
+							<ul>Mini : <?php echo $temp_min; ?> °C</ul>
+							<ul>Maxi : <?php echo $temp_max; ?> °C</ul>
+						</ul>
+						<ul><i class="step icon-sunrise size-48"></i> Lever du soleil : <?php echo substr($sunrise,11,5); ?></ul>
+						<ul><i class="step icon-sunset size-48"></i> Coucher du soleil : <?php echo substr($sunset,11,5); ?></ul>
+					</div>
+					<div class="col-md-6">
+					</div>
 				</div>
 				
 				</div>
 				<div class="row" style="min-height: 10px;"></div>
 				<div class="row">
 				<div class="col-md-7" style="color: white;background-color: #00AE9C;">
-					<h4 style="margin-left:5px;">Anniversaires du jour :</h4><br/>
-					<?php
-					$now = date('d/m');
-					$year = date('Y');
-					$this->db->from('intervenants');
-					$this->db->like('anniversaire',$now);					
-					$query = $this->db->get();
-    				$nb_anniv_inter = $query->num_rows();
-				if($nb_anniv_inter != 0){
-					echo '<h4 style="margin-left:5px;">Intervenants :</h4>';
-					foreach ($query->result() as $row)
-					{
-					$birthdate = substr($row->anniversaire, -4);
-					$age = $year-$birthdate;
-					echo '<ul><i class="fa fa-birthday-cake" aria-hidden="true"></i> '.$row->prenom.' '.$row->nom.' ('.$age.' ans) </ul>';
-					}
-				}
-
-					$this->db->from('etudiants');
-					$this->db->like('anniversaire',$now);					
-					$query_inter = $this->db->get();
-    				$nb_anniv = $query->num_rows();
-				if($nb_anniv == 0 && $nb_anniv_inter == 0){
-					echo '<h4 style="margin-left:5px;">Il n\'y a pas d\'anniversaire aujourd\'hui</h4><br/>';
-				}
-				else{
-					echo '<h4 style="margin-left:5px;">Etudiants :</h4>';
-					foreach ($query_inter->result() as $row)
-					{
-					$birthdate = substr($row->anniversaire, -4);
-					$age = $year-$birthdate;
-					$promo = substr($row->Promo,0, 2);
-					echo '<ul><i class="fa fa-birthday-cake" aria-hidden="true"></i> '.$row->Prénom.' '.$row->Nom.' ('.$age.' ans) </ul>';
-					}
-					echo "<br /><center><h4 style=\"margin-left:5px;\">Toute l'administration vous souhaite un joyeux anniversaire !</h4></center><br/>";
-				}
-			?>
-
+					<h4 style="margin-left:5px;">Anniversaires du jour :</h4>
+					<?php if(count($anniversaire_etu) == 0 && count($anniversaire_inter) == 0): ?>
+						<center><h4 style="margin-left:5px;margin-top: 10px;">Pas d'anniverssaire aujourd'hui</h4></center>
+					<?php else: ?>
+					<?php if(count($anniversaire_inter) != 0) : ?>
+						<h4 style="margin-left:5px; margin-top: 10px;">Intervenants :</h4>
+						<?php foreach ($anniversaire_inter as $key => $item_int): ?>
+							<ul><i class="fa fa-birthday-cake" aria-hidden="true"></i> <?php echo $item_int['prenom'].' '.$item_int['nom']; ?></ul>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					<?php if(count($anniversaire_etu) != 0) : ?>
+						<h4 style="margin-left:5px;margin-top: 10px;">Etudiants :</h4>
+						<?php foreach ($anniversaire_etu as $key => $item): ?>
+							<ul><i class="fa fa-birthday-cake" aria-hidden="true"></i> <?php echo $item['Prénom'].' '.$item['Nom']; ?></ul>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					<center><h4 style="margin-left:5px;">Tout le staff vous souhaite un joyeux anniversaire !</h4></center>
+				<?php endif; ?>
 				</div>
 				<div class="col-md-5 pull-right" style="color: white;background-color: #666666;padding-left: -10px;overflow: hidden;width: 40%;">
 					<h4 style="margin-left:5px;">On fête les :</h4>
+					<center><h4 style="margin-left:5px;"><?php echo $fete['Fete']; ?></h4></center>
 				</div>
 
 				</div> 

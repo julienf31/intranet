@@ -3,7 +3,7 @@
 <?php  include('_head.php'); ?>
 <body>
 
-<?php  if ($item_type=='news' | $item_type=='meteo'): ?>
+<?php  if ($item_type=='news'): ?>
 	<?php  include('_header.php'); ?>
 <?php  endif; ?>
 <?php  if ($item_type=='bde'): ?>
@@ -44,6 +44,8 @@
       location.reload();
 }
 	setInterval('refresh()', 120000); //2 minutes
+
+	$('.timeline-Viewport').scrollTo(0,500);
 </script>
 	</body>
 </html>

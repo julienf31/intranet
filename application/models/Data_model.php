@@ -86,7 +86,7 @@ Class Data_model extends CI_Model
     }
     }
 
-  public function update_state($item_type,$id, $state){
+    public function update_state($item_type,$id, $state){
     
    $this->db->where('id', $id); 
     if ($item_type=='bde') {
@@ -109,6 +109,28 @@ Class Data_model extends CI_Model
     }
    
     }
+
+    public function anniversaire_etu($date){
+      $this->db->from('etudiants');
+      $this->db->like('anniversaire',$date);        
+      $query = $this->db->get();
+      return $query->result_array();
+    }
+
+    public function anniversaire_inter($date){
+      $this->db->from('intervenants');
+      $this->db->like('anniversaire',$date);    
+      $query = $this->db->get();
+      return $query->result_array();
+    }
+
+    public function fete($date){
+      $this->db->from('saint');
+      $this->db->like('JourMois',$date);    
+      $query = $this->db->get();
+      return $query->row_array();
+    }
+
 
   }
 
