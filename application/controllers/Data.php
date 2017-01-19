@@ -50,8 +50,6 @@ class Data extends CI_Controller {
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file,
 						  'texte_type'				=> $type);
-			var_dump($data);
-			die();
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
