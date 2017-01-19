@@ -5,6 +5,7 @@
 </style>
 <div class="container-fluid">
 		<!-- page de news -->
+        <?php if(isset($view)) :?>
        <?php if($item_type == 'bde' && $view['afficher_titre'] =='1'): ?> 
         <div class="row">
             <div class="col-sm-12">
@@ -18,7 +19,7 @@
             </div>
         </div>
     <?php endif; ?>
-
+<?php endif; ?>
 		<?php if(!isset($view)): ?>
 		<h3 class="titrenews">Il n'y a pas d'actualités à afficher, revenez plus tard ! :)</h3>
         <?php elseif($view['text_type'] == "JSON"): ?>
