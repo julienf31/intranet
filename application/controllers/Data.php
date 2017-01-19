@@ -82,7 +82,18 @@ class Data extends CI_Controller {
 	if($session_data)
    {
     $data['username'] = $session_data['username'];
-    $data = array('tps_affichage'=> $this->input->post('tps_affichage'));
+    	$config['upload_path'] = 'uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$this->load->library('upload', $config);
+            $this->upload->do_upload('logoup');
+        	$data_upload_files = $this->upload->data();
+        	var_dump($data_upload_files);
+        	die();
+
+			$image = $data_upload_files['full_path'];
+			$file = basename($image);
+    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
+    	'logo' => $file);
 
 
 	$this->data_model->update_config_tv($item_type, $data);

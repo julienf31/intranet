@@ -106,6 +106,7 @@ h3.titrenews{
 .carousel-caption{
 	color: inherit;
 	text-shadow: 0;
+	padding-right: 2%;
 }
 
 .size-72 { font-size: 72px; }

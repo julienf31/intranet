@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-//session_start(); désactivé car beug boucle infinie
 class Admin extends CI_Controller {
  
 	function __construct()

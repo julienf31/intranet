@@ -9,7 +9,7 @@
 	<!-- page de news -->
 	<div class="row">
 		<!-- Debut contenu-->
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-2">
 			<h3>Bienvenue <?php echo $username; ?></h3>
 			<?php
 			if($username=='admin' || $username=='root'){

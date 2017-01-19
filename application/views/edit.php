@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 				<h3>Edition de " <?php echo $current_data['titre']; ?> " - <?php echo $item_type; ?></h2>
-				<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register">
+				<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Titre</label>
 					<input type="text" class="form-control" name="titre" value="<?php echo $current_data['titre']; ?>" required>

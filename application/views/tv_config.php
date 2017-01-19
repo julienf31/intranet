@@ -2,35 +2,25 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<h3>Paramétres de l'ecran <?php echo $item_type; ?></h3>
-			<form method="post" action="<?php echo site_url('update/config_tv/').$item_type; ?>" name="data_register">
+			<form method="post" action="<?php echo site_url('update/config_tv/').$item_type; ?>" name="data_register" enctype="multipart/form-data">
 			<div class="panel">
 				<div class="panel-heading">
 					<h3 class="panel-title">Paramétres géneraux</h3>
 				</div>
-<!-- 				<div class="panel-body">
-					<div class="col-md-6 form-group">
-						<label class="control-label" for="url">URL du site</label>
-						<input type="text" class="form-control" id="url" aria-describedby="url" placeholder="http://localhost/" disabled="disabled">
-						<span id="url" class="help-block">URL d'accés à la racine du site</span>
-					</div>
-					<div class="col-md-6 form-group">
-						<label class="control-label" for="extension">Extension des fichiers</label>
-						<input type="text" class="form-control" id="extension" aria-describedby="extension" placeholder=".html" disabled="disabled">
-						<span id="extension" class="help-block">Extension des fichiers à afficher</span>
-					</div>
-					<div class="col-md-6 form-group">
-						<label class="control-label" for="meteo">Météo</label>
-						<input type="text" class="form-control" id="user_input_autocomplete_address" aria-describedby="meteo" placeholder="Toulouse" >
-						<span id="meteo" class="help-block">Nom de la ville pour la météo</span>
-					</div>
-				</div> -->
+				<div class="panel-body" style="padding-bottom:0px;">
+				<div class="col-md-8 form-group">
+					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Logo de l'en-tête</label>
+					<input type="file" id="logoup" name="logoup">
+					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 220 x 100 px</p>
+				</div>
+				</div>
 			</div>
 			<div class="panel">
 				<div class="panel-heading">
 					<h3 class="panel-title">Paramétres d'affichage</h3>
 				</div>
 				<div class="panel-body">
-					<div class="col-md-6 form-group">
+					<div class="col-md-8 form-group">
 						<label class="control-label" for="url">Durée d'affichage</label>
 						<div class="input-group">
 							<input type="text" class="form-control" name="tps_affichage" placeholder="<?php echo $current_config['tps_affichage'];?>">

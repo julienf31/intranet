@@ -4,9 +4,15 @@
 	}
 </style>
 <div class="container-fluid">
-	<div id="carouselreload">
 		<!-- page de news -->
-		<h3>Actualités</h3>
+       <?php if($view['afficher_titre']=='1' ): ?> 
+        <div class="row">
+            <div class="col-sm-12">
+		      <h3 class="titrenews"><?php echo $view['titre']; ?></h3>
+            </div>
+        </div>
+    <?php endif; ?>
+
 		<?php if(!isset($view)): ?>
 		<h3 class="titrenews">Il n'y a pas d'actualités à afficher, revenez plus tard ! :)</h3>
         <?php elseif($view['text_type'] == "JSON"): ?>
@@ -61,24 +67,21 @@
                 }
             </script>
 		<?php else: ?>
+            <div class="row">
+                <div class="col-md-12">
+				<img src="<?php echo base_url();?>uploads/<?php echo $view['image']; ?>" style="background-size: cover; width: 100%; height:<?php if ($view['afficher_titre']=='1'){echo '450px';}else{echo '506px';}; ?>;">
+			     <div class="carousel-caption"><p><?php echo $view['texte']; ?></p></div>
+                 <div>
+            </div>	
 
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="<?php echo base_url();?>uploads/<?php echo $view['image']; ?>" style="background-size: cover; width: 100%; height: <?php echo $taille_carousel; ?>;">
-					<div class="carousel-caption">
-						<h3 class="titrenews"><?php if($view['afficher_titre']=='1' ) {  echo $view['titre']; }?></h3>
-						<p><?php echo $view['texte']; ?></p>
-					</div>
-				</div>
-			</div>
             <script>
-                setInterval('refresh()', <?php echo $config['tps_affichage'] ?>); //5 secondes
+                //setInterval('refresh()', <?php echo $config['tps_affichage'] ?>); //5 secondes
             </script>
 			<?php endif; ?>
-		</div>
+		
+    </div>
         <script>
             function refresh() {
-                document.location.href = document.location.origin + "/index.php/bde/<?php echo $nextview ?>";
+                document.location.href = document.location.origin + '/<?php echo $item_type; ?>'+'/<?php echo $nextview ?>';
             }
         </script>
