@@ -58,7 +58,7 @@
                     else{
                         $("#player").attr('frameborder',"0").css('overflow','hidden').css('height','450px').css('width','100%').css('position','relative').css('top','0').css('bottom','0').css('left','0').css('right','0');
                     }
-                    //event.target.playVideo();
+                event.target.playVideo();
               
                 }
 
