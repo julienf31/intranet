@@ -36,13 +36,22 @@ class Data extends CI_Controller {
 			if($afficher_titre == null){
 				$afficher_titre='0';
 			}
+			if ($this->input->post('type_select') == 'News') {
+				$type = 'TEXT';
+			}
+			if ($this->input->post('type_select') == 'Video') {
+				$type = 'JSON';
+			}
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
 						  'afficher_titre'                 => $afficher_titre,
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
-						  'image'				=> $file);
+						  'image'				=> $file,
+						  'texte_type'				=> $type);
+			var_dump($data);
+			die();
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
