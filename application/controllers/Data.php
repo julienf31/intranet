@@ -32,15 +32,19 @@ class Data extends CI_Controller {
 			if($file == 'uploads'){
 				$file = 'default/white.png';
 			}
-			
+			$afficher_titre=$this->input->post('afficher_titre');
+			if($afficher_titre == null){
+				$afficher_titre='0';
+			}
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
-						  'afficher_titre'                 => $this->input->post('afficher_titre'),
+						  'afficher_titre'                 => $afficher_titre,
 						  'texte'                   => $this->input->post('texte'),
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file);
-
+			var_dump($data);
+			die();
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
 			$link='liste/'.$item_type;
@@ -82,14 +86,8 @@ class Data extends CI_Controller {
 	if($session_data)
    {
     $data['username'] = $session_data['username'];
-    	$config['upload_path'] = 'uploads/';
-		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$this->load->library('upload', $config);
             $this->upload->do_upload('logoup');
         	$data_upload_files = $this->upload->data();
-        	var_dump($data_upload_files);
-        	die();
-
 			$image = $data_upload_files['full_path'];
 			$file = basename($image);
     $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
