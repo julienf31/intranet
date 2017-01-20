@@ -34,7 +34,9 @@
 			<div id="video_fields" class="hidden">
 				<div class="form-group">
 					<label><i class="fa fa-camera" aria-hidden="true"></i> Video</label>
-			</div>
+					<input type="text" class="form-control" name="video_url">
+					<em>Inserer le lien Youtube de la video</em>
+				</div>
 			</div>
 				<br />
 				<div class="pull-left">

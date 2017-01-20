@@ -38,18 +38,24 @@ class Data extends CI_Controller {
 			}
 			if ($this->input->post('type_select') == 'News') {
 				$type = 'TEXT';
+				$texte = $this->input->post('texte');
 			}
 			if ($this->input->post('type_select') == 'Video') {
 				$type = 'JSON';
+				$video_url = $this->input->post('video_url');
+				parse_str( parse_url( $video_url, PHP_URL_QUERY ), $video_url_params );   
+				$videoId = $video_url_params['v'];
+				$texte= array("type"=>"video", "plateform"=>"youtube", "videoId"=>$videoId);
+				$texte = json_encode($texte);
 			}
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
 						  'afficher_titre'                 => $afficher_titre,
-						  'texte'                   => $this->input->post('texte'),
+						  'texte'                   => $texte,
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file,
-						  'texte_type'				=> $type);
+						  'text_type'				=> $type);
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message', 'News créée avec succés');
