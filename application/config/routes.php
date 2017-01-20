@@ -74,6 +74,7 @@ $route['admin'] = 'admin/index';
 $route['liste/(:any)'] = 'admin/liste/$1';
 ####### Ajout d'éléments
 $route['add/(:any)'] = 'admin/add/$1';
+$route['preview/(:any)'] = 'data/insert/$1';
 ###### Mise a jour d'éléments
 $route['edit/(:any)/([0-9]+)/(:any)'] = 'admin/edit/$1/$2/$3';
 

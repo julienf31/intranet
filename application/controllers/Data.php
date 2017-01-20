@@ -20,6 +20,9 @@ class Data extends CI_Controller {
     // Insert news
     public function insert($item_type)
     {
+    	if (isset($_POST['send-btn'])) {
+    //update action
+
     	$session_data = $this->session->userdata('logged_in');
 		if($session_data){
 			$data['username'] = $session_data['username'];
@@ -65,6 +68,57 @@ class Data extends CI_Controller {
 		else{
 			redirect('login', 'refresh');
 		}
+
+	} else if (isset($_POST['preview-btn'])) {
+  				   if($this->session->userdata('logged_in'))
+		   {
+		   			$this->load->helper('date');
+				$session_data = $this->session->userdata('logged_in');
+				$data['username'] = $session_data['username'];
+        	$this->upload->do_upload('imageup');
+        	$data_upload_files = $this->upload->data();
+			$image = $data_upload_files['full_path'];
+			$file = basename($image);
+			if($file == 'uploads'){
+				$file = 'default/white.png';
+			}
+			$afficher_titre=$this->input->post('afficher_titre');
+			if($afficher_titre == null){
+				$afficher_titre='0';
+			}
+			if ($this->input->post('type_select') == 'News') {
+				$type = 'TEXT';
+				$texte = $this->input->post('texte');
+			}
+			if ($this->input->post('type_select') == 'Video') {
+				$type = 'JSON';
+				$video_url = $this->input->post('video_url');
+				parse_str( parse_url( $video_url, PHP_URL_QUERY ), $video_url_params );   
+				$videoId = $video_url_params['v'];
+				$texte= array("type"=>"video", "plateform"=>"youtube", "videoId"=>$videoId);
+				$texte = json_encode($texte);
+			}
+
+				$preview_data = array('titre'                   => $this->input->post('titre'),
+						  'auteur'                  => $data['username'],
+						  'visible'                 => $this->input->post('visible'),
+						  'afficher_titre'          => $afficher_titre,
+						  'texte'                   => $texte,
+						  'date'              		=> date("Y-m-d h:i:s"),
+						  'image'				=> $file,
+						  'text_type'				=> $type);
+				$data['view'] = $preview_data;
+				$data['item_type'] = $item_type;
+				$this->template->set('title', 'Apercu');
+				$this->template->load('templates/tv', 'preview', $data);
+		   }
+		   else
+		   {
+			 redirect('login', 'refresh');
+		   }
+} else {
+    //no button pressed
+}
     }   
 	
     // Edition de news
