@@ -1,39 +1,47 @@
 <?php
 $city="Toulouse";
-$country="FR"; //Two digit country code
-$url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=".$city.",".$country."&APPID=c568aac6ef8e8c92ab7b8ad8e75cfe9e&units=metric&lang=fr&mode=xml&cnt=1";
+$country="FR";
+$url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=".$city.",".$country."&APPID=c568aac6ef8e8c92ab7b8ad8e75cfe9e&units=metric&lang=fr&mode=json&cnt=2";
 
-$context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
+$json = file_get_contents($url);
+$json = json_decode($json);
 
-$xml = file_get_contents($url, false, $context);
-$xml = simplexml_load_string($xml);
-$location = $xml->location->name;
-$sunset = $xml->sun['set'];
-$sunrise = $xml->sun['rise'];
-$timeday = $xml->forecast->time['day'];
-$temp_max = $xml->forecast->time->temperature['max'];
-$temp_min = $xml->forecast->time->temperature['min'];
-?>
+$location = $json->city->name;
+$meteos = $json->list;
+
+$gorafi = "http://www.legorafi.fr/feed/";
+
+?> 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="container-fluid">
 				<h3>Infos :</h3>
 				<div class="row">
-				<div class="col-md-12" style="color: white;background-color: #ec4363;">
-					<div class="col-md-6">
-						<h4 style="margin-left:5px;">Météo de <?php echo $location; ?></h4>
-						<ul>Températures du jour :
-							<ul>Mini : <?php echo $temp_min; ?> °C</ul>
-							<ul>Maxi : <?php echo $temp_max; ?> °C</ul>
+				<?php foreach ($meteos as $key_meteo=>$meteo) : ?>
+				<div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;background-color: #ec4363; min-height: 200px;">
+					<div class="col-md-7">
+						<h4 style="margin-left:5px;"><?php echo $location; ?> - Météo <?php if($key_meteo == 0) echo 'du jour'; else echo 'de Demain'; ?></h4>
+						<ul>Températures:
+							<ul>Mini : <?php echo $meteo->temp->min; ?> °C</ul>
+							<ul>Maxi : <?php echo $meteo->temp->max; ?> °C</ul>
 						</ul>
-						<ul><i class="step icon-sunrise size-48"></i> Lever du soleil : <?php echo substr($sunrise,11,5); ?></ul>
-						<ul><i class="step icon-sunset size-48"></i> Coucher du soleil : <?php echo substr($sunset,11,5); ?></ul>
+						<ul>Infos:
+							<ul>Vitesse du vent : <?php echo $meteo->speed; ?> km/h</ul>
+							<ul>Humidité : <?php echo $meteo->humidity; ?> %</ul>
+							<ul>Ciel : <?php echo $meteo->weather[0]->description; ?> </ul>
+						</ul>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-5">
+					<?php if($key == 0): ?>
+					<h4 style="margin-left:5px;">Météo en direct</h4>
+					<div class="v-center">
+					<?php include('templates/_meteo2.php'); ?>
+					</div>
+					<?php endif; ?>
 					</div>
 				</div>
-				
+			<? endforeach; ?>
 				</div>
 				<div class="row" style="min-height: 10px;"></div>
 				<div class="row">
@@ -61,8 +69,14 @@ $temp_min = $xml->forecast->time->temperature['min'];
 					<h4 style="margin-left:5px;">On fête les :</h4>
 					<center><h4 style="margin-left:5px;"><?php echo $fete['Fete']; ?></h4></center>
 				</div>
-
 				</div> 
+				<div class="row" style="min-height: 10px;"></div>
+				<div class="row">
+				<div class="col-md-12" style="color: white;background-color: #ec4363;">
+				<h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
+				<center><h4 style="margin-left:5px;">SOON</h4></center>
+				</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -85,3 +99,42 @@ $temp_min = $xml->forecast->time->temperature['min'];
 		</div>
 	</div>
 </div>
+<script>
+
+function swap() {
+	if($("#meteo-0").hasClass('hidden')){
+		$("#meteo-1").addClass('flipOutX').removeClass('flipInX');
+		setTimeout('displayMeteoTomorrow(0)',1000);
+		setTimeout('displaymeteoToday(1)',1000);
+	}
+	else{
+		$("#meteo-0").addClass('flipOutX').removeClass('flipInX');
+		setTimeout('displaymeteoToday(0)',1000);
+		setTimeout('displayMeteoTomorrow(1)',1000);
+	}
+}
+
+
+function displaymeteoToday(show){
+	if(show == 1){
+		$('#meteo-1').removeClass('flipOutX');
+		$("#meteo-0").addClass('flipInX').removeClass('hidden');
+	}
+	else{
+		$("#meteo-0").addClass('hidden');
+	}
+}
+
+function displayMeteoTomorrow(show){
+	if(show == 1){
+		$('#meteo-0').removeClass('flipOutX');
+		$("#meteo-1").addClass('flipInX').removeClass('hidden');
+	}
+	else{
+		$("#meteo-1").addClass('hidden');
+	}
+}
+
+setInterval('swap()',5000);
+
+</script>
