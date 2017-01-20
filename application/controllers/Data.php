@@ -80,9 +80,7 @@ class Data extends CI_Controller {
 
 			$image = $data_upload_files['full_path'];
 			$file = basename($image);
-			if($file == 'uploads'){
-				$file = 'default/white.png';
-			}
+
 
 			$afficher_titre=$this->input->post('afficher_titre');
 			if($afficher_titre == null){
@@ -100,13 +98,18 @@ class Data extends CI_Controller {
 				$texte= array("type"=>"video", "plateform"=>"youtube", "videoId"=>$videoId);
 				$texte = json_encode($texte);
 			}
-
+			if($file == 'uploads'){
+			$data = array('titre'                   => $this->input->post('titre'),
+						  'visible'                 => $this->input->post('visible'),
+						  'afficher_titre'          => $afficher_titre,
+						  'texte'                   => $texte);
+			}else{
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'visible'                 => $this->input->post('visible'),
 						  'afficher_titre'          => $afficher_titre,
 						  'texte'                   => $texte,
 						  'image'				=> $file);
-
+		}
 	$this->data_model->update_data($item_type,$id, $data);
 
     $this->session->set_flashdata('message', 'News mise à jour avec succés');
@@ -129,8 +132,14 @@ class Data extends CI_Controller {
         	$data_upload_files = $this->upload->data();
 			$image = $data_upload_files['full_path'];
 			$file = basename($image);
-    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
+	if($file == 'uploads'){
+    $data = array('tps_affichage'=> $this->input->post('tps_affichage'));
+
+	}else{
+		    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
     	'logo' => $file);
+
+	}		
 
 
 	$this->data_model->update_config_tv($item_type, $data);

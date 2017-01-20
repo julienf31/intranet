@@ -18,7 +18,7 @@
 				<?php if($current_data['text_type'] == 'TEXT'): ?>
 				<div class="form-group">
 					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label>
-					<input type="file" id="imageedit" name="imageedit" value="<?php echo $current_data[ 'image'] ?>">
+					<input type="file" id="imageedit" name="imageedit" value="<?php echo $current_data['image'] ?>">
 					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
 				</div>
 				<label>Contenu de la News</label>
@@ -30,7 +30,7 @@
 				<?php if($current_data['text_type'] == 'JSON'): ?>
 				<div class="form-group">
 					<label><i class="fa fa-camera" aria-hidden="true"></i> Video</label>
-					<input type="text" class="form-control" name="video_url" value="<?php echo $current_data['texte']; ?>"></input>
+					<input type="text" class="form-control" name="video_url" value="<?php echo $current_data['texte'] ?>"></input>
 					<em>Inserer le lien Youtube de la video</em>
 				</div>
 				<?php endif; ?>
