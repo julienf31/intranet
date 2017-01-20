@@ -23,7 +23,7 @@
 					<div class="col-md-8 form-group">
 						<label class="control-label" for="url">Durée d'affichage</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="tps_affichage" placeholder="<?php echo $current_config['tps_affichage'];?>">
+							<input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>">
 							<div class="input-group-addon">ms</div>
 						</div>
 						<span id="url" class="help-block">Temps d'affichages des news en ms</span>

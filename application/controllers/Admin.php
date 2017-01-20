@@ -65,8 +65,12 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
     		$session_data = $this->session->userdata('logged_in');
     		$data['username'] = $session_data['username'];
-    			$data['current_data']= $this->data_model->get_data($item_type,$id);
-
+    		$data['current_data']= $this->data_model->get_data($item_type,$id);
+   			if($data['current_data']['text_type'] == 'JSON'){
+   				$video_datas = $data['current_data']['texte'];
+   				$video_id = json_decode($video_datas)->videoId;
+   				$data['current_data']['texte'] = 'https://www.youtube.com/watch?v='.$video_id;
+   			}
     		$data['item_type'] = $item_type;
     		$this->template->set('title', 'Edition');
 			$this->template->load('templates/admin', 'edit', $data);

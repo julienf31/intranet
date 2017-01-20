@@ -51,7 +51,7 @@ class Data extends CI_Controller {
 			$data = array('titre'                   => $this->input->post('titre'),
 						  'auteur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
-						  'afficher_titre'                 => $afficher_titre,
+						  'afficher_titre'          => $afficher_titre,
 						  'texte'                   => $texte,
 						  'date'              		=> date("Y-m-d h:i:s"),
 						  'image'				=> $file,
@@ -68,17 +68,44 @@ class Data extends CI_Controller {
     }   
 	
     // Edition de news
-    public function update($item_type, $id)
+    public function update($item_type, $id, $text_type)
     {
     $session_data = $this->session->userdata('logged_in');
 	if($session_data)
    {
     $data['username'] = $session_data['username'];
-    $data = array('titre'                    => $this->input->post('titre'),
-                  'visible'                  => $this->input->post('visible'),
-                  'afficher_titre'                 => $this->input->post('afficher_titre'),
-                  'texte'                    => $this->input->post('texte'));
 
+        	$this->upload->do_upload('imageedit');
+        	$data_upload_files = $this->upload->data();
+
+			$image = $data_upload_files['full_path'];
+			$file = basename($image);
+			if($file == 'uploads'){
+				$file = 'default/white.png';
+			}
+
+			$afficher_titre=$this->input->post('afficher_titre');
+			if($afficher_titre == null){
+				$afficher_titre='0';
+			}
+
+			if($text_type == 'TEXT'){
+				$texte = $this->input->post('texte');
+			}
+
+			if($text_type == 'JSON'){
+				$video_url = $this->input->post('video_url');
+				parse_str( parse_url( $video_url, PHP_URL_QUERY ), $video_url_params );   
+				$videoId = $video_url_params['v'];
+				$texte= array("type"=>"video", "plateform"=>"youtube", "videoId"=>$videoId);
+				$texte = json_encode($texte);
+			}
+
+			$data = array('titre'                   => $this->input->post('titre'),
+						  'visible'                 => $this->input->post('visible'),
+						  'afficher_titre'          => $afficher_titre,
+						  'texte'                   => $texte,
+						  'image'				=> $file);
 
 	$this->data_model->update_data($item_type,$id, $data);
 

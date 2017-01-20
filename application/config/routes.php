@@ -75,12 +75,12 @@ $route['liste/(:any)'] = 'admin/liste/$1';
 ####### Ajout d'éléments
 $route['add/(:any)'] = 'admin/add/$1';
 ###### Mise a jour d'éléments
-$route['edit/(:any)/([0-9]+)'] = 'admin/edit/$1/$2';
+$route['edit/(:any)/([0-9]+)/(:any)'] = 'admin/edit/$1/$2/$3';
 
 
 ######## GESTION DATAS #####
 $route['insert/(:any)'] = 'data/insert/$1';
-$route['update/(:any)/([0-9]+)'] = 'data/update/$1/$2';
+$route['update/(:any)/([0-9]+)/(:any)'] = 'data/update/$1/$2/$3';
 $route['update_state/(:any)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1/$2/$3';
 $route['delete/(:any)/([0-9]+)'] = 'data/delete/$1/$2';
 
