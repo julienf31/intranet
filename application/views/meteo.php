@@ -46,7 +46,7 @@ die();
 					<?php endif; ?>
 					</div>
 				</div>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 				</div>
 				<div class="row" style="min-height: 10px;"></div>
 				<div class="row">
