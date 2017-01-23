@@ -3,7 +3,7 @@
 <?php  include('_head.php'); ?>
 <body>
 
-<?php  if ($item_type=='news' | $item_type=='meteo'): ?>
+<?php  if ($item_type=='news'): ?>
 	<?php  include('_header.php'); ?>
 <?php  endif; ?>
 <?php  if ($item_type=='bde'): ?>
