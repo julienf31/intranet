@@ -8,17 +8,17 @@ Class Data_model extends CI_Model
     }
 
     public function view_data($item_type){
-      if ($item_type=='bde') {
-        $this->db->from('news_bde');
-          $this->db->where('visible',1);          
-          $query = $this->db->get();
+        if ($item_type=='bde') {
+            $this->db->from('news_bde');
+            $this->db->where('visible',1);
+            $query = $this->db->get();
         }
         if ($item_type=='news') {
-                  $this->db->from('news');
-          $this->db->where('visible',1);          
-          $query = $this->db->get();
+            $this->db->from('news');
+            $this->db->where('visible',1);
+            $query = $this->db->get();
         }
-          return $query->result_array();
+        return $query->result_array();
     }
   
     public function list_data($item_type){
@@ -46,6 +46,15 @@ Class Data_model extends CI_Model
                                  FROM news n
                                  WHERE n.id = $id");
         }
+        return $query->row_array();
+    }
+
+    public function get_config_tv($item_type){
+        $this->db->select('*');
+        $this->db->from('config_tv');
+        $this->db->where('item_type', $item_type);
+        $query = $this->db->get();
+
         return $query->row_array();
     }
 
@@ -86,7 +95,15 @@ Class Data_model extends CI_Model
     }
     }
 
-    public function update_state($item_type,$id, $state){
+    public function update_config_tv($item_type, $data){
+      $this->db->where('item_type', $item_type);
+      
+    $this->db->update('config_tv', $data);
+    
+    }
+
+  public function update_state($item_type,$id, $state){
+
     
    $this->db->where('id', $id); 
     if ($item_type=='bde') {
