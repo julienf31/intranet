@@ -18,30 +18,30 @@ $gorafi = "http://www.legorafi.fr/feed/";
 			<div class="container-fluid">
 				<h3>Infos :</h3>
 				<div class="row">
-				<?php foreach ($meteos as $key_meteo=>$meteo) : ?>
-				<div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;background-color: #ec4363; min-height: 200px;">
-					<div class="col-md-7">
-						<h4 style="margin-left:5px;"><?php echo $location; ?> - Météo <?php if($key_meteo == 0) echo 'du jour'; else echo 'de Demain'; ?></h4>
-						<ul>Températures:
-							<ul>Mini : <?php echo $meteo->temp->min; ?> °C</ul>
-							<ul>Maxi : <?php echo $meteo->temp->max; ?> °C</ul>
-						</ul>
-						<ul>Infos:
-							<ul>Vitesse du vent : <?php echo $meteo->speed; ?> km/h</ul>
-							<ul>Humidité : <?php echo $meteo->humidity; ?> %</ul>
-							<ul>Ciel : <?php echo $meteo->weather[0]->description; ?> </ul>
-						</ul>
-					</div>
+				<?php foreach($meteos as $key_meteo=>$meteo) : ?>
+					<div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;background-color: #ec4363; min-height: 200px;">
+						<div class="col-md-7">
+							<h4 style="margin-left:5px;"><?php echo $location; ?> - Météo <?php if($key_meteo == 0) echo 'du jour'; else echo 'de Demain'; ?></h4>
+							<ul>Températures:
+								<ul>Mini : <?php echo $meteo->temp->min; ?> °C</ul>
+								<ul>Maxi : <?php echo $meteo->temp->max; ?> °C</ul>
+							</ul>
+							<ul>Infos:
+								<ul>Vitesse du vent : <?php echo $meteo->speed; ?> km/h</ul>
+								<ul>Humidité : <?php echo $meteo->humidity; ?> %</ul>
+								<ul>Ciel : <?php echo $meteo->weather[0]->description; ?> </ul>
+							</ul>
+						</div>
 					<div class="col-md-5">
 					<?php if($key == 0): ?>
-					<h4 style="margin-left:5px;">Météo en direct</h4>
-					<div class="v-center">
-					<?php include('templates/_meteo2.php'); ?>
-					</div>
+						<h4 style="margin-left:5px;">Météo en direct</h4>
+						<div class="v-center">
+							<?php include('templates/_meteo2.php'); ?>
+						</div>
 					<?php endif; ?>
 					</div>
-				</div>
-			<? endforeach; ?>
+					</div>
+				<?php endforeach; ?>
 				</div>
 				<div class="row" style="min-height: 10px;"></div>
 				<div class="row">
