@@ -9,7 +9,12 @@ $json = json_decode($json);
 $location = $json->city->name;
 $meteos = $json->list;
 
-$gorafi = "http://www.legorafi.fr/feed/";
+$figaro = "http://www.lemonde.fr/rss/une.xml";
+$document_xml = new DomDocument();
+$document_xml->load($figaro);
+$infos = $document_xml->getElementsByTagName('channel');
+var_dump($infos);
+die();
 
 ?> 
 <div class="container-fluid">
