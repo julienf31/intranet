@@ -13,7 +13,7 @@ $figaro = "http://www.lemonde.fr/rss/une.xml";
 $document_xml = new DomDocument();
 $document_xml->load($figaro);
 $infos = $document_xml->getElementsByTagName('channel');
-var_dump($infos);
+var_dump($document_xml);
 die();
 
 ?> 
