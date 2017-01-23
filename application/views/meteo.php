@@ -9,13 +9,14 @@ $json = json_decode($json);
 $location = $json->city->name;
 $meteos = $json->list;
 
-$figaro = "http://www.lemonde.fr/rss/une.xml";
-$document_xml = new DomDocument();
-$document_xml->load($figaro);
-$infos = $document_xml->getElementsByTagName('channel');
-var_dump($document_xml);
-die();
+$figaro = "http://www.legorafi.fr/feed/";
 
+$content = simplexml_load_file($figaro);
+$infos = $content->channel->item;
+$key_info = 0;
+foreach ($infos as $info){
+	$key_info++;
+}
 ?> 
 <div class="container-fluid">
 	<div class="row">
@@ -38,7 +39,7 @@ die();
 						</ul>
 					</div>
 					<div class="col-md-5">
-					<?php if($key == 0): ?>
+					<?php if($key_meteo == 0): ?>
 					<h4 style="margin-left:5px;">Météo en direct</h4>
 					<div class="v-center">
 					<?php include('templates/_meteo2.php'); ?>
@@ -77,10 +78,17 @@ die();
 				</div> 
 				<div class="row" style="min-height: 10px;"></div>
 				<div class="row">
-				<div class="col-md-12" style="color: white;background-color: #ec4363;">
-				<h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
-				<center><h4 style="margin-left:5px;">SOON</h4></center>
+
+					<div id="info" class="col-md-12 animated fadeIn" style="color: white;background-color: #ec4363;">
+					<h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
+					<?php $info = rand(1, $key_info); ?>
+							<h4 id="titre_news" style="margin-left:5px;"><?php echo $infos[$info]->title; ?></h4>
+							<br />
+							<?php echo '<ul><p>'.$infos[$info]->description.'</p></ul>'; ?>	
+					</div>
 				</div>
+				<div id="progress" class="row">
+						<div id="bar"></div>
 				</div>
 			</div>
 		</div>
@@ -105,7 +113,6 @@ die();
 	</div>
 </div>
 <script>
-
 function swap() {
 	if($("#meteo-0").hasClass('hidden')){
 		$("#meteo-1").addClass('flipOutX').removeClass('flipInX');
@@ -118,7 +125,6 @@ function swap() {
 		setTimeout('displayMeteoTomorrow(1)',1000);
 	}
 }
-
 
 function displaymeteoToday(show){
 	if(show == 1){
@@ -140,6 +146,26 @@ function displayMeteoTomorrow(show){
 	}
 }
 
-setInterval('swap()',5000);
+setInterval('swap()',10000);
+
+function move() {
+    var elem = document.getElementById("bar"); 
+    var width = 1;
+    var id = setInterval(frame, 100);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width+=.5; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
+function updateDiv($div) {
+	$($div).load(window.location.href + " " + $div);
+	setTimeout('move();',1000);
+}
+move();
+setInterval('updateDiv("#info")', 20000);
 
 </script>
