@@ -32,9 +32,8 @@ foreach ($infos as $info){
 							<ul>Mini : <?php echo $meteo->temp->min; ?> °C</ul>
 							<ul>Maxi : <?php echo $meteo->temp->max; ?> °C</ul>
 						</ul>
-						<ul>Infos:
+						<ul>Conditions météos:
 							<ul>Vitesse du vent : <?php echo $meteo->speed; ?> km/h</ul>
-							<ul>Humidité : <?php echo $meteo->humidity; ?> %</ul>
 							<ul>Ciel : <?php echo $meteo->weather[0]->description; ?> </ul>
 						</ul>
 					</div>
