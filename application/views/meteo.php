@@ -30,9 +30,9 @@ foreach ($infos as $info){
                   <h4 style="margin-left:5px;"><?php echo $location; ?> - Météo <?php if($key_meteo == 0) echo 'du jour'; else echo 'de Demain'; ?></h4>
                   <ul>Températures :
                     <ul>Mini :
-                      <?php echo $meteo->temp->min; ?> °C</ul>
+                      <?php echo round($meteo->temp->min); ?> °C</ul>
                     <ul>Maxi :
-                      <?php echo $meteo->temp->max; ?> °C</ul>
+                      <?php echo round($meteo->temp->max); ?> °C</ul>
                   </ul>
                   <ul>Conditions météo :
                     <ul>Vitesse du vent :
@@ -91,14 +91,14 @@ foreach ($infos as $info){
           </div>
           <div class="row" style="min-height: 10px;"></div>
           <div class="row">
-
-            <div id="info" class="col-md-12" style="color: white;background-color: #ec4363;">
-              <div class="row">
+            <div id="info" class="col-md-12" style="color: white;background-color: #ec4363;overflow: hidden;">
+              <div class="row" style="margin-left:5px;">
                 <h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
                 <?php $info = rand(0, $key_info-1); ?>
                   <h4 id="titre_news" class="animated fadeInUpBig" style="margin-left:5px;margin-bottom: 10px;"><?php echo $infos[$info]->title.'</div>'; ?></h4>
-
-                  <?php echo '<p class="descriptionInfos animated fadeInUpBig">'.$infos[$info]->description.'</p>'; ?>
+                  <p id="contenu_news" class="descriptionInfos animated fadeInUpBig">
+                    <?php echo $infos[$info]->description; ?>
+                  </p>
               </div>
             </div>
             <div id="progress" class="row">
@@ -109,7 +109,7 @@ foreach ($infos as $info){
         <div class="col-md-6">
           <h3><i class="fa fa-twitter" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;"> F</span>il d'actualité Twitter : </h3>
           <center>
-            <a class="twitter-timeline" href="https://twitter.com/search?q=ynov%20toulouse" data-widget-id="818447427300716545">Tweets sur ynov toulouse</a>
+            <a class="twitter-timeline" href="https://twitter.com/search?q=ynov%20toulouse" data-widget-id="818447427300716545" data-chrome="nofooter, noheader">Tweets sur ynov toulouse</a>
             <script>
               ! function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0],
@@ -175,9 +175,15 @@ foreach ($infos as $info){
       }
 
       function updateDiv($div) {
-        $($div).load(window.location.href + " " + $div);
-        setTimeout('move();', 1000);
+        $($div).load(location.href + " " + $div + ">*", "");
+        //$($div).load(window.location.href + " " + $div);
+        setTimeout('move();', 500);
       }
       move();
-      setInterval('updateDiv("#info")', 20000);
+      $(document).ready('updateDiv("#info")');
+      setInterval(function() {
+        $('#titre_news').addClass('fadeOutUpBig');
+        $('#contenu_news').addClass('fadeOutUpBig');
+        updateDiv("#info");
+      }, 20000);
     </script>

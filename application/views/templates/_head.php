@@ -11,7 +11,6 @@
 
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="<?= constant('ASSETS') ?>/font-awesome/css/font-awesome.min.css">
-  <link href="<?php echo base_url();?>owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?= constant('ASSETS') ?>/icon/iconvault-preview.css" />
   <script src="<?= constant('ASSETS'); ?>/tinymce/js/tinymce/tinymce.min.js"></script>
   <script>

@@ -17,6 +17,6 @@ $weather=json_decode($json,true);
 						<?php endif; ?>
 					</div>
 					<div  style="padding-left: 5px; color: white;">
-						<?php echo "Temp : ".$weather['main']['temp']." C° ".$weather['weather'][0]['description']."<br/>"; ?>
+						<?php echo "Temp : ".round($weather['main']['temp'])." C° <br/>".$weather['weather'][0]['description']."<br/>"; ?>
 							<?php echo "Humidité : ".$weather['main']['humidity']."%"; ?>
 					</div>
