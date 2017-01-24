@@ -144,3 +144,11 @@ h3.titrenews {
     height: 100%;
     background-color: #ec4363;
 }
+
+.descriptionInfos {
+    text-align: justify;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    border-left: 3px solid black;
+    padding-left: 10px;
+}

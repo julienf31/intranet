@@ -9,9 +9,9 @@ $json = json_decode($json);
 $location = $json->city->name;
 $meteos = $json->list;
 
-$figaro = "http://www.legorafi.fr/feed/";
+$gorafi = "http://www.legorafi.fr/feed/";
 
-$content = simplexml_load_file($figaro);
+$content = simplexml_load_file($gorafi);
 $infos = $content->channel->item;
 $key_info = 0;
 foreach ($infos as $info){
@@ -25,7 +25,7 @@ foreach ($infos as $info){
 				<h3>Infos :</h3>
 				<div class="row">
 				<?php foreach ($meteos as $key_meteo=>$meteo) : ?>
-				<div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;background-color: #ec4363; min-height: 200px;">
+				<div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;<?php if($key_meteo!=1)echo 'background-color: #ec4363;'; else echo 'background-color: #00AE9C;'; ?> min-height: 200px;">
 					<div class="col-md-7">
 						<h4 style="margin-left:5px;"><?php echo $location; ?> - Météo <?php if($key_meteo == 0) echo 'du jour'; else echo 'de Demain'; ?></h4>
 						<ul>Températures:
@@ -80,11 +80,12 @@ foreach ($infos as $info){
 				<div class="row">
 
 					<div id="info" class="col-md-12 animated fadeIn" style="color: white;background-color: #ec4363;">
+					<div class="row">
 					<h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
-					<?php $info = rand(1, $key_info); ?>
-							<h4 id="titre_news" style="margin-left:5px;"><?php echo $infos[$info]->title; ?></h4>
-							<br />
-							<?php echo '<ul><p>'.$infos[$info]->description.'</p></ul>'; ?>	
+					<?php $info = rand(0, $key_info-1); ?>
+							<h4 id="titre_news" style="margin-left:5px;margin-bottom: 10px;"><?php echo $infos[$info]->title.'</div>'; ?></h4>
+
+							<?php echo '<p class="descriptionInfos">'.$infos[$info]->description.'</p>'; ?>	
 					</div>
 				</div>
 				<div id="progress" class="row">
