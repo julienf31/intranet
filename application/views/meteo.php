@@ -38,8 +38,8 @@ foreach ($infos as $info){
 						</ul>
 					</div>
 					<div class="col-md-5">
-					<?php if($key_meteo == 0): ?>
-					<h4 style="margin-left:5px;">Météo en direct</h4>
+					<?php if($key_meteo == 0): ?><br /><br/>
+					<span style="margin-left:5px;">Actuellement :</span>
 					<div class="v-center">
 					<?php include('templates/_meteo2.php'); ?>
 					</div>
