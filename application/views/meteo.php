@@ -22,7 +22,7 @@ foreach ($infos as $info){
     <div class="row">
       <div class="col-md-6">
         <div class="container-fluid">
-          <h3 class="tv"><i class="fa fa-newspaper-o" style="color: #1da1f2;" aria-hidden="true"></i> <span style="color: #ec4363;">I</span>nfos :</h3>
+          <h3 class="tv"><i class="fa fa-newspaper-o fa-fw" style="color: #1da1f2;" aria-hidden="true"></i> <span style="color: #ec4363;">I</span>nfos :</h3>
           <div class="row">
             <?php foreach ($meteos as $key_meteo=>$meteo) : ?>
               <div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;<?php if($key_meteo!=1)echo 'background-color: rgb(236, 67, 99);'; else echo 'background-color: rgb(0, 174, 156);'; ?> min-height: 180px;">
@@ -107,7 +107,7 @@ foreach ($infos as $info){
           </div>
         </div>
         <div class="col-md-6">
-          <h3 class="tv"><i class="fa fa-twitter" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;"> F</span>il d'actualité Twitter : </h3>
+          <h3 class="tv"><i class="fa fa-twitter fa-fw" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;">F</span>il d'actualité Twitter : </h3>
           <center>
             <a class="twitter-timeline" href="https://twitter.com/search?q=ynov%20toulouse" data-widget-id="824205380918112257" data-chrome="nofooter, noheader, noscrollbar" width="900px">Tweets sur ynov toulouse</a>
             <script>
