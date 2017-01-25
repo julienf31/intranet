@@ -25,7 +25,7 @@ foreach ($infos as $info){
           <h3>Infos :</h3>
           <div class="row">
             <?php foreach ($meteos as $key_meteo=>$meteo) : ?>
-              <div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;<?php if($key_meteo!=1)echo 'background-color: rgb(255, 144, 176);'; else echo 'background-color: rgb(0, 174, 156);'; ?> min-height: 180px;">
+              <div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;<?php if($key_meteo!=1)echo 'background-color: rgb(236, 67, 99);'; else echo 'background-color: rgb(0, 174, 156);'; ?> min-height: 180px;">
                 <div class="col-md-7">
                   <h4 style="margin-left:5px;"><?php echo $location; ?> - Météo <?php if($key_meteo == 0) echo 'du jour'; else echo 'de Demain'; ?></h4>
                   <ul>Températures :
@@ -91,7 +91,7 @@ foreach ($infos as $info){
           </div>
           <div class="row" style="min-height: 10px;"></div>
           <div class="row">
-            <div id="info" class="col-md-12" style="color: white;background-color: rgb(236, 67, 99);overflow: hidden;">
+            <div id="info" class="col-md-12" style="color: white;background-color: rgb(204, 36, 72);overflow: hidden;">
               <div class="row" style="margin-left:5px;">
                 <h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
                 <?php $info = rand(0, $key_info-1); ?>
