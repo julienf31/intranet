@@ -107,7 +107,7 @@ foreach ($infos as $info){
           </div>
         </div>
         <div class="col-md-6">
-          <h3><i class="fa fa-twitter" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;"> F</span>il d'actualité Twitter : </h3>
+          <h3 class="tv"><i class="fa fa-twitter" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;"> F</span>il d'actualité Twitter : </h3>
           <center>
             <a class="twitter-timeline" href="https://twitter.com/search?q=ynov%20toulouse" data-widget-id="818447427300716545" data-chrome="nofooter, noheader">Tweets sur ynov toulouse</a>
             <script>
