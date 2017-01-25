@@ -148,6 +148,11 @@ Class Data_model extends CI_Model
       return $query->row_array();
     }
 
+    public function photos(){
+      $this->db->from('photos');
+      $query = $this->db->get();
+      return $query->result_array();
+    }
 
   }
 

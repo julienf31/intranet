@@ -59,6 +59,7 @@ $route['news/(:any)'] = 'tv/news/$1';
 $route['bde'] = 'tv/bde';
 $route['bde/(:any)'] = 'tv/bde/$1';
 $route['meteo'] = 'tv/meteo';
+$route['photos'] = 'tv/photos';
 
 
 ##### ACCEUIL ET CONF #####

@@ -62,7 +62,15 @@ class Tv extends CI_Controller {
 		$this->template->load('templates/tv', 'tv', $data);
 
 	}
-	
+	public function photos()
+	{
+		$data['item_type'] = 'photos';
+
+		$data['images'] = $this->data_model->photos();
+
+		$this->template->set('title', 'Photos');
+		$this->template->load('templates/tv', 'photos', $data);
+	}
 
 }
 ?>
