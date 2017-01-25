@@ -93,9 +93,9 @@ foreach ($infos as $info){
           <div class="row">
             <div id="info" class="col-md-12" style="color: white;background-color: rgb(204, 36, 72);overflow: hidden;">
               <div class="row" style="margin-left:5px;">
-                <h4 style="margin-left:5px; margin-top: 10px;">Actualités du jour :</h4>
+                <h4 style="margin-left:5px; margin-top: 10px;">Actualités du Gorafi <img src="http://www.legorafi.fr/wp-content/themes/legorafi/img/icons/android-chrome-192x192.png" width="20px;"/></h4>
                 <?php $info = rand(0, $key_info-1); ?>
-                  <h4 id="titre_news" class="animated fadeInUpBig" style="margin-left:5px;margin-bottom: 10px;"><?php echo $infos[$info]->title.'</div>'; ?></h4>
+                  <h4 id="titre_news" class="animated fadeInUpBig" style="margin-left:5px;margin-bottom: 10px;">" <?php echo $infos[$info]->title.' "</div>'; ?></h4>
                   <p id="contenu_news" class="descriptionInfos animated fadeInUpBig">
                     <?php echo $infos[$info]->description; ?>
                   </p>
