@@ -22,7 +22,7 @@ foreach ($infos as $info){
     <div class="row">
       <div class="col-md-6">
         <div class="container-fluid">
-          <h3 class="tv" >Infos :</h3>
+          <h3 class="tv">Infos :</h3>
           <div class="row">
             <?php foreach ($meteos as $key_meteo=>$meteo) : ?>
               <div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;<?php if($key_meteo!=1)echo 'background-color: rgb(236, 67, 99);'; else echo 'background-color: rgb(0, 174, 156);'; ?> min-height: 180px;">
@@ -77,11 +77,11 @@ foreach ($infos as $info){
                               <ul><i class="fa fa-birthday-cake" aria-hidden="true"></i>
                                 <?php echo $item['Prénom'].' '.$item['Nom']; ?>
                               </ul>
-                          <?php endforeach; ?>
-                        <?php endif; ?>
+                              <?php endforeach; ?>
+                                <?php endif; ?>
                                   <center>
                                     <h4 style="margin-left:5px;">Tout le staff vous souhaite un joyeux anniversaire !</h4></center>
-                  <?php endif; ?>
+                                  <?php endif; ?>
             </div>
             <div class="col-md-5 pull-right" style="color: white;background-color: #666666;padding-left: -10px;overflow: hidden;width: 40%;">
               <h4 style="margin-left:5px;">On fête les :</h4>
@@ -109,7 +109,19 @@ foreach ($infos as $info){
         <div class="col-md-6">
           <h3 class="tv"><i class="fa fa-twitter" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;"> F</span>il d'actualité Twitter : </h3>
           <center>
-            <a class="twitter-timeline" href="https://twitter.com/search?q=ynov%20toulouse" data-widget-id="824205380918112257" data-chrome="nofooter, noheader, noscrollbar" width="900px">Tweets sur ynov toulouse</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            <a class="twitter-timeline" href="https://twitter.com/search?q=ynov%20toulouse" data-widget-id="824205380918112257" data-chrome="nofooter, noheader, noscrollbar" width="900px">Tweets sur ynov toulouse</a>
+            <script>
+              ! function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0],
+                  p = /^http:/.test(d.location) ? 'http' : 'https';
+                if (!d.getElementById(id)) {
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.src = p + "://platform.twitter.com/widgets.js";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }
+              }(document, "script", "twitter-wjs");
+            </script>
           </center>
         </div>
       </div>
@@ -174,4 +186,6 @@ foreach ($infos as $info){
         $('#contenu_news').addClass('fadeOutUpBig');
         updateDiv("#info");
       }, 20000);
+
+        setInterval("location.reload(true);", 7200000);
     </script>
