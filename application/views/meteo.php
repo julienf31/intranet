@@ -22,7 +22,7 @@ foreach ($infos as $info){
     <div class="row">
       <div class="col-md-6">
         <div class="container-fluid">
-          <h3 class="tv">Infos :</h3>
+          <h3 class="tv"><i class="fa fa-newspaper-o" style="color: #1da1f2;" aria-hidden="true"></i> <span style="color: #ec4363;">I</span>nfos :</h3>
           <div class="row">
             <?php foreach ($meteos as $key_meteo=>$meteo) : ?>
               <div id="meteo-<?php echo $key_meteo; ?>" class="col-md-12 row-eq-height animated <?php if($key_meteo == 0) echo 'flipInX'; else  echo 'hidden'; ?>" style="color: white;<?php if($key_meteo!=1)echo 'background-color: rgb(236, 67, 99);'; else echo 'background-color: rgb(0, 174, 156);'; ?> min-height: 180px;">
@@ -93,7 +93,7 @@ foreach ($infos as $info){
           <div class="row">
             <div id="info" class="col-md-12" style="color: white;background-color: rgb(204, 36, 72);overflow: hidden;">
               <div class="row" style="margin-left:5px;">
-                <h4 style="margin-left:5px; margin-top: 10px;"><img src="http://www.legorafi.fr/wp-content/themes/legorafi/img/icons/android-chrome-192x192.png" width="30px;"/> Actualités du Gorafi</h4>
+                <h4 style="margin-left:5px; margin-top: 10px;"><img src="http://www.legorafi.fr/wp-content/themes/legorafi/img/icons/android-chrome-192x192.png" width="40px;"/> Actualités du Gorafi</h4>
                 <?php $info = rand(0, $key_info-1); ?>
                   <h4 id="titre_news" class="animated fadeInUpBig" style="margin-left:5px;margin-bottom: 10px;">" <?php echo $infos[$info]->title.' "</div>'; ?></h4>
                   <p id="contenu_news" class="descriptionInfos animated fadeInUpBig">
