@@ -4,7 +4,7 @@
     }
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid animated <?php echo $current_config['slideAnimation']; ?>">
 
 <!-- START TITRE DE LA NEWS  -->
 

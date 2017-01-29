@@ -250,14 +250,16 @@ class Data extends CI_Controller {
     $data = array(	'tps_affichage'=> $this->input->post('tps_affichage'),
 					'moduleGauche' => $this->input->post('moduleGauche'),
 					'moduleCentre' => $this->input->post('moduleCentre'),
-					'moduleDroite' => $this->input->post('moduleDroite'));
+					'moduleDroite' => $this->input->post('moduleDroite'),
+					'slideAnimation' => $this->input->post('slideAnimation'));
 
 	}else{
 		    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
     	'logo' => $file,
 		'moduleGauche' => $this->input->post('moduleGauche'),
 		'moduleCentre' => $this->input->post('moduleCentre'),
-		'moduleDroite' => $this->input->post('moduleDroite'));
+		'moduleDroite' => $this->input->post('moduleDroite'),
+		'slideAnimation' => $this->input->post('slideAnimation'));
 
 	}		
 

@@ -123,6 +123,7 @@ class Admin extends CI_Controller {
 			$data['item_type'] = $item_type;
     		$data['current_config'] = $this->data_model->get_config_tv($item_type);
 			$data['modules'] = $this->data_model->modules();
+			$data['animations'] = $this->data_model->animations();
 			$this->load->helper('date');
 			$this->template->set('title', 'Config');
 			$this->template->load('templates/admin', 'tv_config', $data);
