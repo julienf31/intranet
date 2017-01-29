@@ -24,6 +24,7 @@ class Data extends CI_Controller {
     //update action
 
     	$session_data = $this->session->userdata('logged_in');
+		$data['current_config'] = $this->data_model->get_config_tv($item_type);
 		if($session_data){
 			$data['username'] = $session_data['username'];
 			
@@ -124,6 +125,7 @@ class Data extends CI_Controller {
     // Edition de news
     public function update($item_type, $id, $text_type)
     {
+		$data['current_config'] = $this->data_model->get_config_tv($item_type);
     	if (isset($_POST['send-btn'])) {
 
 
