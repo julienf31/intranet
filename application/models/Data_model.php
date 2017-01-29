@@ -160,8 +160,9 @@ Class Data_model extends CI_Model
       return $query->result_array();
     }
 
-    public function animations(){
+    public function animations($type){
       $this->db->from('animations');
+      $this->db->like('type',$type);
       $query = $this->db->get();
       return $query->result_array();
     }

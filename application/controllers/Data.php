@@ -251,7 +251,8 @@ class Data extends CI_Controller {
 					'moduleGauche' => $this->input->post('moduleGauche'),
 					'moduleCentre' => $this->input->post('moduleCentre'),
 					'moduleDroite' => $this->input->post('moduleDroite'),
-					'slideAnimation' => $this->input->post('slideAnimation'));
+					'animationIn' => $this->input->post('animationIn'),
+					'animationOut' => $this->input->post('animationOut'));
 
 	}else{
 		    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
@@ -259,7 +260,8 @@ class Data extends CI_Controller {
 		'moduleGauche' => $this->input->post('moduleGauche'),
 		'moduleCentre' => $this->input->post('moduleCentre'),
 		'moduleDroite' => $this->input->post('moduleDroite'),
-		'slideAnimation' => $this->input->post('slideAnimation'));
+		'animationIn' => $this->input->post('animationIn'),
+		'animationOut' => $this->input->post('animationOut'));
 
 	}		
 

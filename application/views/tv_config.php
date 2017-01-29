@@ -10,11 +10,11 @@
             <h3 class="panel-title">Paramétres géneraux</h3>
           </div>
           <div class="panel-body" style="padding-bottom:0px;">
-            <div class="col-md-8 form-group">
+            <div class="form-group">
               <label>Configuration des en-têtes</label>
               <div class="row">
                 <div class="col-xs-4">
-                  <label>Gauche</label>
+                  <p class="help-block">Gauche</p>
                   <select class="form-control" name="moduleGauche">
 				          	<option value="" <?php if($current_config['moduleCentre'] == "" ) echo "selected"; ?>>Aucun</option>
                     <?php foreach($modules as $module): ?>
@@ -25,7 +25,7 @@
                   </select>
                 </div>
                 <div class="col-xs-4">
-                  <label>Centre</label>
+                  <p class="help-block">Centre</p>
                   <select class="form-control" name="moduleCentre">
 				           <option value="" <?php if($current_config['moduleCentre'] == "" ) echo "selected"; ?>>Aucun</option>
                     <?php foreach($modules as $module): ?>
@@ -36,7 +36,7 @@
                   </select>
                 </div>
                 <div class="col-xs-4">
-                  <label>Droite</label>
+                  <p class="help-block">Droite</p>
                   <select class="form-control" name="moduleDroite">
 				        	<option value="" <?php if($current_config['moduleCentre'] == "" ) echo "selected"; ?>>Aucun</option>
                     <?php foreach($modules as $module): ?>
@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="panel-body" style="padding-bottom:0px;">
-            <div class="col-md-8 form-group">
+            <div class="form-group">
               <label><i class="fa fa-picture-o" aria-hidden="true"></i> Logo de l'en-tête</label>
               <input type="file" id="logoup" name="logoup">
               <p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 220 x 100 px</p>
@@ -64,24 +64,38 @@
           </div>
           <div class="panel-body">
             <div class="col-md-6">
-              <label class="control-label" for="url">Transition :</label>
-              <select class="form-control" name="slideAnimation">
-              <option value="" <?php if($current_config['slideAnimation'] == "" ) echo "selected"; ?>>Aucune</option>
-                <?php foreach($animations as $animation): ?>
-                      <option value="<?php echo $animation['nom']; ?>" <?php if($current_config['slideAnimation'] == $animation['nom'] ) echo "selected"; ?>>
+              <label class="control-label" for="url">Transition d'entrée:</label>
+              <select class="form-control" name="animationIn">
+              <option value="" <?php if($current_config['animationIn'] == "" ) echo "selected"; ?>>Aucune</option>
+                <?php foreach($animationsIn as $animation): ?>
+                      <option value="<?php echo $animation['nom']; ?>" <?php if($current_config['animationIn'] == $animation['nom'] ) echo "selected"; ?>>
                         <?php echo $animation['nom']; ?>
                       </option>
                 <?php endforeach; ?>
               </select>
-              <span id="url" class="help-block">Transition entre deux news</span>
+              <span id="url" class="help-block">Animation d'entrée</span>
+            </div>
+            <div class="col-md-6">
+              <label class="control-label" for="url">Transition de sortie:</label>
+              <select class="form-control" name="animationOut">
+              <option value="" <?php if($current_config['animationIn'] == "" ) echo "selected"; ?>>Aucune</option>
+                <?php foreach($animationsOut as $animation): ?>
+                      <option value="<?php echo $animation['nom']; ?>" <?php if($current_config['animationOut'] == $animation['nom'] ) echo "selected"; ?>>
+                        <?php echo $animation['nom']; ?>
+                      </option>
+                <?php endforeach; ?>
+              </select>
+              <span id="url" class="help-block">Animation de sortie</span>
             </div>
             <div class="col-md-6">
               <label class="control-label" for="url">Durée d'affichage</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>">
+              <div class="input-group-addon">ms</div>
               </div>
               <span id="url" class="help-block">Temps d'affichages des news en ms</span>
             </div>
+          </div>
           </div>
           <div class="row">
             <div class="pull-left">
@@ -92,6 +106,6 @@
             </div>
           </div>
       </form>
-      </div>
+      
     </div>
   </div>

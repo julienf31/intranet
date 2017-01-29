@@ -45,16 +45,16 @@
 			</a>
 
 			<h4>Gestion de l'album photos <span class="badge"><?php echo $nb_news_bde; ?></span></h4>
-			<a href="<?php echo site_url('liste/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('liste/photos'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 				Liste des photos
 			</a>
-			<a href="<?php echo site_url('add/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('add/photos'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
-			<a href="<?php echo site_url('config/bde'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('config/photos'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Parametres de l'album
 			</a>
-			<a href="<?php echo site_url('bde'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('photos'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
 				Afficher l'album
 			</a>
 

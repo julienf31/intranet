@@ -1,5 +1,13 @@
-<div class="container-fluid">
-  <img src="http://www.psdgraphics.com/file/blank-polaroid-frame.jpg" width="100%" height="100%" style="position: absolute;"></img>
+<style>
+body {
+    background-image: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>);
+    background-repeat:no-repeat;
+    background-size: contain auto;
+}
+</style>
+
+<div class="container-fluid photos-tv">
+  <img src="<?php echo constant('ASSETS').'/img/photos-fond.png'; ?>" width="100%" height="100%" style="position: absolute;"></img>
 
   <?php
 $key = 0;
