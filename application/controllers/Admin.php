@@ -117,7 +117,8 @@ class Admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['item_type'] = $item_type;
-    		$data['current_config']= $this->data_model->get_config_tv($item_type);
+    		$data['current_config'] = $this->data_model->get_config_tv($item_type);
+			$data['modules'] = $this->data_model->modules();
 			$this->load->helper('date');
 			$this->template->set('title', 'Config');
 			$this->template->load('templates/admin', 'tv_config', $data);

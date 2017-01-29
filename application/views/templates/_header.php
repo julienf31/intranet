@@ -9,7 +9,7 @@ $weather=json_decode($json,true);
 			<div class="row">
 		<?php  include('_logo.php'); ?>
 		<?php  include('_date.php'); ?>
-		<?php  include('_meteo.php'); ?>
+		<?php  include('_heure.php'); ?>
 
 			</div>
 		</div>

@@ -23,6 +23,11 @@ h4 {
     padding-top: 20px;
 }
 
+.heure {
+    color: #ec4363;
+    font-size: 72px;
+}
+
 .nomarge {
     padding: 0;
     margin: 0;

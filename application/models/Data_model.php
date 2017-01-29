@@ -154,5 +154,11 @@ Class Data_model extends CI_Model
       return $query->result_array();
     }
 
+    public function modules(){
+      $this->db->from('modules');
+      $query = $this->db->get();
+      return $query->result_array();
+    }
+
   }
 

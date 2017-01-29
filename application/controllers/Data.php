@@ -245,14 +245,19 @@ class Data extends CI_Controller {
 			$image = $data_upload_files['full_path'];
 			$file = basename($image);
 	if($file == 'uploads'){
-    $data = array('tps_affichage'=> $this->input->post('tps_affichage'));
+    $data = array(	'tps_affichage'=> $this->input->post('tps_affichage'),
+					'moduleGauche' => $this->input->post('moduleGauche'),
+					'moduleCentre' => $this->input->post('moduleCentre'),
+					'moduleDroite' => $this->input->post('moduleDroite'));
 
 	}else{
 		    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
-    	'logo' => $file);
+    	'logo' => $file,
+		'moduleGauche' => $this->input->post('moduleGauche'),
+		'moduleCentre' => $this->input->post('moduleCentre'),
+		'moduleDroite' => $this->input->post('moduleDroite'));
 
 	}		
-
 
 	$this->data_model->update_config_tv($item_type, $data);
 
