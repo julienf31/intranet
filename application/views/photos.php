@@ -11,9 +11,9 @@ body {
 
   <?php
 $key = 0;
-foreach($images as $image): ?>
+foreach($images as $count => $image): ?>
 
-    <img id="img-<?php echo $image['id'] ?>" class="animated <?php if($key!=0) echo 'hidden'; else echo 'active' ?>" src="<?php echo $image['url']; ?>" width="52%" height="62.5%" style="position: absolute; left: 26%; top: 10.3%;"></img>
+    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $image['url']; ?>" width="52%" height="62.5%" style="position: absolute; left: 26%; top: 10.3%;"></img>
     <?php
 $key ++;
 endforeach; ?>

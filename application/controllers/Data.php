@@ -39,7 +39,7 @@ class Data extends CI_Controller {
 						  'url'				=> $file);
 
 			$this->data_model->insert_data($item_type,$data);
-			$this->session->set_flashdata('message', 'News créée avec succés');
+			$this->session->set_flashdata('message_success', 'Photo ajoutée à l\'album avec succés');
 			$link='liste/'.$item_type;
 			redirect($link);
 				}
@@ -79,7 +79,7 @@ class Data extends CI_Controller {
 						  'text_type'				=> $type);
 
 			$this->data_model->insert_data($item_type,$data);
-			$this->session->set_flashdata('message', 'News créée avec succés');
+			$this->session->set_flashdata('message_success', 'News créée avec succés');
 			$link='liste/'.$item_type;
 			redirect($link);
 		}
@@ -188,7 +188,7 @@ class Data extends CI_Controller {
 		}
 	$this->data_model->update_data($item_type,$id, $data);
 
-    $this->session->set_flashdata('message', 'News mise à jour avec succés');
+    $this->session->set_flashdata('message_success', 'News mise à jour avec succés');
 	$link='liste/'.$item_type;
 	redirect($link);
 	   	   	    }
@@ -297,8 +297,12 @@ class Data extends CI_Controller {
 	public function update_state($item_type,$id,$state)
     {  
     $this->data_model->update_state($item_type,$id,$state);
-   
-    $this->session->set_flashdata('message', 'News actualisée avec succés');
+	if($item_type == 'photos'){
+    	$this->session->set_flashdata('message_success', 'Photo actualisée avec succés');
+	}
+	elseif($item_type == 'news' || $item_type == 'bde'){
+    	$this->session->set_flashdata('message_success', 'News actualisée avec succés');
+	}
 	$link='liste/'.$item_type;
 	redirect($link);
     }
@@ -309,10 +313,10 @@ class Data extends CI_Controller {
 
    	$this->data_model->delete($item_type,$id);
 	   if($item_type == 'photos'){
-		   $this->session->set_flashdata('message', 'Photo supprimée avec succés');
+		   $this->session->set_flashdata('message_warning', 'Photo supprimée avec succés');
 	   }
 	   else{
-		   $this->session->set_flashdata('message', 'News supprimée avec succés');
+		   $this->session->set_flashdata('message_warning', 'News supprimée avec succés');
 	   }
     
 	$link='liste/'.$item_type;

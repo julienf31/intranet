@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Dim 29 Janvier 2017 à 20:33
+-- Généré le :  Lun 30 Janvier 2017 à 12:08
 -- Version du serveur :  5.5.42
 -- Version de PHP :  5.6.10
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de données :  `intranet_empty`
+-- Base de données :  `intranet_v1.1`
 --
 
 -- --------------------------------------------------------
@@ -135,6 +135,7 @@ INSERT INTO `config` (`id`, `name`, `value`) VALUES
 
 CREATE TABLE `config_tv` (
   `item_type` varchar(25) NOT NULL,
+  `description` text NOT NULL,
   `logo` varchar(100) NOT NULL,
   `tps_affichage` int(20) NOT NULL,
   `moduleGauche` varchar(50) NOT NULL,
@@ -148,9 +149,11 @@ CREATE TABLE `config_tv` (
 -- Contenu de la table `config_tv`
 --
 
-INSERT INTO `config_tv` (`item_type`, `logo`, `tps_affichage`, `moduleGauche`, `moduleCentre`, `moduleDroite`, `animationIn`, `animationOut`) VALUES
-('bde', 'logo_ynovcampus_couleur1.png', 5000, 'logo', '', '', '', ''),
-('news', 'logo_ynovcampus_couleur1.png', 5000, 'logo', 'date', 'heure', 'fadeInRightBig', 'fadeOutLeftBig');
+INSERT INTO `config_tv` (`item_type`, `description`, `logo`, `tps_affichage`, `moduleGauche`, `moduleCentre`, `moduleDroite`, `animationIn`, `animationOut`) VALUES
+('bde', 'Page d''affichage des news du BDE', 'logo_ynovcampus_couleur1.png', 5000, 'logo', '', '', '', ''),
+('news', 'Page d''affichage des news', 'logo_ynovcampus_couleur1.png', 5000, 'logo', 'date', 'heure', 'fadeInRightBig', 'fadeOutLeftBig'),
+('photos', 'Page de l''album photo', 'logo_ynovcampus_couleur1.png', 5000, 'logo', 'date', 'heure', '', ''),
+('infos', 'Page d''affichage infos / météo ...', '', 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -435,139 +438,7 @@ INSERT INTO `etudiants` (`formation`, `Promo`, `Nom`, `Prénom`, `anniversaire`)
 ('Ingesup ', 'M2', 'EXPERT', 'Adrien', '28/08/90'),
 ('Ingesup ', 'M2', 'CORDANI', 'Anthony', '17/02/93'),
 ('ESSCA', 'B3', 'D''ALMEIDA', 'Ludiviane', '10/08/1994'),
-('Ingesup', 'B3', 'DELAVELLE', 'Arnaud', '18/05/1995'),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', ''),
-('', '', '', '', '');
+('Ingesup', 'B3', 'DELAVELLE', 'Arnaud', '18/05/1995');
 
 -- --------------------------------------------------------
 
@@ -694,17 +565,12 @@ CREATE TABLE `news_bde` (
 
 CREATE TABLE `photos` (
   `id` int(11) NOT NULL,
-  `url` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `photos`
---
-
-INSERT INTO `photos` (`id`, `url`) VALUES
-(1, 'https://toulouse.ynov.com/wp-content/uploads/sites/23/2016/10/IMG_2996-HDR3.jpg'),
-(2, 'http://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/c178.0.723.723/15803608_223573744766007_6374703439837921280_n.jpg?ig_cache_key=MTQxNTk2NjQzMjIzOTc5NzkzNA%3D%3D.2.c'),
-(3, 'https://toulouse.ynov.com/wp-content/uploads/sites/23/2016/04/livepaintingToulouse.jpg');
+  `nom` varchar(30) NOT NULL,
+  `createur` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `url` text NOT NULL,
+  `visible` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1208,7 +1074,7 @@ ALTER TABLE `news_bde`
 -- AUTO_INCREMENT pour la table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `users`
 --

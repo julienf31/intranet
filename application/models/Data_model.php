@@ -156,6 +156,7 @@ Class Data_model extends CI_Model
 
   public function photos(){
     $this->db->from('photos');
+    $this->db->where('visible',1);
     $query = $this->db->get();
     return $query->result_array();
   }
