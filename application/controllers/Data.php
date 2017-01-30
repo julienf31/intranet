@@ -26,6 +26,23 @@ class Data extends CI_Controller {
     	$session_data = $this->session->userdata('logged_in');
 		$data['current_config'] = $this->data_model->get_config_tv($item_type);
 		if($session_data){
+			if($item_type == 'photos'){
+				$data['username'] = $session_data['username'];
+				$this->upload->do_upload('imageup');
+        		$data_upload_files = $this->upload->data();
+				$image = $data_upload_files['full_path'];
+				$file = basename($image);
+				$data = array('nom'                   => $this->input->post('nom'),
+						  'createur'                  => $data['username'],
+						  'visible'                 => $this->input->post('visible'),
+						  'date'              		=> date("Y-m-d h:i:s"),
+						  'url'				=> $file);
+
+			$this->data_model->insert_data($item_type,$data);
+			$this->session->set_flashdata('message', 'News créée avec succés');
+			$link='liste/'.$item_type;
+			redirect($link);
+				}
 			$data['username'] = $session_data['username'];
 			
         	$this->upload->do_upload('imageup');
@@ -291,8 +308,13 @@ class Data extends CI_Controller {
     {  
 
    	$this->data_model->delete($item_type,$id);
-
-    $this->session->set_flashdata('message', 'News supprimée avec succés');
+	   if($item_type == 'photos'){
+		   $this->session->set_flashdata('message', 'Photo supprimée avec succés');
+	   }
+	   else{
+		   $this->session->set_flashdata('message', 'News supprimée avec succés');
+	   }
+    
 	$link='liste/'.$item_type;
 	redirect($link);
     }    
