@@ -22,15 +22,20 @@ Class Data_model extends CI_Model
     }
   
     public function list_data($item_type){
-      if ($item_type=='bde') {
-    $query=$this->db->query("SELECT *
-                             FROM news_bde n
-                             ORDER BY n.id ASC");
+      if ($item_type == 'bde') {
+    $query = $this->db->query("SELECT *
+                              FROM news_bde n
+                              ORDER BY n.id ASC");
   }
-  if ($item_type=='news') {
-    $query=$this->db->query("SELECT *
-                             FROM news n
-                             ORDER BY n.id ASC");  
+  if ($item_type == 'news') {
+    $query = $this->db->query("SELECT *
+                              FROM news n
+                              ORDER BY n.id ASC");  
+  }
+  if ($item_type == 'photos'){
+    $query = $this->db->query("SELECT *
+                              FROM photos p
+                              ORDER BY p.id ASC");
   }
     return $query->result_array();
 }

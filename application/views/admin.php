@@ -3,6 +3,8 @@
     $nb_news = $query->num_rows();
 	$query = $this->db->query('select id from news_bde');
 	$nb_news_bde = $query->num_rows();
+	$query = $this->db->query('select id from photos');
+	$nb_photos = $query->num_rows();
 
 ?>
 <div class="container">
@@ -44,12 +46,9 @@
 				Afficher BDE
 			</a>
 
-			<h4>Gestion de l'album photos <span class="badge"><?php echo $nb_news_bde; ?></span></h4>
+			<h4>Gestion de l'album photos <span class="badge"><?php echo $nb_photos; ?></span></h4>
 			<a href="<?php echo site_url('liste/photos'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 				Liste des photos
-			</a>
-			<a href="<?php echo site_url('add/photos'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-				Ajout rapide
 			</a>
 			<a href="<?php echo site_url('config/photos'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Parametres de l'album
