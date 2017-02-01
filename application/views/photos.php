@@ -2,7 +2,7 @@
 body {
     background-image: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>);
     background-repeat:no-repeat;
-    background-size: contain auto;
+    background-size: cover auto;
 }
 </style>
 
