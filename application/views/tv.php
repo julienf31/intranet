@@ -4,7 +4,7 @@
     }
 </style>
 
-<div id="news" class="container-fluid animated">
+<div id="news" class="container-fluid animated hidden">
 
 <!-- START TITRE DE LA NEWS  -->
 
@@ -118,7 +118,7 @@
     function out(){
         $('#news').addClass("<?php echo $current_config['animationOut']; ?>");
     }
-    $(document).ready(function(){
-        $('#news').addClass("<?php echo $current_config['animationIn']; ?>")
+    $(window).load(function(){
+        $('#news').addClass("<?php echo $current_config['animationIn']; ?>").removeClass('hidden')
     }) 
 </script>
