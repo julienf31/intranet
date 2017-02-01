@@ -104,7 +104,7 @@
 				</div>
 				<div class="modal-body">
 					Voulez vous vraiment supprimer la news <strong><?php echo $data['nom']; ?></strong><br/>
-					Créée par <strong><?php echo $data['createur']; ?></strong> le <strong><?php echo $data['createur']; ?></strong> ?
+					Créée par <strong><?php echo $data['createur']; ?></strong> le <strong><?php echo $data['date']; ?></strong> ?
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -126,7 +126,7 @@
 					<th>Fichier</th>
 					<th>Ajoutée le</th>
 					<th>Visible</th>
-					<th>Actions</th>
+					<th>Action</th>
 				</tr>
 				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
                 <?php foreach($liste_items as $key => $data) : ?>
@@ -152,7 +152,11 @@
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
 					<div class="pull-right">
+					<?php if($item_type =="photos"): ?>
+						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une photos</a>
+					<?php else : ?>
 						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
+					<?php endif; ?>
 					</div>
 				</div>
 		</div>

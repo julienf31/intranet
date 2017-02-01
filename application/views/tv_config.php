@@ -73,7 +73,6 @@
                       </option>
                 <?php endforeach; ?>
               </select>
-              <span id="url" class="help-block">Animation d'entrée</span>
             </div>
             <div class="col-md-6">
               <label class="control-label" for="url">Transition de sortie:</label>
@@ -85,9 +84,8 @@
                       </option>
                 <?php endforeach; ?>
               </select>
-              <span id="url" class="help-block">Animation de sortie</span>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6"><br />
               <label class="control-label" for="url">Durée d'affichage</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>">

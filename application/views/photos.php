@@ -12,8 +12,15 @@ body {
   <?php
 $key = 0;
 foreach($images as $count => $image): ?>
-
-    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $image['url']; ?>" width="52%" height="62.5%" style="position: absolute; left: 26%; top: 10.3%;"></img>
+<?php 
+if($image['type'] == 'file'){
+  $lien_img = base_url().'uploads/'.$image['url'];
+}
+elseif($image['type'] == 'url'){
+  $lien_img = $image['url'];
+}
+?>
+    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $lien_img; ?>" width="52%" height="62.5%" style="position: absolute; left: 26%; top: 10.3%;"></img>
     <?php
 $key ++;
 endforeach; ?>
@@ -24,15 +31,6 @@ endforeach; ?>
 
 <script type="text/javascript">
   function swap(id, idNext) {
-    if ($(id).hasClass('hidden')) {
-      $(idNext).addClass('fadeOut');
-      setTimeout(function() {
-        $(idNext).addClass('hidden').removeClass('fadeOut');
-      }, 500);
-      setTimeout(function() {
-        $(id).removeClass('hidden').addClass('fadeIn');
-      }, 500);
-    } else {
       $(id).addClass('fadeOut');
       setTimeout(function() {
         $(id).addClass('hidden').removeClass('fadeOut');
@@ -40,35 +38,33 @@ endforeach; ?>
       setTimeout(function() {
         $(idNext).removeClass('hidden').addClass('fadeIn');
       }, 500);
-    }
   }
 
   var nbImages = <?php echo $key; ?>;
-  var id = nbImages - (nbImages - 1);
+  var id = 0;
   var idNext = parseInt(id + 1);
 
   setInterval("slide()", 5000);
 
   function startSlide() {
-    id = nbImages - (nbImages - 1);
+    id = 0;
     idNext = parseInt(id + 1);
   }
 
   function slide() {
     imgId = "#img-" + id;
     imgIdNext = "#img-" + idNext;
-    if (id == nbImages)
+    if (id == (nbImages - 1))
       endSlide();
     else {
       swap(imgId, imgIdNext);
       id = id + 1;
       idNext = idNext + 1;
     }
-
   }
 
   function endSlide() {
-    swap(imgId, "#img-1");
+    swap(imgId, "#img-0");
     startSlide();
   }
 </script>

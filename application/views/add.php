@@ -77,7 +77,7 @@
 			<div id="url_fields" class="">
 				<div class="form-group">
 					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image</label>
-					<input type="text" class="form-control" name="video_url">
+					<input type="text" class="form-control" name="image_url">
 					<em>Inserer le lien de l'image</em>
 				</div>
 			</div>
@@ -97,8 +97,6 @@
 	</div>
 </div>
 <script>
-
-
 
 $('#type_select').on('change', function() {
   if (this.value == "Video") {

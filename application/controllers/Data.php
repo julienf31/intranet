@@ -20,11 +20,11 @@ class Data extends CI_Controller {
     // Insert news
     public function insert($item_type)
     {
+		$data['current_config'] = $this->data_model->get_config_tv($item_type);
     	if (isset($_POST['send-btn'])) {
     //update action
 
     	$session_data = $this->session->userdata('logged_in');
-		$data['current_config'] = $this->data_model->get_config_tv($item_type);
 		if($session_data){
 			if($item_type == 'photos'){
 				$data['username'] = $session_data['username'];
@@ -32,11 +32,22 @@ class Data extends CI_Controller {
         		$data_upload_files = $this->upload->data();
 				$image = $data_upload_files['full_path'];
 				$file = basename($image);
+				if ($this->input->post('img_select') == 'url') {
 				$data = array('nom'                   => $this->input->post('nom'),
 						  'createur'                  => $data['username'],
 						  'visible'                 => $this->input->post('visible'),
 						  'date'              		=> date("Y-m-d h:i:s"),
+						  'type'			=> 'url',
+						  'url'				=> $this->input->post('image_url'));
+				}
+				elseif ($this->input->post('img_select') == 'upload') {
+				$data = array('nom'                   => $this->input->post('nom'),
+						  'createur'                  => $data['username'],
+						  'visible'                 => $this->input->post('visible'),
+						  'date'              		=> date("Y-m-d h:i:s"),
+						  'type'			=> 'file',
 						  'url'				=> $file);
+				}
 
 			$this->data_model->insert_data($item_type,$data);
 			$this->session->set_flashdata('message_success', 'Photo ajoutée à l\'album avec succés');
