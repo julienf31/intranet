@@ -71,6 +71,9 @@
 			<a href="<?php echo site_url('changelog'); ?>" class="btn btn-warning" type="button"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
 				Changelog
 			</a>
+			<a href="<?php echo site_url('maintenance'); ?>" class="btn btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+				Page de maintenance
+			</a>
 			<?php }
 				else if($username =='bde'){ ?>
 			<h4>Gestion des news <span class="badge"><?php echo $nb_news_bde; ?></span></h4>
