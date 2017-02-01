@@ -124,7 +124,7 @@
 					<th>#</th>
 					<th>Nom</th>
 					<th>Fichier</th>
-					<th>Ajoutée le</th>
+					<th>Ajoutée par</th>
 					<th>Visible</th>
 					<th>Action</th>
 				</tr>

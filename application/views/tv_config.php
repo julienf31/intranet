@@ -5,6 +5,7 @@
         <?php echo $item_type; ?>
       </h3>
       <form method="post" action="<?php echo site_url('update/config_tv/').$item_type; ?>" name="data_register" enctype="multipart/form-data">
+        <?php if($item_type != 'photos'): ?>
         <div class="panel">
           <div class="panel-heading">
             <h3 class="panel-title">Paramétres géneraux</h3>
@@ -58,6 +59,7 @@
             </div>
           </div>
         </div>
+        <?php endif; ?>
         <div class="panel">
           <div class="panel-heading">
             <h3 class="panel-title">Paramétres d'affichage</h3>

@@ -7,6 +7,7 @@ body {
 </style>
 
 <div class="container-fluid photos-tv">
+
   <img src="<?php echo constant('ASSETS').'/img/photos-fond.png'; ?>" width="100%" height="100%" style="position: absolute;"></img>
 
   <?php
@@ -20,7 +21,9 @@ elseif($image['type'] == 'url'){
   $lien_img = $image['url'];
 }
 ?>
-    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $lien_img; ?>" width="52%" height="62.5%" style="position: absolute; left: 25.5%; top: 10.3%;"></img>
+<div  style="width: 52%;height: 62.5%;position: absolute; left: 25.5%; top: 10.3%;overflow: hidden;">
+    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $lien_img; ?>" width="100%" height="100%"></img>
+ </div>
     <?php
 $key ++;
 endforeach; ?>
@@ -30,13 +33,16 @@ endforeach; ?>
 </div>
 
 <script type="text/javascript">
+var imageTime = <?php echo $current_config['tps_affichage']; ?>;
   function swap(id, idNext) {
-      $(id).addClass('fadeOut');
+    var transitionIn = "<?php echo $current_config['animationIn']; ?>";
+    var transitionOut = "<?php echo $current_config['animationOut']; ?>";
+      $(id).addClass(transitionOut);
       setTimeout(function() {
-        $(id).addClass('hidden').removeClass('fadeOut');
+        $(id).addClass('hidden').removeClass(transitionOut);
       }, 500);
       setTimeout(function() {
-        $(idNext).removeClass('hidden').addClass('fadeIn');
+        $(idNext).removeClass('hidden').addClass(transitionIn);
       }, 500);
   }
 
@@ -44,7 +50,7 @@ endforeach; ?>
   var id = 0;
   var idNext = parseInt(id + 1);
 
-  setInterval("slide()", 5000);
+  setInterval("slide()", imageTime);
 
   function startSlide() {
     id = 0;

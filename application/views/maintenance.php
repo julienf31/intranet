@@ -41,7 +41,7 @@
 						<div class="col-sm-12 text-center">
 							<i class="icon icon-compass"></i>
 							<h1 class="jumbo">Ooops!</h1>
-							<h1><strong>Mise a jour en cours</strong><br>Le service sera retablis sous peu....</h1>
+							<h1><strong>Mise à jour en cours</strong><br>Le service sera rétabli sous peu....</h1>
 						</div>
 					</div>
 				</div>
