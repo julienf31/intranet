@@ -65,7 +65,7 @@
 				Afficher la météo
 			</a>
 			<h4>Gestion du site</h4>
-			<a href="<?php echo site_url('config'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('config'); ?>" class="btn btn-success disabled" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Modifier les paramétres
 			</a>
 			<a href="<?php echo site_url('changelog'); ?>" class="btn btn-warning" type="button"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
