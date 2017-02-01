@@ -156,7 +156,6 @@ class Data extends CI_Controller {
 		$data['current_config'] = $this->data_model->get_config_tv($item_type);
     	if (isset($_POST['send-btn'])) {
 
-
     $session_data = $this->session->userdata('logged_in');
 	if($session_data)
    {
