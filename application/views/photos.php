@@ -1,7 +1,6 @@
 <style>
 body {
-    background-image: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>);
-    background-repeat:no-repeat;
+    background: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>) repeat;
     background-size: cover auto;
 }
 </style>
