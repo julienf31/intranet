@@ -113,7 +113,7 @@
 <script>
 
     function refresh() {
-        document.location.href = document.location.origin + 'index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
+        document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
     }
     function out(){
         $('#news').addClass("<?php echo $current_config['animationOut']; ?>");
