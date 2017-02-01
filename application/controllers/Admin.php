@@ -109,6 +109,7 @@ class Admin extends CI_Controller {
 	// Affichage du changelog
 	public function changelog(){
 		$session_data = $this->session->userdata('logged_in');
+		$data['current_config'] = $this->data_model->get_config_tv("news");
 		$data['username'] = $session_data['username'];
 		$this->template->set('title', 'Changelog');
 		$this->template->load('templates/admin', 'changelog', $data);

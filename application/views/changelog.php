@@ -1,12 +1,19 @@
 <div class="container">
 	<div class="row">
-		<h3 class="changelog">Version 2 - A venir</h3>
+		<h3 class="changelog">Version 2 - Terminé</h3>
 		<ul class="add">
+			<li>Page d'actualites/meteo</li>
+			<li>Gestion des video Youtube dans les news</li>
+			<li>Album photo</li>
+			<li>Animations diverses</li>
+			<li>Cconfiguration par ecran</li>
+			<li>Mise en place d'une page de maintenance</li>
+			<li>Systeme d'apercu</li>
 			<li>Véritable systeme de template</li>
-			<li>Systeme de "microservices" à la demande</li>
 		</ul>
 		<ul class="remove">
 			<li>Toute les vues doublons</li>
+			<li>Lignes de code inutiles</li>
 			<li>Chargement de librairies, helpers, modeles inutiles</li>
 		</ul>
 		<ul class="other">
@@ -18,7 +25,7 @@
 		</ul>
 	</div>		
 	<div class="row">
-		<h3 class="changelog">Version 1.02 - En pause</h3>
+		<h3 class="changelog">Version 1.02 - Terminé</h3>
 		<ul class="add">
 			<li>Changer visibilité au clic sur l'icone</li>
 			<li>Systéme de "phrase du jour" aléatoire</li>
@@ -29,7 +36,7 @@
 		</ul>
 	</div>	
 	<div class="row">
-		<h3 class="changelog">Version 1.01 - En pause</h3>
+		<h3 class="changelog">Version 1.01 - Terminé</h3>
 		<ul class="add">
 			<li>Ajout d'une confirmation à la supression des news</li>
 			<li>Ajout des icones dynamique de la météo</li>
