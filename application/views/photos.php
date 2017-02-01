@@ -67,4 +67,5 @@ endforeach; ?>
     swap(imgId, "#img-0");
     startSlide();
   }
+  setInterval("location.reload(true);", 300000);
 </script>
