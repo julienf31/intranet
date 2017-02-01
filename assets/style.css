@@ -1,124 +1,169 @@
-body{
-	font-family: "Montserrat";
+body {
+    font-family: "Montserrat";
+    font-size: 2.5vmin;
 }
 
-.no-scroll{
-	overflow: hidden;
+h4 {
+    font-size: 3.2vmin;
 }
 
-.meteo{
-	text-align : left;
-	color: #ec4363;
-	font-height: 400;
-	line-height: 22.25px;
-	padding-top: 20px;
+.tv {
+    font-size: 4vmin;
 }
 
-.nomarge{
-	padding: 0;
-	margin: 0;
+.no-scroll {
+    overflow: hidden;
+}
+
+.meteo {
+    text-align: left;
+    color: #ec4363;
+    font-height: 400;
+    line-height: 22.25px;
+    padding-top: 20px;
+}
+
+.heure {
+    color: #ec4363;
+    font-size: 72px;
+}
+
+.nomarge {
+    padding: 0;
+    margin: 0;
 }
 
 ul {
-	list-style-type: none;
+    list-style-type: none;
 }
- 
+
 ul.add li:before {
-	content: "+ ";
-	margin-right: 10px;
-	color: green;
+    content: "+ ";
+    margin-right: 10px;
+    color: green;
 }
+
 ul.remove li:before {
-	content: "- ";
-	margin-right: 10px;
-	color: red;
+    content: "- ";
+    margin-right: 10px;
+    color: red;
 }
+
 ul.other li:before {
-	content: "* ";
-	margin-right: 10px;
-	color: orange;
+    content: "* ";
+    margin-right: 10px;
+    color: orange;
 }
- 
+
 ul li {
-	color: black;
+    color: black;
 }
-.majuscule{
-	text-transform:capitalize;
+
+.majuscule {
+    text-transform: capitalize;
 }
+
 #myCarousel .nav a small {
-	display:block;
+    display: block;
 }
+
 #myCarousel .nav {
-	background:#eee;
+    background: #eee;
 }
+
 #myCarousel .nav a {
-	border-radius: 0px;
+    border-radius: 0px;
 }
 
-.date{
-	text-align : center;
-	color: #ec4363;
-	font-height: 400;
-	line-height: 22.25px;
-	padding-top: 20px;
+.date {
+    text-align: center;
+    color: #ec4363;
+    font-height: 400;
+    line-height: 22.25px;
+    padding-top: 20px;
 }
 
-a.lien, a.lien:visited{
-	color: #ec4363;
-	font-height: 400;
+a.lien,
+a.lien:visited {
+    color: #ec4363;
+    font-height: 400;
 }
 
-.center{
-	margin: auto;
+.center {
+    margin: auto;
 }
 
-h3:first-letter{
-	color: #ec4363;
+h3:first-letter {
+    color: #ec4363;
 }
 
-p.article{
-	text-align: justify;
-	white-space: pre-line;
+p.article {
+    text-align: justify;
+    white-space: pre-line;
 }
 
-.footer{
-	text-align: center;
+.footer {
+    text-align: center;
 }
 
-.red{
-	color:#ec4363;
+.red {
+    color: #ec4363;
 }
 
-.green{
-/*	color: #33e1cf; COULEUR PLUS CLAIRE DU STYLE YNOV*/
-	color: #00ae9c;
+.green {
+    /*	color: #33e1cf; COULEUR PLUS CLAIRE DU STYLE YNOV*/
+    color: #00ae9c;
 }
 
-h3.titrenews{
-	text-align: center;
+h3.titrenews {
+    text-align: center;
 }
 
 .vertical-align {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
-.carousel-caption{
-	color: inherit;
-	text-shadow: 0;
-	padding-right: 2%;
+.carousel-caption {
+    color: inherit;
+    text-shadow: 0;
+    padding-right: 2%;
 }
 
-.size-72 { font-size: 72px; }
+.size-72 {
+    font-size: 72px;
+}
 
 .row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 .v-center {
-   display: flex;
-   align-items: center;
+    display: flex;
+    align-items: center;
+}
+
+#progress {
+    position: relative;
+    height: 5px;
+    background-color: rgb(51, 225, 207);
+}
+
+#bar {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: rgb(204, 36, 72);
+}
+
+.descriptionInfos {
+    text-align: justify;
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    border-left: 3px solid white;
+    padding-left: 10px;
 }

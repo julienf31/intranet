@@ -4,7 +4,7 @@
     }
 </style>
 
-<div class="container-fluid">
+<div id="news" class="container-fluid animated <?php echo $current_config['animationIn']; ?>">
 
 <!-- START TITRE DE LA NEWS  -->
 
@@ -77,7 +77,8 @@
             var done = false;
             function onPlayerStateChange(event) {
                 if(event.data == YT.PlayerState.ENDED){
-                    refresh();
+                    out();
+                    setTimeout('refresh();', 500);
                 }
             }
             function stopVideo() {
@@ -95,6 +96,12 @@
 
         <script> // Script pour changer de news
             setInterval('refresh()', <?php echo $config['tps_affichage'] ?>); //5 secondes
+            var durreeInt = <?php echo $config['tps_affichage']; ?>;
+            var animationIn = "<?php echo $current_config['animationOut']; ?>";
+            console.log(durreeInt);
+            var time = durreeInt - 500;
+            console.log(time);
+            setTimeout('out();', time);
         </script>
 
     <?php endif; ?>
@@ -105,6 +112,9 @@
 
 <script>
     function refresh() {
-        document.location.href = document.location.origin + '/<?php echo $item_type; ?>'+'/<?php echo $nextview ?>';
+        document.location.href = document.location.origin + '/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
+    }
+    function out(){
+        $('#news').addClass("<?php echo $current_config['animationOut']; ?>");
     }
 </script>

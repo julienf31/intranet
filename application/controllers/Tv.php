@@ -32,6 +32,7 @@ class Tv extends CI_Controller {
 	
 
 	public function news($key = null){
+		$data['current_config'] = $this->data_model->get_config_tv("news");
 		if(!$key) $key = 0;
 		$this->load->model('Data_model','news');
 		$news = $this->news->view_data('news');
@@ -48,6 +49,7 @@ class Tv extends CI_Controller {
 	}		
 	
 	public function bde($key = null){
+		$data['current_config'] = $this->data_model->get_config_tv("bde");
 		if(!$key) $key = 0;
 		$this->load->model('Data_model','bde');
 		$news = $this->bde->view_data('bde');
@@ -62,7 +64,15 @@ class Tv extends CI_Controller {
 		$this->template->load('templates/tv', 'tv', $data);
 
 	}
-	
+	public function photos()
+	{
+		$data['item_type'] = 'photos';
+
+		$data['images'] = $this->data_model->photos();
+
+		$this->template->set('title', 'Photos');
+		$this->template->load('templates/tv', 'photos', $data);
+	}
 
 }
 ?>

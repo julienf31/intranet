@@ -20,11 +20,40 @@ class Data extends CI_Controller {
     // Insert news
     public function insert($item_type)
     {
+		$data['current_config'] = $this->data_model->get_config_tv($item_type);
     	if (isset($_POST['send-btn'])) {
     //update action
 
     	$session_data = $this->session->userdata('logged_in');
 		if($session_data){
+			if($item_type == 'photos'){
+				$data['username'] = $session_data['username'];
+				$this->upload->do_upload('imageup');
+        		$data_upload_files = $this->upload->data();
+				$image = $data_upload_files['full_path'];
+				$file = basename($image);
+				if ($this->input->post('img_select') == 'url') {
+				$data = array('nom'                   => $this->input->post('nom'),
+						  'createur'                  => $data['username'],
+						  'visible'                 => $this->input->post('visible'),
+						  'date'              		=> date("Y-m-d h:i:s"),
+						  'type'			=> 'url',
+						  'url'				=> $this->input->post('image_url'));
+				}
+				elseif ($this->input->post('img_select') == 'upload') {
+				$data = array('nom'                   => $this->input->post('nom'),
+						  'createur'                  => $data['username'],
+						  'visible'                 => $this->input->post('visible'),
+						  'date'              		=> date("Y-m-d h:i:s"),
+						  'type'			=> 'file',
+						  'url'				=> $file);
+				}
+
+			$this->data_model->insert_data($item_type,$data);
+			$this->session->set_flashdata('message_success', 'Photo ajoutée à l\'album avec succés');
+			$link='liste/'.$item_type;
+			redirect($link);
+				}
 			$data['username'] = $session_data['username'];
 			
         	$this->upload->do_upload('imageup');
@@ -61,7 +90,7 @@ class Data extends CI_Controller {
 						  'text_type'				=> $type);
 
 			$this->data_model->insert_data($item_type,$data);
-			$this->session->set_flashdata('message', 'News créée avec succés');
+			$this->session->set_flashdata('message_success', 'News créée avec succés');
 			$link='liste/'.$item_type;
 			redirect($link);
 		}
@@ -124,6 +153,7 @@ class Data extends CI_Controller {
     // Edition de news
     public function update($item_type, $id, $text_type)
     {
+		$data['current_config'] = $this->data_model->get_config_tv($item_type);
     	if (isset($_POST['send-btn'])) {
 
 
@@ -169,7 +199,7 @@ class Data extends CI_Controller {
 		}
 	$this->data_model->update_data($item_type,$id, $data);
 
-    $this->session->set_flashdata('message', 'News mise à jour avec succés');
+    $this->session->set_flashdata('message_success', 'News mise à jour avec succés');
 	$link='liste/'.$item_type;
 	redirect($link);
 	   	   	    }
@@ -245,14 +275,23 @@ class Data extends CI_Controller {
 			$image = $data_upload_files['full_path'];
 			$file = basename($image);
 	if($file == 'uploads'){
-    $data = array('tps_affichage'=> $this->input->post('tps_affichage'));
+    $data = array(	'tps_affichage'=> $this->input->post('tps_affichage'),
+					'moduleGauche' => $this->input->post('moduleGauche'),
+					'moduleCentre' => $this->input->post('moduleCentre'),
+					'moduleDroite' => $this->input->post('moduleDroite'),
+					'animationIn' => $this->input->post('animationIn'),
+					'animationOut' => $this->input->post('animationOut'));
 
 	}else{
 		    $data = array('tps_affichage'=> $this->input->post('tps_affichage'),
-    	'logo' => $file);
+    	'logo' => $file,
+		'moduleGauche' => $this->input->post('moduleGauche'),
+		'moduleCentre' => $this->input->post('moduleCentre'),
+		'moduleDroite' => $this->input->post('moduleDroite'),
+		'animationIn' => $this->input->post('animationIn'),
+		'animationOut' => $this->input->post('animationOut'));
 
 	}		
-
 
 	$this->data_model->update_config_tv($item_type, $data);
 
@@ -269,8 +308,12 @@ class Data extends CI_Controller {
 	public function update_state($item_type,$id,$state)
     {  
     $this->data_model->update_state($item_type,$id,$state);
-   
-    $this->session->set_flashdata('message', 'News actualisée avec succés');
+	if($item_type == 'photos'){
+    	$this->session->set_flashdata('message_success', 'Photo actualisée avec succés');
+	}
+	elseif($item_type == 'news' || $item_type == 'bde'){
+    	$this->session->set_flashdata('message_success', 'News actualisée avec succés');
+	}
 	$link='liste/'.$item_type;
 	redirect($link);
     }
@@ -280,8 +323,13 @@ class Data extends CI_Controller {
     {  
 
    	$this->data_model->delete($item_type,$id);
-
-    $this->session->set_flashdata('message', 'News supprimée avec succés');
+	   if($item_type == 'photos'){
+		   $this->session->set_flashdata('message_warning', 'Photo supprimée avec succés');
+	   }
+	   else{
+		   $this->session->set_flashdata('message_warning', 'News supprimée avec succés');
+	   }
+    
 	$link='liste/'.$item_type;
 	redirect($link);
     }    

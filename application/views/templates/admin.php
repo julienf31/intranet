@@ -1,5 +1,4 @@
 <html lang="fr">
-
 <?php  include('_head.php'); ?>
 	<body>
 <?php  include('_header.php'); ?>
@@ -18,7 +17,7 @@
 		<?php endif; ?>
 			<span class="footer">Page générée en <strong>{elapsed_time}</strong> secondes</span>
 			<br/>
-			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v1.0</span>
+			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v1.1</span>
 	</div>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
