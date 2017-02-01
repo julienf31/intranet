@@ -4,7 +4,7 @@
     }
 </style>
 
-<div id="news" class="container-fluid animated <?php echo $current_config['animationIn']; ?>">
+<div id="news" class="container-fluid animated">
 
 <!-- START TITRE DE LA NEWS  -->
 
@@ -111,10 +111,14 @@
 </div>
 
 <script>
+
     function refresh() {
         document.location.href = document.location.origin + '/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
     }
     function out(){
         $('#news').addClass("<?php echo $current_config['animationOut']; ?>");
     }
+    $(document).ready(function(){
+        $('#news').addClass("<?php echo $current_config['animationIn']; ?>")
+    }) 
 </script>
