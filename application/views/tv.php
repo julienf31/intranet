@@ -63,6 +63,7 @@
 
             // 4. The API will call this function when the video player is ready.
             function onPlayerReady(event) {
+                event.target.setPlaybackQuality('small');
                 if('<?php echo $item_type ?>' ==='bde'){
                     $("#player").attr('frameborder',"0").css('overflow','hidden').css('height','100%').css('width','100%').css('position','absolute').css('top','0').css('bottom','0').css('left','0').css('right','0');
                 }else{
