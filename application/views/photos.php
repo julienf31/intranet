@@ -2,6 +2,7 @@
 body {
     background: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>) repeat;
     background-size: cover auto;
+    overflow: hidden;
 }
 </style>
 
@@ -19,7 +20,7 @@ elseif($image['type'] == 'url'){
   $lien_img = $image['url'];
 }
 ?>
-    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $lien_img; ?>" width="52%" height="62.5%" style="position: absolute; left: 26%; top: 10.3%;"></img>
+    <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $lien_img; ?>" width="52%" height="62.5%" style="position: absolute; left: 25%; top: 10.3%;"></img>
     <?php
 $key ++;
 endforeach; ?>
