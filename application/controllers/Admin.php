@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 
 	 }
 
-	public function index()
+		public function index()
 	 {
 	   if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
@@ -22,7 +22,12 @@ class Admin extends CI_Controller {
 	   {
 		 redirect('login', 'refresh');
 	   }
-	 }	
+	 }
+	public function maintenance()
+	 {
+			$this->load->view('maintenance');
+	   
+	 }
 	
 	// Administrer les diferents items
 	public function liste($item_type)
