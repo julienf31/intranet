@@ -94,7 +94,13 @@
                 <div class="carousel-caption"><p><?php echo $view['texte']; ?></p></div>
             </div>
         </div>	
-
+        </div>
+        </div>
+        <div style="position: fixed; bottom: 0;left:0;right:0;">
+            <div id="progress" class="row" style="position: relative; bottom: 0;">
+              <div id="bar" style="background-color: white;"></div>
+            </div>
+            
         <script> // Script pour changer de news
             setInterval('refresh()', <?php echo $config['tps_affichage'] ?>); //5 secondes
             var durreeInt = <?php echo $config['tps_affichage']; ?>;
@@ -112,7 +118,22 @@
 </div>
 
 <script>
-
+      function move() {
+          var time = parseInt(<?php echo $config['tps_affichage'] ?>);
+          var interval = time/100;
+        var elem = document.getElementById("bar");
+        var width = 1;
+        var id = setInterval(frame, interval);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+          } else {
+            width += 1;
+            elem.style.width = width + '%';
+          }
+        }
+      }
+      move();
     function refresh() {
         document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
     }
