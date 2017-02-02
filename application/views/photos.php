@@ -41,9 +41,12 @@ var imageTime = image*1000;
       $(id).addClass(transitionOut);
       setTimeout(function() {
         $(id).addClass('hidden').removeClass(transitionOut);
+      }, 700);
+      setTimeout(function() {
+        $(idNext).addClass(transitionIn);
       }, 500);
       setTimeout(function() {
-        $(idNext).removeClass('hidden').addClass(transitionIn);
+        $(idNext).removeClass('hidden');
       }, 500);
   }
 
