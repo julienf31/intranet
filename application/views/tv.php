@@ -4,7 +4,7 @@
     }
 </style>
 
-<div id="news" class="container-fluid animated hidden">
+<div id="news" class="container-fluid animated hidden" style="overflow: hidden; cursor: none;">
 
 <!-- START TITRE DE LA NEWS  -->
 
