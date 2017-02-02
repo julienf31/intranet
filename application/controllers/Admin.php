@@ -120,6 +120,11 @@ class Admin extends CI_Controller {
 		$this->load->view('maintenance');
 	}
 
+	// Affichage de la page d'erreur 404'
+	public function error404(){
+		$this->load->view('404');
+	}
+
 	// Fonction de deconexion
 	public function logout(){
 		$this->session->unset_userdata('logged_in');

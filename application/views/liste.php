@@ -2,28 +2,28 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<?php if($this->session->flashdata('message_success')): ?>
-				<div class="alert alert-success">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<?php echo $this->session->flashdata('message_success')?>
-				</div>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('message_success')?>";
+					$.notify({message: message},{type: 'success'});
+				</script>
 			<?php endif; ?>
 			<?php if($this->session->flashdata('message_warning')): ?>
-				<div class="alert alert-warning">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<?php echo $this->session->flashdata('message_warning')?>
-				</div>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('message_warning')?>";
+					$.notify({message: message},{type: 'warning'});
+				</script>
 			<?php endif; ?>
 			<?php if($this->session->flashdata('message_info')): ?>
-				<div class="alert alert-info">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<?php echo $this->session->flashdata('message_info')?>
-				</div>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('message_info')?>";
+					$.notify({message: message},{type: 'info'});
+				</script>
 			<?php endif; ?>
 			<?php if($this->session->flashdata('message_danger')): ?>
-				<div class="alert alert-danger">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<?php echo $this->session->flashdata('message_danger')?>
-				</div>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('message_danger')?>";
+					$.notify({message: message},{type: 'danger'});
+				</script>
 			<?php endif; ?>
 		</div>
 	</div>

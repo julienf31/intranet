@@ -71,7 +71,7 @@
               <option value="" <?php if($current_config['animationIn'] == "" ) echo "selected"; ?>>Aucune</option>
                 <?php foreach($animationsIn as $animation): ?>
                       <option value="<?php echo $animation['nom']; ?>" <?php if($current_config['animationIn'] == $animation['nom'] ) echo "selected"; ?>>
-                        <?php echo $animation['nom']; ?>
+                        <?php echo $animation['nom'].' : '.$animation['description']; ?>
                       </option>
                 <?php endforeach; ?>
               </select>
@@ -82,7 +82,7 @@
               <option value="" <?php if($current_config['animationIn'] == "" ) echo "selected"; ?>>Aucune</option>
                 <?php foreach($animationsOut as $animation): ?>
                       <option value="<?php echo $animation['nom']; ?>" <?php if($current_config['animationOut'] == $animation['nom'] ) echo "selected"; ?>>
-                        <?php echo $animation['nom']; ?>
+                        <?php echo $animation['nom'].' : '.$animation['description']; ?>
                       </option>
                 <?php endforeach; ?>
               </select>

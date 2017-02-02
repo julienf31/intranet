@@ -23,7 +23,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700%7CRaleway:700' rel='stylesheet' type='text/css'>
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-    <body>
+    <body style="background-color: #428bca;">
     	<div class="loader">
     		<div class="spinner">
 			  <div class="double-bounce1"></div>
@@ -35,13 +35,13 @@
 		</div>
 		
 		<div class="main-container">
-		<section class="no-pad error-page bg-primary fullscreen-element">
+		<section class="no-pad error-page  fullscreen-element" style="color: white;background-color: #428bca;">
 				<div class="container align-vertical">
 					<div class="row">
 						<div class="col-sm-12 text-center">
 							<i class="icon icon-compass"></i>
-							<h1 class="jumbo">Ooops!</h1>
-							<h1><strong>Mise à jour en cours</strong><br>Le service sera rétabli sous peu....</h1>
+                            <h1 class="jumbo" style="color: white;">Error 404 :(</h1>
+							<h1 style="color: white;"><strong>Page introuvable</strong><br>Le service sera rétabli sous peu....</h1>
 						</div>
 					</div>
 				</div>
@@ -67,3 +67,4 @@
         <script src="<?= constant('VENDORS') ?>/limitless/js/scripts.js"></script>
     </body>
 </html>
+				

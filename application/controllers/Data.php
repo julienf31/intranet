@@ -321,10 +321,10 @@ class Data extends CI_Controller {
 
 		$this->data_model->delete($item_type,$id);
 		if($item_type == 'photos'){
-			$this->session->set_flashdata('message_warning', 'Photo supprimée avec succés');
+			$this->session->set_flashdata('message_danger', 'Photo supprimée avec succés');
 		}
 		else{
-			$this->session->set_flashdata('message_warning', 'News supprimée avec succés');
+			$this->session->set_flashdata('message_danger', 'News supprimée avec succés');
 		}
 
 		$link='liste/'.$item_type;
