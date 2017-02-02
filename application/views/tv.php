@@ -97,7 +97,7 @@
         </div>
         </div>
         <div style="position: fixed; bottom: 0;left:0;right:0;">
-            <div id="progress" class="row" style="position: relative; bottom: 0;">
+            <div id="progress" class="row" style="position: relative; bottom: 0;height: 10px;">
               <div id="bar" style="background-color: white;"></div>
             </div>
             
@@ -120,7 +120,8 @@
 
 <script>
       function move() {
-          var time = parseInt(<?php echo $config['tps_affichage'] ?>);
+          var timeS = parseInt(<?php echo $config['tps_affichage'] ?>);
+          var time = timeS * 1000;
           var interval = time/100;
         var elem = document.getElementById("bar");
         var width = 1;
