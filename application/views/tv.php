@@ -1,10 +1,11 @@
 <style>
-    .body{
+    .html{
         overflow: hidden;
+        cursor: none;
     }
 </style>
 
-<div id="news" class="container-fluid animated hidden" style="overflow: hidden; cursor: none;">
+<div id="news" class="container-fluid animated hidden">
 
 <!-- START TITRE DE LA NEWS  -->
 
