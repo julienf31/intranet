@@ -11,7 +11,7 @@ $moduleD = "_".$current_config['moduleDroite'].".php";
 
 if($moduleG == "_logo.php"){
 	$moduleGinnerHTML = 'class="col-md-2"';
-	$moduleGStyle = "height: 20vh;";
+	$moduleGStyle = "height: 10vh;";
 }
 else if($moduleG == "_date.php"){
 	$moduleGinnerHTML = 'class="col-md-5 date"';
