@@ -15,61 +15,61 @@ if($moduleG == "_logo.php"){
 }
 else if($moduleG == "_date.php"){
 	$moduleGinnerHTML = 'class="col-md-5 date"';
-	$moduleGStyle = "";
+	$moduleGStyle = "height: 20vh;";
 }
 else if($moduleG == "_heure.php"){
 	$moduleGinnerHTML = 'id="tplHeure" class="col-md-2 heure"';
-	$moduleGStyle = "";
+	$moduleGStyle = "height: 20vh;";
 }
 else if($moduleG == "_meteo.php"){
 	$moduleGinnerHTML = 'class="col-md-2"';
-	$moduleGStyle = "";
+	$moduleGStyle = "height: 20vh;";
 }
 else{
 	$moduleGinnerHTML = 'class="col-md-2"';
-	$moduleGStyle = "";
+	$moduleGStyle = "height: 20vh;";
 }
 
 if($moduleC == "_logo.php"){
 	$moduleCinnerHTML = 'class="col-md-2"';
-	$moduleCStyle = "height:100px;";
+	$moduleCStyle = "height: 20vh;";
 }
 else if($moduleC == "_date.php"){
-	$moduleCinnerHTML = 'class="col-md-5 col-md-offset-1 date"';
-	$moduleCStyle = "";
+	$moduleCinnerHTML = 'class="col-md-8 text-center date"';
+	$moduleCStyle = "height: 20vh;";
 }
 else if($moduleC == "_heure.php"){
 	$moduleCinnerHTML = 'id="tplHeure" class="col-md-2 heure"';
-	$moduleCStyle = "";
+	$moduleCStyle = "height: 20vh;";
 }
 else if($moduleC == "_meteo.php"){
 	$moduleCinnerHTML = 'class="col-md-2"';
-	$moduleCStyle = "";
+	$moduleCStyle = "height: 20vh;";
 }
 else{
 	$moduleCinnerHTML = 'class="col-md-2"';
-	$moduleCStyle = "";
+	$moduleCStyle = "height: 20vh;";
 }
 
 if($moduleD == "_logo.php"){
 	$moduleDinnerHTML = 'class="col-md-2"';
-	$moduleDStyle = "height:100px;";
+	$moduleDStyle = "height: 20vh;";
 }
 else if($moduleD == "_date.php"){
 	$moduleDinnerHTML = 'class="col-md-5 date"';
-	$moduleDStyle = "";
+	$moduleDStyle = "height: 20vh;";
 }
 else if($moduleD == "_heure.php"){
 	$moduleDinnerHTML = 'id="tplHeure" class="col-md-2 pull-right heure"';
-	$moduleDStyle = "";
+	$moduleDStyle = "height: 20vh;";
 }
 else if($moduleD == "_meteo.php"){
 	$moduleDinnerHTML = 'class="col-md-2"';
-	$moduleDStyle = "";
+	$moduleDStyle = "height: 20vh;";
 }
 else{
 	$moduleDinnerHTML = 'class="col-md-2"';
-	$moduleDStyle = "";
+	$moduleDStyle = "height: 20vh;";
 }
 
 ?>
