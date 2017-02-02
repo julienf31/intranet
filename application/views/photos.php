@@ -33,7 +33,8 @@ endforeach; ?>
 </div>
 
 <script type="text/javascript">
-var imageTime = <?php echo $current_config['tps_affichage']; ?>;
+var image = <?php echo $current_config['tps_affichage']; ?>;
+var imageTime = image*1000;
   function swap(id, idNext) {
     var transitionIn = "<?php echo $current_config['animationIn']; ?>";
     var transitionOut = "<?php echo $current_config['animationOut']; ?>";

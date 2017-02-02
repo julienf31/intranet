@@ -89,11 +89,19 @@
             </div>
             <div class="col-md-6"><br />
               <label class="control-label" for="url">Durée d'affichage</label>
-              <div class="input-group">
-                <input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>">
-              <div class="input-group-addon">ms</div>
+              <div class="row">
+              <div class="col-md-6">
+              <div class="input-group spinner">
+                <input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>" min="1" max="30" readonly="readonly" style="background: none;color: black;">
+              <div class="input-group-addon">sec</div>
+              <div class="input-group-btn-vertical">
+                <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
               </div>
-              <span id="url" class="help-block">Temps d'affichages des news en ms</span>
+              </div>
+              </div>
+              </div>
+              <span id="url" class="help-block">Temps d'affichages des news en secondes</span>
             </div>
           </div>
           </div>
@@ -109,3 +117,28 @@
       
     </div>
   </div>
+
+  <script>
+  $(function(){
+
+    $('.spinner .btn:first-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
+        input.val(parseInt(input.val(), 10) + 1);
+      } else {
+        btn.next("disabled", true);
+      }
+    });
+    $('.spinner .btn:last-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
+        input.val(parseInt(input.val(), 10) - 1);
+      } else {
+        btn.prev("disabled", true);
+      }
+    });
+
+})
+  </script>

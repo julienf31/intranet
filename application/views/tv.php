@@ -102,8 +102,9 @@
             </div>
             
         <script> // Script pour changer de news
-            setInterval('refresh()', <?php echo $config['tps_affichage'] ?>); //5 secondes
-            var durreeInt = <?php echo $config['tps_affichage']; ?>;
+            var durree = <?php echo $config['tps_affichage']; ?>;
+            var durreeInt = durree * 1000;
+            setInterval('refresh()', durreeInt);
             var animationIn = "<?php echo $current_config['animationOut']; ?>";
             console.log(durreeInt);
             var time = durreeInt - 500;
