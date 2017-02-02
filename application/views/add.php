@@ -63,18 +63,18 @@
 					<br/>
 					<p style="display:inline-block;margin-right:10px;">Type d'image</p>
 					<select class="form-control" name="img_select" id="img_select" style="width: 12%;display:inline-block;">
-						<option value="url">Lien</option>
 						<option value="upload">Upload</option>
+						<option value="url">Lien</option>
 					</select>
 				</div>
-			<div id="upload_fields" class="hidden">
+			<div id="upload_fields" class="">
 				<div class="form-group">
 					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label>
 					<input type="file" id="imageup" name="imageup">
 					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
 				</div>
 			</div>
-			<div id="url_fields" class="">
+			<div id="url_fields" class="hidden">
 				<div class="form-group">
 					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image</label>
 					<input type="text" class="form-control" name="image_url">
