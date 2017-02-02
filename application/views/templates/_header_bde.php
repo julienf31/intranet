@@ -6,7 +6,7 @@ $json=file_get_contents($url);
 $weather=json_decode($json,true);
 ?>
 		<div class="container-fluid" id="head">
-			<div class="row">
+			<div class="row" style="height: 20vh;">
 		<?php  include('_logo.php'); ?>
 			</div>
 		</div>
