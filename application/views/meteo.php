@@ -18,7 +18,7 @@ foreach ($infos as $info){
     $key_info++;
 }
 ?>
-  <div class="container-fluid" style="overflow: hidden;">
+  <div class="container-fluid" style="overflow: hidden; cursor: none;">
     <div class="row">
       <div class="col-md-6">
         <div class="container-fluid">
