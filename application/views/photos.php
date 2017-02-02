@@ -21,7 +21,7 @@ elseif($image['type'] == 'url'){
   $lien_img = $image['url'];
 }
 ?>
-<div  style="width: 52%;height: 62.5%;position: absolute; left: 25.75%; top: 10.3%;overflow: hidden;">
+<div  style="width: 52%;height: 62.5%;position: absolute; left: 25.67%; top: 10.3%;overflow: hidden;">
     <img id="img-<?php echo $key ?>" class="animated <?php if($key!=0) echo 'hidden'; ?>" src="<?php echo $lien_img; ?>" width="100%" height="100%"></img>
  </div>
     <?php
