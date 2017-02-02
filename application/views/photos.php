@@ -1,9 +1,13 @@
 <style>
-body {
-    background: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>) repeat;
-    background-size: cover auto;
-    overflow: hidden;
-}
+    body {
+        background: url(<?php echo constant('ASSETS').'/img/fond-bois.jpg'; ?>) repeat;
+        background-size: cover auto;
+        overflow: hidden;
+    }
+    html{
+        overflow: hidden;
+        cursor: none;
+    }
 </style>
 
 <div class="container-fluid photos-tv">
