@@ -1,5 +1,5 @@
 <style>
-    .html{
+    html{
         overflow: hidden;
         cursor: none;
     }
