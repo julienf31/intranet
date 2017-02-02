@@ -109,7 +109,7 @@ foreach ($infos as $info){
         <div class="col-md-6">
           <h3 class="tv"><i class="fa fa-twitter fa-fw" style="color: #1da1f2" aria-hidden="true"></i><span style="color: #ec4363;">F</span>il d'actualité Twitter : </h3>
           <center>
-            <a class="twitter-timeline" href="https://twitter.com/search?q=ynovtoulouse" data-widget-id="824205380918112257" data-chrome="nofooter, noheader, noscrollbar" width="900px">Tweets sur ynov toulouse</a>
+            <a class="twitter-timeline" href="https://twitter.com/search?q=ynovtoulouse" data-widget-id="827094812704784384" data-chrome="nofooter, noheader, noscrollbar" width="900px">Tweets sur ynov toulouse</a>
             <script>
               ! function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0],
