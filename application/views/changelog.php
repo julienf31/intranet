@@ -1,6 +1,20 @@
 <div class="container">
 	<div class="row">
-		<h3 class="changelog">Version 2 - Terminé</h3>
+		<h3 class="changelog">Version 2.1 - En Cours</h3>
+		<ul class="add">
+			<li>Systéme de signalement de bug par l'utilisateur</li>
+			<li>Création d'albums rassemblant les photos</li>
+			<li>Nouveau systéme d'alertes dynamiques</li>
+		</ul>
+		<ul class="remove">
+			<li>Ancien systéme de photos</li>
+		</ul>
+		<ul class="other">
+			<li>Optimisation des animations des écrans</li>
+		</ul>
+	</div>		
+	<div class="row">
+		<h3 class="changelog">Version 2 - Terminé (01/02/2017)</h3>
 		<ul class="add">
 			<li>Page d'actualites/meteo</li>
 			<li>Gestion des video Youtube dans les news</li>

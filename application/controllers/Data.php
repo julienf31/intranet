@@ -366,6 +366,43 @@ class Data extends CI_Controller {
 		$link='liste/'.$item_type;
 		redirect($link);
 	}    
+
+	public function report_bug(){   
+		$comment = isset($_REQUEST['comment']) ? $_REQUEST['comment'] : ''; 
+		$screenshot =  isset($_REQUEST['screenshot']) ? $_REQUEST['screenshot'] : false;
+		
+		if($screenshot) $screenshot = $this->base64_to_jpg($screenshot, time().'_'.rand(0,30).'.jpg');
+
+		echo json_encode(array('result' => 'success'));
+
+        $config = Array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'report.bug.ynov@gmail.com',
+			'smtp_pass' => 'cJn-Kf6-Bp2-95c',
+			'mailtype'  => 'html', 
+			'charset'   => 'iso-8859-1'
+		);
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+
+		$this->email->from('julien.fournier.69@gmail.com', 'Julien');
+		$this->email->to('julien.fournier.69@gmail.com');
+		$atach = FCPATH.$screenshot;
+		$this->email->subject('Bug report');
+		$this->email->message($comment);
+		$this->email->attach($screenshot);
+
+		$this->email->send();
+	}
 	
+	public function base64_to_jpg($string, $file) {
+		$fp = fopen($file, "wb"); 
+		$data = explode(',', $string);
+		fwrite($fp, base64_decode($data[1])); 
+		fclose($fp); 
+		return $file; 
+		}
 }
 ?>

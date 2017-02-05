@@ -17,7 +17,7 @@
               <li>
                 <div class="report">
                   <h2 class="text-center">Signaler un bug</h2>
-                  <form id="contactForm" class="doo" method="post" action="<?php echo base_url(); ?>/report.php">
+                  <form id="contactForm" class="doo" method="post" action="<?php echo  site_url('data/report_bug'); ?>">
                     <div class="col-sm-12">
                       <textarea required name="comment" class="form-control" placeholder="Merci de nous signaler les éventuels beugs ou correctifs à apporté pour nous aider a améliorer votre experience"></textarea>
                       <input name="screenshot" type="hidden" class="screen-uri">
@@ -29,7 +29,7 @@
                  </form>
                 </div>
                 <div class="loading text-center hideme">
-                  <h2>Please wait...</h2>
+                  <h2>Veuillez patienter...</h2>
                   <h2><i class="fa fa-refresh fa-spin"></i></h2>
                 </div>
                 <div class="reported text-center hideme">
