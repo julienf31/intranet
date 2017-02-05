@@ -387,12 +387,12 @@ class Data extends CI_Controller {
 		$this->load->library('email', $config);
 		$this->email->set_newline("\r\n");
 
-		$this->email->from('julien.fournier.69@gmail.com', 'Julien');
+		$this->email->from('report.bug.ynov@gmail.com', 'Julien');
 		$this->email->to('julien.fournier.69@gmail.com');
 		$atach = FCPATH.$screenshot;
 		$this->email->subject('Bug report');
 		$this->email->message($comment);
-		$this->email->attach($screenshot);
+		$this->email->attach($atach);
 
 		$this->email->send();
 	}
