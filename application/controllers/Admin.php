@@ -24,13 +24,18 @@ class Admin extends CI_Controller {
 	}
 	
 	// Administrer les diferents items
-	public function liste($item_type){
+	public function liste($item_type,$album_id = null){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['liste_items']= $this->data_model->list_data($item_type);
-			$data['current_config'] = $this->data_model->get_config_tv($item_type);
+			$data['current_config'] = $this->data_model->get_config_tv('news');
 			$data['item_type'] = $item_type;
+			if($item_type == 'photos' && $album_id != ""){
+				$data['album_id'] = $album_id;
+				$data['content_album'] = $this->data_model->get_album($album_id);
+				$data['photos'] = $this->data_model->get_photos_from_album($album_id);
+			}
 			$this->template->set('title', 'Liste');
 			$this->template->load('templates/admin', 'liste', $data);
 		}
@@ -38,14 +43,32 @@ class Admin extends CI_Controller {
 			redirect('login', 'refresh');
 		}
 	}
+
+		public function album(){
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$data['liste_items']= $this->data_model->album();
+			$data['current_config'] = $this->data_model->get_config_tv('news');
+			$this->template->set('title', 'Liste');
+			$this->template->load('templates/admin', 'albums', $data);
+		}
+		else{
+			redirect('login', 'refresh');
+		}
+	}
 	
     // Ajout de news, voir le controler data pour l'insertion en DB
-	public function add($item_type){
+	public function add($item_type,$album_id = null){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['item_type'] = $item_type;
-			$data['current_config'] = $this->data_model->get_config_tv($item_type);
+			$data['current_config'] = $this->data_model->get_config_tv('news');
+			if($item_type == 'photos' && $album_id != ""){
+				$data['album_id'] = $album_id;
+				$data['content_album'] = $this->data_model->get_album($album_id);
+			}
 			$this->template->set('title', 'Ajout');
 			$this->template->load('templates/admin', 'add', $data);
 		}
@@ -59,12 +82,14 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$data['current_data']= $this->data_model->get_data($item_type,$id);
-			$data['current_config'] = $this->data_model->get_config_tv($item_type);
-			if($data['current_data']['text_type'] == 'JSON'){
-				$video_datas = $data['current_data']['texte'];
-				$video_id = json_decode($video_datas)->videoId;
-				$data['current_data']['texte'] = 'https://www.youtube.com/watch?v='.$video_id;
+			$data['current_data'] = $this->data_model->get_data($item_type,$id);
+			$data['current_config'] = $this->data_model->get_config_tv('news');
+			if($item_type != 'album'){
+				if($data['current_data']['text_type'] == 'JSON'){
+					$video_datas = $data['current_data']['texte'];
+					$video_id = json_decode($video_datas)->videoId;
+					$data['current_data']['texte'] = 'https://www.youtube.com/watch?v='.$video_id;
+				}
 			}
 			$data['item_type'] = $item_type;
 			$this->template->set('title', 'Edition');

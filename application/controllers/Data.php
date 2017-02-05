@@ -15,7 +15,7 @@ class Data extends CI_Controller {
 	}
 
     // Insert news
-	public function insert($item_type){
+	public function insert($item_type,$album_id = null){
 		$data['current_config'] = $this->data_model->get_config_tv($item_type);
 		
 		// insert action
@@ -30,25 +30,46 @@ class Data extends CI_Controller {
 					$file = basename($image);
 					if ($this->input->post('img_select') == 'url') {
 						$data = array(
-							'nom' => $this->input->post('nom'),
-							'createur' => $data['username'],
-							'visible' => $this->input->post('visible'),
-							'date' => date("Y-m-d h:i:s"),
+							'album_id' => $album_id,
+							'name' => $this->input->post('nom'),
+							'created_by' => $data['username'],
+							'created' => date("Y-m-d h:i:s"),
 							'type' => 'url',
-							'url' => $this->input->post('image_url'));
+							'url' => $this->input->post('image_url'),
+							'show_photo' => $this->input->post('visible'));
 					}
 					elseif ($this->input->post('img_select') == 'upload'){
 						$data = array(
-							'nom' => $this->input->post('nom'),
-							'createur' => $data['username'],
-							'visible' => $this->input->post('visible'),
-							'date' => date("Y-m-d h:i:s"),
+							'album_id' => $album_id,
+							'name' => $this->input->post('nom'),
+							'created_by' => $data['username'],
+							'created' => date("Y-m-d h:i:s"),
 							'type' => 'file',
-							'url' => $file
+							'url' => $file,
+							'show_photo' => $this->input->post('visible')
 						);
 					}
 					$this->data_model->insert_data($item_type,$data);
 					$this->session->set_flashdata('message_success', 'Photo ajoutée à l\'album avec succés');
+					$link='liste/'.$item_type.'/'.$album_id;
+					redirect($link);
+				}
+				elseif($item_type == 'album'){
+					$data['username'] = $session_data['username'];
+					$this->upload->do_upload('imageup');
+					$data_upload_files = $this->upload->data();
+					$image = $data_upload_files['full_path'];
+					$file = basename($image);
+					$data = array(
+							'name' => $this->input->post('name'),
+							'url' => $file,
+							'desc' => $this->input->post('desc'),
+							'show' => 1,
+							'created' => date("Y-m-d h:i:s"),
+							'created_by' => $data['username']
+						);
+					$this->data_model->insert_data($item_type,$data);
+					$this->session->set_flashdata('message_success', 'Album créé avec succés');
 					$link='liste/'.$item_type;
 					redirect($link);
 				}
@@ -153,7 +174,22 @@ class Data extends CI_Controller {
 	{
 		$data['current_config'] = $this->data_model->get_config_tv($item_type);
 		if (isset($_POST['send-btn'])) {
-
+		if($item_type == 'album'){
+					$this->upload->do_upload('imageup');
+					$data_upload_files = $this->upload->data();
+					$image = $data_upload_files['full_path'];
+					$file = basename($image);
+					$data = array(
+							'name' => $this->input->post('name'),
+							//'url' => $file, PAS D'UPDATE DE PHOTO POUR L'INSTANT
+							'desc' => $this->input->post('desc'),
+							'show' => 1
+						);
+					$this->data_model->update_data($item_type,$id,$data);
+					$this->session->set_flashdata('message_success', 'Album edité avec succés');
+					$link='liste/'.$item_type;
+					redirect($link);
+				}
 			$session_data = $this->session->userdata('logged_in');
 			if($session_data)
 			{

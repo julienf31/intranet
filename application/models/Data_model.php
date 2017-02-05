@@ -35,6 +35,11 @@ Class Data_model extends CI_Model
                                 FROM photos p
                                 ORDER BY p.id ASC");
     }
+    if ($item_type == 'album'){
+      $query = $this->db->query("SELECT *
+                                FROM album a
+                                ORDER BY a.id ASC");
+    }
     return $query->result_array();
   }
 
@@ -48,6 +53,11 @@ Class Data_model extends CI_Model
       $query=$this->db->query("SELECT *
                                FROM news n
                                WHERE n.id = $id");
+    }
+    if ($item_type=='album') {
+      $query=$this->db->query("SELECT *
+                               FROM album a
+                               WHERE a.id = $id");
     }
     return $query->row_array();
   }
@@ -70,6 +80,9 @@ Class Data_model extends CI_Model
         }
         if ($item_type == 'photos'){
         $this->db->insert('photos', $data);
+        }
+        if ($item_type == 'album') {
+          $this->db->insert('album', $data);
         }
 
         return TRUE;
@@ -97,6 +110,9 @@ Class Data_model extends CI_Model
     }
     if ($item_type=='news') {
       $this->db->update('news', $data);
+    }
+    if ($item_type=='album') {
+      $this->db->update('album', $data);
     }
   }
 
@@ -154,9 +170,16 @@ Class Data_model extends CI_Model
     return $query->row_array();
   }
 
-  public function photos(){
+  public function get_album($id){
+    $this->db->from('album');
+    $this->db->where('id',$id);
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+  
+  public function get_photos_from_album($value){
     $this->db->from('photos');
-    $this->db->where('visible',1);
+    $this->db->where('album_id',$value);
     $query = $this->db->get();
     return $query->result_array();
   }
