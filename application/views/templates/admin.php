@@ -10,7 +10,7 @@
     <div class="feedback right">
       <div class="tooltips">
           <div class="btn-group dropup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-circle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-danger dropdown-toggle btn-circle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-bug fa-2x" title="Report Bug"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-right dropdown-menu-form">
@@ -23,7 +23,10 @@
                       <input name="screenshot" type="hidden" class="screen-uri">
                       <span class="screenshot pull-right"><i class="fa fa-camera cam" title="Take Screenshot"></i></span>
                      </div>
-                     <div class="col-sm-12 clearfix">
+										 <div class="col-sm-12" id="screen">
+										 Appuyez sur <i class="fa fa-camera cam"></i> pour joindre une capture automatique ;)
+                     </div>
+										 <div class="col-sm-12 clearfix">
                       <button class="btn btn-primary btn-block">Envoyer le rapport</button>
                      </div>
                  </form>
@@ -64,7 +67,7 @@
 		<?php endif; ?>
 			<span class="footer">Page générée en <strong>{elapsed_time}</strong> secondes</span>
 			<br/>
-			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v1.1</span>
+			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v2.1</span>
 	</div>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

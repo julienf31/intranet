@@ -392,7 +392,7 @@ class Data extends CI_Controller {
 		$atach = FCPATH.$screenshot;
 		$this->email->subject('Bug report');
 		$this->email->message($comment);
-		$this->email->attach($atach);
+		$this->email->attach($screenshot);
 
 		$this->email->send();
 	}
