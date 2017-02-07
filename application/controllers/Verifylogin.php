@@ -7,7 +7,7 @@ class VerifyLogin extends CI_Controller {
    parent::__construct();
    $this->load->helper('date');
  }
-
+ 
  function index()
  {
    $this->load->library('form_validation');
