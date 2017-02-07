@@ -89,7 +89,9 @@ $route['insert/(:any)'] = 'data/insert/$1';
 $route['insert/(:any)/(:any)'] = 'data/insert/$1/$2';
 $route['update/(:any)/([0-9]+)/(:any)'] = 'data/update/$1/$2/$3';
 $route['update_state/(:any)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1/$2/$3';
+$route['update_state/(:any)/([0-9]+)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1/$2/$3/$4';
 $route['delete/(:any)/([0-9]+)'] = 'data/delete/$1/$2';
+$route['delete/(:any)/([0-9]+)/([0-9]+)'] = 'data/delete/$1/$2/$3';
 
 
 

@@ -27,8 +27,7 @@
 			<?php endif; ?>
 		</div>
 	</div>
-<?php 
-	if($item_type == 'bde' || $item_type == 'news'):
+<?php if($item_type == 'bde' || $item_type == 'news'):
 		foreach ($liste_items as $key => $data) : ?>
 	<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -94,8 +93,30 @@
 		</div>
 	</div>
 	<?php elseif($item_type == 'album'): ?>
-		    <div class="well well-sm">
-        <strong>Albums</strong>
+	<!-- DEBUT MODAL ALBUM-->
+		<?php foreach($liste_items as $key => $album): ?>
+		<div class="modal fade" id="albModal-<?php echo $album['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+					</div>
+					<div class="modal-body">
+						Voulez vous vraiment supprimer la photo <strong><?php echo $album['name']; ?></strong><br/>
+						Créée par <strong><?php echo $album['created_by']; ?></strong> le <strong><?php echo $album['created']; ?></strong> ?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+						<a href="<?php echo site_url('delete/'). $item_type.'/'. $album['id']; ?>" type="button" class="btn btn-success">Confirmer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endforeach; ?>
+<!-- FIN  MODAL ALBUM-->
+	<div class="well well-sm">
+        <strong><?php echo $nb_album; ?> Albums</strong>
         <div class="btn-group">
             <a  id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
             </span>Liste</a> <a id="grid" class="btn btn-default btn-sm"><span
@@ -106,10 +127,10 @@
 		</div>
     </div>
     <div id="albums" class="row list-group">
-    <?php foreach($liste_items as $key => $album): ?>
+    	<?php foreach($liste_items as $key => $album): ?>
         <div class="item  col-xs-4 col-lg-4 list-group-item">
             <div class="thumbnail">
-                <img class="group list-group-image" src="<?php echo base_url();?>uploads/<?php echo $album['url']; ?>" alt="" width="auto"/>
+                <img class="group list-group-image" src="<?php echo base_url();?><?php if($album['url'] != 'uploads') echo 'uploads/'.$album['url']; else echo 'assets/img/album.png'; ?>" alt="" width="auto"/>
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
                         <?php echo $album['name']; ?></h4>
@@ -119,7 +140,7 @@
                         <div class="col-xs-12 col-md-6">
 						<?php 
 							$query = $this->db->query('select id from photos where album_id = '.$album['id']);
-							$query2 = $this->db->query('select id from photos where album_id = '.$album['id'].' AND show_photo LIKE 1');
+							$query2 = $this->db->query('select id from photos where album_id = '.$album['id'].' and visible = 1');
 							$nb_album = $query->num_rows();
 							$nb_visible = $query2->num_rows();
 							?>
@@ -127,14 +148,15 @@
                                 Photos : <?php echo $nb_visible.'/'.$nb_album; ?></p>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="<?php echo  site_url('edit/').$item_type.'/'.($key+1).'/0'; ?>">Editer l'album</a>
-                            <a class="btn btn-success" href="<?php echo  site_url('liste/').'photos/'.($key+1).''; ?>">Gestion des photos</a>
-                        </div>
+                            <a class="btn btn-success" href="<?php echo  site_url('edit/').$item_type.'/'.$album['id'].'/0'; ?>">Editer l'album</a>
+                            <a class="btn btn-success" href="<?php echo  site_url('liste/').'photos/'.$album['id'].''; ?>">Gestion des photos</a>
+							<a href="#albModal-<?php echo $album['id']; ?>" data-toggle="modal" >supprimer</a>
+						</div>
                     </div>
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    	<?php endforeach; ?>
     </div>
 	<div class="row">
 		<div class="pull-left">
@@ -160,7 +182,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-					<a href="<?php echo site_url('delete/'). $item_type.'/'. $photo['id']; ?>" type="button" class="btn btn-success">Confirmer</a>
+					<a href="<?php echo site_url('delete/'). $item_type.'/'. $photo['id'].'/'.$photo['album_id']; ?>" type="button" class="btn btn-success">Confirmer</a>
 				</div>
 			</div>
 		</div>
@@ -175,9 +197,16 @@
 			<div class='list-group gallery'>
 			<?php foreach($photos as $key_photos => $photo): ?>
            	 <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-             	   <a class="fancybox thumbnail" rel="ligthbox">
-                	    <img class="img-responsive" alt="" <?php if($photo['type'] == 'url'){echo 'src="'.$photo['url'].'"';} else echo 'src="'.base_url().'uploads/'.$photo['url'].'"'; ?> />
+             	   <a class="fancybox thumbnail" rel="ligthbox" data-toggle="tooltip" data-placement="top" title="<?php echo $photo['url']; ?>">
+                	    <img class="img-responsive" alt="" <?php if($photo['type'] == 'url'){echo 'src="'.$photo['url'].'"';} elseif($photo['type'] == 'file') echo 'src="'.base_url().'uploads/'.$photo['url'].'"'; ?> />
              	   </a><?php echo $photo['name']; ?>
+					<br/>
+					Visibilité : <?php if($photo['visible']): ?>
+							<a href="<?php echo site_url('update_state/').$item_type.'/'.$photo['id'].'/0\/'.$photo['album_id']; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a>
+						<?php else : ?>
+							<a href="<?php echo site_url('update_state/').$item_type.'/'.$photo['id'].'/1\/'.$photo['album_id']; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a>
+						<?php endif; ?>
+
 					<div class="pull-right">
 					<a href="#picModal-<?php echo $photo['id']; ?>" data-toggle="modal" >supprimer</a>
 					</div>
@@ -207,6 +236,10 @@
 $(document).ready(function() {
     $('#list').click(function(event){event.preventDefault();$('#albums .item').addClass('list-group-item');});
     $('#grid').click(function(event){event.preventDefault();$('#albums .item').removeClass('list-group-item');$('#albums .item').addClass('grid-group-item');});
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
 });
 
 </script>

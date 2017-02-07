@@ -142,11 +142,14 @@ Class Data_model extends CI_Model
     if ($item_type == 'bde') {
       $this->db->delete('news_bde');
     }
-    if ($item_type == 'news') {
+    elseif ($item_type == 'news') {
       $this->db->delete('news');
     }
-    if ($item_type == 'photos'){
+    elseif ($item_type == 'photos'){
       $this->db->delete('photos');
+    }
+    elseif ($item_type == 'album'){
+      $this->db->delete('album');
     }
   }
 
@@ -184,6 +187,28 @@ Class Data_model extends CI_Model
     return $query->result_array();
   }
 
+  public function afficher_photos(){
+    /*
+    SELECT *
+    FROM album a, photos p
+    WHERE a.id = p.album_id
+    AND a.show = 1
+    AND p.show = 1;
+
+    SELECT *
+    FROM album a
+    JOIN photos ON photos.album_id = a.id
+    WHERE a.show = 1
+    AND photos.show = 1
+    */
+    $this->db->from('album');
+    $this->db->join('photos', 'photos.album_id = album.id');
+    $this->db->where('album.visible',1);
+    $this->db->where('photos.visible',1);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function modules(){
     $this->db->from('modules');
     $query = $this->db->get();
@@ -195,5 +220,13 @@ Class Data_model extends CI_Model
     $this->db->like('type',$type);
     $query = $this->db->get();
     return $query->result_array();
+  }
+
+  public function count_album(){
+    $this->db->select('id');
+    $this->db->from('album');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    return $result;
   }
 }

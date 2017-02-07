@@ -46,7 +46,7 @@ class Data extends CI_Controller {
 							'created' => date("Y-m-d h:i:s"),
 							'type' => 'file',
 							'url' => $file,
-							'show_photo' => $this->input->post('visible')
+							'visible' => $this->input->post('visible')
 						);
 					}
 					$this->data_model->insert_data($item_type,$data);
@@ -64,7 +64,7 @@ class Data extends CI_Controller {
 							'name' => $this->input->post('name'),
 							'url' => $file,
 							'desc' => $this->input->post('desc'),
-							'show' => 1,
+							'visible' => 1,
 							'created' => date("Y-m-d h:i:s"),
 							'created_by' => $data['username']
 						);
@@ -181,9 +181,8 @@ class Data extends CI_Controller {
 					$file = basename($image);
 					$data = array(
 							'name' => $this->input->post('name'),
-							//'url' => $file, PAS D'UPDATE DE PHOTO POUR L'INSTANT
-							'desc' => $this->input->post('desc'),
-							'show' => 1
+							'url' => $file,
+							'desc' => $this->input->post('desc')
 						);
 					$this->data_model->update_data($item_type,$id,$data);
 					$this->session->set_flashdata('message_success', 'Album edité avec succés');
@@ -338,32 +337,37 @@ class Data extends CI_Controller {
 		}
 	}
 
-	public function update_state($item_type,$id,$state)
+	public function update_state($item_type,$id,$state,$album_id = null)
 	{  
 		$this->data_model->update_state($item_type,$id,$state);
 		if($item_type == 'photos'){
 			$this->session->set_flashdata('message_success', 'Photo actualisée avec succés');
+			$link='liste/'.$item_type.'/'.$album_id;
 		}
 		elseif($item_type == 'news' || $item_type == 'bde'){
 			$this->session->set_flashdata('message_success', 'News actualisée avec succés');
+			$link='liste/'.$item_type;
 		}
-		$link='liste/'.$item_type;
 		redirect($link);
 	}
 
     //Supression de news
-	public function delete($item_type,$id)
+	public function delete($item_type,$id,$album_id = null)
 	{  
 
 		$this->data_model->delete($item_type,$id);
 		if($item_type == 'photos'){
 			$this->session->set_flashdata('message_danger', 'Photo supprimée avec succés');
+			$link='liste/'.$item_type.'/'.$album_id;
+		}
+		elseif($item_type == 'album'){
+			$this->session->set_flashdata('message_danger', 'Album supprimé avec succés');
+			$link='liste/'.$item_type;
 		}
 		else{
 			$this->session->set_flashdata('message_danger', 'News supprimée avec succés');
+			$link='liste/'.$item_type;
 		}
-
-		$link='liste/'.$item_type;
 		redirect($link);
 	}    
 

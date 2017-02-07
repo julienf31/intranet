@@ -31,6 +31,9 @@ class Admin extends CI_Controller {
 			$data['liste_items']= $this->data_model->list_data($item_type);
 			$data['current_config'] = $this->data_model->get_config_tv('news');
 			$data['item_type'] = $item_type;
+			if($item_type == 'album'){
+				$data['nb_album'] = $this->data_model->count_album();
+			}
 			if($item_type == 'photos' && $album_id != ""){
 				$data['album_id'] = $album_id;
 				$data['content_album'] = $this->data_model->get_album($album_id);
