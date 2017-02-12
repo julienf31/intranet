@@ -378,20 +378,26 @@ class Data extends CI_Controller {
 		if($screenshot) $screenshot = $this->base64_to_jpg($screenshot, time().'_'.rand(0,30).'.jpg');
 
 		echo json_encode(array('result' => 'success'));
-
+		
+		$session_data = $this->session->userdata('logged_in');
+		if($session_data)
+		{
+			$username = $session_data['username'];
+		}
+		else $username = 'unlogged';
         $config = Array(
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
 			'smtp_port' => 465,
-			'smtp_user' => 'report.bug.ynov@gmail.com',
-			'smtp_pass' => 'cJn-Kf6-Bp2-95c',
+			'smtp_user' => getenv('MAIL_REPORT'),
+			'smtp_pass' => getenv('MAIL_PASSWD'),
 			'mailtype'  => 'html', 
 			'charset'   => 'iso-8859-1'
 		);
 		$this->load->library('email', $config);
 		$this->email->set_newline("\r\n");
 
-		$this->email->from('report.bug.ynov@gmail.com', 'Julien');
+		$this->email->from(getenv('MAIL_REPORT'), 'BUG REPORT : '.$username);
 		$this->email->to('julien.fournier.69@gmail.com');
 		$atach = FCPATH.$screenshot;
 		$this->email->subject('Bug report');

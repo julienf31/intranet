@@ -1,4 +1,6 @@
 <div class="container">
+
+<!-- Notifications -->
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<?php if($this->session->flashdata('message_success')): ?>
@@ -27,6 +29,11 @@
 			<?php endif; ?>
 		</div>
 	</div>
+
+<!-- Fin Notifications -->
+
+<!-- Liste news -->
+
 <?php if($item_type == 'bde' || $item_type == 'news'):
 		foreach ($liste_items as $key => $data) : ?>
 	<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -37,7 +44,7 @@
 					<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
 				</div>
 				<div class="modal-body">
-					Voulez vous vraiment supprimer la news <strong><?php echo $data['titre']; ?></strong><br/>
+					Voulez-vous vraiment supprimer la news <strong><?php echo $data['titre']; ?></strong><br/>
 					Créée par <strong><?php echo $data['auteur']; ?></strong> le <strong><?php echo $data['date']; ?></strong> ?
 				</div>
 				<div class="modal-footer">
@@ -48,11 +55,8 @@
 		</div>
 	</div>
 	<?php endforeach; ?>
-	<!-- contenu liste news -->
 	<div class="row">
-		<!-- Debut contenu-->
-		<div class="col-md-10 col-md-offset-1">
-<!-- Remarque les léger changement de syntaxe sur les balises php-->	
+		<div class="col-md-10 col-md-offset-1">	
 			<h3>Liste des articles - <?php echo $item_type; ?></h3>
 			<table class="table table-striped table-hover">
 				<tr>
@@ -92,6 +96,11 @@
 				</div>
 		</div>
 	</div>
+
+<!-- Fin liste news -->
+
+<!-- Liste album -->
+
 	<?php elseif($item_type == 'album'): ?>
 	<!-- DEBUT MODAL ALBUM-->
 		<?php foreach($liste_items as $key => $album): ?>
@@ -103,8 +112,11 @@
 						<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
 					</div>
 					<div class="modal-body">
-						Voulez vous vraiment supprimer la photo <strong><?php echo $album['name']; ?></strong><br/>
+						Voulez-vous vraiment supprimer la photo <strong><?php echo $album['name']; ?></strong><br/>
 						Créée par <strong><?php echo $album['created_by']; ?></strong> le <strong><?php echo $album['created']; ?></strong> ?
+					</div>
+					<div class="alert alert-warning" style="margin: 5px 10px;">
+						<strong>Attention : </strong>Supprimer cet album supprimera l'ensemble des photos qu'il contient.
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -114,9 +126,9 @@
 			</div>
 		</div>
 		<?php endforeach; ?>
-<!-- FIN  MODAL ALBUM-->
+	<!-- FIN  MODAL ALBUM-->
 	<div class="well well-sm">
-        <strong><?php echo $nb_album; ?> Albums</strong>
+        <strong><?php echo $nb_album; ?> Albums / <?php echo $nb_photos; ?> Photos</strong>
         <div class="btn-group">
             <a  id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
             </span>Liste</a> <a id="grid" class="btn btn-default btn-sm"><span
@@ -147,10 +159,10 @@
                             <p class="lead">
                                 Photos : <?php echo $nb_visible.'/'.$nb_album; ?></p>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-6" style="margin-bottom: 10px;">
                             <a class="btn btn-success" href="<?php echo  site_url('edit/').$item_type.'/'.$album['id'].'/0'; ?>">Editer l'album</a>
                             <a class="btn btn-success" href="<?php echo  site_url('liste/').'photos/'.$album['id'].''; ?>">Gestion des photos</a>
-							<a href="#albModal-<?php echo $album['id']; ?>" data-toggle="modal" >supprimer</a>
+							<a href="#albModal-<?php echo $album['id']; ?>" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i> Supprimer l'album</a>
 						</div>
                     </div>
                 </div>
@@ -166,6 +178,11 @@
 			<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Créer un album</a>
 		</div>
 	</div>
+
+<!-- Fin liste album -->
+
+<!-- Liste photos -->
+
 	<?php elseif($item_type == 'photos'): ?>
 <!-- DEBUT MODAL PHOTOS-->
 		<?php foreach($photos as $key_photos => $photo): ?>
@@ -177,7 +194,7 @@
 					<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
 				</div>
 				<div class="modal-body">
-					Voulez vous vraiment supprimer la photo <strong><?php echo $photo['name']; ?></strong><br/>
+					Voulez-vous vraiment supprimer la photo <strong><?php echo $photo['name']; ?></strong><br/>
 					Créée par <strong><?php echo $photo['created_by']; ?></strong> le <strong><?php echo $photo['created']; ?></strong> ?
 				</div>
 				<div class="modal-footer">
@@ -208,7 +225,7 @@
 						<?php endif; ?>
 
 					<div class="pull-right">
-					<a href="#picModal-<?php echo $photo['id']; ?>" data-toggle="modal" >supprimer</a>
+					<a href="#picModal-<?php echo $photo['id']; ?>" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i>supprimer</a>
 					</div>
     	        </div>
 			<?php endforeach; ?>
@@ -216,23 +233,30 @@
 		</div>
 	</div>
 	<div class="row">
-					<div class="pull-left">
-						<a href="<?php echo  site_url('liste/album'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
-					</div>
-					<div class="pull-right">
-						<a href="<?php echo  site_url('add/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une photo</a>
-					</div>
-				</div>
-	<?php endif; ?> <!-- FIN  DE LISTE PHOTOS-->
+		<div class="pull-left">
+			<a href="<?php echo  site_url('liste/album'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+		</div>
+		<div class="pull-right">
+			<a href="<?php echo  site_url('add/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une photo</a>
+		</div>
+	</div>
+
+<!-- Fin liste photos -->
+
+	<?php endif; ?>
 </div>
 
+<!-- Scripts necessaires pour les listes -->
+
 <script type="text/javascript">
+// Script de lancement des modals
   $(function() {
       $(document).on('click','#myModal',function(e){
           $('#blockidval').val($(this).data('id'));
       });
   });
 
+// Script de changement d'affichage des albums
 $(document).ready(function() {
     $('#list').click(function(event){event.preventDefault();$('#albums .item').addClass('list-group-item');});
     $('#grid').click(function(event){event.preventDefault();$('#albums .item').removeClass('list-group-item');$('#albums .item').addClass('grid-group-item');});
@@ -241,5 +265,4 @@ $(document).ready(function() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
-
 </script>

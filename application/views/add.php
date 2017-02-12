@@ -95,7 +95,7 @@
 				</div>
 			<div id="upload_fields" class="">
 				<div class="form-group">
-					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label>
+					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image</label>
 					<input type="file" id="imageup" name="imageup">
 					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
 				</div>
@@ -109,7 +109,7 @@
 			</div>
 				<br />
 				<div class="pull-left">
-					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					<a href="<?php echo  site_url('liste/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 				</div>
 				<div class="pull-right">
 					<button type="submit" class="btn btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>

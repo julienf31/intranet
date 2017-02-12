@@ -4,7 +4,6 @@ Class Data_model extends CI_Model
   public function __construct(){
     parent::__construct();
   }
-
   public function view_data($item_type){
     if ($item_type=='bde') {
       $this->db->from('news_bde');
@@ -225,6 +224,14 @@ Class Data_model extends CI_Model
   public function count_album(){
     $this->db->select('id');
     $this->db->from('album');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    return $result;
+  }
+  public function count_photos(){
+    $this->db->select('id');
+    $this->db->from('photos');
+    //$this->db->where('visible',1);
     $query = $this->db->get();
     $result = $query->num_rows();
     return $result;

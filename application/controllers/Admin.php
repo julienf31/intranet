@@ -33,6 +33,7 @@ class Admin extends CI_Controller {
 			$data['item_type'] = $item_type;
 			if($item_type == 'album'){
 				$data['nb_album'] = $this->data_model->count_album();
+				$data['nb_photos'] = $this->data_model->count_photos();
 			}
 			if($item_type == 'photos' && $album_id != ""){
 				$data['album_id'] = $album_id;
