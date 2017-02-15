@@ -69,7 +69,7 @@ class Tv extends CI_Controller {
 		$data['current_config'] = $this->data_model->get_config_tv("photos");
 		$data['item_type'] = 'photos';
 
-		$data['images'] = $this->data_model->photos();
+		$data['images'] = $this->data_model->afficher_photos();
 
 		$this->template->set('title', 'Photos');
 		$this->template->load('templates/tv', 'photos', $data);

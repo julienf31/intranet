@@ -50,9 +50,35 @@
 					<button type="submit" name="preview-btn" class="btn btn-info" formtarget="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Apercu</a>
 				</div>
 			</form>
-			<?php elseif($item_type == 'photos'): ?>
-			<h3>Ajouter une photo </h3>
+			<?php elseif($item_type == 'album'): ?>
+				<h3>Créer un album </h3>
+			<br>
 			<form method="post" action="<?php echo site_url('insert/').$item_type; ?>" name="data_register" enctype="multipart/form-data">
+			
+				<div class="form-group">
+					<label>Titre de l'album</label>
+					<input type="text" class="form-control" name="name" required>
+				</div>
+			<div id="news_fields">
+				<div class="form-group">
+					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de l'album</label>
+					<input type="file" id="imageup" name="imageup">
+					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
+				</div>
+				<label>Description de l'album</label>
+				<textarea class="form-control" name="desc"></textarea>
+			</div>
+				<br />
+				<div class="pull-left">
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				</div>
+				<div class="pull-right">
+					<button type="submit" class="btn btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+				</div>
+			</form>
+			<?php elseif($item_type == 'photos'): ?>
+			<h3>Ajouter une photo à l'album : <?php echo $content_album['name']; ?></h3>
+			<form method="post" action="<?php echo site_url('insert/').$item_type.'/'.$content_album['id']; ?>" name="data_register" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Nom</label>
 					<input type="text" class="form-control" name="nom" required>
@@ -69,7 +95,7 @@
 				</div>
 			<div id="upload_fields" class="">
 				<div class="form-group">
-					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label>
+					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image</label>
 					<input type="file" id="imageup" name="imageup">
 					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
 				</div>
@@ -83,7 +109,7 @@
 			</div>
 				<br />
 				<div class="pull-left">
-					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					<a href="<?php echo  site_url('liste/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 				</div>
 				<div class="pull-right">
 					<button type="submit" class="btn btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>

@@ -61,7 +61,7 @@ foreach ($infos as $info){
               <h4 style="margin-left:5px;">Anniversaires du jour :</h4>
               <?php if(count($anniversaire_etu) == 0 && count($anniversaire_inter) == 0): ?>
                 <center>
-                  <h4 style="margin-left:5px;margin-top: 10px;">Pas d'anniverssaire aujourd'hui</h4></center>
+                  <h4 style="margin-left:5px;margin-top: 10px;">Pas d'anniversaire aujourd'hui</h4></center>
                 <?php else: ?>
                   <?php if(count($anniversaire_inter) != 0) : ?>
                     <h4 style="margin-left:5px; margin-top: 10px;">Intervenants :</h4>
