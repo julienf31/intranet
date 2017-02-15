@@ -1,16 +1,25 @@
 <div class="container">
+<div class="row">
+		<div class="pull-left">
+			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+		</div>
+	</div>
 	<div class="row">
 		<h3 class="changelog">Version 2.1 - En Cours</h3>
 		<ul class="add">
 			<li>Systéme de signalement de bug par l'utilisateur</li>
 			<li>Création d'albums rassemblant les photos</li>
-			<li>Nouveau systéme d'alertes dynamiques</li>
+			<li>Possibilité d'afficher ou de masquer les albums et les photos</li>
+			<li>Nouveau système d'alertes dynamiques</li>
+			<li>Barres de temps sur les élèments dynamiques des écrans</li>
+			<li>Preset pour la selection du temps et affichage en secondes</li>
 		</ul>
 		<ul class="remove">
-			<li>Ancien systéme de photos</li>
+			<li>Supression de l'ancien système de photos</li>
 		</ul>
 		<ul class="other">
-			<li>Optimisation des animations des écrans</li>
+			<li>Optimisation des animations des écrans (fluidité et résolution)</li>
+			<li>Optimisation de la base de donnée</li>
 		</ul>
 	</div>		
 	<div class="row">
@@ -20,7 +29,7 @@
 			<li>Gestion des video Youtube dans les news</li>
 			<li>Album photo</li>
 			<li>Animations diverses</li>
-			<li>Cconfiguration par ecran</li>
+			<li>Configuration par ecran</li>
 			<li>Mise en place d'une page de maintenance</li>
 			<li>Systeme d'apercu</li>
 			<li>Véritable systeme de template</li>
