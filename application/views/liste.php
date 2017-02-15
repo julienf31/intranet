@@ -158,8 +158,13 @@
 							?>
                             <p class="lead">
                                 Photos : <?php echo $nb_visible.'/'.$nb_album; ?></p>
+								Visibilité :<?php if($album['visible']): ?>
+							<a href="<?php echo site_url('update_state/').$item_type.'/'.$album['id'].'/0/'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a>
+						<?php else : ?>
+							<a href="<?php echo site_url('update_state/').$item_type.'/'.$album['id'].'/1/'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a>
+						<?php endif; ?>
                         </div>
-                        <div class="col-xs-12 col-md-6" style="margin-bottom: 10px;">
+                        <div class="col-xs-12 col-md-8" style="margin-bottom: 10px;">
                             <a class="btn btn-success" href="<?php echo  site_url('edit/').$item_type.'/'.$album['id'].'/0'; ?>">Editer l'album</a>
                             <a class="btn btn-success" href="<?php echo  site_url('liste/').'photos/'.$album['id'].''; ?>">Gestion des photos</a>
 							<a href="#albModal-<?php echo $album['id']; ?>" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i> Supprimer l'album</a>

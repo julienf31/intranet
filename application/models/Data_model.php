@@ -126,13 +126,17 @@ Class Data_model extends CI_Model
       $this->db->set('visible', $state);
       $this->db->update('news_bde');
     }
-    if ($item_type == 'news') {
+    elseif ($item_type == 'news') {
       $this->db->set('visible', $state);
       $this->db->update('news');
     }
-    if($item_type == 'photos'){
+    elseif($item_type == 'photos'){
       $this->db->set('visible', $state);
       $this->db->update('photos');
+    }
+    elseif($item_type == 'album'){
+      $this->db->set('visible', $state);
+      $this->db->update('album');
     }
   }
 
