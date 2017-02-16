@@ -77,10 +77,10 @@
 			<?php }
 				else if($username =='bde'){ ?>
 			<h4>Gestion des news <span class="badge"><?php echo $nb_news_bde; ?></span></h4>
-			<a href="<?php echo site_url('liste_bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('liste/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 				News du BDE
 			</a>
-			<a href="<?php echo site_url('add_bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+			<a href="<?php echo site_url('add/bde'); ?>" class="btn btn-primary" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 				Ajout rapide
 			</a>
 			<a href="<?php echo site_url('config/bde'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
