@@ -74,8 +74,11 @@ $route['changelog'] = 'admin/changelog';
 $route['admin'] = 'admin/index';
 ####### Gestion des listes 
 $route['liste/(:any)'] = 'admin/liste/$1';
+$route['liste/(:any)/([0-9]+)'] = 'admin/liste/$1/$2';
+$route['album'] = 'admin/album';
 ####### Ajout d'éléments
 $route['add/(:any)'] = 'admin/add/$1';
+$route['add/(:any)/(:any)'] = 'admin/add/$1/$2';
 $route['preview/(:any)'] = 'data/insert/$1';
 ###### Mise a jour d'éléments
 $route['edit/(:any)/([0-9]+)/(:any)'] = 'admin/edit/$1/$2/$3';
@@ -83,9 +86,12 @@ $route['edit/(:any)/([0-9]+)/(:any)'] = 'admin/edit/$1/$2/$3';
 
 ######## GESTION DATAS #####
 $route['insert/(:any)'] = 'data/insert/$1';
+$route['insert/(:any)/(:any)'] = 'data/insert/$1/$2';
 $route['update/(:any)/([0-9]+)/(:any)'] = 'data/update/$1/$2/$3';
 $route['update_state/(:any)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1/$2/$3';
+$route['update_state/(:any)/([0-9]+)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1/$2/$3/$4';
 $route['delete/(:any)/([0-9]+)'] = 'data/delete/$1/$2';
+$route['delete/(:any)/([0-9]+)/([0-9]+)'] = 'data/delete/$1/$2/$3';
 
 
 

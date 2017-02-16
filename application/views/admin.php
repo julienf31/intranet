@@ -47,8 +47,8 @@
 			</a>
 
 			<h4>Gestion de l'album photos <span class="badge"><?php echo $nb_photos; ?></span></h4>
-			<a href="<?php echo site_url('liste/photos'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
-				Liste des photos
+			<a href="<?php echo site_url('liste/album'); ?>" class="btn btn-primary" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+				Liste des albums
 			</a>
 			<a href="<?php echo site_url('config/photos'); ?>" class="btn btn-success" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Parametres de l'album

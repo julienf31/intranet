@@ -7,7 +7,7 @@ class VerifyLogin extends CI_Controller {
    parent::__construct();
    $this->load->helper('date');
  }
-
+ 
  function index()
  {
    $this->load->library('form_validation');
@@ -17,9 +17,11 @@ class VerifyLogin extends CI_Controller {
 
    if($this->form_validation->run() == FALSE)
    {
-	$this->load->view('templates/header');
-	$this->load->view('login');
-	$this->load->view('templates/footer');
+      $session_data = $this->session->userdata('logged_in');
+      $data['username'] = $session_data['username'];
+      $data['current_config'] = $this->data_model->get_config_tv("news");
+      $this->template->set('title', 'Login');
+      $this->template->load('templates/admin', 'login', $data);
    }
    else
    {

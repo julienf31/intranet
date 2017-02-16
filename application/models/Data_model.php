@@ -4,7 +4,6 @@ Class Data_model extends CI_Model
   public function __construct(){
     parent::__construct();
   }
-
   public function view_data($item_type){
     if ($item_type=='bde') {
       $this->db->from('news_bde');
@@ -35,6 +34,11 @@ Class Data_model extends CI_Model
                                 FROM photos p
                                 ORDER BY p.id ASC");
     }
+    if ($item_type == 'album'){
+      $query = $this->db->query("SELECT *
+                                FROM album a
+                                ORDER BY a.id ASC");
+    }
     return $query->result_array();
   }
 
@@ -48,6 +52,11 @@ Class Data_model extends CI_Model
       $query=$this->db->query("SELECT *
                                FROM news n
                                WHERE n.id = $id");
+    }
+    if ($item_type=='album') {
+      $query=$this->db->query("SELECT *
+                               FROM album a
+                               WHERE a.id = $id");
     }
     return $query->row_array();
   }
@@ -70,6 +79,9 @@ Class Data_model extends CI_Model
         }
         if ($item_type == 'photos'){
         $this->db->insert('photos', $data);
+        }
+        if ($item_type == 'album') {
+          $this->db->insert('album', $data);
         }
 
         return TRUE;
@@ -98,6 +110,9 @@ Class Data_model extends CI_Model
     if ($item_type=='news') {
       $this->db->update('news', $data);
     }
+    if ($item_type=='album') {
+      $this->db->update('album', $data);
+    }
   }
 
   public function update_config_tv($item_type, $data){
@@ -111,13 +126,17 @@ Class Data_model extends CI_Model
       $this->db->set('visible', $state);
       $this->db->update('news_bde');
     }
-    if ($item_type == 'news') {
+    elseif ($item_type == 'news') {
       $this->db->set('visible', $state);
       $this->db->update('news');
     }
-    if($item_type == 'photos'){
+    elseif($item_type == 'photos'){
       $this->db->set('visible', $state);
       $this->db->update('photos');
+    }
+    elseif($item_type == 'album'){
+      $this->db->set('visible', $state);
+      $this->db->update('album');
     }
   }
 
@@ -126,11 +145,14 @@ Class Data_model extends CI_Model
     if ($item_type == 'bde') {
       $this->db->delete('news_bde');
     }
-    if ($item_type == 'news') {
+    elseif ($item_type == 'news') {
       $this->db->delete('news');
     }
-    if ($item_type == 'photos'){
+    elseif ($item_type == 'photos'){
       $this->db->delete('photos');
+    }
+    elseif ($item_type == 'album'){
+      $this->db->delete('album');
     }
   }
 
@@ -154,9 +176,38 @@ Class Data_model extends CI_Model
     return $query->row_array();
   }
 
-  public function photos(){
+  public function get_album($id){
+    $this->db->from('album');
+    $this->db->where('id',$id);
+    $query = $this->db->get();
+    return $query->row_array();
+  }
+  
+  public function get_photos_from_album($value){
     $this->db->from('photos');
-    $this->db->where('visible',1);
+    $this->db->where('album_id',$value);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function afficher_photos(){
+    /*
+    SELECT *
+    FROM album a, photos p
+    WHERE a.id = p.album_id
+    AND a.show = 1
+    AND p.show = 1;
+
+    SELECT *
+    FROM album a
+    JOIN photos ON photos.album_id = a.id
+    WHERE a.show = 1
+    AND photos.show = 1
+    */
+    $this->db->from('album');
+    $this->db->join('photos', 'photos.album_id = album.id');
+    $this->db->where('album.visible',1);
+    $this->db->where('photos.visible',1);
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -172,5 +223,21 @@ Class Data_model extends CI_Model
     $this->db->like('type',$type);
     $query = $this->db->get();
     return $query->result_array();
+  }
+
+  public function count_album(){
+    $this->db->select('id');
+    $this->db->from('album');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    return $result;
+  }
+  public function count_photos(){
+    $this->db->select('id');
+    $this->db->from('photos');
+    //$this->db->where('visible',1);
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    return $result;
   }
 }
