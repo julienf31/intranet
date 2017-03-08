@@ -47,7 +47,7 @@ class Data extends CI_Controller {
                         'created' => date("Y-m-d h:i:s"),
                         'type' => 'file',
                         'url' => $file,
-                        'visible' => $this->input->post('visible')
+                        'show_photo' => $this->input->post('visible')
                         );
                     }
                     $this->data_model->insert_data($item_type,$data);
@@ -65,7 +65,7 @@ class Data extends CI_Controller {
                     'name' => $this->input->post('name'),
                     'url' => $file,
                     'desc' => $this->input->post('desc'),
-                    'visible' => 1,
+                    'show_album' => 1,
                     'created' => date("Y-m-d h:i:s"),
                     'created_by' => $data['username']
                     );
