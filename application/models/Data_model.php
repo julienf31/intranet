@@ -206,8 +206,8 @@ Class Data_model extends CI_Model
     */
     $this->db->from('album');
     $this->db->join('photos', 'photos.album_id = album.id');
-    $this->db->where('album.visible',1);
-    $this->db->where('photos.visible',1);
+    $this->db->where('album.show_album',1);
+    $this->db->where('photos.show_photo',1);
     $query = $this->db->get();
     return $query->result_array();
   }
