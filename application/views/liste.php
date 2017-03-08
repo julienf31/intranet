@@ -152,13 +152,13 @@
                         <div class="col-xs-12 col-md-6">
 						<?php 
 							$query = $this->db->query('select id from photos where album_id = '.$album['id']);
-							$query2 = $this->db->query('select id from photos where album_id = '.$album['id'].' and visible = 1');
+							$query2 = $this->db->query('select id from photos where album_id = '.$album['id'].' and show_photo = 1');
 							$nb_album = $query->num_rows();
 							$nb_visible = $query2->num_rows();
 							?>
                             <p class="lead">
                                 Photos : <?php echo $nb_visible.'/'.$nb_album; ?></p>
-								Visibilité :<?php if($album['visible']): ?>
+								Visibilité :<?php if($album['show_album']): ?>
 							<a href="<?php echo site_url('update_state/').$item_type.'/'.$album['id'].'/0/'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a>
 						<?php else : ?>
 							<a href="<?php echo site_url('update_state/').$item_type.'/'.$album['id'].'/1/'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a>
@@ -223,7 +223,7 @@
                 	    <img class="img-responsive" alt="" <?php if($photo['type'] == 'url'){echo 'src="'.$photo['url'].'"';} elseif($photo['type'] == 'file') echo 'src="'.base_url().'uploads/'.$photo['url'].'"'; ?> />
              	   </a><?php echo $photo['name']; ?>
 					<br/>
-					Visibilité : <?php if($photo['visible']): ?>
+					Visibilité : <?php if($photo['show_photo']): ?>
 							<a href="<?php echo site_url('update_state/').$item_type.'/'.$photo['id'].'/0\/'.$photo['album_id']; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a>
 						<?php else : ?>
 							<a href="<?php echo site_url('update_state/').$item_type.'/'.$photo['id'].'/1\/'.$photo['album_id']; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a>
