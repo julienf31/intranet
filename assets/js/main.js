@@ -1,3 +1,6 @@
-if (window.location.pathname == '/admin'){
-	alert('yolo');
+function test(){
+	$('#green').click(function(){
+});
+	$('#red').click(function(){
+
 }

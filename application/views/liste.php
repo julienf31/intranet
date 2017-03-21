@@ -75,9 +75,9 @@
 						<td><?php echo $data['date']; ?></td>
 						<td><?php echo $data['auteur']; ?></td>
 						<?php if($data['visible']): ?>
-							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/0'; ?>" ><i class="fa fa-check green" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/0'; ?>" ><i id="green" class="fa fa-check green" aria-hidden="true"></i></a></td>
 						<?php else : ?>
-							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i class="fa fa-times red" aria-hidden="true"></i></a></td>
+							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i id="red" class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
 						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id'].'/'.$data['text_type']; ?>">editer</a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal" >supprimer</a></td>
 					</tr>	
@@ -270,4 +270,5 @@ $(document).ready(function() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
+test();
 </script>
