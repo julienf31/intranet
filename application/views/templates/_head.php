@@ -33,4 +33,5 @@
       content_css: '//www.tinymce.com/css/codepen.min.css'
     });
   </script>
+    <script src="<?= constant('ASSETS'); ?>/js/main.js"></script>
 </head>
