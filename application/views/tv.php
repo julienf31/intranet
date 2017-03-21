@@ -111,16 +111,8 @@
             var time = durreeInt - 500;
             console.log(time);
             setTimeout('out();', time);
-        </script>
 
-    <?php endif; ?>
-
-<!-- END CONTENU DE LA NEWS  -->
-
-</div>
-
-<script>
-      function move() {
+            function move() {
           var timeS = parseInt(<?php echo $config['tps_affichage'] ?>);
           var time = timeS * 1000;
           var interval = time/100;
@@ -137,6 +129,16 @@
         }
       }
       move();
+        </script>
+
+    <?php endif; ?>
+
+<!-- END CONTENU DE LA NEWS  -->
+
+</div>
+
+<script>
+      
     function refresh() {
         document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
     }
