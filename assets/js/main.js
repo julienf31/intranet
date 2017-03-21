@@ -3,4 +3,6 @@ function test(){
 });
 	$('#red').click(function(){
 
+});
+
 }
