@@ -410,7 +410,7 @@ class Data extends CI_Controller {
         $this->email->set_newline("\r\n");
         
         $this->email->from(getenv('MAIL_REPORT'), 'BUG REPORT : '.$username);
-        $this->email->to('julien.fournier.69@gmail.com');
+        $this->email->to('julien.fournier.69@gmail.com, clem_ios@hotmail.com');
         $atach = FCPATH.$screenshot;
         $this->email->subject('Bug report');
         $this->email->message($comment);
