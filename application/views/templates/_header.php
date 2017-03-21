@@ -73,9 +73,9 @@ else{
 }
 
 ?>
-		<div class="container-fluid" id="head">
-			<div class="row">
-			<div <?php echo $moduleGinnerHTML.'" style="'.$moduleGStyle.'"'; ?>>
+<div class="container-fluid" id="head">
+	<div class="row">
+		<div <?php echo $moduleGinnerHTML.'" style="'.$moduleGStyle.'"'; ?>>
 		<?php  if($moduleG != "_.php") include($moduleG); ?>
 		</div>
 		<div <?php echo $moduleCinnerHTML.'" style="'.$moduleCStyle.'"'; ?>>
@@ -84,5 +84,5 @@ else{
 		<div <?php echo $moduleDinnerHTML.'" style="'.$moduleDStyle.'"'; ?>>
 		<?php  if($moduleD != "_.php") include($moduleD); ?>
 		</div>
-			</div>
-		</div>
+	</div>
+</div>
