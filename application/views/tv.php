@@ -96,37 +96,6 @@
                 <div id="bar" style="background-color: white;"></div>
             </div>
             
-<<<<<<< HEAD
-        <script> // Script pour changer de news
-            var durree = <?php echo $config['tps_affichage']; ?>;
-            var durreeInt = durree * 1000;
-            setInterval('refresh()', durreeInt);
-            var animationIn = "<?php echo $current_config['animationOut']; ?>";
-            console.log(durreeInt);
-            var time = durreeInt - 500;
-            console.log(time);
-            setTimeout('out();', time);
-
-            function move() {
-            var timeS = parseInt(<?php echo $config['tps_affichage'] ?>);
-            var time = timeS * 1000;
-            var interval = time/100;
-            var elem = document.getElementById("bar");
-            var width = 1;
-            var id = setInterval(frame, interval);
-            function frame() {
-            if (width >= 100) {
-                clearInterval(id);
-            } else {
-                width += 1;
-                elem.style.width = width + '%';
-            }
-            }
-        }
-      move();
-        </script>
-
-=======
             <script> // Script pour changer de news
                 var durree = <?php echo $config['tps_affichage']; ?>;
                 var durreeInt = durree * 1000;
@@ -154,7 +123,6 @@
                 move();
             </script>
         </div>
->>>>>>> da6585b78046a316d5ed25f5609099b34353575f
     <?php endif; ?>
 <!-- END PROGRESS BAR  -->
 
