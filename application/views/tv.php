@@ -8,16 +8,13 @@
 <div id="news" class="container-fluid animated hidden">
 
 <!-- START TITRE DE LA NEWS  -->
-
     <?php if(isset($view)) :?> <!-- Si la news existe  -->
-
         <?php if($item_type == 'bde' && $view['afficher_titre'] =='1' && $view['text_type'] != 'JSON'): ?> <!-- Titre BDE -->
             <div class="row">
                 <div class="col-sm-12">
                     <h3 class="titrenews"><?php echo $view['titre']; ?></h3>
                 </div>
             </div>
-
         <?php elseif($item_type=='news') : ?> <!-- Titre News -->
             <div class="row">
                 <div class="col-sm-12">
@@ -25,18 +22,15 @@
                 </div>
             </div>
         <?php endif; ?>
-
     <?php endif; ?>
 <!-- END TITRE DE LA NEWS  -->
 
 <!-- START CONTENU DE LA NEWS  -->
-
     <?php if(!isset($view)): ?> <!-- Si il n'y a pas de news a afficher -->
         <h3 class="titrenews">Il n'y a pas d'actualités à afficher, revenez plus tard ! :)</h3>
-    
     <?php elseif($view['text_type'] == "JSON"): ?> <!-- Si c'est une video -->
         <?php $json = json_decode($view['texte']);?>
-            <div id="player"></div>
+        <div id="player"></div>
 
         <script> //Script Youtube API
 
@@ -95,13 +89,14 @@
                 <div class="carousel-caption"><p><?php echo $view['texte']; ?></p></div>
             </div>
         </div>	
-        </div>
-        </div>
+
+<!-- START PROGRESS BAR  -->
         <div style="position: fixed; bottom: 0;left:0;right:0;">
             <div id="progress" class="row" style="position: relative; bottom: 0;height: 10px;">
-              <div id="bar" style="background-color: white;"></div>
+                <div id="bar" style="background-color: white;"></div>
             </div>
             
+<<<<<<< HEAD
         <script> // Script pour changer de news
             var durree = <?php echo $config['tps_affichage']; ?>;
             var durreeInt = durree * 1000;
@@ -131,14 +126,41 @@
       move();
         </script>
 
-    <?php endif; ?>
+=======
+            <script> // Script pour changer de news
+                var durree = <?php echo $config['tps_affichage']; ?>;
+                var durreeInt = durree * 1000;
+                setInterval('refresh()', durreeInt);
+                var animationIn = "<?php echo $current_config['animationOut']; ?>";
+                var time = durreeInt - 500;
+                setTimeout('out();', time);
 
-<!-- END CONTENU DE LA NEWS  -->
+                function move() {
+                    var timeS = parseInt(<?php echo $config['tps_affichage'] ?>);
+                    var time = timeS * 1000;
+                    var interval = time/100;
+                    var elem = document.getElementById("bar");
+                    var width = 1;
+                    var id = setInterval(frame, interval);
+                    function frame() {
+                        if (width >= 100) {
+                            clearInterval(id);
+                        } else {
+                            width += 1;
+                            elem.style.width = width + '%';
+                        }
+                    } 
+                }
+                move();
+            </script>
+        </div>
+>>>>>>> da6585b78046a316d5ed25f5609099b34353575f
+    <?php endif; ?>
+<!-- END PROGRESS BAR  -->
 
 </div>
-
-<script>
-      
+<!-- END CONTENU DE LA NEWS  -->
+<script> 
     function refresh() {
         document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
     }
