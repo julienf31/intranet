@@ -5,12 +5,13 @@
 
 <?= $contents ?>
 
+<div style="clear:both; margin: 20px;"></div>
 <footer>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <div class="feedback right">
       <div class="tooltips">
           <div class="btn-group dropup">
-            <button type="button" class="btn btn-danger dropdown-toggle btn-circle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-danger dropdown-toggle btn-circle btn-lg feedbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-bug fa-2x" title="Report Bug"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-right dropdown-menu-form">
@@ -27,7 +28,7 @@
 										 Appuyez sur <i class="fa fa-camera cam"></i> pour joindre une capture automatique ;)
                      </div>
 										 <div class="col-sm-12 clearfix">
-                      <button class="btn btn-primary btn-block">Envoyer le rapport</button>
+                      <button class="btn btn-perso btn-danger btn-block">Envoyer le rapport</button>
                      </div>
                  </form>
                 </div>
@@ -56,7 +57,7 @@
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
-	<div class="col-md-6 col-md-offset-3" style="text-align: center;">
+	<div class="col-md-6 col-md-offset-3 foot" style="text-align: center;">
 		<?php if($this->session->userdata('logged_in')): ?> 
 			<a href="<?php echo site_url('logout'); ?>" class="lien footer"></br>
 			<span class="majuscule"><?php  echo $username; ?></span>
@@ -67,7 +68,7 @@
 		<?php endif; ?>
 			<span class="footer">Page générée en <strong>{elapsed_time}</strong> secondes</span>
 			<br/>
-			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v2.1</span>
+			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v2.2</span>
 	</div>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

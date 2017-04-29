@@ -1,11 +1,23 @@
 <div class="container">
 <div class="row">
 		<div class="pull-left">
-			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 		</div>
 	</div>
 	<div class="row">
-		<h3 class="changelog">Version 2.1 - En Cours</h3>
+		<h3 class="changelog">Version 2.2 - En Cours</h3>
+		<ul class="add">
+			<li>Nouveau style du panel admin</li>
+			<li>Ajout des groupes d'utilisateurs</li>
+		</ul>
+		<ul class="remove">
+		</ul>
+		<ul class="other">
+			<li>Optimisation</li>
+		</ul>
+	</div>	
+	<div class="row">
+		<h3 class="changelog">Version 2.1 - Terminé (05/02/2017)</h3>
 		<ul class="add">
 			<li>Systéme de signalement de bug par l'utilisateur</li>
 			<li>Création d'albums rassemblant les photos</li>
@@ -91,7 +103,7 @@
 	</div>
 	<div class="row">
 		<div class="pull-left">
-			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 		</div>
 	</div>
 </div>

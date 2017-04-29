@@ -6,12 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="<?= constant('ASSETS') ?>/animate.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="<?= constant('ASSETS') ?>/css/freewall.css">
   <link href="<?= constant('VENDORS') ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?= constant('ASSETS') ?>/style.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="<?= constant('ASSETS') ?>/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?= constant('ASSETS') ?>/icon/iconvault-preview.css" />
   <script src="<?= constant('ASSETS'); ?>/tinymce/js/tinymce/tinymce.min.js"></script>
+  <script src="<?= constant('ASSETS'); ?>/js/freewall.js"></script>
+
   <script>
     tinymce.init({
       selector: '#text',

@@ -113,21 +113,21 @@
             setTimeout('out();', time);
 
             function move() {
-          var timeS = parseInt(<?php echo $config['tps_affichage'] ?>);
-          var time = timeS * 1000;
-          var interval = time/100;
-        var elem = document.getElementById("bar");
-        var width = 1;
-        var id = setInterval(frame, interval);
-        function frame() {
-          if (width >= 100) {
-            clearInterval(id);
-          } else {
-            width += 1;
-            elem.style.width = width + '%';
-          }
+            var timeS = parseInt(<?php echo $config['tps_affichage'] ?>);
+            var time = timeS * 1000;
+            var interval = time/100;
+            var elem = document.getElementById("bar");
+            var width = 1;
+            var id = setInterval(frame, interval);
+            function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width += 1;
+                elem.style.width = width + '%';
+            }
+            }
         }
-      }
       move();
         </script>
 

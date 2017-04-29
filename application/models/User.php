@@ -20,5 +20,13 @@ Class User extends CI_Model
      return false;
    }
  }
+
+ function get_user_info($username){
+    $this->db->from('users');
+    $this->db->where('username', $username);
+    $query = $this->db->get();
+
+    return $query->row_array();
+ }
 }
 ?>

@@ -95,8 +95,8 @@
                 <input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>" min="1" max="30" readonly="readonly" style="background: none;color: black;">
               <div class="input-group-addon">sec</div>
               <div class="input-group-btn-vertical">
-                <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-                <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                <button class="btn btn-perso btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                <button class="btn btn-perso btn-default" type="button"><i class="fa fa-caret-down"></i></button>
               </div>
               </div>
               </div>
@@ -107,10 +107,10 @@
           </div>
           <div class="row">
             <div class="pull-left">
-              <a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+              <a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
             </div>
             <div class="pull-right">
-              <button type="submit" class="btn btn-success" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+              <button type="submit" class="btn btn-perso btn-success" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
             </div>
           </div>
       </form>

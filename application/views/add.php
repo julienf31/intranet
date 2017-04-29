@@ -41,13 +41,13 @@
 			</div>
 				<br />
 				<div class="pull-left">
-					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 				</div>
 				<div class="pull-right">
-					<button type="submit" class="btn btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 				</div>
 				<div class="pull-right" style="margin-right:5px;">
-					<button type="submit" name="preview-btn" class="btn btn-info" formtarget="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Apercu</a>
+					<button type="submit" name="preview-btn" class="btn btn-perso btn-info" formtarget="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Apercu</a>
 				</div>
 			</form>
 			<?php elseif($item_type == 'album'): ?>
@@ -109,13 +109,13 @@
 			</div>
 				<br />
 				<div class="pull-left">
-					<a href="<?php echo  site_url('liste/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					<a href="<?php echo  site_url('liste/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 				</div>
 				<div class="pull-right">
-					<button type="submit" class="btn btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 				</div>
 				<div class="pull-right" style="margin-right:5px;">
-					<button type="submit" name="preview-btn" class="btn btn-info" formtarget="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Apercu</a>
+					<button type="submit" name="preview-btn" class="btn btn-perso btn-info" formtarget="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Apercu</a>
 				</div>
 			</form>
 			<?php endif; ?>

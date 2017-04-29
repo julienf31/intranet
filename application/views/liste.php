@@ -48,8 +48,8 @@
 					Créée par <strong><?php echo $data['auteur']; ?></strong> le <strong><?php echo $data['date']; ?></strong> ?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-					<a href="<?php echo site_url('delete/'). $item_type.'/'. $data['id']; ?>" type="button" class="btn btn-success">Confirmer</a>
+					<button type="button" class="btn btn-perso btn-default" data-dismiss="modal">Annuler</button>
+					<a href="<?php echo site_url('delete/'). $item_type.'/'. $data['id']; ?>" type="button" class="btn btn-perso btn-success">Confirmer</a>
 				</div>
 			</div>
 		</div>
@@ -88,10 +88,10 @@
 			</table>
 				<div class="row">
 					<div class="pull-left">
-						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
 					<div class="pull-right">
-						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
+						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-perso btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une news</a>
 					</div>
 				</div>
 		</div>
@@ -119,8 +119,8 @@
 						<strong>Attention : </strong>Supprimer cet album supprimera l'ensemble des photos qu'il contient.
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-						<a href="<?php echo site_url('delete/'). $item_type.'/'. $album['id']; ?>" type="button" class="btn btn-success">Confirmer</a>
+						<button type="button" class="btn btn-perso btn-default" data-dismiss="modal">Annuler</button>
+						<a href="<?php echo site_url('delete/'). $item_type.'/'. $album['id']; ?>" type="button" class="btn btn-perso btn-success">Confirmer</a>
 					</div>
 				</div>
 			</div>
@@ -130,12 +130,12 @@
 	<div class="well well-sm">
         <strong><?php echo $nb_album; ?> Albums / <?php echo $nb_photos; ?> Photos</strong>
         <div class="btn-group">
-            <a  id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>Liste</a> <a id="grid" class="btn btn-default btn-sm"><span
+            <a  id="list" class="btn btn-perso btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>Liste</a> <a id="grid" class="btn btn-perso btn-default btn-sm"><span
                 class="glyphicon glyphicon-th"></span>Grille</a>
         </div>
 		<div class="pull-right">
-			<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Créer un album</a>
+			<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-perso btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Créer un album</a>
 		</div>
     </div>
     <div id="albums" class="row list-group">
@@ -165,9 +165,9 @@
 						<?php endif; ?>
                         </div>
                         <div class="col-xs-12 col-md-8" style="margin-bottom: 10px;">
-                            <a class="btn btn-success" href="<?php echo  site_url('edit/').$item_type.'/'.$album['id'].'/0'; ?>">Editer l'album</a>
-                            <a class="btn btn-success" href="<?php echo  site_url('liste/').'photos/'.$album['id'].''; ?>">Gestion des photos</a>
-							<a href="#albModal-<?php echo $album['id']; ?>" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i> Supprimer l'album</a>
+                            <a class="btn btn-perso btn-success" href="<?php echo  site_url('edit/').$item_type.'/'.$album['id'].'/0'; ?>">Editer l'album</a>
+                            <a class="btn btn-perso btn-success" href="<?php echo  site_url('liste/').'photos/'.$album['id'].''; ?>">Gestion des photos</a>
+							<a href="#albModal-<?php echo $album['id']; ?>" class="btn btn-perso btn-danger" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i> Supprimer l'album</a>
 						</div>
                     </div>
                 </div>
@@ -177,10 +177,10 @@
     </div>
 	<div class="row">
 		<div class="pull-left">
-			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 		</div>
 		<div class="pull-right">
-			<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Créer un album</a>
+			<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-perso btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Créer un album</a>
 		</div>
 	</div>
 

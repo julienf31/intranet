@@ -6,6 +6,10 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->helper('date');
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+			$data['user'] = $this->user_model->get_user_info($session_data['username']);
+		}
 
 	}
 
@@ -15,8 +19,10 @@ class Admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['current_config'] = $this->data_model->get_config_tv("news");
 			$data['username'] = $session_data['username'];
+			$data['user'] = $this->user_model->get_user_info($session_data['username']);
 			$this->template->set('title', 'Administration');
 			$this->template->load('templates/admin', 'admin', $data);
+			
 		}
 		else{
 			redirect('login', 'refresh');
