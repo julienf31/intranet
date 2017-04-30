@@ -5,8 +5,38 @@
 	$nb_news_bde = $query->num_rows();
 	$query = $this->db->query('select id from photos');
 	$nb_photos = $query->num_rows();
-
 ?>
+<!-- Notifications -->
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<?php if($this->session->flashdata('success')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('success')?>";
+					$.notify({message: message},{type: 'success'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('warning')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('warning')?>";
+					$.notify({message: message},{type: 'warning'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('info')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('info')?>";
+					$.notify({message: message},{type: 'info'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('danger')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('danger')?>";
+					$.notify({message: message},{type: 'danger'});
+				</script>
+			<?php endif; ?>
+		</div>
+	</div>
+
+<!-- Fin Notifications -->
 <div class="container">
 	<!-- page de news -->
 	<h3>Bienvenue <?php echo $username; ?></h3>
@@ -59,12 +89,21 @@
 		</div>
 		<div class="col-md-6">
 			<div class="adminBlock">
-				<h4>Gestion des utilisateurs <span class="badge badge-danger">beta</span></h4>
+				<h4>Gestion des utilisateurs <span class="badge badge-blue">new</span></h4>
 				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 					Liste des utilisateurs
 				</a>
 				<a href="<?php echo site_url('add/user'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-					Ajouter un utilisateur
+					Ajouter un utilisateur 
+				</a>
+			</div>
+			<div class="adminBlock">
+				<h4>Gestion des écrans <span class="badge badge-danger">beta</span></h4>
+				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+					Liste des écrans <span class="label label-warning">soon</span>
+				</a>
+				<a href="<?php echo site_url('add/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+					Ajouter un écran <span class="label label-warning">soon</span>
 				</a>
 			</div>
 			<div class="adminBlock">
@@ -78,8 +117,8 @@
 			</div>
 			<div class="adminBlock">
 			<h4>Gestion du site</h4>
-				<a href="<?php echo site_url('config'); ?>" class="btn btn-perso btn-danger disabled" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
-					Paramétres <span class="label label-warning">soon</span>
+				<a href="<?php echo site_url('config'); ?>" class="btn btn-perso btn-danger" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+					Paramétres
 				</a>
 				<a href="<?php echo site_url('changelog'); ?>" class="btn btn-perso btn-warning" type="button"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
 					Changelog
@@ -109,8 +148,3 @@
 		</div>
 	</div>
 </div>
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>

@@ -465,3 +465,18 @@ i.view:hover {
 i.view:focus {
     color: #269abc;
 }
+
+.update {
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.updateOk {
+    color: green;
+    margin-bottom: 10px;
+}
+
+.updateWrong {
+    color: red;
+    margin-bottom: 10px;
+}

@@ -269,4 +269,10 @@ Class Data_model extends CI_Model
     return $query->result_array();
   }
 
+  public function get_config(){
+    $this->db->from('config');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
 }

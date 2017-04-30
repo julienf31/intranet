@@ -292,11 +292,11 @@
 						<td><?php echo $data['group']; ?></td>
 						<td><?php echo $data['mail']; ?></td>
 						<?php if($data['active']): ?>
-							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/0'; ?>" ><i id="green" class="fa fa-check green" aria-hidden="true"></i></a></td>
+							<td style="text-align: center;"><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/0'; ?>" ><i id="green" class="fa fa-check green" aria-hidden="true"></i></a></td>
 						<?php else : ?>
-							<td><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i id="red" class="fa fa-times red" aria-hidden="true"></i></a></td>
+							<td style="text-align: center;"><a href="<?php echo site_url('update_state/').$item_type.'/'.$data['id'].'/1'; ?>" ><i id="red" class="fa fa-times red" aria-hidden="true"></i></a></td>
 						<?php endif; ?>
-						<td><a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal" >supprimer</a></td>
+						<td><a href=""><i class="fa fa-lock red" aria-hidden="true"></i></a> | <a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal" >supprimer</a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
@@ -334,8 +334,5 @@ $(document).ready(function() {
     $('#grid').click(function(event){event.preventDefault();$('#albums .item').removeClass('list-group-item');$('#albums .item').addClass('grid-group-item');});
 });
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
 test();
 </script>

@@ -14,15 +14,16 @@ class Admin extends CI_Controller {
 	}
 
 	// Fonction de base, vue de login
+
 	public function index(){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['current_config'] = $this->data_model->get_config_tv("news");
 			$data['username'] = $session_data['username'];
 			$data['user'] = $this->user_model->get_user_info($session_data['username']);
+			$this->session->set_flashdata('info', 'Nouvelle version de l\'interface : <br /> Cliquez sur <i class=\"fa fa-eye fa-fw view\" aria-hidden=\"true\" ></i> pour avoir un apercu des pages');
 			$this->template->set('title', 'Administration');
 			$this->template->load('templates/admin', 'admin', $data);
-			
 		}
 		else{
 			redirect('login', 'refresh');
@@ -120,9 +121,10 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$data['current_config'] = $this->data_model->get_config_tv("news");
+			$data['configs'] = $this->data_model->get_config();
 			$this->template->set('title', 'Config');
 			$this->template->load('templates/admin', 'config', $data);
-			$data['current_config'] = $this->data_model->get_config_tv("news");
 		}
 		else{
 			redirect('login', 'refresh');
