@@ -1,9 +1,11 @@
 <?php
 Class Data_model extends CI_Model
 {
+
   public function __construct(){
     parent::__construct();
   }
+
   public function view_data($item_type){
     if ($item_type=='bde') {
       $this->db->from('news_bde');
@@ -39,6 +41,10 @@ Class Data_model extends CI_Model
                                 FROM album a
                                 ORDER BY a.id ASC");
     }
+    if ($item_type == 'user'){
+      $this->db->from('users');
+      $query = $this->db->get();
+    }
     return $query->result_array();
   }
 
@@ -58,36 +64,42 @@ Class Data_model extends CI_Model
                                FROM album a
                                WHERE a.id = $id");
     }
+    if ($item_type=='user') {
+        $this->db->from('users');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+    }
     return $query->row_array();
   }
 
-    public function get_config_tv($item_type){
-        $this->db->select('*');
-        $this->db->from('config_tv');
-        $this->db->where('item_type', $item_type);
-        $query = $this->db->get();
+  public function get_config_tv($item_type){
+    $this->db->select('*');
+    $this->db->from('config_tv');
+    $this->db->where('item_type', $item_type);
+    $query = $this->db->get();
+    return $query->row_array();
+  }
 
-        return $query->row_array();
+  public function insert_data($item_type,$data){
+    if ($item_type=='bde') {
+      $this->db->insert('news_bde', $data);
     }
-
-    public function insert_data($item_type,$data){
-      if ($item_type=='bde') {
-        $this->db->insert('news_bde', $data);
-        }
-        if ($item_type=='news') {
-        $this->db->insert('news', $data);
-        }
-        if ($item_type == 'photos'){
-        $this->db->insert('photos', $data);
-        }
-        if ($item_type == 'album') {
-          $this->db->insert('album', $data);
-        }
-
-        return TRUE;
+    if ($item_type=='news') {
+      $this->db->insert('news', $data);
     }
+    if ($item_type == 'photos'){
+      $this->db->insert('photos', $data);
+    }
+    if ($item_type == 'album') {
+      $this->db->insert('album', $data);
+    }
+    if ($item_type == 'user') {
+      $this->db->insert('users', $data);
+    }
+    return TRUE;
+  }
   
-    public function edit_data($item_type,$id){
+  public function edit_data($item_type,$id){
     if ($item_type=='bde') {
         $query=$this->db->query("SELECT *
                                  FROM news_bde n
@@ -98,9 +110,13 @@ Class Data_model extends CI_Model
                                  FROM news_ n
                                  WHERE n.id = $id");
     }
-
-        return $query->result_array();
+    if ($item_type=='user') {
+        $this->db->from('users');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
     }
+    return $query->result_array();
+  }
 
   public function update_data($item_type,$id, $data){
     $this->db->where('id', $id); 
@@ -112,6 +128,9 @@ Class Data_model extends CI_Model
     }
     if ($item_type=='album') {
       $this->db->update('album', $data);
+    }
+    if ($item_type=='user') {
+      $this->db->update('users', $data);
     }
   }
 
@@ -138,21 +157,33 @@ Class Data_model extends CI_Model
       $this->db->set('show_album', $state);
       $this->db->update('album');
     }
+    elseif($item_type == 'user'){
+      $this->db->set('active', $state);
+      $this->db->update('users');
+    }
   }
 
   public function delete($item_type,$id){
     $this->db->where('id', $id);
-    if ($item_type == 'bde') {
-      $this->db->delete('news_bde');
-    }
-    elseif ($item_type == 'news') {
-      $this->db->delete('news');
-    }
-    elseif ($item_type == 'photos'){
-      $this->db->delete('photos');
-    }
-    elseif ($item_type == 'album'){
-      $this->db->delete('album');
+    switch ($item_type) {
+      case 'bde':
+        $this->db->delete('news_bde');
+        break;
+      case 'news':
+        $this->db->delete('news');
+        break;
+      case 'photos':
+        $this->db->delete('photos');
+        break;
+      case 'album':
+        $this->db->delete('album');
+        break;
+      case 'user':
+        $this->db->delete('users');
+        break;
+      default:
+        
+        break;
     }
   }
 
@@ -162,6 +193,7 @@ Class Data_model extends CI_Model
     $query = $this->db->get();
     return $query->result_array();
   }
+
   public function anniversaire_inter($date){
     $this->db->from('intervenants');
     $this->db->like('anniversaire',$date);    
@@ -191,19 +223,6 @@ Class Data_model extends CI_Model
   }
 
   public function afficher_photos(){
-    /*
-    SELECT *
-    FROM album a, photos p
-    WHERE a.id = p.album_id
-    AND a.show = 1
-    AND p.show = 1;
-
-    SELECT *
-    FROM album a
-    JOIN photos ON photos.album_id = a.id
-    WHERE a.show = 1
-    AND photos.show = 1
-    */
     $this->db->from('album');
     $this->db->join('photos', 'photos.album_id = album.id');
     $this->db->where('album.show_album',1);
@@ -232,6 +251,7 @@ Class Data_model extends CI_Model
     $result = $query->num_rows();
     return $result;
   }
+
   public function count_photos(){
     $this->db->select('id');
     $this->db->from('photos');
@@ -240,4 +260,13 @@ Class Data_model extends CI_Model
     $result = $query->num_rows();
     return $result;
   }
+
+  public function get_groups_list(){
+    $this->db->select('name');
+    $this->db->from('groups');
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
 }

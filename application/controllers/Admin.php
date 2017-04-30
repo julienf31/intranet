@@ -79,6 +79,9 @@ class Admin extends CI_Controller {
 				$data['album_id'] = $album_id;
 				$data['content_album'] = $this->data_model->get_album($album_id);
 			}
+			if($item_type == 'user'){
+				$data['groups'] = $this->data_model->get_groups_list();
+			}
 			$this->template->set('title', 'Ajout');
 			$this->template->load('templates/admin', 'add', $data);
 		}
@@ -94,12 +97,15 @@ class Admin extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['current_data'] = $this->data_model->get_data($item_type,$id);
 			$data['current_config'] = $this->data_model->get_config_tv('news');
-			if($item_type != 'album'){
+			if($item_type == 'news' || $item_type == 'bde'){
 				if($data['current_data']['text_type'] == 'JSON'){
 					$video_datas = $data['current_data']['texte'];
 					$video_id = json_decode($video_datas)->videoId;
 					$data['current_data']['texte'] = 'https://www.youtube.com/watch?v='.$video_id;
 				}
+			}
+			if($item_type == 'user'){
+				$data['groups'] = $this->data_model->get_groups_list();
 			}
 			$data['item_type'] = $item_type;
 			$this->template->set('title', 'Edition');

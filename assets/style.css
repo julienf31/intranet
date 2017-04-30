@@ -402,6 +402,7 @@ h3.titrenews {
     width: 90%;
     background: none;
     float: right;
+    text-align: right;
 }
 
 .login::-webkit-input-placeholder {
@@ -436,4 +437,8 @@ i.input {
 label.connexion {
     width: 100%;
     text-align: center;
+}
+
+.badge-danger {
+    background-color: red;
 }

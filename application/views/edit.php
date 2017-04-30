@@ -76,6 +76,40 @@
 					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 				</div>
 			</form>
+			<?php elseif($item_type == 'user'): ?>
+			<h3>Ajouter un utilisateur</h3>
+			<br>
+			<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register" enctype="multipart/form-data">
+			
+				<div class="form-group">
+					<label>Username</label>
+					<input type="text" class="form-control" name="username" style="width: 50%;"  value="<?php echo $current_data['username']; ?>" required>
+				</div>
+				<div class="form-group">
+					<label style="display:block;">Groupe</label>
+					<select class="form-control" name="group" style="width: 12%;display:inline-block;">
+						<?php foreach ($groups as $key => $group): ?>
+						<option value="<?php echo $group['name']; ?>" <?php if( $current_data['group'] == $group['name']){ echo 'selected';} ?>><?php echo $group['name']; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<br/>
+					<br/>
+					<input type="checkbox" name="active" <?php if( $current_data['active'] == true){ echo 'checked';} ?> value="1"> Activer ce compte
+					<br/>
+				</div>
+				<div class="form-group">
+					<label>Mail</label>
+					<input type="mail" class="form-control" name="mail" style="width: 60%;" value="<?php echo $current_data['mail']; ?>" required>
+				</div>
+			
+				<br />
+				<div class="pull-left">
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				</div>
+				<div class="pull-right">
+					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+				</div>
+			</form>
 		<?php endif; ?>
 		</div>
 	</div>

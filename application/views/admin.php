@@ -64,6 +64,13 @@
 			<a href="<?php echo site_url('meteo'); ?>" class="btn btn-perso btn-info" type="button" target="_blank"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>
 				Afficher la météo
 			</a>
+			<h4>Gestion des utilisateurs <span class="badge badge-danger">beta</span></h4>
+			<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+				Liste des utilisateurs
+			</a>
+			<a href="<?php echo site_url(''); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+				Ajouter un utilisateur <span class="label label-warning">soon</span>
+			</a>
 			<h4>Gestion du site</h4>
 			<a href="<?php echo site_url('config'); ?>" class="btn btn-perso btn-danger disabled" type="button"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
 				Modifier les paramétres

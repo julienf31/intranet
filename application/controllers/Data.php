@@ -74,6 +74,27 @@ class Data extends CI_Controller {
                     $link='liste/'.$item_type;
                     redirect($link);
                 }
+                elseif($item_type == 'user'){
+                    $data['username'] = $session_data['username'];
+                    $active=$this->input->post('active');
+                    if($active == null){
+                        $active=0;
+                    }
+                    else{
+                        $active=1;
+                    }
+                    $data = array(
+                    'username' => $this->input->post('username'),
+                    'password' => MD5($this->input->post('password')),
+                    'group' => $this->input->post('group'),
+                    'mail' => $this->input->post('mail'),
+                    'active' => $active
+                    );
+                    $this->data_model->insert_data($item_type,$data);
+                    $this->session->set_flashdata('message_success', 'Utilisateur ajouté avec succés');
+                    $link='liste/'.$item_type;
+                    redirect($link);
+                }
                 else{
 					//Si news :
 					$data['username'] = $session_data['username'];
@@ -180,7 +201,7 @@ class Data extends CI_Controller {
     
     
     // Edition de news
-    public function update($item_type, $id, $text_type)
+    public function update($item_type, $id, $text_type = null)
     {
         $data['current_config'] = $this->data_model->get_config_tv($item_type);
         if (isset($_POST['send-btn'])) {
@@ -196,6 +217,25 @@ class Data extends CI_Controller {
                 );
                 $this->data_model->update_data($item_type,$id,$data);
                 $this->session->set_flashdata('message_success', 'Album edité avec succés');
+                $link='liste/'.$item_type;
+                redirect($link);
+            }
+            elseif($item_type == 'user'){
+                $active=$this->input->post('active');
+                if($active == null){
+                    $active=0;
+                }
+                else{
+                    $active=1;
+                }
+                $data = array(
+                'username' => $this->input->post('username'),
+                'group' => $this->input->post('group'),
+                'mail' => $this->input->post('mail'),
+                'active' => $active
+                );
+                $this->data_model->update_data($item_type,$id,$data);
+                $this->session->set_flashdata('message_success', 'Utilisateur modifié avec succés');
                 $link='liste/'.$item_type;
                 redirect($link);
             }
@@ -361,6 +401,10 @@ class Data extends CI_Controller {
             $this->session->set_flashdata('message_success', 'News actualisée avec succés');
             $link='liste/'.$item_type;
         }
+        elseif($item_type == 'user'){
+            $this->session->set_flashdata('message_success', 'Utilisateur actualisé avec succés');
+            $link='liste/'.$item_type;
+        }
         redirect($link);
     }
     
@@ -374,6 +418,10 @@ class Data extends CI_Controller {
         }
         elseif($item_type == 'album'){
             $this->session->set_flashdata('message_danger', 'Album supprimé avec succés');
+            $link='liste/'.$item_type;
+        }
+        elseif($item_type == 'user'){
+            $this->session->set_flashdata('message_danger', 'Utilisateur supprimé avec succés');
             $link='liste/'.$item_type;
         }
         else{
