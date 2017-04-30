@@ -339,6 +339,7 @@ h3.titrenews {
 .btn-perso {
     border-radius: 0;
     border: none;
+    margin-bottom: 5px;
 }
 
 .btn-danger {
@@ -441,4 +442,26 @@ label.connexion {
 
 .badge-danger {
     background-color: red;
+}
+
+.adminBlock {
+    background-color: #F1F1F1;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.adminBlock:hover {
+    background-color: #E1E1E1;
+}
+
+i.view {
+    color: #5bc0de;
+}
+
+i.view:hover {
+    color: #31b0d5;
+}
+
+i.view:focus {
+    color: #269abc;
 }
