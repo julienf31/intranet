@@ -3,7 +3,7 @@
 		<div class="row">
 			<!-- Debut contenu-->
 			<div class="col-md-8 col-md-offset-2">
-				<div class="col-md-6 col-md-offset-3  col-xs-8 col-xs-offset-2 loginform">
+				<div id="login"  class="col-md-6 col-md-offset-3  col-xs-8 col-xs-offset-2 loginform animated">
 					<?php if (validation_errors()) : ?> 
 						<div class="alert alert-danger alert-dismissible" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -11,7 +11,7 @@
 						</div>
 					<?php endif; ?>
 					<?php echo form_open('verifylogin'); ?>
-					<form class="loginform"> 
+					<form id="log" class="loginform"> 
 						<label class="connexion">Connexion</label><br /><br />
 						<div class="loginform">
 							<div class="">
@@ -27,13 +27,68 @@
 							</div>
 							<div style="clear:both;"></div>
 							<br />
-							<a href="#">Mot de passe oublié ?</a>
+							<a id="forgot">Mot de passe oublié ?</a>
 							<br /><br /><br />
 						</div>
 						<button type="submit" class="btn btn-perso btn-success" value="Login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</button>
 						<button type="reset" class="btn btn-perso btn-warning pull-right"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
 					</form>
+					</div>
+					<!-- PW FORGOT -->
+					<div id="forgotform"  class="col-md-6 col-md-offset-3  col-xs-8 col-xs-offset-2 loginform hidden animated">
+					<?php if ($this->session->flashdata('forgot_error')) : ?> 
+						<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<?php echo $this->session->flashdata('forgot_error'); ?>
+						</div>
+					<?php endif; ?>
+					<?php echo form_open('login'); ?>
+					<?php if (form_error('emailforgot')) : ?> 
+						<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<?php echo form_error('emailforgot'); ?>
+						</div>
+					<?php endif; ?>
+						<form class="loginform"> 
+							<label class="connexion">Mot de passe oublié</label><br /><br />
+							<div class="loginform">
+								<div class="">
+									<div class=""><i class="fa fa-envelope fa-fw input" aria-hidden="true"></i></div>
+									<input type="text" class="login" id="emailforgot" name="emailforgot" placeholder="email">
+								</div>
+							</div>
+							<div style="clear:both;"></div>
+							<br />
+							<button type="submit" class="btn btn-perso btn-success pull-right" value="Login"><i class="fa fa-send" aria-hidden="true"></i> Envoyer</button>
+							<button id="back" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$('#forgot').click(function(){
+			$('#login').addClass("flipOutY");
+			setTimeout(function() {
+				$('#login').addClass("hidden").removeClass("flipOutY");
+				$('#forgotform').removeClass("hidden").addClass("flipInY");
+			}, 1000);
+			
+		})
+		$('#back').click(function(){
+			$('#forgotform').addClass("flipOutY");
+			setTimeout(function() {
+				$('#forgotform').addClass("hidden").removeClass("flipOutY");
+				$('#login').removeClass("hidden").addClass("flipInY");
+			}, 1000);
+		})
+		<?php if(($this->session->flashdata('forgot_error')) || (form_error('emailforgot'))): ?>
+		function showForgotForm(){
+			$('#login').addClass("hidden");
+			$('#forgotform').removeClass("hidden");
+		}
+		showForgotForm();
+		<?php endif; ?>
+		
+	</script>

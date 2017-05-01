@@ -14,6 +14,8 @@ $route['bde/(:any)'] = 'tv/bde/$1';
 $route['meteo'] = 'tv/meteo';
 $route['photos'] = 'tv/photos';
 
+##### LOGIN #####
+$route['login/reset_password/(:any)'] = 'login/reset_password/token/$1';
 
 ##### ACCEUIL ET CONF #####
 $route['logout'] = 'admin/logout';

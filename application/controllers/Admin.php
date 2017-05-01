@@ -106,6 +106,8 @@ class Admin extends CI_Controller {
 				}
 			}
 			if($item_type == 'user'){
+				//$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
+            	//$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
 				$data['groups'] = $this->data_model->get_groups_list();
 			}
 			$data['item_type'] = $item_type;

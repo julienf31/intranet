@@ -14,7 +14,6 @@ class Data extends CI_Controller {
         
     }
     
-    // Insert news
     public function insert($item_type,$album_id = null){
         $data['current_config'] = $this->data_model->get_config_tv($item_type);
         
@@ -199,8 +198,6 @@ class Data extends CI_Controller {
         redirect($link);
     }
     
-    
-    // Edition de news
     public function update($item_type, $id, $text_type = null)
     {
         $data['current_config'] = $this->data_model->get_config_tv($item_type);

@@ -8,13 +8,14 @@
 		<h3 class="changelog">Version 2.2 - En Cours</h3>
 		<ul class="add">
 			<li>Nouveau style du panel admin</li>
+			<li>Fonctionalité mot de passe oublié</li>
 			<li>Ajout de la gestion des utilisateurs</li>
 			<li>Ajout des groupes d'utilisateurs</li>
 		</ul>
 		<ul class="remove">
 		</ul>
 		<ul class="other">
-			<li>Optimisation</li>
+			<li>Optimisation de la base de donnée</li>
 		</ul>
 	</div>	
 	<div class="row">
