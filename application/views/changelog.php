@@ -1,10 +1,16 @@
 <div class="container">
 <div class="row">
-		<div class="pull-left">
-			<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
-		</div>
-	</div>
-	<div class="row">
+	Selectionnez la version : 
+	<select id="version">
+		<option value="2-2">2.2</option>
+		<option value="2-1">2.1</option>
+		<option value="2">2</option>
+		<option value="1-02">1.02</option>
+		<option value="1-01">1.01</option>
+		<option value="1">1</option>
+	</select>
+</div>
+	<div id="2-2" class="row changelog-corp">
 		<h3 class="changelog">Version 2.2 - En Cours</h3>
 		<ul class="add">
 			<li>Nouveau style du panel admin</li>
@@ -15,10 +21,11 @@
 		<ul class="remove">
 		</ul>
 		<ul class="other">
+			<li>Changelog dynamique</li>
 			<li>Optimisation de la base de donnée</li>
 		</ul>
 	</div>	
-	<div class="row">
+	<div id="2-1" class="row changelog-corp hidden">
 		<h3 class="changelog">Version 2.1 - Terminé (05/02/2017)</h3>
 		<ul class="add">
 			<li>Systéme de signalement de bug par l'utilisateur</li>
@@ -36,7 +43,7 @@
 			<li>Optimisation de la base de donnée</li>
 		</ul>
 	</div>		
-	<div class="row">
+	<div id="2" class="row changelog-corp hidden">
 		<h3 class="changelog">Version 2 - Terminé (01/02/2017)</h3>
 		<ul class="add">
 			<li>Page d'actualites/meteo</li>
@@ -61,7 +68,7 @@
 
 		</ul>
 	</div>		
-	<div class="row">
+	<div id="1-02" class="row changelog-corp hidden">
 		<h3 class="changelog">Version 1.02 - Terminé</h3>
 		<ul class="add">
 			<li>Changer visibilité au clic sur l'icone</li>
@@ -72,7 +79,7 @@
 		<ul class="other">
 		</ul>
 	</div>	
-	<div class="row">
+	<div id="1-01" class="row changelog-corp hidden">
 		<h3 class="changelog">Version 1.01 - Terminé</h3>
 		<ul class="add">
 			<li>Ajout d'une confirmation à la supression des news</li>
@@ -89,7 +96,7 @@
 			<li>Correction de la police du texte sur le slide</li>
 		</ul>
 	</div>
-	<div class="row">
+	<div id="1" class="row changelog-corp hidden">
 		<h3 class="changelog">Version 1.0 - 04/01/2017 </h3>
 		<ul class="add">
 			<li>Ajout du service de News</li>
@@ -109,3 +116,38 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+var currentVersion = <?php echo $configs[0]['value']; ?>;
+
+if($('#version option:selected').text() == currentVersion){
+		$('#version').toggleClass('currentVersion');
+	}
+	else{
+		$('#version').toggleClass('oldVersion');
+	}
+
+$('#version').change(function(){
+	value = $( "#version option:selected" ).val();
+	console.log("change to " + value);
+	version = '#' + value;
+	
+	$('.changelog-corp').each(function(){
+		if(!$(this).hasClass('hidden')){
+			$(this).addClass('hidden');
+		}
+	});
+	
+	if($('#version option:selected').text() == currentVersion){
+		$('#version').addClass('currentVersion');
+		$('#version').removeClass('oldVersion');
+	}
+	else{
+		$('#version').removeClass('currentVersion');
+		$('#version').addClass('oldVersion');
+	}
+	
+	$(version).removeClass('hidden');
+});
+</script>

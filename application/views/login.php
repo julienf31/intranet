@@ -1,3 +1,37 @@
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<!--<?php if(validation_errors()): ?>
+				<script type="text/javascript">
+					var message = "<?php echo "\"".validation_errors()."\"" ?>";
+					$.notify({message: message},{type: 'warning'});
+				</script>
+			<?php endif; ?>-->
+			<?php if($this->session->flashdata('forgot_error')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('forgot_error') ?>";
+					$.notify({message: message},{type: 'warning'});
+				</script>
+			<?php endif; ?>
+			<?php if(form_error('emailforgot')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo form_error('emailforgot')?>";
+					$.notify({message: message},{type: 'warning'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('info')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('info')?>";
+					$.notify({message: message},{type: 'info'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('danger')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('danger')?>";
+					$.notify({message: message},{type: 'danger'});
+				</script>
+			<?php endif; ?>
+		</div>
+	</div>
 	<div class="container">
 		<!-- page de connexion -->
 		<div class="row">
@@ -36,19 +70,7 @@
 					</div>
 					<!-- PW FORGOT -->
 					<div id="forgotform"  class="col-md-6 col-md-offset-3  col-xs-8 col-xs-offset-2 loginform hidden animated">
-					<?php if ($this->session->flashdata('forgot_error')) : ?> 
-						<div class="alert alert-danger alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<?php echo $this->session->flashdata('forgot_error'); ?>
-						</div>
-					<?php endif; ?>
 					<?php echo form_open('login'); ?>
-					<?php if (form_error('emailforgot')) : ?> 
-						<div class="alert alert-danger alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<?php echo form_error('emailforgot'); ?>
-						</div>
-					<?php endif; ?>
 						<form class="loginform"> 
 							<label class="connexion">Mot de passe oublié</label><br /><br />
 							<div class="loginform">

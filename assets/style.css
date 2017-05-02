@@ -480,3 +480,11 @@ i.view:focus {
     color: red;
     margin-bottom: 10px;
 }
+
+.currentVersion {
+    background-color: green;
+}
+
+.oldVersion {
+    background-color: red;
+}

@@ -156,6 +156,7 @@ class Admin extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$data['current_config'] = $this->data_model->get_config_tv("news");
 		$data['username'] = $session_data['username'];
+		$data['configs'] = $this->data_model->get_config();
 		$this->template->set('title', 'Changelog');
 		$this->template->load('templates/admin', 'changelog', $data);
 	}
