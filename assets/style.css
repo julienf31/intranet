@@ -448,10 +448,14 @@ label.connexion {
     background-color: #F1F1F1;
     padding: 10px;
     margin-bottom: 5px;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
 }
 
 .adminBlock:hover {
-    background-color: #E1E1E1;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+    background-color: #D1D1D1;
 }
 
 i.view {
@@ -487,4 +491,8 @@ i.view:focus {
 
 .oldVersion {
     background-color: red;
+}
+
+.resetrow {
+    margin: -15px 0;
 }

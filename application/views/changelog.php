@@ -14,6 +14,7 @@
 		<h3 class="changelog">Version 2.2 - En Cours</h3>
 		<ul class="add">
 			<li>Nouveau style du panel admin</li>
+			<li>Navigation au fléches dans l'affichage des news</li>
 			<li>Fonctionalité mot de passe oublié</li>
 			<li>Ajout de la gestion des utilisateurs</li>
 			<li>Ajout des groupes d'utilisateurs</li>

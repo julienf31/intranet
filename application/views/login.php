@@ -1,11 +1,5 @@
-	<div class="row">
+	<div class="row resetrow">
 		<div class="col-md-10 col-md-offset-1">
-			<!--<?php if(validation_errors()): ?>
-				<script type="text/javascript">
-					var message = "<?php echo "\"".validation_errors()."\"" ?>";
-					$.notify({message: message},{type: 'warning'});
-				</script>
-			<?php endif; ?>-->
 			<?php if($this->session->flashdata('forgot_error')): ?>
 				<script type="text/javascript">
 					var message = "<?php echo $this->session->flashdata('forgot_error') ?>";

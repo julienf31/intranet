@@ -65,7 +65,7 @@ Class User extends CI_Model
     public function set_last_login($id){
         $this->db->from('users');
         $this->db->where('id',$id);
-        $this->db->set('last',date('Y-m-d'));
+        $this->db->set('last',date('Y-m-d H:i:s'));
         $this->db->update('users');
     }
 
@@ -73,7 +73,7 @@ Class User extends CI_Model
 
     public function insertToken($user_id){   
         $token = substr(sha1(rand()), 0, 30); 
-        $date = date('Y-m-d');
+        $date = date('Y-m-d H:i:s');
         
         $string = array(
                 'token'=> $token,
@@ -99,9 +99,11 @@ Class User extends CI_Model
             
             $created = $row->created;
             $createdTS = strtotime($created);
-            $today = date('Y-m-d'); 
+            $today = date('Y-m-d H:m:s'); 
             $todayTS = strtotime($today);
             
+
+            // faire comparaison pour expiration
             if($createdTS != $todayTS){
                 return false;
             }

@@ -7,7 +7,7 @@
 	$nb_photos = $query->num_rows();
 ?>
 <!-- Notifications -->
-	<div class="row">
+	<div class="row resetrow">
 		<div class="col-md-10 col-md-offset-1">
 			<?php if($this->session->flashdata('success')): ?>
 				<script type="text/javascript">

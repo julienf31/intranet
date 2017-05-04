@@ -1,7 +1,6 @@
 <style>
     html{
         overflow: hidden;
-        cursor: none;
     }
 </style>
 
@@ -132,10 +131,23 @@
     function refresh() {
         document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
     }
+    function previous() {
+        document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $previous ?>';
+    }
     function out(){
         $('#news').addClass("<?php echo $current_config['animationOut']; ?>");
     }
     $(window).load(function(){
         $('#news').addClass("<?php echo $current_config['animationIn']; ?>").removeClass('hidden')
     }) 
+
+    // tracking des fleches
+    $(document).keydown(function(e){
+    if (e.keyCode == 37) {
+        previous();
+    }
+    if (e.keyCode == 39) {
+        refresh();
+    }
+});
 </script>
