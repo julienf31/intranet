@@ -24,6 +24,7 @@ $route['config'] = 'admin/config';
 $route['config/(:any)'] = 'admin/tv_config/$1';
 $route['update/config_tv/(:any)'] = 'data/update_config_tv/$1';
 $route['changelog'] = 'admin/changelog';
+$route['maskUpdates/([0-9]+)'] = 'admin/maskUpdates/$1';
 ##### ADMINISTRATION #####
 $route['admin'] = 'admin/index';
 ####### Gestion des listes 

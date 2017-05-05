@@ -444,6 +444,10 @@ label.connexion {
     background-color: red;
 }
 
+.badge-yellow {
+    background-color: orange;
+}
+
 .adminBlock {
     background-color: #F1F1F1;
     padding: 10px;

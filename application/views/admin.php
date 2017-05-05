@@ -5,6 +5,9 @@
 	$nb_news_bde = $query->num_rows();
 	$query = $this->db->query('select id from photos');
 	$nb_photos = $query->num_rows();
+	$query = $this->db->query('select id from users');
+	$nb_users = $query->num_rows();
+	
 ?>
 <!-- Notifications -->
 	<div class="row resetrow">
@@ -89,7 +92,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="adminBlock">
-				<h4>Gestion des utilisateurs <span class="badge badge-blue">new</span></h4>
+				<h4>Gestion des utilisateurs <span class="badge"><?php echo $nb_users; ?></span> <span class="badge badge-yellow">new</span></h4>
 				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 					Liste des utilisateurs
 				</a>
@@ -148,3 +151,34 @@
 		</div>
 	</div>
 </div>
+
+<!-- Pop up nouveautées -->
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nouveautés dans la version 2.2</h4>
+      </div>
+      <div class="modal-body">
+	  	<ul class="add">
+    		<li>Cliquez sur <i class="fa fa-eye fa-fw view" aria-hidden="true" ></i> pour avoir un apercu des pages</li>
+			<li>Nouveau style du panel admin</li>
+			<li>Navigation au fléches dans l'affichage des news</li>
+			<li>Fonctionalité mot de passe oublié</li>
+			<li>Ajout de la gestion des utilisateurs</li>
+		</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-perso" data-dismiss="modal">Fermer</button>
+        <a href="<?php echo site_url('maskUpdates'.'/'.$user['id']); ?>" class="btn btn-default btn-perso">Ne plus afficher</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+<?php if($user['showUpdates']){
+	echo "$('#update').modal('show');";
+} ?>
+</script>

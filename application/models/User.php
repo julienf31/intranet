@@ -69,6 +69,12 @@ Class User extends CI_Model
         $this->db->update('users');
     }
 
+    public function maskUpdate($id){
+        $this->db->from('users');
+        $this->db->where('id',$id);
+        $this->db->set('showUpdates',0);
+        $this->db->update('users');
+    }
     //  TOKENS 
 
     public function insertToken($user_id){   

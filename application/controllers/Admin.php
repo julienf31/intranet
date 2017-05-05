@@ -21,7 +21,6 @@ class Admin extends CI_Controller {
 			$data['current_config'] = $this->data_model->get_config_tv("news");
 			$data['username'] = $session_data['username'];
 			$data['user'] = $this->user_model->get_user_info($session_data['username']);
-			$this->session->set_flashdata('info', 'Nouvelle version de l\'interface : <br /> Cliquez sur <i class=\"fa fa-eye fa-fw view\" aria-hidden=\"true\" ></i> pour avoir un apercu des pages');
 			$this->template->set('title', 'Administration');
 			$this->template->load('templates/admin', 'admin', $data);
 		}
@@ -178,5 +177,11 @@ class Admin extends CI_Controller {
 		redirect('admin', 'refresh');
 	}
 
+
+	public function maskUpdates($id){
+		$this->user_model->maskUpdate($id);
+		redirect('admin', 'refresh');
+	}
 }
+
 ?>
