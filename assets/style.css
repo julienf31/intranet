@@ -2,7 +2,6 @@ body {
     font-family: "Montserrat";
     font-size: 2.5vmin;
     position: relative;
-    min-height: 100%;
 }
 
 h4 {
@@ -395,22 +394,49 @@ h3.titrenews {
 
 /* LOGIN */
 
+.row.accessrow {
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 20px;
+}
+
+.access {
+    font-family: 'Raleway', sans-serif;
+    font-size: 200%;
+    color: rgb(228, 42, 81);
+}
+
+.access2 {
+    padding-left: 20px;
+    font-family: 'Raleway', sans-serif;
+    color: grey;
+}
+
+.loginform.access2 {
+    text-align: justify;
+}
+
 .login {
+    font-family: Raleway;
     border: none;
     border-radius: none;
     border-bottom: 1px solid #BBBBBB;
     display: inline-block;
     width: 90%;
     background: none;
-    float: right;
     text-align: right;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    transition-property: all;
 }
 
 .login::-webkit-input-placeholder {
     text-align: right;
+    font-family: Raleway, sans-serif;
 }
 
 .login:hover {
+    transition-delay: .1s;
+    transition-timing-function: ease-in-out;
     border-bottom: 1px solid rgb(21, 161, 138);
 }
 
@@ -432,13 +458,16 @@ i.input {
 
 .loginform {
     padding-top: 30px;
-    background-color: #E1E1E1;
+    padding: 20px;
 }
 
 label.connexion {
     width: 100%;
     text-align: center;
 }
+
+
+/* PANEL ADMIN */
 
 .badge-danger {
     background-color: red;
@@ -462,6 +491,9 @@ label.connexion {
     background-color: #D1D1D1;
 }
 
+
+/* ICONE PREVIEW */
+
 i.view {
     color: #5bc0de;
 }
@@ -473,6 +505,9 @@ i.view:hover {
 i.view:focus {
     color: #269abc;
 }
+
+
+/* CHECK FOR UPDATE */
 
 .update {
     color: orange;
@@ -499,4 +534,14 @@ i.view:focus {
 
 .resetrow {
     margin: -15px 0;
+}
+
+.alert {
+    border-radius: 0;
+    border: none;
+}
+
+.modal-content {
+    border-radius: 0;
+    border: none;
 }

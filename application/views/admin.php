@@ -42,8 +42,10 @@
 <!-- Fin Notifications -->
 <div class="container">
 	<!-- page de news -->
-	<h3>Bienvenue <?php echo $username; ?></h3>
-	<div class="row">
+	<div class="row accessrow">
+		<h3>Bienvenue <?php echo $username; ?></h3>
+	</div>
+	<div class="row" style="margin: 0 -30px ; padding: 0;">
 		<!-- Debut contenu-->
 		<div class="col-md-6">
 			
@@ -170,7 +172,7 @@
 		</ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-perso" data-dismiss="modal">Fermer</button>
+        <a  class="btn btn-danger btn-perso" style="margin: 0;" data-dismiss="modal">Fermer</a>
         <a href="<?php echo site_url('maskUpdates'.'/'.$user['id']); ?>" class="btn btn-default btn-perso">Ne plus afficher</a>
       </div>
     </div>

@@ -70,10 +70,10 @@
 			</div>
 				<br />
 				<div class="pull-left">
-					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-danger btn-perso"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 				</div>
 				<div class="pull-right">
-					<button type="submit" class="btn btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+					<button type="submit" class="btn btn-success btn-perso" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 				</div>
 			</form>
 			<?php elseif($item_type == 'photos'): ?>

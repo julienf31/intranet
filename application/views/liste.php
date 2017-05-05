@@ -230,7 +230,7 @@
 						<?php endif; ?>
 
 					<div class="pull-right">
-					<a href="#picModal-<?php echo $photo['id']; ?>" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i>supprimer</a>
+					<a href="#picModal-<?php echo $photo['id']; ?>" class="btn btn-danger btn-perso" data-toggle="modal" ><i class="fa fa-trash fa-fw" aria-hidden="true"></i>supprimer</a>
 					</div>
     	        </div>
 			<?php endforeach; ?>
@@ -239,10 +239,10 @@
 	</div>
 	<div class="row">
 		<div class="pull-left">
-			<a href="<?php echo  site_url('liste/album'); ?>" type="button" class="btn btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+			<a href="<?php echo  site_url('liste/album'); ?>" type="button" class="btn btn-danger btn-perso"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 		</div>
 		<div class="pull-right">
-			<a href="<?php echo  site_url('add/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une photo</a>
+			<a href="<?php echo  site_url('add/').$item_type.'/'.$content_album['id']; ?>" type="button" class="btn btn-success btn-perso"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter une photo</a>
 		</div>
 	</div>
 

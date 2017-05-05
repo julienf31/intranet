@@ -95,8 +95,8 @@
                 <input type="text" class="form-control" name="tps_affichage" value="<?php echo $current_config['tps_affichage'];?>" min="1" max="30" readonly="readonly" style="background: none;color: black;">
               <div class="input-group-addon">sec</div>
               <div class="input-group-btn-vertical">
-                <button class="btn btn-perso btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-                <button class="btn btn-perso btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
               </div>
               </div>
               </div>
