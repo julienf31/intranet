@@ -29,6 +29,7 @@ $route['maskUpdates/([0-9]+)'] = 'admin/maskUpdates/$1';
 $route['admin'] = 'admin/index';
 ####### Gestion des listes 
 $route['liste/(:any)'] = 'admin/liste/$1';
+$route['liste/(:any)/search/(:any)'] = 'admin/search/$1/$2';
 $route['liste/(:any)/([0-9]+)'] = 'admin/liste/$1/$2';
 $route['album'] = 'admin/album';
 ####### Ajout d'éléments

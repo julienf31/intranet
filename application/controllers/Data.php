@@ -22,7 +22,7 @@ class Data extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             if($session_data){
                 if($item_type == 'photos'){
-					// Regarder controler pour multiple upload
+                    // Regarder controler pour multiple upload
                     $data['username'] = $session_data['username'];
                     $this->upload->do_upload('imageup');
                     $data_upload_files = $this->upload->data();
@@ -95,8 +95,8 @@ class Data extends CI_Controller {
                     redirect($link);
                 }
                 else{
-					//Si news :
-					$data['username'] = $session_data['username'];
+                    //Si news :
+                    $data['username'] = $session_data['username'];
                     $this->insert_news($item_type,$data);
                 }
             }
@@ -104,7 +104,7 @@ class Data extends CI_Controller {
                 redirect('login', 'refresh');
             }
             
-        // Preview action
+            // Preview action
         } else if (isset($_POST['preview-btn'])) {
             if($this->session->userdata('logged_in'))
             {
@@ -320,7 +320,7 @@ class Data extends CI_Controller {
                 }
                 
                 $preview_data = array(
-				'titre'                   => $this->input->post('titre'),
+                'titre'                   => $this->input->post('titre'),
                 'auteur'                  => $data['username'],
                 'visible'                 => $this->input->post('visible'),
                 'afficher_titre'          => $afficher_titre,

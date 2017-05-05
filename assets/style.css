@@ -545,3 +545,19 @@ i.view:focus {
     border-radius: 0;
     border: none;
 }
+
+ul.pagination li:first-child a,
+ul.pagination li:last-child a {
+    border-radius: 0;
+}
+
+.example .pagination>li>a,
+.example .pagination>li>span {
+    border: 1px solid rgb(21, 161, 138);
+}
+
+.pagination>li.active>a {
+    background: rgb(21, 161, 138);
+    color: #fff;
+    border-color: rgb(21, 161, 138);
+}

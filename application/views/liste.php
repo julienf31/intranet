@@ -58,6 +58,37 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">	
 			<h3>Liste des articles - <?php echo $item_type; ?></h3>
+			<div class="row">
+				<div class="col-md-12 pull-right" style="display: inline-block; margin-bottom: 10px;text-align: right;">
+					<?php
+						echo form_open('admin/liste/'.$item_type);
+						$searchInput = array(
+							'name'          => 'search',
+							'type'			=> 'search',
+							'id'            => 'search',
+							'class'			=> 'login',
+							'placeholder'   => 'Rechercher',
+							'style'         => 'width: 25%;display: inline-block;'
+							);
+						echo form_input($searchInput);
+						$button = array(
+							'name'          => 'lsearch',
+							'id'            => 'searchButton',
+							'class'			=> 'btn btn-success btn-perso',
+							'type'          => 'submit',
+							'style'			=> 'margin-bottom: 0;',
+							'content'       => '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+							);
+						echo form_button($button);
+						echo form_close();
+					?>
+				</div>
+				<?php if($search): ?>
+				<div class="row" style="text-align: center;margin-bottom: 10px;">
+					<span class="badge badge" style="border-radius: 0;"><a href="" data-toggle="tooltip" data-placement="top" title="Annuler la recherche"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$search; ?></span>
+				</div>
+				<?php endif; ?>
+			</div>
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>#</th>
@@ -86,6 +117,9 @@
 					<td colspan="7" align="center" >Pas de News à afficher</td>
 				<?php endif; ?>
 			</table>
+			<div class="row" style="text-align: center;">
+			<?php echo $this->pagination->create_links(); ?>
+			</div>
 				<div class="row">
 					<div class="pull-left">
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
@@ -101,7 +135,7 @@
 
 <!-- Liste album -->
 
-	<?php elseif($item_type == 'album'): ?>
+<?php elseif($item_type == 'album'): ?>
 	<!-- DEBUT MODAL ALBUM-->
 		<?php foreach($liste_items as $key => $album): ?>
 		<div class="modal fade" id="albModal-<?php echo $album['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -187,9 +221,8 @@
 <!-- Fin liste album -->
 
 <!-- Liste photos -->
-
-	<?php elseif($item_type == 'photos'): ?>
-<!-- DEBUT MODAL PHOTOS-->
+<?php elseif($item_type == 'photos'): ?>
+ <!-- DEBUT MODAL PHOTOS-->
 		<?php foreach($photos as $key_photos => $photo): ?>
 	<div class="modal fade" id="picModal-<?php echo $photo['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -210,7 +243,7 @@
 		</div>
 	</div>
 	<?php endforeach; ?>
-<!-- FIN  MODAL PHOTOS-->
+ <!-- FIN  MODAL PHOTOS-->
 	<h3>Gestion des photos de l'album : <?php echo $content_album['name']; ?></h3>
 	<link rel="stylesheet" href="//frontend.reklamor.com/fancybox/jquery.fancybox.css" media="screen">
 	<script src="//frontend.reklamor.com/fancybox/jquery.fancybox.js"></script>
@@ -248,8 +281,8 @@
 
 <!-- Fin liste photos -->
 <!-- Début liste user -->
-	<?php elseif($item_type == 'user'): 
-		foreach ($liste_items as $key => $data) : ?>
+<?php elseif($item_type == 'user'): 
+	foreach ($liste_items as $key => $data) : ?>
 	<div class="modal fade" id="myModal-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -275,6 +308,36 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">	
 			<h3>Liste des utilisateurs - <?php echo $item_type; ?></h3>
+			<div class="row">
+				<div class="col-md-12 pull-right" style="display: inline-block; margin-bottom: 10px;text-align: right;">
+					<?php
+						echo form_open('admin/liste/'.$item_type);
+						$searchInput = array(
+							'name'          => 'search',
+							'type'			=> 'search',
+							'id'            => 'search',
+							'class'			=> 'login',
+							'placeholder'   => 'Rechercher',
+							'style'         => 'width: 25%;display: inline-block;'
+							);
+						echo form_input($searchInput);
+						$button = array(
+							'name'          => 'lsearch',
+							'id'            => 'searchButton',
+							'class'			=> 'btn btn-success btn-perso',
+							'type'          => 'submit',
+							'style'			=> 'margin-bottom: 0;',
+							'content'       => '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+							);
+						echo form_button($button);
+						echo form_close();
+					?>
+				</div>
+				<?php if($search): ?>
+				<div class="row" style="text-align: center;margin-bottom: 10px;">
+					<span class="badge badge" style="border-radius: 0;"><a href=""><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$search; ?></span>
+				</div>
+				<?php endif; ?>
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>#</th>
@@ -313,8 +376,7 @@
 				</div>
 		</div>
 	</div>
-
-<!-- Fin liste user -->
+ <!-- Fin liste user -->
 	<?php endif; ?>
 </div>
 
