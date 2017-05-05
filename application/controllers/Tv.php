@@ -55,6 +55,7 @@ class Tv extends CI_Controller {
 		$this->load->model('Data_model','bde');
 		$news = $this->bde->view_data('bde');
 		if(count($news)){
+			$data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;
 			$data['nextview'] = (isset($news[$key + 1 ])) ? $key + 1 : 0;
 			$data['view'] = $news[$key];
 		}

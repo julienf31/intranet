@@ -129,10 +129,10 @@
 <!-- END CONTENU DE LA NEWS  -->
 <script> 
     function refresh() {
-        document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview ?>';
+        document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $nextview; ?>';
     }
     function previous() {
-        document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>' + '/<?php echo $previous ?>';
+        document.location.href = document.location.origin + '/index.php/<?php echo $item_type; ?>/<?php echo $previous; ?>';
     }
     function out(){
         $('#news').addClass("<?php echo $current_config['animationOut']; ?>");
