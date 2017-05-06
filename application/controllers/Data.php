@@ -84,7 +84,7 @@ class Data extends CI_Controller {
                     }
                     $data = array(
                     'username' => $this->input->post('username'),
-                    'password' => MD5($this->input->post('password')),
+                    'password' => sha1($this->input->post('password')),
                     'group' => $this->input->post('group'),
                     'mail' => $this->input->post('mail'),
                     'active' => $active

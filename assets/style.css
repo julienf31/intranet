@@ -8,6 +8,10 @@ h4 {
     font-size: 3.2vmin;
 }
 
+input:focus {
+    outline: none;
+}
+
 .tv {
     font-size: 4vmin;
 }
@@ -19,7 +23,6 @@ h4 {
 .meteo {
     text-align: left;
     color: #ec4363;
-    font-height: 400;
     line-height: 22.25px;
     padding-top: 20px;
 }

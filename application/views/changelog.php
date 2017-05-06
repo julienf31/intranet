@@ -20,6 +20,8 @@
     <ul class="remove">
     </ul>
     <ul class="other">
+      <li>Amélioration du cryptage des mots de passe</li>
+      <li>Chargement des pages 2 fois plus rapide</li>
     </ul>
   </div>
   <div id="2-2" class="row changelog-corp">

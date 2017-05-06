@@ -24,12 +24,12 @@ class Admin extends CI_Controller {
             $data['user'] = $this->user_model->get_user_info($session_data['username']);
             
             $data['nb_news'] = $this->data_model->count_data('news');
-            $data['nb_news_bde'] = $this->data_model->count_data('news');
+            $data['nb_news_bde'] = $this->data_model->count_data('news_bde');
             $data['nb_photos'] = $this->data_model->count_data('photos');
             $data['nb_users'] = $this->data_model->count_data('users');
             
             $this->template->set('title', 'Administration');
-            $this->template->load('templates/admin', 'admin', $data);
+            $this->template->load('templates/admin', 'admin/admin', $data);
         }
         else{
             redirect('login', 'refresh');
@@ -96,7 +96,7 @@ class Admin extends CI_Controller {
             $data['liste_items']= $this->data_model->list_data($item_type,$from,$size,$value);
             
             $this->template->set('title', 'Liste');
-            $this->template->load('templates/admin', 'liste', $data);
+            $this->template->load('templates/admin', 'admin/liste', $data);
         }
         else{
             redirect('login', 'refresh');
@@ -132,7 +132,7 @@ class Admin extends CI_Controller {
                 $data['groups'] = $this->data_model->get_groups_list();
             }
             $this->template->set('title', 'Ajout');
-            $this->template->load('templates/admin', 'add', $data);
+            $this->template->load('templates/admin', 'admin/add', $data);
         }
         else{
             redirect('login', 'refresh');
@@ -160,7 +160,7 @@ class Admin extends CI_Controller {
             }
             $data['item_type'] = $item_type;
             $this->template->set('title', 'Edition');
-            $this->template->load('templates/admin', 'edit', $data);
+            $this->template->load('templates/admin', 'admin/edit', $data);
         }else{
             redirect('login', 'refresh');
         }
@@ -174,7 +174,7 @@ class Admin extends CI_Controller {
             $data['current_config'] = $this->data_model->get_config_tv("news");
             $data['configs'] = $this->data_model->get_config();
             $this->template->set('title', 'Config');
-            $this->template->load('templates/admin', 'config', $data);
+            $this->template->load('templates/admin', 'admin/config', $data);
         }
         else{
             redirect('login', 'refresh');
@@ -211,12 +211,12 @@ class Admin extends CI_Controller {
     
     // Affichage de la page de maintenance
     public function maintenance(){
-        $this->load->view('maintenance');
+        $this->load->view('errors/maintenance');
     }
     
     // Affichage de la page d'erreur 404'
     public function error404(){
-        $this->load->view('404');
+        $this->load->view('errors/404');
     }
     
     // Fonction de deconexion

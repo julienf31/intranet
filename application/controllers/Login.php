@@ -94,7 +94,7 @@ public function reset_password()
             }else{          
                 $post = $this->input->post(NULL, TRUE);                
                 $cleanPost = $this->security->xss_clean($post);                
-                $hashed = MD5($cleanPost['password']);                
+                $hashed = sha1($cleanPost['password']);                
                 $cleanPost['password'] = $hashed;
                 $cleanPost['user_id'] = $user_info->id;
                 unset($cleanPost['passconf']);                

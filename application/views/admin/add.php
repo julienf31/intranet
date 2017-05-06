@@ -147,7 +147,6 @@
 				<div class="form-group">
 					<label>Password</label>
 					<input type="password" class="form-control" name="password" style="width: 50%;" required><br />
-					<input type="password" class="form-control" name="password-confirm" style="width: 50%;" required>
 				</div>
 			
 				<br />
