@@ -36,7 +36,7 @@ Class Data_model extends CI_Model
             $this->db->from('news');
             $this->db->limit($size,$from);
             if($value){
-              $this->db->limit($from,$size);
+                $this->db->limit($from,$size);
                 $this->db->like('titre',$value);
                 $this->db->or_like('auteur', $value);
                 $this->db->order_by('auteur');
@@ -192,6 +192,100 @@ Class Data_model extends CI_Model
         }
     }
     
+    public function select_db($item_type){
+        if($item_type == 'news'){
+            $db = "news";
+        }
+        else if($item_type == "bde"){
+            $db = "news_bde";
+        }
+        else if($item_type == "album"){
+            $db = "album";
+        }
+        else if($item_type == "photos"){
+            $db = "photos";
+        }
+        else if($item_type == "user"){
+            $db = "users";
+        }
+        return $db;
+    }
+    
+    public function anniversaire_etu($date){
+        $this->db->from('etudiants');
+        $this->db->like('anniversaire',$date);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function anniversaire_inter($date){
+        $this->db->from('intervenants');
+        $this->db->like('anniversaire',$date);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function fete($date){
+        $this->db->from('saint');
+        $this->db->like('JourMois',$date);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function get_album($id){
+        $this->db->from('album');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function get_photos_from_album($value){
+        $this->db->from('photos');
+        $this->db->where('album_id',$value);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function afficher_photos(){
+        $this->db->from('album');
+        $this->db->join('photos', 'photos.album_id = album.id');
+        $this->db->where('album.show_album',1);
+        $this->db->where('photos.show_photo',1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function modules(){
+        $this->db->from('modules');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function animations($type){
+        $this->db->from('animations');
+        $this->db->like('type',$type);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function count_data($db) {
+        return $this->db->count_all($db);
+    }
+    
+    public function get_groups_list(){
+        $this->db->select('name');
+        $this->db->from('groups');
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    public function get_config(){
+        $this->db->from('config');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
     public function delete($item_type,$id){
         $this->db->where('id', $id);
         switch ($item_type) {
@@ -212,99 +306,7 @@ Class Data_model extends CI_Model
                 break;
             default:
                 break;
-                }
-                }
-
-public function anniversaire_etu($date){
-    $this->db->from('etudiants');
-    $this->db->like('anniversaire',$date);
-    $query = $this->db->get();
-    return $query->result_array();
-}
-
-public function anniversaire_inter($date){
-    $this->db->from('intervenants');
-    $this->db->like('anniversaire',$date);
-    $query = $this->db->get();
-    return $query->result_array();
-}
-
-public function fete($date){
-    $this->db->from('saint');
-    $this->db->like('JourMois',$date);
-    $query = $this->db->get();
-    return $query->row_array();
-}
-
-public function get_album($id){
-    $this->db->from('album');
-    $this->db->where('id',$id);
-    $query = $this->db->get();
-    return $query->row_array();
-}
-
-public function get_photos_from_album($value){
-    $this->db->from('photos');
-    $this->db->where('album_id',$value);
-    $query = $this->db->get();
-    return $query->result_array();
-}
-
-public function afficher_photos(){
-    $this->db->from('album');
-    $this->db->join('photos', 'photos.album_id = album.id');
-    $this->db->where('album.show_album',1);
-    $this->db->where('photos.show_photo',1);
-    $query = $this->db->get();
-    return $query->result_array();
-}
-
-public function modules(){
-    $this->db->from('modules');
-    $query = $this->db->get();
-    return $query->result_array();
-}
-
-public function animations($type){
-    $this->db->from('animations');
-    $this->db->like('type',$type);
-    $query = $this->db->get();
-    return $query->result_array();
-}
-
-public function count_data($db) {
-    return $this->db->count_all($db);
-}
-
-public function count_album(){
-    $this->db->select('id');
-    $this->db->from('album');
-    $query = $this->db->get();
-    $result = $query->num_rows();
-    return $result;
-}
-
-public function count_photos(){
-    $this->db->select('id');
-    $this->db->from('photos');
-    //$this->db->where('visible',1);
-    $query = $this->db->get();
-    $result = $query->num_rows();
-    return $result;
-}
-
-public function get_groups_list(){
-    $this->db->select('name');
-    $this->db->from('groups');
-    $query = $this->db->get();
-    
-    return $query->result_array();
-}
-
-public function get_config(){
-    $this->db->from('config');
-    $query = $this->db->get();
-    return $query->result_array();
+    }
 }
 
 }

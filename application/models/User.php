@@ -62,6 +62,12 @@ Class User extends CI_Model
         return true;
     } 
 
+    public function set_ip_user($id,$ip){
+        $this->db->from('users');
+        $this->db->where('id',$id);
+        $this->db->set('ip',$ip);
+        $this->db->update('users');
+    }
     public function set_last_login($id){
         $this->db->from('users');
         $this->db->where('id',$id);

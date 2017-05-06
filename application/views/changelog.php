@@ -15,6 +15,7 @@
     <h3 class="changelog">Version 2.3 - En Cours</h3>
     <ul class="add">
       <li>Recherche dans les listes (news et utilisateurs)</li>
+	    <li>Pagination dans les listes (news et utilisateurs)</li>
     </ul>
     <ul class="remove">
     </ul>

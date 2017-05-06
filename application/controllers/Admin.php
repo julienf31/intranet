@@ -43,22 +43,15 @@ class Admin extends CI_Controller {
                 $data['search'] = null;
             }
 
- 			if($item_type == 'news'){
-                $db = "news";
-            }
-            else if($item_type == "bde"){
-                $db = "news_bde";
-            }
-
+            $db = $this->data_model->select_db($item_type);
             $data['current_config'] = $this->data_model->get_config_tv('news');
             $data['item_type'] = $item_type;
+
             if($item_type == 'album'){
-                $db ="album";
-                $data['nb_album'] = $this->data_model->count_album();
-                $data['nb_photos'] = $this->data_model->count_photos();
+                $data['nb_album'] = $this->data_model->count_data($db);
+                $data['nb_photos'] = $this->data_model->count_data('photos');
             }
             if($item_type == 'photos' && $album_id != ""){
-                $db = "photos";
                 $data['album_id'] = $album_id;
                 $data['content_album'] = $this->data_model->get_album($album_id);
                 $data['photos'] = $this->data_model->get_photos_from_album($album_id);

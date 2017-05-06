@@ -35,7 +35,9 @@ class VerifyLogin extends CI_Controller {
    if($result){
     $sess_array = array('id' => $result[0]->id,'username' => $result[0]->username);
     $this->session->set_userdata('logged_in', $sess_array);
+    $ip = $this->input->ip_address();
     $this->user_model->set_last_login($result[0]->id);
+    $this->user_model->set_ip_user($result[0]->id,$ip);
     return TRUE;
   }
     else
