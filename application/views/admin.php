@@ -1,13 +1,3 @@
-<?php
-    $query = $this->db->query('select id from news');
-    $nb_news = $query->num_rows();
-	$query = $this->db->query('select id from news_bde');
-	$nb_news_bde = $query->num_rows();
-	$query = $this->db->query('select id from photos');
-	$nb_photos = $query->num_rows();
-	$query = $this->db->query('select id from users');
-	$nb_users = $query->num_rows();
-?>
 <!-- Notifications -->
 	<div class="row resetrow">
 		<div class="col-md-10 col-md-offset-1">

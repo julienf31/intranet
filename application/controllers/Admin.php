@@ -22,6 +22,12 @@ class Admin extends CI_Controller {
             $data['current_config'] = $this->data_model->get_config_tv("news");
             $data['username'] = $session_data['username'];
             $data['user'] = $this->user_model->get_user_info($session_data['username']);
+            
+            $data['nb_news'] = $this->data_model->count_data('news');
+            $data['nb_news_bde'] = $this->data_model->count_data('news');
+            $data['nb_photos'] = $this->data_model->count_data('photos');
+            $data['nb_users'] = $this->data_model->count_data('users');
+            
             $this->template->set('title', 'Administration');
             $this->template->load('templates/admin', 'admin', $data);
         }
@@ -42,11 +48,11 @@ class Admin extends CI_Controller {
             else{
                 $data['search'] = null;
             }
-
+            
             $db = $this->data_model->select_db($item_type);
             $data['current_config'] = $this->data_model->get_config_tv('news');
             $data['item_type'] = $item_type;
-
+            
             if($item_type == 'album'){
                 $data['nb_album'] = $this->data_model->count_data($db);
                 $data['nb_photos'] = $this->data_model->count_data('photos');
@@ -58,26 +64,26 @@ class Admin extends CI_Controller {
             }
             
             $this->load->library('pagination');
-           
+            
             $config['base_url'] = site_url('liste/'.$item_type.'/');
             $config['total_rows'] = $this->data_model->count_data($db);
             $config['per_page'] = 10;
             $config['uri_segment'] = 3;
-			$config['full_tag_open'] = '<ul class="pagination">';
-			$config['full_tag_close'] = '</ul>';
-			$config['num_tag_open'] = '<li>';
-			$config['num_tag_close'] = '</li>';
-			$config['first_tag_open'] = '<li>';
-			$config['first_tag_close'] = '</li>';
-			$config['last_tag_open'] = '<li>';
-			$config['last_tag_close'] = '</li>';
-			$config['next_tag_open'] = '<li>';
-			$config['next_tag_close'] = '</li>';
-			$config['prev_tag_open'] = '<li>';
-			$config['prev_tag_close'] = '</li>';
-			$config['cur_tag_open'] = '<li class="active"><a href="#">';
-			$config['cur_tag_close'] = '</a></li>';
-
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            
             if($this->uri->segment(3)){
                 $from = ($this->uri->segment(3)) ;
             }
@@ -86,7 +92,7 @@ class Admin extends CI_Controller {
             }
             $size = $config['per_page'];
             $this->pagination->initialize($config);
-
+            
             $data['liste_items']= $this->data_model->list_data($item_type,$from,$size,$value);
             
             $this->template->set('title', 'Liste');
