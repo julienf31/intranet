@@ -7,8 +7,6 @@
 	$nb_photos = $query->num_rows();
 	$query = $this->db->query('select id from users');
 	$nb_users = $query->num_rows();
-	$ip = $this->input->ip_address();
-echo $ip;
 ?>
 <!-- Notifications -->
 	<div class="row resetrow">
