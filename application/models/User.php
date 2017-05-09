@@ -113,7 +113,6 @@ Class User extends CI_Model
             $createdTS = strtotime($created);
             $today = date('Y-m-d'); 
             $todayTS = strtotime($today);
-            die();
 
             // faire comparaison pour expiration
             // if($createdTS != $todayTS){
