@@ -83,7 +83,7 @@ public function reset_password()
                 'email'=>$user_info->mail, 
                 'token'=>$this->base64url_encode($token)
             );
-           
+            $this->session->set_flashdata('flash_message', 'Your password has been updated. You may now login');
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
             $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');              
             

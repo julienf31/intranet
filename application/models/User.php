@@ -105,20 +105,20 @@ Class User extends CI_Model
         $q = $this->db->get_where('tokens', array(
             'tokens.token' => $tkn, 
             'tokens.user_id' => $uid), 1);                         
-               
+
         if($this->db->affected_rows() > 0){
             $row = $q->row();             
             
             $created = $row->created;
             $createdTS = strtotime($created);
-            $today = date('Y-m-d H:m:s'); 
+            $today = date('Y-m-d'); 
             $todayTS = strtotime($today);
-            
+            die();
 
             // faire comparaison pour expiration
-            if($createdTS != $todayTS){
-                return false;
-            }
+            // if($createdTS != $todayTS){
+            //    return false;
+            // }
             
             $user_info = $this->getUserInfo($row->user_id);
             return $user_info;
