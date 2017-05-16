@@ -132,6 +132,15 @@ Class User extends CI_Model
         $this->db->where('user_id', $id);
         $this->db->delete('tokens');
     }
+
+    public function userGotToken($id){
+        $this->db->from('tokens');
+        $this->db->where('user_id', $id);
+        if($this->db->count_all_results() != 0){
+            // deja un token pour cet utilisateur
+            $this->user_model->deleteUserToken($id);
+        }
+    }
     
     public function cleanBirthday(){
         $this->db->from('etudiants');

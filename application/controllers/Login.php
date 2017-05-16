@@ -30,7 +30,7 @@ class Login extends CI_Controller {
                     $this->session->set_flashdata('forgot_error', 'Nous ne trouvons pas de compte associé à cette adresse mail');
                     redirect(site_url().'/login');
                 }
-                
+                $this->user_model->userGotToken($userInfo->id);
                 //build token
                 $token = $this->user_model->insertToken($userInfo->id);
                 $qstring = $this->base64url_encode($token);
@@ -54,7 +54,7 @@ class Login extends CI_Controller {
                 
                 $this->email->subject('Demande de changement de votre mot de passe');
                 
-                $message .= 'Bonjour <strong> nom </strong>une demande de changement de mot de passe à été émise. Pour réinitialiser votre mot de passe suivez les instructions sur le lien suivant, si vous n\'etes pas à l\'origine de cette demande, ignorez ce mail.<br>';
+                $message = 'Bonjour <strong> nom </strong>une demande de changement de mot de passe à été émise. Pour réinitialiser votre mot de passe suivez les instructions sur le lien suivant, si vous n\'etes pas à l\'origine de cette demande, ignorez ce mail.<br>';
                 $message .= '<strong>Lien de changement :</strong> ' . $link;
                 $message .= '<br/><strong>Attention :</strong> Le lien n\'est valable que 15 minutes';
                 
