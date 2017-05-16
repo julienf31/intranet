@@ -61,6 +61,18 @@ Class Data_model extends CI_Model
                 $this->db->or_like('group', $value);
                 $this->db->order_by('group');
             }
+            
+            $query = $this->db->get();
+        }
+        if ($item_type == 'birthday'){
+            $this->db->from('birthday');
+            $this->db->limit($size,$from);
+            if($value){
+                $this->db->like('Nom',$value);
+                $this->db->or_like('Prénom', $value);
+                $this->db->or_like('group', $value);
+                $this->db->order_by('Prénom');
+            }
             $query = $this->db->get();
         }
         return $query->result_array();
@@ -207,6 +219,9 @@ Class Data_model extends CI_Model
         }
         else if($item_type == "user"){
             $db = "users";
+        }
+        else if($item_type == "birthday"){
+            $db = "birthday";
         }
         return $db;
     }

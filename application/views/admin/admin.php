@@ -101,11 +101,11 @@
 				</a>
 			</div>
 			<div class="adminBlock">
-				<h4>Gestion des anniversaires <span class="badge badge-danger">beta</span></h4>
-				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+				<h4>Gestion des anniversaires <span class="badge"><?php echo $nb_birthdays; ?></span> <span class="badge badge-danger">beta</span></h4>
+				<a href="<?php echo site_url('liste/birthday'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 					Liste des anniversaires
 				</a>
-				<a href="<?php echo site_url('add/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+				<a href="<?php echo site_url('add/birthday'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
 					Ajouter une entrée <span class="label label-warning">soon</span>
 				</a>
 			</div>

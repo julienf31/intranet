@@ -27,6 +27,7 @@ class Admin extends CI_Controller {
             $data['nb_news_bde'] = $this->data_model->count_data('news_bde');
             $data['nb_photos'] = $this->data_model->count_data('photos');
             $data['nb_users'] = $this->data_model->count_data('users');
+            $data['nb_birthdays'] = $this->data_model->count_data('birthday');
             
             $this->template->set('title', 'Administration');
             $this->template->load('templates/admin', 'admin/admin', $data);
