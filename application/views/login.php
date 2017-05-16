@@ -24,6 +24,12 @@
 					$.notify({message: message},{type: 'danger'});
 				</script>
 			<?php endif; ?>
+			<?php if($this->session->flashdata('success')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('success')?>";
+					$.notify({message: message},{type: 'success'});
+				</script>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="container">

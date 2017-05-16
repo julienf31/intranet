@@ -54,12 +54,13 @@ class Login extends CI_Controller {
                 
                 $this->email->subject('Demande de changement de votre mot de passe');
                 
-                $message = '';
                 $message .= 'Bonjour <strong> nom </strong>une demande de changement de mot de passe à été émise. Pour réinitialiser votre mot de passe suivez les instructions sur le lien suivant, si vous n\'etes pas à l\'origine de cette demande, ignorez ce mail.<br>';
                 $message .= '<strong>Lien de changement :</strong> ' . $link;
+                $message .= '<br/><strong>Attention :</strong> Le lien n\'est valable que 15 minutes';
                 
                 $this->email->message($message);
                 $this->email->send();
+                $this->session->set_flashdata('success', 'Un e-mail à été envoyé pour réinitialiser votre mot de passe');
             }
         }
         
@@ -75,7 +76,7 @@ class Login extends CI_Controller {
         $user_info = $this->user_model->isTokenValid($cleanToken); //either false or array();
         
         if(!$user_info){
-            $this->session->set_flashdata('flash_message', 'Token is invalid or expired');
+            $this->session->set_flashdata('danger', 'Votre clef est érronée ou à expirée. Demandez un nouveau changement.');
             redirect(site_url().'/login');
         }
         $data = array(
@@ -83,13 +84,13 @@ class Login extends CI_Controller {
         'email'=>$user_info->mail,
         'token'=>$this->base64url_encode($token)
         );
-        $this->session->set_flashdata('flash_message', 'Your password has been updated. You may now login');
+        $this->session->set_flashdata('success', 'Votre mot de passe à été modifié, vous pouvez désormais vous connecter');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
         $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
         
         if ($this->form_validation->run() == FALSE) {
             $data['current_config'] = $this->data_model->get_config_tv("news");
-            $this->template->set('title', 'Reset your password');
+            $this->template->set('title', 'Changez votre mot de passe');
             $this->template->load('templates/admin', 'reset_password', $data);
         }else{
             $post = $this->input->post(NULL, TRUE);
@@ -99,11 +100,12 @@ class Login extends CI_Controller {
             $cleanPost['user_id'] = $user_info->id;
             unset($cleanPost['passconf']);
             if(!$this->user_model->updatePassword($cleanPost)){
-                $this->session->set_flashdata('flash_message', 'There was a problem updating your password');
+                $this->session->set_flashdata('danger', 'Nous avons rencontrer une erreur lors de la modification de votre mot de passe, veuillez réessayer');
             }else{
-                $this->session->set_flashdata('flash_message', 'Your password has been updated. You may now login');
+                $this->session->set_flashdata('success', 'Votre mot de passe à été modifié, vous pouvez désormais vous connecter');
+                $this->user_model->deleteUserToken($user_info->id);
             }
-            redirect(site_url().'login');
+            redirect(site_url().'/login');
         }
     }
     
