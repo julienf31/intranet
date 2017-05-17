@@ -409,16 +409,40 @@
 		<div class="col-md-10 col-md-offset-1">	
 			<h3>Liste des anniversaires</h3>
 			<div class="row">
-				<div class="col-md-12 pull-right" style="display: inline-block; margin-bottom: 10px;text-align: right;">
+				<div class="col-md-12" style="display: inline-block; margin-bottom: 10px;">
+				<?php
+					echo form_open('admin/liste/'.$item_type);
+				?>
+					<span style="text-align:left;">Affichage :</span>
+					<select name="group">
+						<option value="all">Tout</option>
+						<?php
+						foreach ($groups as $key => $group) {
+							echo '<option value="'.$group['id'].'">'.$group['group_name'].'</option>';
+						}
+						
+						?> 
+					</select>
+					<?php 
+					$button = array(
+							'name'          => 'filter',
+							'id'            => 'filter',
+							'class'			=> 'btn btn-success btn-perso',
+							'type'          => 'submit',
+							'style'			=> 'margin-bottom: 0;',
+							'content'       => '<i class="fa fa-search fa-fw" aria-hidden="true"></i> Filtrer'
+							);
+
+					echo form_button($button);?>
+					<div class="search pull-right">
 					<?php
-						echo form_open('admin/liste/'.$item_type);
 						$searchInput = array(
 							'name'          => 'search',
 							'type'			=> 'search',
 							'id'            => 'search',
 							'class'			=> 'login',
 							'placeholder'   => 'Rechercher',
-							'style'         => 'width: 25%;display: inline-block;'
+							'style'         => 'width: 250px;display: inline-block;'
 							);
 						echo form_input($searchInput);
 						$button = array(
@@ -432,6 +456,7 @@
 						echo form_button($button);
 						echo form_close();
 					?>
+					</div>
 				</div>
 				<?php if($search): ?>
 				<div class="row" style="text-align: center;margin-bottom: 10px;">
@@ -441,9 +466,9 @@
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>#</th>
-					<th>Username</th>
-					<th>Group</th>
-					<th>Mail</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Groupe</th>
 					<th>Actions</th>
 				</tr>
 				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>

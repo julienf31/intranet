@@ -63,6 +63,9 @@ class Admin extends CI_Controller {
                 $data['content_album'] = $this->data_model->get_album($album_id);
                 $data['photos'] = $this->data_model->get_photos_from_album($album_id);
             }
+            if($item_type == 'birthday'){
+                $data['groups'] = $this->data_model->get_birthday_roups_list();
+            }
             
             $this->load->library('pagination');
             

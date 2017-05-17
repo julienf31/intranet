@@ -295,6 +295,15 @@ Class Data_model extends CI_Model
         return $query->result_array();
     }
     
+    public function get_birthday_roups_list(){
+        $this->db->from('birthday_groups');
+        $this->db->order_by('id');
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    
     public function get_config(){
         $this->db->from('config');
         $query = $this->db->get();
