@@ -474,7 +474,7 @@
 				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
                 <?php foreach($liste_items as $key => $data) : ?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
-						<td><?php echo $key+1; ?></td>
+						<td><?php echo intval($from+$key+1); ?></td>
 						<td><?php echo $data['Nom']; ?></td>
 						<td><?php echo $data['Prénom']; ?></td>
 						<td><?php echo $data['group']; ?></td>
@@ -482,7 +482,7 @@
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
-					<td colspan="7" align="center" >Pas d'utilisateurs à afficher</td>
+					<td colspan="7" align="center" >Pas d'anniversaires à afficher</td>
 				<?php endif; ?>
 			</table>
 			<div class="row" style="text-align: center;">

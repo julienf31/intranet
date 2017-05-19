@@ -98,6 +98,7 @@ class Admin extends CI_Controller {
             $this->pagination->initialize($config);
             
             $data['liste_items']= $this->data_model->list_data($item_type,$from,$size,$value);
+            $data['from'] = $from;
             
             $this->template->set('title', 'Liste');
             $this->template->load('templates/admin', 'admin/liste', $data);
