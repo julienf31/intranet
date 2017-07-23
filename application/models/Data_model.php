@@ -24,18 +24,20 @@ Class Data_model extends CI_Model
         if ($item_type == 'bde') {
             $this->db->from('news_bde');
             $this->db->limit($size,$from);
-            if($value){
-                
+            if($this->session->userdata('search')){
+                $value = $this->session->userdata('search');
                 $this->db->like('titre',$value);
                 $this->db->or_like('auteur', $value);
                 $this->db->order_by('auteur');
             }
+
             $query = $this->db->get();
         }
         if ($item_type == 'news') {
             $this->db->from('news');
             $this->db->limit($size,$from);
-            if($value){
+            if($this->session->userdata('search')){
+                $value = $this->session->userdata('search');
                 $this->db->limit($from,$size);
                 $this->db->like('titre',$value);
                 $this->db->or_like('auteur', $value);
@@ -67,7 +69,8 @@ Class Data_model extends CI_Model
         if ($item_type == 'birthday'){
             $this->db->from('birthday');
             $this->db->limit($size,$from);
-            if($value){
+            if($this->session->userdata('birthday_search')){
+                $value = $this->session->userdata('birthday_search');
                 $this->db->like('Nom',$value);
                 $this->db->or_like('Prénom', $value);
                 $this->db->or_like('group', $value);
@@ -284,6 +287,14 @@ Class Data_model extends CI_Model
     }
     
     public function count_data($db) {
+        if($this->session->userdata('birthday_search')){
+            $value = $this->session->userdata('birthday_search');
+            $this->db->from($db);
+            $this->db->like('Nom',$value);
+            $this->db->or_like('Prénom', $value);
+            $this->db->or_like('group', $value);
+            return $this->db->count_all_results();
+        }
         return $this->db->count_all($db);
     }
     
@@ -295,7 +306,7 @@ Class Data_model extends CI_Model
         return $query->result_array();
     }
     
-    public function get_birthday_roups_list(){
+    public function get_birthday_groups_list(){
         $this->db->from('birthday_groups');
         $this->db->order_by('id');
         $query = $this->db->get();

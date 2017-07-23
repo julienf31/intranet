@@ -11,11 +11,9 @@ class Admin extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $data['user'] = $this->user_model->get_user_info($session_data['username']);
         }
-        
     }
     
     // Fonction de base, vue de login
-    
     public function index(){
         if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
@@ -44,10 +42,7 @@ class Admin extends CI_Controller {
             $data['username'] = $session_data['username'];
             if($value = $this->input->post('search')){
                 $value = $this->input->post('search');
-                $data['search'] = $value;
-            }
-            else{
-                $data['search'] = null;
+                $this->session->set_userdata('search', $value);
             }
             
             $db = $this->data_model->select_db($item_type);
@@ -64,7 +59,21 @@ class Admin extends CI_Controller {
                 $data['photos'] = $this->data_model->get_photos_from_album($album_id);
             }
             if($item_type == 'birthday'){
-                $data['groups'] = $this->data_model->get_birthday_roups_list();
+                $data['groups'] = $this->data_model->get_birthday_groups_list();
+                if($this->input->post('search')){
+                $value = $this->input->post('search');
+                $this->session->set_userdata('birthday_search', $value);
+                }
+                elseif ($this->input->post('group')) {
+                    if($this->input->post('group') == "all"){
+                        $this->session->unset_userdata('search');
+                        $this->session->unset_userdata('birthday_search');
+                    }
+                    else{
+                        $value = $this->input->post('group');
+                        $this->session->set_userdata('birthday_search', $value);
+                    }
+                }
             }
             
             $this->load->library('pagination');
@@ -232,6 +241,12 @@ class Admin extends CI_Controller {
     public function maskUpdates($id){
         $this->user_model->maskUpdate($id);
         redirect('admin', 'refresh');
+    }
+
+    public function clearSearch(){
+        $this->session->unset_userdata('search');
+        $this->session->unset_userdata('birthday_search');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 }
 

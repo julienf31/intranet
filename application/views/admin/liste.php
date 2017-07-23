@@ -83,9 +83,9 @@
 						echo form_close();
 					?>
 				</div>
-				<?php if($search): ?>
+				<?php if($this->session->userdata('search')): ?>
 				<div class="row" style="text-align: center;margin-bottom: 10px;">
-					<span class="badge badge" style="border-radius: 0;"><a href="" data-toggle="tooltip" data-placement="top" title="Annuler la recherche"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$search; ?></span>
+					<span class="badge badge" style="border-radius: 0;"><a href="" data-toggle="tooltip" data-placement="top" title="Annuler la recherche"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('search'); ?></span>
 				</div>
 				<?php endif; ?>
 			</div>
@@ -418,9 +418,12 @@
 						<option value="all">Tout</option>
 						<?php
 						foreach ($groups as $key => $group) {
-							echo '<option value="'.$group['id'].'">'.$group['group_name'].'</option>';
+							if($this->session->userdata('birthday_search') == $group['group_name'])
+								$str = '<option value="'.$group['group_name'].'" selected>'.$group['group_name'].'</option>';
+							else
+								$str = '<option value="'.$group['group_name'].'">'.$group['group_name'].'</option>';
+							echo $str;
 						}
-						
 						?> 
 					</select>
 					<?php 
@@ -458,9 +461,9 @@
 					?>
 					</div>
 				</div>
-				<?php if($search): ?>
+				<?php if($this->session->userdata('birthday_search')): ?>
 				<div class="row" style="text-align: center;margin-bottom: 10px;">
-					<span class="badge badge" style="border-radius: 0;"><a href=""><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$search; ?></span>
+					<span class="badge badge" style="border-radius: 0;"><a href="<?php echo site_url('clearSearch'); ?>"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('birthday_search'); ?></span>
 				</div>
 				<?php endif; ?>
 			<table class="table table-striped table-hover">
@@ -473,8 +476,12 @@
 				</tr>
 				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
                 <?php foreach($liste_items as $key => $data) : ?>
+				<?php if($from =="birthday"){
+						$from = 0;
+				}
+				?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
-						<td><?php echo intval($from+$key+1); ?></td>
+						<td><?php echo $from+$key+1; ?></td>
 						<td><?php echo $data['Nom']; ?></td>
 						<td><?php echo $data['Prénom']; ?></td>
 						<td><?php echo $data['group']; ?></td>

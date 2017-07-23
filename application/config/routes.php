@@ -50,5 +50,7 @@ $route['update_state/(:any)/([0-9]+)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1
 $route['delete/(:any)/([0-9]+)'] = 'data/delete/$1/$2';
 $route['delete/(:any)/([0-9]+)/([0-9]+)'] = 'data/delete/$1/$2/$3';
 
+$route['clearSearch'] = 'admin/clearSearch';
+
 
 
