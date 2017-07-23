@@ -471,7 +471,7 @@
 					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
-					<th>Groupe</th>
+					<th>Classe</th>
 					<th>Actions</th>
 				</tr>
 				<?php if(isset($liste_items) && is_array($liste_items) && count($liste_items)): ?>
@@ -485,7 +485,7 @@
 						<td><?php echo $data['Nom']; ?></td>
 						<td><?php echo $data['Prénom']; ?></td>
 						<td><?php echo $data['group']; ?></td>
-						<td><a href=""><i class="fa fa-lock red" aria-hidden="true"></i></a> | <a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>">editer</a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal" >supprimer</a></td>
+						<td><?php if($data['group'] != "Intervenant"): ?><a href="<?php echo site_url('admin/graduate_student/').$data['id'];?>" data-toggle="tooltip" data-placement="top" title="Promouvoir"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> | <?php endif; ?> <a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Editer"><i class="fa fa-pencil orange" aria-hidden="true"></i></a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Supprimer"></i></a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>

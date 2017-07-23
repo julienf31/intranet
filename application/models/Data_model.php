@@ -307,13 +307,12 @@ Class Data_model extends CI_Model
     }
     
     public function get_birthday_groups_list(){
-        $this->db->from('birthday_groups');
+        $this->db->from('class');
         $this->db->order_by('id');
         $query = $this->db->get();
         
         return $query->result_array();
     }
-    
     
     public function get_config(){
         $this->db->from('config');
@@ -341,7 +340,31 @@ Class Data_model extends CI_Model
                 break;
             default:
                 break;
+        }
     }
-}
 
+    public function get_student_class($id){
+        $this->db->select('group');
+        $this->db->from('birthday');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        $query = $query->row();
+        $query = $query->group;
+
+        $this->db->select('id');
+        $this->db->from('class');
+        $this->db->where('group_name', $query);
+        $query = $this->db->get();
+        $query = $query->row();
+        return $query->id;
+
+    }
+
+    public function update_student($id,$class){
+            $group = $this->get_birthday_groups_list();
+            $this->db->from('birthday');
+            $this->db->where('id', $id);
+            $this->db->set('group',$group[$class-1]['group_name']);
+            $this->db->update('birthday');
+    }
 }

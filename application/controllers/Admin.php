@@ -248,6 +248,44 @@ class Admin extends CI_Controller {
         $this->session->unset_userdata('birthday_search');
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function graduate_student($id){
+        $class = $this->data_model->get_student_class($id);
+        switch ($class) {
+            case 1:
+                $class = 2;
+                $this->data_model->update_student($id,$class);
+                 break;
+            case 2:
+                $class = 3;
+                $this->data_model->update_student($id,$class);
+                 break;
+            case 3:
+                $class = 4;
+                $this->data_model->update_student($id,$class);
+                 break;
+            case 4:
+                $class = 5;
+                $this->data_model->update_student($id,$class);
+                 break;
+            case 5:
+                 break;
+            case 6:
+                $class = 7;
+                $this->data_model->update_student($id,$class);
+                 break;
+            case 7:
+                $class = 8;
+                $this->data_model->update_student($id,$class);
+                 break;
+            case 8:
+                 break;
+            default:
+                 break;
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
 }
 
 ?>
