@@ -391,7 +391,7 @@
 					<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
 				</div>
 				<div class="modal-body">
-					Voulez-vous vraiment supprimer l'utilisateur <strong><?php echo $data['username']; ?></strong>?
+					Voulez-vous vraiment supprimer l'anniversaire de <strong><?php echo $data['Prénom']." ".$data['Nom']; ?></strong>?
 				</div>
 				<div class="alert alert-warning" style="margin: 5px 10px;">
 						<strong>Attention : </strong>Cette action est irrévoquable.

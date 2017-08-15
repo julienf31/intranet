@@ -157,6 +157,40 @@
 					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 				</div>
 			</form>
+			<?php elseif($item_type == 'birthday'): ?>
+			<h3>Ajouter un anniversaire</h3>
+			<br>
+			<form method="post" action="<?php echo site_url('insert/').$item_type; ?>" name="data_register" enctype="multipart/form-data">
+			
+				<div class="form-group">
+					<label>Nom</label>
+					<input type="text" class="form-control" name="name" style="width: 50%;" required>
+					<label>Prénom</label>
+					<input type="text" class="form-control" name="surname" style="width: 50%;" required>
+				</div>
+				<div class="form-group">
+					<label style="display:block;">Classe</label>
+					<select class="form-control" name="class" style="display:inline-block;">
+						<?php foreach ($groups as $key => $group): ?>
+						<option value="<?php echo $group['group_name']; ?>"><?php echo $group['group_name']; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<br/>
+					<br/>
+				</div>
+				<div class="form-group">
+					<label>Date de naissance</label>
+					<input type="mail" class="form-control" name="birthdate" style="width: 60%;" required>
+				</div>
+		
+				<br />
+				<div class="pull-left">
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				</div>
+				<div class="pull-right">
+					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+				</div>
+			</form>
 			<?php endif; ?>
 		</div>
 	</div>

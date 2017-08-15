@@ -94,6 +94,19 @@ class Data extends CI_Controller {
                     $link='liste/'.$item_type;
                     redirect($link);
                 }
+                elseif($item_type == 'birthday'){
+                    $data['username'] = $session_data['username'];
+                    $data = array(
+                    'Nom' => $this->input->post('name'),
+                    'Prénom' => $this->input->post('surname'),
+                    'group' => $this->input->post('class'),
+                    'date' => $this->input->post('birthdate'),
+                    );
+                    $this->data_model->insert_data($item_type,$data);
+                    $this->session->set_flashdata('message_success', 'Utilisateur ajouté avec succés');
+                    $link='liste/'.$item_type;
+                    redirect($link);
+                }
                 else{
                     //Si news :
                     $data['username'] = $session_data['username'];
@@ -217,7 +230,7 @@ class Data extends CI_Controller {
                 $link='liste/'.$item_type;
                 redirect($link);
             }
-            elseif($item_type == 'user'){
+            else if($item_type == 'user'){
                 $active=$this->input->post('active');
                 if($active == null){
                     $active=0;
@@ -230,6 +243,18 @@ class Data extends CI_Controller {
                 'group' => $this->input->post('group'),
                 'mail' => $this->input->post('mail'),
                 'active' => $active
+                );
+                $this->data_model->update_data($item_type,$id,$data);
+                $this->session->set_flashdata('message_success', 'Utilisateur modifié avec succés');
+                $link='liste/'.$item_type;
+                redirect($link);
+            }
+            else if($item_type == 'birthday'){
+                $data = array(
+                'Prénom' => $this->input->post('surname'),
+                'Nom' => $this->input->post('name'),
+                'group' => $this->input->post('group'),
+                'date' => $this->input->post('birthdate')
                 );
                 $this->data_model->update_data($item_type,$id,$data);
                 $this->session->set_flashdata('message_success', 'Utilisateur modifié avec succés');

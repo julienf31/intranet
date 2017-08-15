@@ -131,7 +131,7 @@ class Admin extends CI_Controller {
         }
     }
     
-    // Ajout de news, voir le controler data pour l'insertion en DB
+    // Ajout d'entrées, voir le controler data pour l'insertion en DB
     public function add($item_type,$album_id = null){
         if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
@@ -142,8 +142,11 @@ class Admin extends CI_Controller {
                 $data['album_id'] = $album_id;
                 $data['content_album'] = $this->data_model->get_album($album_id);
             }
-            if($item_type == 'user'){
-                $data['groups'] = $this->data_model->get_groups_list();
+            else if($item_type == 'user'){
+                $data['groups'] = $this->data_model->get_groups_list(); //user groups
+            }
+            else if($item_type == 'birthday'){
+                $data['groups'] = $this->data_model->get_birthday_groups_list(); //class groups
             }
             $this->template->set('title', 'Ajout');
             $this->template->load('templates/admin', 'admin/add', $data);
@@ -167,8 +170,11 @@ class Admin extends CI_Controller {
                     $data['current_data']['texte'] = 'https://www.youtube.com/watch?v='.$video_id;
                 }
             }
-            if($item_type == 'user'){
+            else if($item_type == 'user'){
                 $data['groups'] = $this->data_model->get_groups_list();
+            }
+             else if($item_type == 'birthday'){
+                $data['groups'] = $this->data_model->get_birthday_groups_list(); //class groups
             }
             $data['item_type'] = $item_type;
             $this->template->set('title', 'Edition');

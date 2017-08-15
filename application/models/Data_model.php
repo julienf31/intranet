@@ -98,18 +98,23 @@ Class Data_model extends CI_Model
             FROM news_bde n
             WHERE n.id = $id");
         }
-        if ($item_type=='news') {
+        else if ($item_type=='news') {
             $query=$this->db->query("SELECT *
             FROM news n
             WHERE n.id = $id");
         }
-        if ($item_type=='album') {
+        else if ($item_type=='album') {
             $query=$this->db->query("SELECT *
             FROM album a
             WHERE a.id = $id");
         }
-        if ($item_type=='user') {
+        else if ($item_type=='user') {
             $this->db->from('users');
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+        }
+        else if ($item_type=='birthday') {
+            $this->db->from('birthday');
             $this->db->where('id',$id);
             $query = $this->db->get();
         }
@@ -128,17 +133,20 @@ Class Data_model extends CI_Model
         if ($item_type=='bde') {
             $this->db->insert('news_bde', $data);
         }
-        if ($item_type=='news') {
+        else if ($item_type=='news') {
             $this->db->insert('news', $data);
         }
-        if ($item_type == 'photos'){
+        else if ($item_type == 'photos'){
             $this->db->insert('photos', $data);
         }
-        if ($item_type == 'album') {
+        else if ($item_type == 'album') {
             $this->db->insert('album', $data);
         }
-        if ($item_type == 'user') {
+        else if ($item_type == 'user') {
             $this->db->insert('users', $data);
+        }
+        else if ($item_type == 'birthday') {
+            $this->db->insert('birthday', $data);
         }
         return TRUE;
     }
@@ -149,13 +157,18 @@ Class Data_model extends CI_Model
             FROM news_bde n
             WHERE n.id = $id");
         }
-        if ($item_type=='news') {
+        else if ($item_type=='news') {
             $query=$this->db->query("SELECT *
             FROM news_ n
             WHERE n.id = $id");
         }
-        if ($item_type=='user') {
+        else if ($item_type=='user') {
             $this->db->from('users');
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+        }
+        else if ($item_type=='birthday') {
+            $this->db->from('birthday');
             $this->db->where('id',$id);
             $query = $this->db->get();
         }
@@ -175,6 +188,9 @@ Class Data_model extends CI_Model
         }
         if ($item_type=='user') {
             $this->db->update('users', $data);
+        }
+        if ($item_type=='birthday') {
+            $this->db->update('birthday', $data);
         }
     }
     
@@ -337,6 +353,9 @@ Class Data_model extends CI_Model
                 break;
             case 'user':
                 $this->db->delete('users');
+                break;
+            case 'birthday':
+                $this->db->delete('birthday');
                 break;
             default:
                 break;
