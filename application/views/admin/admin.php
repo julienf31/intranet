@@ -149,15 +149,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Nouveautés dans la version 2.2</h4>
+        <h4 class="modal-title" id="myModalLabel">Nouveautés dans la version 2.3</h4>
       </div>
       <div class="modal-body">
 	  	<ul class="add">
-    		<li>Cliquez sur <i class="fa fa-eye fa-fw view" aria-hidden="true" ></i> pour avoir un apercu des pages</li>
-			<li>Nouveau style du panel admin</li>
-			<li>Navigation au fléches dans l'affichage des news</li>
-			<li>Fonctionalité mot de passe oublié</li>
-			<li>Ajout de la gestion des utilisateurs</li>
+    		<li>Gestion des anniversaires
+			<ul class="add">
+				<li>Gestion individuelle</li>
+				<li>Promotion individuelle dans la promotion supérieure</li>
+			</ul>
+			</li>
+		</ul>
+		<ul class="other">
+			<li>Nouveau cryptage des données sensibles</li>
+			<li>Amélioration drastique des performances</li>
+			<li>Correction de la recherche</li>
+			<li>Optimisation de la base de donnée</li>
 		</ul>
       </div>
       <div class="modal-footer">

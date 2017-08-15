@@ -130,6 +130,11 @@ p.article {
     color: orange;
 }
 
+.grey {
+    /*	color: #33e1cf; COULEUR PLUS CLAIRE DU STYLE YNOV*/
+    color: #6B6B6B;
+}
+
 h3.titrenews {
     text-align: center;
 }

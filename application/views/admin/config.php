@@ -27,7 +27,7 @@
 </div>
 <script type="text/javascript">
 var version = <?php echo $configs[0]['value']; ?>;
-var curVersion = "2.2"; // trouver un systéme pour ca
+var curVersion = "<?php echo VERSION ?>"; // trouver un systéme pour ca
 var test = function(){
     console.log(version);
     if(version == curVersion){

@@ -151,6 +151,7 @@ Class Data_model extends CI_Model
         return TRUE;
     }
     
+    //fonction obsoléte à enlever prochaine update
     public function edit_data($item_type,$id){
         if ($item_type=='bde') {
             $query=$this->db->query("SELECT *
@@ -175,6 +176,7 @@ Class Data_model extends CI_Model
         return $query->result_array();
     }
     
+    // remplace edit_data
     public function update_data($item_type,$id, $data){
         $this->db->where('id', $id);
         if ($item_type=='bde') {

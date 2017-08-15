@@ -13,16 +13,20 @@
   </div>
   <div id="2-3" class="row changelog-corp hidden">
     <h3 class="changelog">Version 2.3 - En Cours</h3>
-    <ul class="add">
-      <li>Recherche dans les listes (news et utilisateurs)</li>
-	    <li>Pagination dans les listes (news et utilisateurs)</li>
-    </ul>
-    <ul class="remove">
-    </ul>
-    <ul class="other">
-      <li>Amélioration du cryptage des mots de passe</li>
-      <li>Chargement des pages 2 fois plus rapide</li>
-    </ul>
+   	  	<ul class="add">
+    		<li>Gestion des anniversaires
+			<ul class="add">
+				<li>Gestion individuelle</li>
+				<li>Promotion individuelle dans la promotion supérieure</li>
+			</ul>
+			</li>
+		</ul>
+		<ul class="other">
+			<li>Nouveau cryptage des données sensibles</li>
+			<li>Amélioration drastique des performances</li>
+			<li>Correction de la recherche</li>
+			<li>Optimisation de la base de donnée</li>
+		</ul>
   </div>
   <div id="2-2" class="row changelog-corp">
     <h3 class="changelog">Version 2.2 - Terminé (05/05/2017)</h3>

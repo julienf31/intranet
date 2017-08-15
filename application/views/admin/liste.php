@@ -485,7 +485,7 @@
 						<td><?php echo $data['Nom']; ?></td>
 						<td><?php echo $data['Prénom']; ?></td>
 						<td><?php echo $data['group']; ?></td>
-						<td><?php if($data['group'] != "Intervenant"): ?><a href="<?php echo site_url('admin/graduate_student/').$data['id'];?>" data-toggle="tooltip" data-placement="top" title="Promouvoir"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> | <?php endif; ?> <a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Editer"><i class="fa fa-pencil orange" aria-hidden="true"></i></a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Supprimer"></i></a></td>
+						<td><?php if($data['group'] != "Intervenant" && $data['group'] != "M2 Ingésup" && $data['group'] != "B3 Lim'Art"): ?><a href="<?php echo site_url('admin/graduate_student/').$data['id'];?>" data-toggle="tooltip" data-placement="top" title="Promouvoir"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> |<?php else: ?> <span data-toggle="tooltip" data-placement="top" title="Pas de promotion possible" disabled><i class="fa fa-graduation-cap grey" aria-hidden="true"></i></span>  | <?php endif; ?> <a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Editer"><i class="fa fa-pencil orange" aria-hidden="true"></i></a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Supprimer"></i></a></td>
 					</tr>	
 				<?php endforeach; ?>
                 <?php else: ?>
