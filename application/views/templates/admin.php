@@ -72,7 +72,7 @@
 	</div>
 </footer>
 
-<script>
+<script> // report
 (function ( $ ) {
 	$.fn.feedback = function(success, fail) {
 		self=$(this);

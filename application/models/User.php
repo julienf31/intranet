@@ -2,7 +2,7 @@
 Class User extends CI_Model
 {
     function login($username, $password){
-        $this->db->select('id, username, password');
+        $this->db->select('id, username, password, active');
         $this->db->from('users');
         $this->db->where('username', $username);
         $this->db->where('password', sha1($password));
@@ -12,7 +12,14 @@ Class User extends CI_Model
         
         if($query->num_rows() == 1)
         {
-            return $query->result();
+            $user = $query->result();
+            if($user[0]->active){
+                return $user;
+            }
+            else{ // traiter ca dans controler
+                $this->session->set_flashdata('danger', 'Votre compte n\'est pas activé');
+                redirect(site_url().'/login');
+            }
         }
         else
         {
@@ -34,7 +41,7 @@ Class User extends CI_Model
             $row = $q->row();
             return $row;
         }else{
-            error_log('no user found getUserInfo('.$email.')');
+            error_log('no user found with mail '.$email);
             return false;
         }
     }
