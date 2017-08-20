@@ -93,11 +93,11 @@
 			</div>
 			<div class="adminBlock">
 				<h4>Gestion des écrans <span class="badge badge-danger">beta</span></h4>
-				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
-					Liste des écrans <span class="label label-warning">soon</span>
+				<a href="<?php echo site_url('liste/screens'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+					Liste des écrans
 				</a>
-				<a href="<?php echo site_url('add/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-					Ajouter un écran <span class="label label-warning">soon</span>
+				<a href="<?php echo site_url('add/screens'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+					Ajouter un écran
 				</a>
 			</div>
 			<div class="adminBlock">

@@ -55,12 +55,12 @@ class Admin extends CI_Controller {
                 $data['nb_album'] = $this->data_model->count_data($db);
                 $data['nb_photos'] = $this->data_model->count_data('photos');
             }
-            if($item_type == 'photos' && $album_id != ""){
+            elseif($item_type == 'photos' && $album_id != ""){
                 $data['album_id'] = $album_id;
                 $data['content_album'] = $this->data_model->get_album($album_id);
                 $data['photos'] = $this->data_model->get_photos_from_album($album_id);
             }
-            if($item_type == 'birthday'){
+            elseif($item_type == 'birthday'){
                 $data['groups'] = $this->data_model->get_birthday_groups_list();
                 if($this->input->post('search')){
                 $value = $this->input->post('search');
@@ -76,6 +76,9 @@ class Admin extends CI_Controller {
                         $this->session->set_userdata('birthday_search', $value);
                     }
                 }
+            }
+            elseif($item_type == "screens"){
+                
             }
             
             $this->load->library('pagination');

@@ -423,6 +423,15 @@ class Data extends CI_Controller {
             $this->session->set_flashdata('message_success', 'Utilisateur actualisé avec succés');
             $link='liste/'.$item_type;
         }
+        elseif($item_type == 'screens'){
+            if($state == 1){
+                $this->session->set_flashdata('message_success', 'Mode maintenance activé');                
+            }
+            else{
+                $this->session->set_flashdata('message_success', 'Mode maintenance désactivé');  
+            }
+            $link='liste/'.$item_type;
+        }
         redirect($link);
     }
     

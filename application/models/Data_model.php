@@ -30,10 +30,10 @@ Class Data_model extends CI_Model
                 $this->db->or_like('auteur', $value);
                 $this->db->order_by('auteur');
             }
-
+            
             $query = $this->db->get();
         }
-        if ($item_type == 'news') {
+        elseif ($item_type == 'news') {
             $this->db->from('news');
             $this->db->limit($size,$from);
             if($this->session->userdata('search')){
@@ -45,17 +45,17 @@ Class Data_model extends CI_Model
             }
             $query = $this->db->get();
         }
-        if ($item_type == 'photos'){
+        elseif ($item_type == 'photos'){
             $query = $this->db->query("SELECT *
             FROM photos p
             ORDER BY p.id ASC");
         }
-        if ($item_type == 'album'){
+        elseif ($item_type == 'album'){
             $query = $this->db->query("SELECT *
             FROM album a
             ORDER BY a.id ASC");
         }
-        if ($item_type == 'user'){
+        elseif ($item_type == 'user'){
             $this->db->from('users');
             $this->db->limit($size,$from);
             if($value){
@@ -66,7 +66,7 @@ Class Data_model extends CI_Model
             
             $query = $this->db->get();
         }
-        if ($item_type == 'birthday'){
+        elseif ($item_type == 'birthday'){
             $this->db->from('birthday');
             $this->db->limit($size,$from);
             if($this->session->userdata('birthday_search')){
@@ -76,7 +76,13 @@ Class Data_model extends CI_Model
                 $this->db->or_like('group', $value);
                 $this->db->order_by('Prénom');
             }
-            $this->db->order_by('Nom');            
+            $this->db->order_by('Nom');
+            $query = $this->db->get();
+        }
+        elseif ($item_type == 'screens'){
+            $this->db->from('config_tv');
+            $this->db->limit($size,$from);
+            
             $query = $this->db->get();
         }
         return $query->result_array();
@@ -198,6 +204,10 @@ Class Data_model extends CI_Model
             $this->db->set('active', $state);
             $this->db->update('users');
         }
+        elseif($item_type == 'screens'){
+            $this->db->set('maintenance', $state);
+            $this->db->update('config_tv');
+        }
     }
     
     public function select_db($item_type){
@@ -218,6 +228,9 @@ Class Data_model extends CI_Model
         }
         else if($item_type == "birthday"){
             $db = "birthday";
+        }
+        else if($item_type == "screens"){
+            $db = "config_tv";
         }
         return $db;
     }
@@ -336,31 +349,31 @@ Class Data_model extends CI_Model
                 break;
             default:
                 break;
-        }
     }
+}
 
-    public function get_student_class($id){
-        $this->db->select('group');
-        $this->db->from('birthday');
-        $this->db->where('id',$id);
-        $query = $this->db->get();
-        $query = $query->row();
-        $query = $query->group;
+public function get_student_class($id){
+    $this->db->select('group');
+    $this->db->from('birthday');
+    $this->db->where('id',$id);
+    $query = $this->db->get();
+    $query = $query->row();
+    $query = $query->group;
+    
+    $this->db->select('id');
+    $this->db->from('class');
+    $this->db->where('group_name', $query);
+    $query = $this->db->get();
+    $query = $query->row();
+    return $query->id;
+    
+}
 
-        $this->db->select('id');
-        $this->db->from('class');
-        $this->db->where('group_name', $query);
-        $query = $this->db->get();
-        $query = $query->row();
-        return $query->id;
-
-    }
-
-    public function update_student($id,$class){
-            $group = $this->get_birthday_groups_list();
-            $this->db->from('birthday');
-            $this->db->where('id', $id);
-            $this->db->set('group',$group[$class-1]['group_name']);
-            $this->db->update('birthday');
-    }
+public function update_student($id,$class){
+    $group = $this->get_birthday_groups_list();
+    $this->db->from('birthday');
+    $this->db->where('id', $id);
+    $this->db->set('group',$group[$class-1]['group_name']);
+    $this->db->update('birthday');
+}
 }
