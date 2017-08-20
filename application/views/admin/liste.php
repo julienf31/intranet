@@ -413,7 +413,7 @@
 				<?php
 					echo form_open('admin/liste/'.$item_type);
 				?>
-					<span style="text-align:left;">Affichage :</span>
+					<span style="text-align:left;">Groupes :</span>
 					<select name="group">
 						<option value="all">Tout</option>
 						<?php
@@ -468,6 +468,7 @@
 				<?php endif; ?>
 			<table class="table table-striped table-hover">
 				<tr>
+					<th><input type="checkbox" name="selectall" id="checkAll"></th>
 					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
@@ -481,6 +482,7 @@
 				}
 				?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
+						<td><input type="checkbox" name="" id=""></td>
 						<td><?php echo $from+$key+1; ?></td>
 						<td><?php echo $data['Nom']; ?></td>
 						<td><?php echo $data['Prénom']; ?></td>
@@ -488,10 +490,12 @@
 						<td><?php if($data['group'] != "Intervenant" && $data['group'] != "M2 Ingésup" && $data['group'] != "B3 Lim'Art"): ?><a href="<?php echo site_url('admin/graduate_student/').$data['id'];?>" data-toggle="tooltip" data-placement="top" title="Promouvoir"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> |<?php else: ?> <span data-toggle="tooltip" data-placement="top" title="Pas de promotion possible" disabled><i class="fa fa-graduation-cap grey" aria-hidden="true"></i></span>  | <?php endif; ?> <a href="<?php echo site_url('edit/').$item_type.'/'.$data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Editer"><i class="fa fa-pencil orange" aria-hidden="true"></i></a> | <a href="#myModal-<?php echo $data['id']; ?>" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Supprimer"></i></a></td>
 					</tr>	
 				<?php endforeach; ?>
+				</table>
+				Pour la selection <a href="" data-toggle="tooltip" data-placement="top" title="Export Excel"><i class="fa fa-file-excel-o orange" aria-hidden="true"></i></a> | <a href="" data-toggle="tooltip" data-placement="top" title="Promouvoir"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> | <a href="" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Supprimer"></i></a>
                 <?php else: ?>
 					<td colspan="7" align="center" >Pas d'anniversaires à afficher</td>
+				</table>
 				<?php endif; ?>
-			</table>
 			<div class="row" style="text-align: center;">
 				<?php echo $this->pagination->create_links(); ?>
 			</div>
@@ -618,7 +622,11 @@
 $(document).ready(function() {
     $('#list').click(function(event){event.preventDefault();$('#albums .item').addClass('list-group-item');});
     $('#grid').click(function(event){event.preventDefault();$('#albums .item').removeClass('list-group-item');$('#albums .item').addClass('grid-group-item');});
+
+	$('#checkAll').change(function () {
+		$('input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+	});
 });
 
-test();
+
 </script>
