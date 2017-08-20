@@ -13,7 +13,6 @@ class Data extends CI_Controller {
     public function index(){
         
     }
-    
     public function insert($item_type,$album_id = null){
         $data['current_config'] = $this->data_model->get_config_tv($item_type);
         
@@ -103,7 +102,7 @@ class Data extends CI_Controller {
                     'date' => $this->input->post('birthdate'),
                     );
                     $this->data_model->insert_data($item_type,$data);
-                    $this->session->set_flashdata('message_success', 'Utilisateur ajouté avec succés');
+                    $this->session->set_flashdata('message_success', 'Anniversaire ajouté avec succés');
                     $link='liste/'.$item_type;
                     redirect($link);
                 }
@@ -211,8 +210,7 @@ class Data extends CI_Controller {
         redirect($link);
     }
     
-    public function update($item_type, $id, $text_type = null)
-    {
+    public function update($item_type, $id, $text_type = null){
         $data['current_config'] = $this->data_model->get_config_tv($item_type);
         if (isset($_POST['send-btn'])) {
             if($item_type == 'album'){
@@ -369,8 +367,7 @@ class Data extends CI_Controller {
         
     }
     
-    public function update_config_tv($item_type)
-    {
+    public function update_config_tv($item_type){
         $session_data = $this->session->userdata('logged_in');
         if($session_data)
         {
@@ -408,8 +405,7 @@ class Data extends CI_Controller {
         }
     }
     
-    public function update_state($item_type,$id,$state,$album_id = null)
-    {
+    public function update_state($item_type,$id,$state,$album_id = null){
         $this->data_model->update_state($item_type,$id,$state);
         if($item_type == 'photos'){
             $this->session->set_flashdata('message_success', 'Photo actualisée avec succés');
@@ -430,9 +426,7 @@ class Data extends CI_Controller {
         redirect($link);
     }
     
-    //Supression de news
-    public function delete($item_type,$id,$album_id = null)
-    {
+    public function delete($item_type,$id,$album_id = null){
         $this->data_model->delete($item_type,$id);
         if($item_type == 'photos'){
             $this->session->set_flashdata('message_danger', 'Photo supprimée avec succés');
@@ -444,6 +438,10 @@ class Data extends CI_Controller {
         }
         elseif($item_type == 'user'){
             $this->session->set_flashdata('message_danger', 'Utilisateur supprimé avec succés');
+            $link='liste/'.$item_type;
+        }
+        elseif($item_type == 'birthday'){
+            $this->session->set_flashdata('message_danger', 'Anniversaire supprimé avec succés');
             $link='liste/'.$item_type;
         }
         else{

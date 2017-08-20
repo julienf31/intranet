@@ -76,6 +76,7 @@ Class Data_model extends CI_Model
                 $this->db->or_like('group', $value);
                 $this->db->order_by('Prénom');
             }
+            $this->db->order_by('Nom');            
             $query = $this->db->get();
         }
         return $query->result_array();

@@ -85,7 +85,7 @@
 				</div>
 				<?php if($this->session->userdata('search')): ?>
 				<div class="row" style="text-align: center;margin-bottom: 10px;">
-					<span class="badge badge" style="border-radius: 0;"><a href="" data-toggle="tooltip" data-placement="top" title="Annuler la recherche"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('search'); ?></span>
+					<span class="badge badge" style="border-radius: 0;"><a href="<?php echo site_url('clearSearch'); ?>" data-toggle="tooltip" data-placement="top" title="Annuler la recherche"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('search'); ?></span>
 				</div>
 				<?php endif; ?>
 			</div>
@@ -333,9 +333,9 @@
 						echo form_close();
 					?>
 				</div>
-				<?php if($search): ?>
+				<?php if($this->session->userdata('search')): ?>
 				<div class="row" style="text-align: center;margin-bottom: 10px;">
-					<span class="badge badge" style="border-radius: 0;"><a href=""><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$search; ?></span>
+					<span class="badge badge" style="border-radius: 0;"><a href="<?php echo site_url('clearSearch'); ?>"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('search'); ?></span>
 				</div>
 				<?php endif; ?>
 			<table class="table table-striped table-hover">
@@ -500,7 +500,7 @@
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
 					</div>
 					<div class="pull-right">
-						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-perso btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter un utilisateur</a>
+						<a href="<?php echo  site_url('add/').$item_type; ?>" type="button" class="btn btn-perso btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Ajouter un anniversaire</a>
 					</div>
 				</div>
 		</div>

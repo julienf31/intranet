@@ -37,9 +37,13 @@ class Tv extends CI_Controller {
         $this->load->model('Data_model','news');
         $news = $this->news->view_data('news');
         if(count($news)){
-            $data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;
+            $data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;            
             $data['nextview'] = (isset($news[$key + 1 ])) ? $key + 1 : 0;
             $data['view'] = $news[$key];
+        }
+        else{
+            $data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;
+            $data['nextview'] = (isset($news[$key + 1 ])) ? $key + 1 : 0;
         }
         $this->load->helper('date');
         $data['item_type'] = 'news';
@@ -55,14 +59,17 @@ class Tv extends CI_Controller {
         $this->load->model('Data_model','bde');
         $news = $this->bde->view_data('bde');
         if(count($news)){
-            $data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;
+            $data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;            
             $data['nextview'] = (isset($news[$key + 1 ])) ? $key + 1 : 0;
             $data['view'] = $news[$key];
+        }
+        else{
+            $data['previous'] = (isset($news[$key - 1 ])) ? $key - 1 : 0;
+            $data['nextview'] = (isset($news[$key + 1 ])) ? $key + 1 : 0;
         }
         $data['item_type'] = 'bde';
         $this->template->set('title', 'News BDE');
         $data['config'] = $this->data_model->get_config_tv('bde');
-        $this->template->set('title', 'BDE');
         $this->template->load('templates/tv', 'tv', $data);
         
     }

@@ -15,6 +15,8 @@ class Admin extends CI_Controller {
     
     // Fonction de base, vue de login
     public function index(){
+        $this->session->unset_userdata('search');
+        $this->session->unset_userdata('birthday_search');
         if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
             $data['current_config'] = $this->data_model->get_config_tv("news");
