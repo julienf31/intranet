@@ -13,7 +13,7 @@ class Admin extends CI_Controller {
         }
     }
     
-    // Fonction de base, vue de login
+    // Panel admin
     public function index(){
         $this->session->unset_userdata('search');
         $this->session->unset_userdata('birthday_search');

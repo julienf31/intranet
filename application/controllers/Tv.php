@@ -21,8 +21,7 @@ class Tv extends CI_Controller {
         
         $date = date('d/m');		// date du jour
         //$this->load->model('Data_model','anniversaire');		// chargement du modele
-        $data['anniversaire_etu'] = $this->data_model->anniversaire_etu($date);	// chargement donnee du modele
-        $data['anniversaire_inter'] = $this->data_model->anniversaire_inter($date);	// chargement donnee du modele
+        $data['birthdays'] = $this->data_model->anniversaire_etu($date);	// chargement donnee du modele
         $data['fete'] = $this->data_model->fete($date);
         //var_dump($data['anniversaire_etu']);
         //die();

@@ -236,15 +236,15 @@ Class Data_model extends CI_Model
     }
     
     public function anniversaire_etu($date){
-        $this->db->from('etudiants');
-        $this->db->like('anniversaire',$date);
+        $this->db->from('birthday');
+        $this->db->like('date',$date);
         $query = $this->db->get();
         return $query->result_array();
     }
     
     public function anniversaire_inter($date){
-        $this->db->from('intervenants');
-        $this->db->like('anniversaire',$date);
+        $this->db->from('birthday');
+        $this->db->like('date',$date);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -349,31 +349,36 @@ Class Data_model extends CI_Model
                 break;
             default:
                 break;
+        }
     }
-}
 
-public function get_student_class($id){
-    $this->db->select('group');
-    $this->db->from('birthday');
-    $this->db->where('id',$id);
-    $query = $this->db->get();
-    $query = $query->row();
-    $query = $query->group;
-    
-    $this->db->select('id');
-    $this->db->from('class');
-    $this->db->where('group_name', $query);
-    $query = $this->db->get();
-    $query = $query->row();
-    return $query->id;
-    
-}
+    public function get_student_class($id){
+        $this->db->select('group');
+        $this->db->from('birthday');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        $query = $query->row();
+        $query = $query->group;
+        
+        $this->db->select('id');
+        $this->db->from('class');
+        $this->db->where('group_name', $query);
+        $query = $this->db->get();
+        $query = $query->row();
+        return $query->id;
+    }
 
-public function update_student($id,$class){
-    $group = $this->get_birthday_groups_list();
-    $this->db->from('birthday');
-    $this->db->where('id', $id);
-    $this->db->set('group',$group[$class-1]['group_name']);
-    $this->db->update('birthday');
-}
+    public function update_student($id,$class){
+        $group = $this->get_birthday_groups_list();
+        $this->db->from('birthday');
+        $this->db->where('id', $id);
+        $this->db->set('group',$group[$class-1]['group_name']);
+        $this->db->update('birthday');
+    }
+
+    public function get_tv_aivalable(){
+        $this->db->from('config_tv');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

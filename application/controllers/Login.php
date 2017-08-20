@@ -15,6 +15,7 @@ class Login extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             redirect('admin', 'refresh');
         } else {
+            $data['screens'] = $this->data_model->get_tv_aivalable();
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
             $data['current_config'] = $this->data_model->get_config_tv("news");
