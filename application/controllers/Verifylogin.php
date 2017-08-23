@@ -12,7 +12,7 @@ class VerifyLogin extends CI_Controller {
         
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
-        
+        $data['screens'] = $this->data_model->get_tv_aivalable();
         if($this->form_validation->run() == FALSE)
         {
             $session_data = $this->session->userdata('logged_in');
