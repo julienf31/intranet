@@ -94,7 +94,7 @@
         </div>
       </div>
       <!-- PW FORGOT -->
-      <div id="forgotform" class="col-md-6 col-md-offset-3  col-xs-8 col-xs-offset-2 hidden animated">
+      <div id="forgotform" class="col-md-12  col-xs-8 col-xs-offset-2 hidden animated">
         <div class="row accessrow">
           <label class="access">Mot de passe oublié</label>
         </div>
