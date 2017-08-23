@@ -41,6 +41,10 @@ ul {
     list-style-type: none;
 }
 
+a.noUnderline:hover {
+    text-decoration: none;
+}
+
 ul.add li:before {
     content: "+ ";
     margin-right: 10px;

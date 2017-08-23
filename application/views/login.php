@@ -127,8 +127,9 @@
         <div class="row">
 			<p class="access2" style="margin: 0; padding: 0;margin-bottom: 10px;">Cliquez sur un écran pour l'afficher</p>
 			<?php foreach ($screens as $key => $screen): ?>
-				<a href="<?php echo site_url($screen['item_type']); ?>" target="_blank"><div class="adminBlock">
+				<a class="noUnderline" href="<?php echo site_url($screen['item_type']); ?>" target="_blank"><div class="adminBlock">
 					<?php echo $screen['description']; ?>
+          <?php if($screen['maintenance']): ?><span class="pull-right"><i class="fa fa-warning red" data-toggle="tooltip" data-placement="right" title="Maintenance"></i></span><?php endif; ?>
 				</div></a>
 			<?php endforeach; ?>
         </div>

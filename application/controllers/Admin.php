@@ -178,7 +178,7 @@ class Admin extends CI_Controller {
             else if($item_type == 'user'){
                 $data['groups'] = $this->data_model->get_groups_list();
             }
-             else if($item_type == 'birthday'){
+            else if($item_type == 'birthday'){
                 $data['groups'] = $this->data_model->get_birthday_groups_list(); //class groups
             }
             $data['item_type'] = $item_type;

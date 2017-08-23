@@ -259,6 +259,15 @@ class Data extends CI_Controller {
                 $link='liste/'.$item_type;
                 redirect($link);
             }
+            else if($item_type == 'screens'){
+                $data = array(
+                'description' => $this->input->post('name'),
+                );
+                $this->data_model->update_data($item_type,$id,$data);
+                $this->session->set_flashdata('message_success', 'Ecran modifié avec succés');
+                $link='liste/'.$item_type;
+                redirect($link);
+            }
             $session_data = $this->session->userdata('logged_in');
             if($session_data)
             {

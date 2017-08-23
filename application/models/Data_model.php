@@ -125,6 +125,11 @@ Class Data_model extends CI_Model
             $this->db->where('id',$id);
             $query = $this->db->get();
         }
+        else if ($item_type=='screens') {
+            $this->db->from('config_tv');
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+        }
         return $query->row_array();
     }
     
@@ -163,17 +168,20 @@ Class Data_model extends CI_Model
         if ($item_type=='bde') {
             $this->db->update('news_bde', $data);
         }
-        if ($item_type=='news') {
+        else if ($item_type=='news') {
             $this->db->update('news', $data);
         }
-        if ($item_type=='album') {
+        else if ($item_type=='album') {
             $this->db->update('album', $data);
         }
-        if ($item_type=='user') {
+        else if ($item_type=='user') {
             $this->db->update('users', $data);
         }
-        if ($item_type=='birthday') {
+        else if ($item_type=='birthday') {
             $this->db->update('birthday', $data);
+        }
+        else if ($item_type=='screens') {
+            $this->db->update('config_tv', $data);
         }
     }
     
