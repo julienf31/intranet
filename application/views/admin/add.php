@@ -1,3 +1,4 @@
+
 <div id="container" class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -25,8 +26,9 @@
 				</div>
 			<div id="news_fields">
 				<div class="form-group">
-					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label>
-					<input type="file" id="imageup" name="imageup">
+					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de fond</label><br />
+					<input type="hidden" id="fileUp" name="imageup">
+					<button type="button" class="btn btn-info btn-perso" data-toggle="modal" data-target="#files_manager">Choisir un fichier</button> Fichier : <span id="file">Pas de fichier séléctionné</span><br/>
 					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
 				</div>
 				<label>Contenu de la news</label>
@@ -62,7 +64,7 @@
 			<div id="news_fields">
 				<div class="form-group">
 					<label><i class="fa fa-picture-o" aria-hidden="true"></i> Image de l'album</label>
-					<input type="file" id="imageup" name="imageup">
+					<input type="file" id="imageup" name="imageup" value=""/>
 					<p class="help-block">Format .jpeg/.jpg/.gif/.png , La taille idéale doit être de 1920 x 1080 px</p>
 				</div>
 				<label>Description de l'album</label>
@@ -220,3 +222,7 @@ $('#upload_fields').removeClass('hidden');
 })
 
 </script>
+
+<?php
+$this->load->view('files_manager/display');
+?>

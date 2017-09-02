@@ -162,7 +162,7 @@ Le service sera rétabli sous peu....</h3>
                         <!-- Si c'est une news -->
                         <div class="row">
                           <div class="col-md-12">
-                            <img src="<?php echo base_url();?>uploads/<?php echo $view['image']; ?>" style="background-size: cover; width: 100%; height:<?php if ($item_type == 'news' || $view['afficher_titre']=='1'){echo '450px';}else{echo '506px';}; ?>;">
+                            <img src="<?php echo base_url();?><?php echo $view['image']; ?>" style="background-size: cover; width: 100%; height:<?php if ($item_type == 'news' || $view['afficher_titre']=='1'){echo '450px';}else{echo '506px';}; ?>;">
                             <div class="carousel-caption">
                               <p>
                                 <?php echo $view['texte']; ?>

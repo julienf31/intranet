@@ -171,12 +171,16 @@ class Data extends CI_Controller {
     
     public function insert_news($item_type,$data){
         // essayer de casser les fonctions
-        $this->upload->do_upload('imageup');
-        $data_upload_files = $this->upload->data();
-        $image = $data_upload_files['full_path'];
-        $file = basename($image);
-        if($file == 'uploads'){
-            $file = 'default/white.png';
+        //$this->upload->do_upload('imageup');
+        //$data_upload_files = $this->upload->data();
+        //$image = $data_upload_files['full_path'];
+        $file = $this->input->post('imageup');
+        if($file == ''){
+            $file = 'assets/img/default/white.png';
+        }
+        else{
+            $tmp = 'uploads/'.$file;
+            $file = $tmp;
         }
         $afficher_titre=$this->input->post('afficher_titre');
         if($afficher_titre == null){

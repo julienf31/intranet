@@ -143,6 +143,7 @@ class Admin extends CI_Controller {
             $data['username'] = $session_data['username'];
             $data['item_type'] = $item_type;
             $data['current_config'] = $this->data_model->get_config_tv('news');
+            $data['files'] = $this->files_model->listFiles();
             if($item_type == 'photos' && $album_id != ""){
                 $data['album_id'] = $album_id;
                 $data['content_album'] = $this->data_model->get_album($album_id);
@@ -295,6 +296,22 @@ class Admin extends CI_Controller {
                  break;
         }
         redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function files_manager(){
+        if($this->session->userdata('logged_in')){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+            $data['user'] = $this->user_model->get_user_info($session_data['username']);
+            $data['current_config'] = 0;
+            $data['files'] = $this->files_model->listFiles();
+
+            $this->template->set('title', 'Gestion des fichiers');
+            $this->template->load('templates/admin', 'admin/files', $data);
+        }
+        else{
+            redirect('login', 'refresh');
+        }
     }
 
 }

@@ -39,6 +39,8 @@ $route['preview/(:any)'] = 'data/insert/$1';
 $route['edit/(:any)/([0-9]+)'] = 'admin/edit/$1/$2';
 $route['edit/(:any)/([0-9]+)/(:any)'] = 'admin/edit/$1/$2/$3';
 
+$route['files_manager'] = 'admin/files_manager';
+$route['uploadImage'] = 'files_manager/uploadImage';
 
 ######## GESTION DATAS #####
 $route['insert/(:any)'] = 'data/insert/$1';
