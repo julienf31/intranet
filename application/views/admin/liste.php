@@ -45,9 +45,7 @@ $(document).ready(function() {
 				$(this).closest('tr').css("font-style", "italic");
 			else
 				$(this).closest('tr').css("font-style", "normal");
-
 		});
-		
 	});
 	$('input[type="checkbox"][name="group[]"]').change(function(){
 		if($(this).is(':checked'))
