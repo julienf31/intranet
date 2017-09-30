@@ -2,8 +2,8 @@
   <div class="row">
     Selectionnez la version :
     <select id="version">
-      <option value="2-3">2.3</option>
-      <option value="2-2" selected>2.2</option>
+      <option value="2-3" selected>2.3</option>
+      <option value="2-2">2.2</option>
       <option value="2-1">2.1</option>
       <option value="2">2</option>
       <option value="1-02">1.02</option>
@@ -11,13 +11,14 @@
       <option value="1">1</option>
     </select>
   </div>
-  <div id="2-3" class="row changelog-corp hidden">
+  <div id="2-3" class="row changelog-corp">
     <h3 class="changelog">Version 2.3 - En Cours</h3>
    	  	<ul class="add">
     		<li>Gestion des anniversaires
 			<ul class="add">
 				<li>Gestion individuelle</li>
 				<li>Promotion individuelle dans la promotion supérieure</li>
+        <li>Promotion de groupe dans la promotion supérieure</li>
 			</ul>
 			</li>
 		</ul>
@@ -28,7 +29,7 @@
 			<li>Optimisation de la base de donnée</li>
 		</ul>
   </div>
-  <div id="2-2" class="row changelog-corp">
+  <div id="2-2" class="row changelog-corp hidden">
     <h3 class="changelog">Version 2.2 - Terminé (05/05/2017)</h3>
     <ul class="add">
       <li>Nouveau style du panel admin</li>
