@@ -466,6 +466,7 @@
 					<span class="badge badge" style="border-radius: 0;"><a href="<?php echo site_url('clearSearch'); ?>"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('birthday_search'); ?></span>
 				</div>
 				<?php endif; ?>
+				<form action="<?php echo site_url('admin/graduate_selection'); ?>" method="post">
 			<table class="table table-striped table-hover">
 				<tr>
 					<th><input type="checkbox" name="selectall" id="checkAll"></th>
@@ -482,7 +483,7 @@
 				}
 				?>
 					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
-						<td><input type="checkbox" name="" id=""></td>
+						<td><input type="checkbox" name="group[]" value="<?php echo $data['id']; ?>" id=""></td>
 						<td><?php echo $from+$key+1; ?></td>
 						<td><?php echo $data['Nom']; ?></td>
 						<td><?php echo $data['Prénom']; ?></td>
@@ -491,14 +492,17 @@
 					</tr>	
 				<?php endforeach; ?>
 				</table>
-				Pour la selection <a href="" data-toggle="tooltip" data-placement="top" title="Export Excel"><i class="fa fa-file-excel-o orange" aria-hidden="true"></i></a> | <a href="" data-toggle="tooltip" data-placement="top" title="Promouvoir"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> | <a href="" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Supprimer"></i></a>
+				Pour la selection <a href="" data-toggle="tooltip" data-placement="top" title="INDISPONIBLE - Export Excel"><i class="fa fa-file-excel-o orange" aria-hidden="true"></i></a> | 
+				<a href="#" data-toggle="tooltip" data-placement="top" title="Promouvoir" onclick="$(this).closest('form').submit()"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> | <a href="" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="INDISPONIBLE - Supprimer"></i></a>
                 <?php else: ?>
 					<td colspan="7" align="center" >Pas d'anniversaires à afficher</td>
 				</table>
 				<?php endif; ?>
+
 			<div class="row" style="text-align: center;">
 				<?php echo $this->pagination->create_links(); ?>
 			</div>
+			</form>
 				<div class="row">
 					<div class="pull-left">
 						<a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>

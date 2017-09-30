@@ -260,39 +260,108 @@ class Admin extends CI_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
+	public function graduate_group($id){
+        $class = $this->data_model->get_student_class($id);
+        switch ($class) {
+            case 1:
+                $class = 2;
+				$this->data_model->update_student($id,$class);
+				return true;
+                break;
+            case 2:
+                $class = 3;
+				$this->data_model->update_student($id,$class);
+				return true;
+                break;
+            case 3:
+                $class = 4;
+				$this->data_model->update_student($id,$class);
+				return true;
+                break;
+            case 4:
+                $class = 5;
+				$this->data_model->update_student($id,$class);
+				return true;
+                break;
+			case 5:
+				return false;
+                break;
+            case 6:
+                $class = 7;
+				$this->data_model->update_student($id,$class);
+				return true;
+                break;
+            case 7:
+                $class = 8;
+				$this->data_model->update_student($id,$class);
+				return true;
+                break;
+			case 8:
+				return false;
+                break;
+			default:
+				return false;
+                break;
+        }
+	}
+	
+	public function graduate_selection(){
+		//var_dump($_POST);
+		//die();
+		$success = 0;
+		$fail = 0;
+		if(isset($_POST['group'])){
+			foreach ($_POST['group'] as $key => $value) {
+				if($this->graduate_group($value) == true)
+					$success++;
+				else
+					$fail++;
+			}
+			if($success>0)
+				$this->session->set_flashdata('message_success', $success.' étudiant promus');
+			if($fail>0)
+				$this->session->set_flashdata('message_warning', $fail.' étudiant non promus');
+		}
+		else{
+			$this->session->set_flashdata('message_warning', 'Aucun étudiant séléctionné');
+		}
+		//die();
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
     public function graduate_student($id){
         $class = $this->data_model->get_student_class($id);
         switch ($class) {
             case 1:
                 $class = 2;
-                $this->data_model->update_student($id,$class);
-                 break;
+				$this->data_model->update_student($id,$class);
+                break;
             case 2:
                 $class = 3;
-                $this->data_model->update_student($id,$class);
-                 break;
+				$this->data_model->update_student($id,$class);
+                break;
             case 3:
                 $class = 4;
-                $this->data_model->update_student($id,$class);
-                 break;
+				$this->data_model->update_student($id,$class);
+                break;
             case 4:
                 $class = 5;
-                $this->data_model->update_student($id,$class);
-                 break;
-            case 5:
-                 break;
+				$this->data_model->update_student($id,$class);
+                break;
+			case 5:
+                break;
             case 6:
                 $class = 7;
-                $this->data_model->update_student($id,$class);
-                 break;
+				$this->data_model->update_student($id,$class);
+                break;
             case 7:
                 $class = 8;
-                $this->data_model->update_student($id,$class);
-                 break;
-            case 8:
-                 break;
-            default:
-                 break;
+				$this->data_model->update_student($id,$class);
+                break;
+			case 8:
+                break;
+			default:
+                break;
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
