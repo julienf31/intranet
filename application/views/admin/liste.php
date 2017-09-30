@@ -39,7 +39,21 @@ $(document).ready(function() {
     $('#grid').click(function(event){event.preventDefault();$('#albums .item').removeClass('list-group-item');$('#albums .item').addClass('grid-group-item');});
 
 	$('#checkAll').change(function () {
-		$('input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+		$('input[type="checkbox"][name="group[]"]').prop('checked', $(this).prop('checked'));
+		$('input[type="checkbox"][name="group[]"]').each(function(){
+			if($(this).is(':checked'))
+				$(this).closest('tr').css("font-style", "italic");
+			else
+				$(this).closest('tr').css("font-style", "normal");
+
+		});
+		
+	});
+	$('input[type="checkbox"][name="group[]"]').change(function(){
+		if($(this).is(':checked'))
+			$(this).closest('tr').css("font-style", "italic");
+		else
+			$(this).closest('tr').css("font-style", "normal");
 	});
 });
 

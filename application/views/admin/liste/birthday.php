@@ -98,7 +98,7 @@
 						$from = 0;
 				}
 				?>
-					<tr class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
+					<tr key="<?php echo $key; ?>" class="<?php $key%2==0 ? 'even' : 'odd'; ?>">
 						<td><input type="checkbox" name="group[]" value="<?php echo $data['id']; ?>" id=""></td>
 						<td><?php echo $from+$key+1; ?></td>
 						<td><?php echo $data['Nom']; ?></td>
