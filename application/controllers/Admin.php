@@ -306,8 +306,6 @@ class Admin extends CI_Controller {
 	}
 	
 	public function graduate_selection(){
-		//var_dump($_POST);
-		//die();
 		$success = 0;
 		$fail = 0;
 		if(isset($_POST['group'])){
@@ -327,7 +325,7 @@ class Admin extends CI_Controller {
 		}
 		//die();
 		redirect($_SERVER['HTTP_REFERER']);
-	}
+    }
 
     public function graduate_student($id){
         $class = $this->data_model->get_student_class($id);
@@ -366,6 +364,112 @@ class Admin extends CI_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
+    public function delete_selection(){
+		$success = 0;
+		if(isset($_POST['group'])){
+			foreach ($_POST['group'] as $key => $value) {
+                $this->data_model->delete('birthday',$value);
+                $success++;
+			}
+			if($success>0)
+				$this->session->set_flashdata('message_success', $success.' étudiant supprimés');
+		}
+		else{
+			$this->session->set_flashdata('message_warning', 'Aucun étudiant séléctionné');
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+    public function multiple_birthday(){
+        if(isset($_POST['delete'])){
+            $this->delete_selection();
+        }
+        elseif (isset($_POST['graduate'])) {
+            $this->graduate_selection();
+        }
+    }
+
+    public function cleanBirthday(){
+        $this->db->from('etudiants');
+        $students = $this->db->get();
+        $b1=0;
+        foreach ($students->result_array() as $key => $student) {
+            if(fnmatch('*ng*', $student['formation'])){
+                echo "Ingésup trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                if(fnmatch('[Bb]1*', $student['group'])){
+                    echo "B1 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $b1++;
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"B1 Ingésup");
+                    $this->db->update('etudiants');
+                }
+                else if(fnmatch('[Bb]2*', $student['group'])){
+                    echo "B2 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"B2 Ingésup");
+                    $this->db->update('etudiants');
+                }
+                else if(fnmatch('[Bb]3*', $student['group'])){
+                    echo "B3 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"B3 Ingésup");
+                    $this->db->update('etudiants');
+                }
+                else if(fnmatch('[Mm]1*', $student['group'])){
+                    echo "M1 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"M1 Ingésup");
+                    $this->db->update('etudiants');
+                }
+                else if(fnmatch('[Mm]2*', $student['group'])){
+                    echo "M2 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"M2 Ingésup");
+                    $this->db->update('etudiants');
+                }
+                else{
+                    echo "UNDEFINED STUDENT ".$student['Nom']." ".$student['Prénom']."<br/>";
+                }
+            }
+            else if(fnmatch('*ESSC*', $student['formation'])){
+                echo "ESSCA trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                $this->db->from('etudiants');
+                $this->db->where('id',$student['id']);
+                $this->db->set('group',"B3 ESSCA");
+                $this->db->update('etudiants');
+            }
+            else if(fnmatch('*Lim*', $student['formation'])){
+                echo "Lim'Art trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                if((fnmatch('*MANAA*', $student['group']))||(fnmatch('*[Bb]1*', $student['group']))){
+                    echo "MANAA B1 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"MANAA");
+                    $this->db->update('etudiants');
+                }
+                else if(fnmatch('*[Bb]2*', $student['group'])){
+                    echo "Lim B2 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"B2 Lim'Art");
+                    $this->db->update('etudiants');
+                }
+                else if(fnmatch('*[Bb]3*', $student['group'])){
+                    echo "Lim B3 trouvé : ".$student['Nom']." ".$student['Prénom']."<br/>";
+                    $this->db->from('etudiants');
+                    $this->db->where('id',$student['id']);
+                    $this->db->set('group',"B3 Lim'Art");
+                    $this->db->update('etudiants');
+                }
+            }
+        }
+        echo $b1;
+    }
 }
 
 ?>
