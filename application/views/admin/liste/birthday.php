@@ -112,9 +112,30 @@
 				<button type="submit" name="graduate" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Promouvoir">
     				<i class="fa fa-graduation-cap green"></i>
 				</button> | 
-				<button type="submit" name="delete" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Supprimer">
-    				<i class="fa fa-trash red"></i>
-				</button>
+				<a href="#delete" data-toggle="modal" class="btn btn-link">
+    				<i data-toggle="tooltip" data-placement="top" title="Supprimer" class="fa fa-trash red"></i>
+				</a>
+
+				<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+							</div>
+							<div class="modal-body">
+								Voulez-vous vraiment supprimer ces <strong id="count"></strong> étudiants / intervenants ?
+							</div>
+							<div class="alert alert-warning" style="margin: 5px 10px;">
+								<strong>Attention : </strong>Cette action est irrévoquable.
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-perso btn-default" data-dismiss="modal">Annuler</button>
+								<button type="submit" name="delete" class="btn btn-perso btn-success" data-toggle="tooltip" data-placement="top" title="Supprimer">Confirmer</button>
+							</div>
+						</div>
+					</div>
+				</div>
                 <?php else: ?>
 					<td colspan="7" align="center">Pas d'anniversaires à afficher</td>
 				</table>
