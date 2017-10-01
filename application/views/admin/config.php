@@ -1,3 +1,8 @@
+<?php
+$url="http://dev.julien-fournier.fr/version.json";
+$json=file_get_contents($url);
+$version=json_decode($json,true);
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -26,17 +31,20 @@
     </div>
 </div>
 <script type="text/javascript">
+var beta =  <?php echo $configs[3]['value']; ?>;
 var version = <?php echo $configs[0]['value']; ?>;
-var curVersion = "2.2"; // trouver un systéme pour ca
+if(beta == "1"){
+    var lastVersion = "<?php echo $version["intranet"]["beta"]; ?>";
+}
+else{
+    var lastVersion = "<?php echo $version["intranet"]["stable"]; ?>";
+}
 var test = function(){
-    console.log(version);
-    if(version == curVersion){
-        console.log("ok");
+    if(version == lastVersion){
         $('.update').html("Vous disposez de la derniére version (" + version + ") <i class=\"fa fa-check fa-fw\"></i>").removeClass("update").addClass("updateOk");
     }
     else{
-        console.log("pas ok");
-        $('.update').html("Une mise à jour est requise ! (" + version + ") -> (" + curVersion + ") <i class=\"fa fa-close fa-fw\"></i>").removeClass("update").addClass("updateWrong");
+        $('.update').html("Une mise à jour est requise ! (" + version + ") -> (" + lastVersion + ") <i class=\"fa fa-close fa-fw\"></i>").removeClass("update").addClass("updateWrong");
     }
 }
 $('document').ready(function(){

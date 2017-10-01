@@ -6,7 +6,7 @@
 <html> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>Maintenance</title>
+        <title>Erreur 404</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +41,7 @@
 						<div class="col-sm-12 text-center">
 							<i class="icon icon-compass"></i>
                             <h1 class="jumbo" style="color: white;">Error 404 :(</h1>
-							<h1 style="color: white;"><strong>Page introuvable</strong><br>Le service sera rétabli sous peu....</h1>
+							<h1 style="color: white;"><strong>Page introuvable</strong><br>Redirections en cours ....</h1>
 						</div>
 					</div>
 				</div>

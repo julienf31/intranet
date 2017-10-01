@@ -8,6 +8,10 @@ h4 {
     font-size: 3.2vmin;
 }
 
+input:focus {
+    outline: none;
+}
+
 .tv {
     font-size: 4vmin;
 }
@@ -19,7 +23,6 @@ h4 {
 .meteo {
     text-align: left;
     color: #ec4363;
-    font-height: 400;
     line-height: 22.25px;
     padding-top: 20px;
 }
@@ -36,6 +39,10 @@ h4 {
 
 ul {
     list-style-type: none;
+}
+
+a.noUnderline:hover {
+    text-decoration: none;
 }
 
 ul.add li:before {
@@ -121,6 +128,15 @@ p.article {
 .green {
     /*	color: #33e1cf; COULEUR PLUS CLAIRE DU STYLE YNOV*/
     color: #00ae9c;
+}
+
+.orange {
+    color: orange;
+}
+
+.grey {
+    /*	color: #33e1cf; COULEUR PLUS CLAIRE DU STYLE YNOV*/
+    color: #6B6B6B;
 }
 
 h3.titrenews {
@@ -544,4 +560,20 @@ i.view:focus {
 .modal-content {
     border-radius: 0;
     border: none;
+}
+
+ul.pagination li:first-child a,
+ul.pagination li:last-child a {
+    border-radius: 0;
+}
+
+.example .pagination>li>a,
+.example .pagination>li>span {
+    border: 1px solid rgb(21, 161, 138);
+}
+
+.pagination>li.active>a {
+    background: rgb(21, 161, 138);
+    color: #fff;
+    border-color: rgb(21, 161, 138);
 }

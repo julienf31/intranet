@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 define('ASSETS', getenv('BASE_URL').'assets');
 define('VENDORS',getenv('BASE_URL').'vendors');
-
+define('VERSION', '2.3');
 
 /*
 |--------------------------------------------------------------------------

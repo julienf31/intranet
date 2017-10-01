@@ -13,7 +13,6 @@ class Data extends CI_Controller {
     public function index(){
         
     }
-    
     public function insert($item_type,$album_id = null){
         $data['current_config'] = $this->data_model->get_config_tv($item_type);
         
@@ -22,7 +21,7 @@ class Data extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             if($session_data){
                 if($item_type == 'photos'){
-					// Regarder controler pour multiple upload
+                    // Regarder controler pour multiple upload
                     $data['username'] = $session_data['username'];
                     $this->upload->do_upload('imageup');
                     $data_upload_files = $this->upload->data();
@@ -84,7 +83,7 @@ class Data extends CI_Controller {
                     }
                     $data = array(
                     'username' => $this->input->post('username'),
-                    'password' => MD5($this->input->post('password')),
+                    'password' => sha1($this->input->post('password')),
                     'group' => $this->input->post('group'),
                     'mail' => $this->input->post('mail'),
                     'active' => $active
@@ -94,9 +93,22 @@ class Data extends CI_Controller {
                     $link='liste/'.$item_type;
                     redirect($link);
                 }
+                elseif($item_type == 'birthday'){
+                    $data['username'] = $session_data['username'];
+                    $data = array(
+                    'Nom' => $this->input->post('name'),
+                    'Prénom' => $this->input->post('surname'),
+                    'group' => $this->input->post('class'),
+                    'date' => $this->input->post('birthdate'),
+                    );
+                    $this->data_model->insert_data($item_type,$data);
+                    $this->session->set_flashdata('message_success', 'Anniversaire ajouté avec succés');
+                    $link='liste/'.$item_type;
+                    redirect($link);
+                }
                 else{
-					//Si news :
-					$data['username'] = $session_data['username'];
+                    //Si news :
+                    $data['username'] = $session_data['username'];
                     $this->insert_news($item_type,$data);
                 }
             }
@@ -104,7 +116,7 @@ class Data extends CI_Controller {
                 redirect('login', 'refresh');
             }
             
-        // Preview action
+            // Preview action
         } else if (isset($_POST['preview-btn'])) {
             if($this->session->userdata('logged_in'))
             {
@@ -198,8 +210,7 @@ class Data extends CI_Controller {
         redirect($link);
     }
     
-    public function update($item_type, $id, $text_type = null)
-    {
+    public function update($item_type, $id, $text_type = null){
         $data['current_config'] = $this->data_model->get_config_tv($item_type);
         if (isset($_POST['send-btn'])) {
             if($item_type == 'album'){
@@ -217,7 +228,7 @@ class Data extends CI_Controller {
                 $link='liste/'.$item_type;
                 redirect($link);
             }
-            elseif($item_type == 'user'){
+            else if($item_type == 'user'){
                 $active=$this->input->post('active');
                 if($active == null){
                     $active=0;
@@ -233,6 +244,27 @@ class Data extends CI_Controller {
                 );
                 $this->data_model->update_data($item_type,$id,$data);
                 $this->session->set_flashdata('message_success', 'Utilisateur modifié avec succés');
+                $link='liste/'.$item_type;
+                redirect($link);
+            }
+            else if($item_type == 'birthday'){
+                $data = array(
+                'Prénom' => $this->input->post('surname'),
+                'Nom' => $this->input->post('name'),
+                'group' => $this->input->post('group'),
+                'date' => $this->input->post('birthdate')
+                );
+                $this->data_model->update_data($item_type,$id,$data);
+                $this->session->set_flashdata('message_success', 'Utilisateur modifié avec succés');
+                $link='liste/'.$item_type;
+                redirect($link);
+            }
+            else if($item_type == 'screens'){
+                $data = array(
+                'description' => $this->input->post('name'),
+                );
+                $this->data_model->update_data($item_type,$id,$data);
+                $this->session->set_flashdata('message_success', 'Ecran modifié avec succés');
                 $link='liste/'.$item_type;
                 redirect($link);
             }
@@ -320,7 +352,7 @@ class Data extends CI_Controller {
                 }
                 
                 $preview_data = array(
-				'titre'                   => $this->input->post('titre'),
+                'titre'                   => $this->input->post('titre'),
                 'auteur'                  => $data['username'],
                 'visible'                 => $this->input->post('visible'),
                 'afficher_titre'          => $afficher_titre,
@@ -344,8 +376,7 @@ class Data extends CI_Controller {
         
     }
     
-    public function update_config_tv($item_type)
-    {
+    public function update_config_tv($item_type){
         $session_data = $this->session->userdata('logged_in');
         if($session_data)
         {
@@ -383,8 +414,7 @@ class Data extends CI_Controller {
         }
     }
     
-    public function update_state($item_type,$id,$state,$album_id = null)
-    {
+    public function update_state($item_type,$id,$state,$album_id = null){
         $this->data_model->update_state($item_type,$id,$state);
         if($item_type == 'photos'){
             $this->session->set_flashdata('message_success', 'Photo actualisée avec succés');
@@ -402,12 +432,19 @@ class Data extends CI_Controller {
             $this->session->set_flashdata('message_success', 'Utilisateur actualisé avec succés');
             $link='liste/'.$item_type;
         }
+        elseif($item_type == 'screens'){
+            if($state == 1){
+                $this->session->set_flashdata('message_success', 'Mode maintenance activé');                
+            }
+            else{
+                $this->session->set_flashdata('message_success', 'Mode maintenance désactivé');  
+            }
+            $link='liste/'.$item_type;
+        }
         redirect($link);
     }
     
-    //Supression de news
-    public function delete($item_type,$id,$album_id = null)
-    {
+    public function delete($item_type,$id,$album_id = null){
         $this->data_model->delete($item_type,$id);
         if($item_type == 'photos'){
             $this->session->set_flashdata('message_danger', 'Photo supprimée avec succés');
@@ -419,6 +456,10 @@ class Data extends CI_Controller {
         }
         elseif($item_type == 'user'){
             $this->session->set_flashdata('message_danger', 'Utilisateur supprimé avec succés');
+            $link='liste/'.$item_type;
+        }
+        elseif($item_type == 'birthday'){
+            $this->session->set_flashdata('message_danger', 'Anniversaire supprimé avec succés');
             $link='liste/'.$item_type;
         }
         else{

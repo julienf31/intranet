@@ -1,14 +1,3 @@
-<?php
-    $query = $this->db->query('select id from news');
-    $nb_news = $query->num_rows();
-	$query = $this->db->query('select id from news_bde');
-	$nb_news_bde = $query->num_rows();
-	$query = $this->db->query('select id from photos');
-	$nb_photos = $query->num_rows();
-	$query = $this->db->query('select id from users');
-	$nb_users = $query->num_rows();
-	
-?>
 <!-- Notifications -->
 	<div class="row resetrow">
 		<div class="col-md-10 col-md-offset-1">
@@ -104,20 +93,20 @@
 			</div>
 			<div class="adminBlock">
 				<h4>Gestion des écrans <span class="badge badge-danger">beta</span></h4>
-				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
-					Liste des écrans <span class="label label-warning">soon</span>
+				<a href="<?php echo site_url('liste/screens'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+					Liste des écrans
 				</a>
-				<a href="<?php echo site_url('add/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-					Ajouter un écran <span class="label label-warning">soon</span>
+				<a href="<?php echo site_url('add/screens'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+					Ajouter un écran
 				</a>
 			</div>
 			<div class="adminBlock">
-				<h4>Gestion des anniversaires <span class="badge badge-danger">beta</span></h4>
-				<a href="<?php echo site_url('liste/user'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
+				<h4>Gestion des anniversaires <span class="badge"><?php echo $nb_birthdays; ?></span> <span class="badge badge-yellow">new</span></h4>
+				<a href="<?php echo site_url('liste/birthday'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-list fa-fw" aria-hidden="true"></i>
 					Liste des anniversaires
 				</a>
-				<a href="<?php echo site_url('add/user'); ?>" class="btn btn-perso btn-success disabled" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-					Ajouter une entrée <span class="label label-warning">soon</span>
+				<a href="<?php echo site_url('add/birthday'); ?>" class="btn btn-perso btn-success" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+					Ajouter une entrée 
 				</a>
 			</div>
 			<div class="adminBlock">
@@ -160,15 +149,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Nouveautés dans la version 2.2</h4>
+        <h4 class="modal-title" id="myModalLabel">Nouveautés dans la version 2.3</h4>
       </div>
       <div class="modal-body">
 	  	<ul class="add">
-    		<li>Cliquez sur <i class="fa fa-eye fa-fw view" aria-hidden="true" ></i> pour avoir un apercu des pages</li>
-			<li>Nouveau style du panel admin</li>
-			<li>Navigation au fléches dans l'affichage des news</li>
-			<li>Fonctionalité mot de passe oublié</li>
-			<li>Ajout de la gestion des utilisateurs</li>
+    		<li>Gestion des anniversaires
+			<ul class="add">
+				<li>Gestion individuelle</li>
+				<li>Promotion individuelle dans la promotion supérieure</li>
+			</ul>
+			</li>
+		</ul>
+		<ul class="other">
+			<li>Nouveau cryptage des données sensibles</li>
+			<li>Amélioration drastique des performances</li>
+			<li>Correction de la recherche</li>
+			<li>Optimisation de la base de donnée</li>
 		</ul>
       </div>
       <div class="modal-footer">

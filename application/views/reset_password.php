@@ -1,4 +1,26 @@
-	<div class="container">
+	<div class="row resetrow">
+		<div class="col-md-10 col-md-offset-1">
+			<?php if($this->session->flashdata('info')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('info')?>";
+					$.notify({message: message},{type: 'info'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('danger')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('danger')?>";
+					$.notify({message: message},{type: 'danger'});
+				</script>
+			<?php endif; ?>
+			<?php if($this->session->flashdata('error')): ?>
+				<script type="text/javascript">
+					var message = "<?php echo $this->session->flashdata('success')?>";
+					$.notify({message: message},{type: 'error'});
+				</script>
+			<?php endif; ?>
+		</div>
+	</div>
+		<div class="container">
 		<!-- page de connexion -->
 		<div class="row">
 			<!-- Debut contenu-->

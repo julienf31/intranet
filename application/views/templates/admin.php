@@ -68,11 +68,11 @@
 		<?php endif; ?>
 			<span class="footer">Page générée en <strong>{elapsed_time}</strong> secondes</span>
 			<br/>
-			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v2.2</span>
+			<span class="footer">Propulsé par <strong>YNOV intranet</strong> v<?php echo VERSION; ?></span>
 	</div>
 </footer>
 
-<script>
+<script> // report
 (function ( $ ) {
 	$.fn.feedback = function(success, fail) {
 		self=$(this);

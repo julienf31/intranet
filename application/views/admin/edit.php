@@ -77,7 +77,7 @@
 				</div>
 			</form>
 			<?php elseif($item_type == 'user'): ?>
-			<h3>Ajouter un utilisateur</h3>
+			<h3>Editer l'utilisateur - <?php echo $current_data['username']; ?></h3>
 			<br>
 			<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register" enctype="multipart/form-data">
 			
@@ -100,6 +100,67 @@
 				<div class="form-group">
 					<label>Mail</label>
 					<input type="mail" class="form-control" name="mail" style="width: 60%;" value="<?php echo $current_data['mail']; ?>" required>
+				</div>
+			
+				<br />
+				<div class="pull-left">
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				</div>
+				<div class="pull-right">
+					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+				</div>
+			</form>
+			<?php elseif($item_type == 'birthday'): ?>
+			<h3>Editer l'anniversaire - <?php echo $current_data['Nom'].' '.$current_data['Prénom'];  ?></h3>
+			<br>
+			<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register" enctype="multipart/form-data">
+			
+				<div class="form-group">
+					<label>Prénom</label>
+					<input type="text" class="form-control" name="surname" style="width: 50%;"  value="<?php echo $current_data['Prénom']; ?>" required>
+					<label>Nom</label>
+					<input type="text" class="form-control" name="name" style="width: 50%;"  value="<?php echo $current_data['Nom']; ?>" required>
+
+				</div>
+				<div class="form-group">
+					<label style="display:block;">Groupe</label>
+					<select class="form-control" name="group" style="display:inline-block;">
+						<?php foreach ($groups as $key => $group): ?>
+						<option value="<?php echo $group['group_name']; ?>" <?php if( $current_data['group'] == $group['group_name']){ echo 'selected';} ?>><?php echo $group['group_name']; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<br/>
+					<br/>
+				</div>
+				<div class="form-group">
+					<label>Naissance</label>
+					<input type="mail" class="form-control" name="birthdate" style="width: 60%;" value="<?php echo $current_data['date']; ?>" required>
+				</div>
+			
+				<br />
+				<div class="pull-left">
+					<a href="<?php echo  site_url('liste/').$item_type; ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
+				</div>
+				<div class="pull-right">
+					<button type="submit" class="btn btn-perso btn-success" name="send-btn" value="Send" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+				</div>
+			</form>
+			<?php elseif($item_type == 'screens'): ?>
+			<h3>Editer l'écran - <?php echo $current_data['description'];  ?></h3>
+			<br>
+			<form method="post" action="<?php echo site_url('update/').$item_type.'/'.$current_data['id']; ?>" name="data_register" enctype="multipart/form-data">
+			
+				<div class="form-group">
+					<label>Nom de l'écran</label>
+					<input type="text" class="form-control" name="name" style="width: 50%;"  value="<?php echo $current_data['description']; ?>" required>
+				</div>
+				<div class="form-group">
+					<label style="display:block;">Type</label>
+					<select class="form-control" name="group" style="display:inline-block;" disabled>
+						<option value="<?php echo $current_data['item_type']; ?>"><?php echo $current_data['item_type']; ?></option>
+					</select>
+					<br/>
+					<br/>
 				</div>
 			
 				<br />
