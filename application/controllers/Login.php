@@ -29,6 +29,7 @@ class Login extends CI_Controller {
                 $userInfo = $this->user_model->getUserInfoByEmail($clean);
                 if(!$userInfo){
                     $this->session->set_flashdata('forgot_error', 'Nous ne trouvons pas de compte associé à cette adresse mail');
+                    log_message('error', 'Email not found in database : '.$email);
                     redirect(site_url().'/login');
                 }
                 $this->user_model->userGotToken($userInfo->id);

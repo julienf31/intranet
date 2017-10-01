@@ -82,7 +82,7 @@
 					<span class="badge badge" style="border-radius: 0;"><a href="<?php echo site_url('clearSearch'); ?>"><i class="fa fa-times red" aria-hidden="true"></i></a> <?php echo 'Recherche de : '.$this->session->userdata('birthday_search'); ?></span>
 				</div>
 				<?php endif; ?>
-				<form action="<?php echo site_url('admin/graduate_selection'); ?>" method="post">
+				<form action="<?php echo site_url('admin/multiple_birthday'); ?>" method="post">
 			<table class="table table-striped table-hover">
 				<tr>
 					<th><input type="checkbox" name="selectall" id="checkAll"></th>
@@ -108,10 +108,15 @@
 					</tr>	
 				<?php endforeach; ?>
 				</table>
-				Pour la selection <a href="" data-toggle="tooltip" data-placement="top" title="INDISPONIBLE - Export Excel"><i class="fa fa-file-excel-o orange" aria-hidden="true"></i></a> | 
-				<a href="#" data-toggle="tooltip" data-placement="top" title="Promouvoir" onclick="$(this).closest('form').submit()"><i class="fa fa-graduation-cap green" aria-hidden="true"></i></a> | <a href="" data-toggle="modal"><i class="fa fa-trash red" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="INDISPONIBLE - Supprimer"></i></a>
+				Pour la selection :
+				<button type="submit" name="graduate" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Promouvoir">
+    				<i class="fa fa-graduation-cap green"></i>
+				</button> | 
+				<button type="submit" name="delete" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Supprimer">
+    				<i class="fa fa-trash red"></i>
+				</button>
                 <?php else: ?>
-					<td colspan="7" align="center" >Pas d'anniversaires à afficher</td>
+					<td colspan="7" align="center">Pas d'anniversaires à afficher</td>
 				</table>
 				<?php endif; ?>
 

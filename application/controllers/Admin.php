@@ -306,8 +306,6 @@ class Admin extends CI_Controller {
 	}
 	
 	public function graduate_selection(){
-		//var_dump($_POST);
-		//die();
 		$success = 0;
 		$fail = 0;
 		if(isset($_POST['group'])){
@@ -327,7 +325,7 @@ class Admin extends CI_Controller {
 		}
 		//die();
 		redirect($_SERVER['HTTP_REFERER']);
-	}
+    }
 
     public function graduate_student($id){
         $class = $this->data_model->get_student_class($id);
@@ -366,6 +364,30 @@ class Admin extends CI_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
+    public function delete_selection(){
+		$success = 0;
+		if(isset($_POST['group'])){
+			foreach ($_POST['group'] as $key => $value) {
+                $this->data_model->delete('birthday',$value);
+                $success++;
+			}
+			if($success>0)
+				$this->session->set_flashdata('message_success', $success.' étudiant supprimés');
+		}
+		else{
+			$this->session->set_flashdata('message_warning', 'Aucun étudiant séléctionné');
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+    public function multiple_birthday(){
+        if(isset($_POST['delete'])){
+            $this->delete_selection();
+        }
+        elseif (isset($_POST['graduate'])) {
+            $this->graduate_selection();
+        }
+    }
 }
 
 ?>
