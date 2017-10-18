@@ -36,7 +36,7 @@
                         <h5>Bonjour <span><?php echo $firstName; ?></span>, saisissez votre nouveau mot de passe</h5>     
                         <?php 
                         $fattr = array('class' => 'form-signin');
-                        echo form_open(site_url().'login/reset_password/token/'.$token, $fattr); ?>
+                        echo form_open(site_url().'/login/reset_password/token/'.$token, $fattr); ?>
                         <div class="" style="margin: 10px 0;">
                             <div class=""><i class="fa fa-lock fa-fw input" aria-hidden="true"></i></div>
                         <?php echo form_password(array('name'=>'password', 'id'=> 'password', 'placeholder'=>'password', 'class'=>'login', 'value' => set_value('password'))); ?>
