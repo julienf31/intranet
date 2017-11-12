@@ -27,6 +27,15 @@ $version=json_decode($json,true);
                     </div>
                 </div>
             </div>
+            <div class="panel">
+                <div class="panel-body">
+                    <label class="control-label" for="url">Sauvegarde et sécurité</label>
+                    <div class="pull-right">
+                        <a href="<?php echo  site_url(''); ?>" class="btn btn-perso btn-success" value="update" id=""><i class="fa fa-save" aria-hidden="true"></i> Sauvegarder</a>
+                    </div>
+                    <span id="url" class="help-block">Denriére sauvegarde effectuée le : 12 novembre 2017 à 11h57</span>
+                </div>
+            </div>
             <div class="row">
                 <div class="pull-left">
                     <a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
