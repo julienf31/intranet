@@ -29,7 +29,7 @@ $version=json_decode($json,true);
             </div>
             <div class="panel">
                 <div class="panel-body">
-                    <label class="control-label" for="url">Sauvegarde et sécurité</label>
+                    <label class="control-label" for="url">Sauvegarde et sécuritée</label>
                     <div class="pull-right">
                         <a href="<?php echo  site_url(''); ?>" class="btn btn-perso btn-success" value="update" id=""><i class="fa fa-save" aria-hidden="true"></i> Sauvegarder</a>
                     </div>
