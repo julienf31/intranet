@@ -470,6 +470,20 @@ class Admin extends CI_Controller {
         }
         echo $b1;
     }
+
+    public function updateApplication(){
+        $result = array();
+        $command = 'git pull';
+        exec($command, $result);
+        if($result[sizeof($result)-1] == "Already up-to-date."){
+            $this->session->set_flashdata('success','Application déja à jour');
+            redirect('admin', 'refresh');
+        }
+        else{
+            $this->session->set_flashdata('success','Mise à jour effectuée');
+            redirect('admin', 'refresh');
+        }
+    }
 }
 
 ?>

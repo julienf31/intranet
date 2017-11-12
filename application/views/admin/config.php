@@ -19,6 +19,14 @@ $version=json_decode($json,true);
 
                 </div>
             </div>
+            <div class="panel">
+                <div class="panel-body">
+                    <label class="control-label" for="url">Mettre à jour l'application</label>
+                    <div class="pull-right">
+                        <a href="<?php echo  site_url('admin/updateApplication'); ?>" class="btn btn-perso btn-success" value="update" id=""><i class="fa fa-download" aria-hidden="true"></i> Mettre à jour</a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="pull-left">
                     <a href="<?php echo  site_url('admin'); ?>" type="button" class="btn btn-perso btn-danger"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Retour</a>
