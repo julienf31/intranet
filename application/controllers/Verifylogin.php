@@ -27,7 +27,8 @@ class VerifyLogin extends CI_Controller {
         }
         
     }
-    
+
+    // Vérification des identifiants
     function check_database($password){
         $username = $this->input->post('username');
         
@@ -38,6 +39,8 @@ class VerifyLogin extends CI_Controller {
             $ip = $this->input->ip_address();
             $this->user_model->set_last_login($result[0]->id);
             $this->user_model->set_ip_user($result[0]->id,$ip);
+            log_message('info', 'User '.$result[0]->username.' logged from : '.$ip);
+
             return TRUE;
         }
         else
