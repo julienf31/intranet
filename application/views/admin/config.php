@@ -34,6 +34,7 @@ $version=json_decode($json,true);
                         <a href="<?php echo  site_url(''); ?>" class="btn btn-perso btn-success" value="update" id=""><i class="fa fa-save" aria-hidden="true"></i> Sauvegarder</a>
                     </div>
                     <span id="url" class="help-block">Denriére sauvegarde effectuée le : 12 novembre 2017 à 11h57</span>
+                    <span id="url" class="help-block">Taille de l'application : 33 Mo</span>
                 </div>
             </div>
             <div class="row">

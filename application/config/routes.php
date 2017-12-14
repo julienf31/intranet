@@ -5,7 +5,6 @@ $route['default_controller'] = 'login';
 $route['404_override'] = 'admin/error404';
 $route['maintenance'] = 'admin/maintenance';
 
-
 ##### AFFICHAGE TV #####
 $route['news'] = 'tv/news';
 $route['news/(:any)'] = 'tv/news/$1';
@@ -16,9 +15,9 @@ $route['photos'] = 'tv/photos';
 
 ##### LOGIN #####
 $route['login/reset_password/(:any)'] = 'login/reset_password/token/$1';
+$route['logout'] = 'admin/logout';
 
 ##### ACCEUIL ET CONF #####
-$route['logout'] = 'admin/logout';
 $route['meteo_config'] = 'admin/meteo_config';
 $route['config'] = 'admin/config';
 $route['config/(:any)'] = 'admin/tv_config/$1';
@@ -39,8 +38,7 @@ $route['preview/(:any)'] = 'data/insert/$1';
 $route['edit/(:any)/([0-9]+)'] = 'admin/edit/$1/$2';
 $route['edit/(:any)/([0-9]+)/(:any)'] = 'admin/edit/$1/$2/$3';
 
-
-######## GESTION DATAS #####
+###### GESTION DATAS #####
 $route['insert/(:any)'] = 'data/insert/$1';
 $route['insert/(:any)/(:any)'] = 'data/insert/$1/$2';
 $route['update/(:any)/([0-9]+)'] = 'data/update/$1/$2';
@@ -50,7 +48,8 @@ $route['update_state/(:any)/([0-9]+)/([0-9]+)/([0-9]+)'] = 'data/update_state/$1
 $route['delete/(:any)/([0-9]+)'] = 'data/delete/$1/$2';
 $route['delete/(:any)/([0-9]+)/([0-9]+)'] = 'data/delete/$1/$2/$3';
 
+##### CLEANING BIRTHDAY XLS ######
+$route['cleanBirthday'] = 'admin/cleanBirthday';
+
+##### SEARCH ######
 $route['clearSearch'] = 'admin/clearSearch';
-
-
-
