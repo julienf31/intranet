@@ -37,8 +37,11 @@ else if($moduleC == "_heure.php"){
 	$moduleCStyle = "height: 20vh;";
 }
 else if($moduleC == "_meteo.php"){
-	$moduleCinnerHTML = 'class="col-md-2"';
-	$moduleCStyle = "height: 20vh;";
+    $moduleCinnerHTML = 'class="col-md-2"';
+    $moduleCStyle = "height: 20vh;";
+}else if($moduleC == "_infoNoTrust.php"){
+    $moduleCinnerHTML = 'class="col-md-8"';
+    $moduleCStyle = "height: 20vh;";
 }
 else{
 	$moduleCinnerHTML = 'class="col-md-2"';
