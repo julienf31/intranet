@@ -20,6 +20,7 @@ class Admin extends CI_Controller {
         if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
             $data['current_config'] = $this->data_model->get_config_tv("news");
+            $data['config'] = $data['current_config'];
             $data['username'] = $session_data['username'];
             $data['user'] = $this->user_model->get_user_info($session_data['username']);
             
@@ -28,7 +29,8 @@ class Admin extends CI_Controller {
             $data['nb_photos'] = $this->data_model->count_data('photos');
             $data['nb_users'] = $this->data_model->count_data('users');
             $data['nb_birthdays'] = $this->data_model->count_data('birthday');
-            
+            $temp = $this->data_model->get_config_tv("news");
+
             $this->template->set('title', 'Administration');
             $this->template->load('templates/admin', 'admin/admin', $data);
         }
@@ -49,6 +51,7 @@ class Admin extends CI_Controller {
             
             $db = $this->data_model->select_db($item_type);
             $data['current_config'] = $this->data_model->get_config_tv('news');
+            $data['config'] = $data['current_config'];
             $data['item_type'] = $item_type;
             
             if($item_type == 'album'){
@@ -143,6 +146,7 @@ class Admin extends CI_Controller {
             $data['username'] = $session_data['username'];
             $data['item_type'] = $item_type;
             $data['current_config'] = $this->data_model->get_config_tv('news');
+            $data['config'] = $data['current_config'];
             if($item_type == 'photos' && $album_id != ""){
                 $data['album_id'] = $album_id;
                 $data['content_album'] = $this->data_model->get_album($album_id);
@@ -168,6 +172,7 @@ class Admin extends CI_Controller {
             $data['username'] = $session_data['username'];
             $data['current_data'] = $this->data_model->get_data($item_type,$id);
             $data['current_config'] = $this->data_model->get_config_tv('news');
+            $data['config'] = $data['current_config'];
             if($item_type == 'news' || $item_type == 'bde'){
                 if($data['current_data']['text_type'] == 'JSON'){
                     $video_datas = $data['current_data']['texte'];
@@ -195,6 +200,7 @@ class Admin extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
             $data['current_config'] = $this->data_model->get_config_tv("news");
+            $data['config'] = $data['current_config'];
             $data['configs'] = $this->data_model->get_config();
             $this->template->set('title', 'Config');
             $this->template->load('templates/admin', 'admin/config', $data);
@@ -211,6 +217,7 @@ class Admin extends CI_Controller {
             $data['username'] = $session_data['username'];
             $data['item_type'] = $item_type;
             $data['current_config'] = $this->data_model->get_config_tv($item_type);
+            $data['config'] = $data['current_config'];
             $data['modules'] = $this->data_model->modules();
             $data['animationsIn'] = $this->data_model->animations('in');
             $data['animationsOut'] = $this->data_model->animations('out');
@@ -226,6 +233,7 @@ class Admin extends CI_Controller {
     public function changelog(){
         $session_data = $this->session->userdata('logged_in');
         $data['current_config'] = $this->data_model->get_config_tv("news");
+        $data['config'] = $data['current_config'];
         $data['username'] = $session_data['username'];
         $data['configs'] = $this->data_model->get_config();
         $this->template->set('title', 'Changelog');
