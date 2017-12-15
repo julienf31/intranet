@@ -19,6 +19,7 @@ class Login extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
             $data['current_config'] = $this->data_model->get_config_tv("news");
+            $data['config'] = $this->data_model->get_config_tv("news");
             $data['current_config']['moduleCentre'] = 'infoNoTrust';
             
             $this->form_validation->set_rules('emailforgot', 'Email', 'required|valid_email');
