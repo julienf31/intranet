@@ -63,6 +63,7 @@ class Login extends CI_Controller {
                 $this->email->message($message);
 
                 $this->email->send();
+                log_message('info', 'Mail send to :'.$email.' to reset password');
                 $this->session->set_flashdata('success', 'Un e-mail à été envoyé pour réinitialiser votre mot de passe');
                 redirect(site_url().'/login');
             }
