@@ -40,8 +40,13 @@ class Login extends CI_Controller {
                 $link = site_url() . '/login/reset_password/token/' . $qstring;
 
                 $config = Array(
-                    'protocol' => 'mail',
-                    'mailtype' => 'html',
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => getenv('MAIL_REPORT'),
+                    'smtp_pass' => getenv('MAIL_PASSWD'),
+                    'mailtype'  => 'html',
+                    'charset'   => 'iso-8859-1'
                 );
                 $this->load->library('email', $config);
                 $this->email->set_newline("\r\n");
