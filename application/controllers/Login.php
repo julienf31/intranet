@@ -40,7 +40,7 @@ class Login extends CI_Controller {
                 $link = site_url() . '/login/reset_password/token/' . $qstring;
 
                 $config = Array(
-                    'protocol' => 'mail',
+                    'protocol' => 'sendmail',
                     'mailtype' => 'html',
                 );
                 $this->load->library('email', $config);
