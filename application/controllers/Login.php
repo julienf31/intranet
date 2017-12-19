@@ -63,7 +63,9 @@ class Login extends CI_Controller {
                 $datamail['user'] = $this->user_model->getUserInfoByEmail($email);
                 $datamail['link'] = $link;
 
-                $this->email->attach(base_url().'uploads/'.$data['config']['logo'],'inline');
+                $filename = base_url().'uploads/'.$data['config']['logo'];
+                $this->email->attach($filename,'inline');
+                $datamail['img'] = $this->email->attachment_cid($filename);
 
                 $message = $this->load->view('mail/forgot', $datamail, true);
 
