@@ -52,7 +52,7 @@ class Login extends CI_Controller {
                 $this->email->set_newline("\r\n");
                 
                 //$this->email->from(getenv('MAIL_REPORT'), 'Site YNOV');
-                $this->email->from('noreply@ynov-toulouse.fr', 'Télés YNOV Toulouse');
+                $this->email->from(getenv('MAIL_REPORT'), 'Télés YNOV Toulouse');
                 $this->email->to($clean);
 
                 $this->email->subject('Demande de changement de votre mot de passe');
