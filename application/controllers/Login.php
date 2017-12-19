@@ -8,7 +8,7 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('date', 'form'));
     }
-    
+
     function index()
     {
         if($this->session->userdata('logged_in')){
@@ -33,37 +33,37 @@ class Login extends CI_Controller {
                     log_message('error', 'Email not found in database : '.$email);
                     redirect(site_url().'/login');
                 }
-                $this->user_model->userGotToken($userInfo->id);
+                $this->user_model->userGotToken($userInfo['id']);
                 //build token
-                $token = $this->user_model->insertToken($userInfo->id);
+                $token = $this->user_model->insertToken($userInfo['id']);
                 $qstring = $this->base64url_encode($token);
-                $url = site_url() . '/login/reset_password/token/' . $qstring;
-                $link = '<a href="' . $url . '">' . $url . '</a>';
-                
+                $link = site_url() . '/login/reset_password/token/' . $qstring;
+
                 $config = Array(
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_port' => 465,
-                'smtp_user' => getenv('MAIL_REPORT'),
-                'smtp_pass' => getenv('MAIL_PASSWD'),
-                'mailtype'  => 'html',
-                'charset'   => 'iso-8859-1'
+                'mailtype' => 'html',
                 );
                 $this->load->library('email', $config);
                 $this->email->set_newline("\r\n");
                 
-                $this->email->from(getenv('MAIL_REPORT'), 'Site YNOV');
+                //$this->email->from(getenv('MAIL_REPORT'), 'Site YNOV');
+                $this->email->from('noreply@ynov-toulouse.fr', 'Télés YNOV Toulouse');
                 $this->email->to($clean);
-                
+
                 $this->email->subject('Demande de changement de votre mot de passe');
-                
-                $message = 'Bonjour <strong> nom </strong>une demande de changement de mot de passe à été émise. Pour réinitialiser votre mot de passe suivez les instructions sur le lien suivant, si vous n\'etes pas à l\'origine de cette demande, ignorez ce mail.<br>';
-                $message .= '<strong>Lien de changement :</strong> ' . $link;
-                $message .= '<br/><strong>Attention :</strong> Le lien n\'est valable que 15 minutes';
-                
+
+
+
+                $data['config'] = $this->data_model->get_config_tv("news");
+                $data['user'] = $this->user_model->getUserInfoByEmail($email);
+                $data['link'] = $link;
+
+                $message = $this->load->view('mail/forgot', $data, true);
+
                 $this->email->message($message);
+
                 $this->email->send();
                 $this->session->set_flashdata('success', 'Un e-mail à été envoyé pour réinitialiser votre mot de passe');
+                redirect(site_url().'/login');
             }
         }
         

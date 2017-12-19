@@ -38,7 +38,7 @@ Class User extends CI_Model
     public function getUserInfoByEmail($email){
         $q = $this->db->get_where('users', array('mail' => $email), 1);
         if($this->db->affected_rows() > 0){
-            $row = $q->row();
+            $row = $q->row_array();
             return $row;
         }else{
             error_log('no user found with mail '.$email);
