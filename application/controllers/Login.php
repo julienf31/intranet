@@ -46,7 +46,7 @@ class Login extends CI_Controller {
                     'smtp_user' => getenv('MAIL_REPORT'),
                     'smtp_pass' => getenv('MAIL_PASSWD'),
                     'mailtype'  => 'html',
-                    'charset'   => 'iso-8859-1'
+                    'charset'   => 'utf8'
                 );
                 $this->load->library('email', $config);
                 $this->email->set_newline("\r\n");
@@ -59,16 +59,16 @@ class Login extends CI_Controller {
 
 
 
-                $data['config'] = $this->data_model->get_config_tv("news");
-                $data['user'] = $this->user_model->getUserInfoByEmail($email);
-                $data['link'] = $link;
+                $datamail['config'] = $this->data_model->get_config_tv("news");
+                $datamail['user'] = $this->user_model->getUserInfoByEmail($email);
+                $datamail['link'] = $link;
 
-                $message = $this->load->view('mail/forgot', $data, true);
+                $message = $this->load->view('mail/forgot', $datamail, true);
 
                 $this->email->message($message);
 
                 $this->email->send();
-                log_message('error', 'Mail send to :'.$email.' to reset password');
+                //log_message('error', 'Mail send to :'.$email.' to reset password');
                 $this->session->set_flashdata('success', 'Un e-mail à été envoyé pour réinitialiser votre mot de passe');
                 redirect(site_url().'/login');
             }
