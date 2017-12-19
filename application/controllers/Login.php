@@ -64,15 +64,12 @@ class Login extends CI_Controller {
                 $datamail['link'] = $link;
 
                 $filename = base_url().'uploads/'.$data['config']['logo'];
-                $this->email->attach($filename,'inline');
-                $datamail['img'] = $this->email->attachment_cid($filename);
 
                 $message = $this->load->view('mail/forgot', $datamail, true);
 
                 $this->email->message($message);
 
                 $this->email->send();
-                //log_message('error', 'Mail send to :'.$email.' to reset password');
                 $this->session->set_flashdata('success', 'Un e-mail à été envoyé pour réinitialiser votre mot de passe');
                 redirect(site_url().'/login');
             }

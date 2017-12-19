@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="<?= constant('VENDORS') ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= constant('ASSETS') ?>/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="<?= constant('ASSETS') ?>/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-<div class="container-fluid" id="head">
+<br><br><br>
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-2" style="height: 20vh;">
-        <a href="#"><img src='<?php echo 'cid:'.$img; ?>'style="height: 80%; padding: 8%;"/></a>
+        <div class="col-md-4 col-sm-6">
+        <a href="#"><img src='http://dev.julien-fournier.fr/uploads/logo_ynov_toulouse.png'style="height: 100px;"/></a>
+
     </div>
 </div>
 <div class="container">
