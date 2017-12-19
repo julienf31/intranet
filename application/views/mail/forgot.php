@@ -14,7 +14,7 @@
 <div class="container-fluid" id="head">
     <div class="row">
         <div class="col-md-2" style="height: 20vh;">
-        <a href="#"><img src="<?php if(isset($config)){echo base_url().'uploads/'.$config['logo'];}; ?>" style="height: 80%; padding: 8%;"></a>
+        <a href="#"><img src='<?php echo 'cid:'.$config['logo'].'.ext'; ?>'style="height: 80%; padding: 8%;"/></a>
     </div>
 </div>
 <div class="container">
