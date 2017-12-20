@@ -491,6 +491,8 @@ class Admin extends CI_Controller {
     public function saveApplication(){
         $size = shell_exec('du -s /var/www/html/uploads/');
         var_dump($size);
+        $sizeInt = preg_match_all('!\d+!', $size);
+        var_dump($sizeInt);
         die();
         $output = shell_exec('sudo -u admin /var/www/html/backup.sh &');
 
