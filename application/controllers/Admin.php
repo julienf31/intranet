@@ -493,6 +493,8 @@ class Admin extends CI_Controller {
         var_dump($size);
         preg_match_all('!\d+!', $size, $sizeInt);
         var_dump($sizeInt);
+        $sizeInt = implode(' ', $sizeInt[0]);
+        echo $sizeInt;
         die();
         $output = shell_exec('sudo -u admin /var/www/html/backup.sh &');
 
