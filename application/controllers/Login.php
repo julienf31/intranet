@@ -78,7 +78,7 @@ class Login extends CI_Controller {
         $this->template->set('title', 'Login');
         $this->template->load('templates/admin', 'login', $data);
     }
-    
+
     public function reset_password()
     {
         $token = $this->base64url_decode($this->uri->segment(4));

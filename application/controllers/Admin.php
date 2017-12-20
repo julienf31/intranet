@@ -487,6 +487,11 @@ class Admin extends CI_Controller {
             redirect('admin', 'refresh');
         }
     }
+
+    public function saveApplication(){
+        $output = shell_exec('./var/www/html/backup.sh');
+        var_dump($output);
+    }
 }
 
 ?>

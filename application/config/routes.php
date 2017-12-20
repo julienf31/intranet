@@ -53,3 +53,5 @@ $route['cleanBirthday'] = 'admin/cleanBirthday';
 
 ##### SEARCH ######
 $route['clearSearch'] = 'admin/clearSearch';
+
+$route['save'] = 'admin/saveApplication';
