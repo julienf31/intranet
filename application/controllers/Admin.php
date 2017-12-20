@@ -495,7 +495,7 @@ class Admin extends CI_Controller {
         preg_match_all('!\d+!', $size, $sizeInt);
         $sizeInt = implode(' ', $sizeInt[0]);
         $data = array(
-            'date' => date("Y-m-d h:i:s"),
+            'date' => date("Y-m-d H:i:s"),
             'size' => $sizeInt,
         );
         $this->data_model->saveApp($data);
