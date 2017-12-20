@@ -162,6 +162,11 @@ Class Data_model extends CI_Model
         }
         return TRUE;
     }
+
+    public function saveApp($data){
+        $this->db->insert('save',$data);
+        return true;
+    }
     
     public function update_data($item_type,$id, $data){
         $this->db->where('id', $id);
@@ -332,6 +337,12 @@ Class Data_model extends CI_Model
         $this->db->from('config');
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function get_save(){
+        $this->db->from('save')->order_by('id','desc')->limit(1);
+        $query = $this->db->get();
+        return $query->row_array();
     }
     
     public function delete($item_type,$id){

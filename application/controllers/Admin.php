@@ -202,6 +202,7 @@ class Admin extends CI_Controller {
             $data['current_config'] = $this->data_model->get_config_tv("news");
             $data['config'] = $data['current_config'];
             $data['configs'] = $this->data_model->get_config();
+            $data['save'] = $this->data_model->get_save();
             $this->template->set('title', 'Config');
             $this->template->load('templates/admin', 'admin/config', $data);
         }
@@ -492,12 +493,15 @@ class Admin extends CI_Controller {
         $size = shell_exec('du -s /var/www/html/uploads/');
         var_dump($size);
         preg_match_all('!\d+!', $size, $sizeInt);
-        var_dump($sizeInt);
         $sizeInt = implode(' ', $sizeInt[0]);
-        echo $sizeInt;
-        die();
-        $output = shell_exec('sudo -u admin /var/www/html/backup.sh &');
+        $data = array(
+            'date' => date("Y-m-d h:i:s"),
+            'size' => $sizeInt,
+        );
+        $this->data_model->saveApp($data);
 
+        $output = shell_exec('sudo -u admin /var/www/html/backup.sh &');
+        redirect('config','refresh');
     }
 }
 

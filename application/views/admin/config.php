@@ -31,10 +31,10 @@ $version=json_decode($json,true);
                 <div class="panel-body">
                     <label class="control-label" for="url">Sauvegarde et sécuritée</label>
                     <div class="pull-right">
-                        <a href="<?php echo  site_url(''); ?>" class="btn btn-perso btn-success" value="update" id=""><i class="fa fa-save" aria-hidden="true"></i> Sauvegarder</a>
+                        <a href="<?php echo  site_url('admin/saveApplication'); ?>" class="btn btn-perso btn-success" value="update" id=""><i class="fa fa-save" aria-hidden="true"></i> Sauvegarder</a>
                     </div>
-                    <span id="url" class="help-block">Denriére sauvegarde effectuée le : 12 novembre 2017 à 11h57</span>
-                    <span id="url" class="help-block">Taille de l'application : 33 Mo</span>
+                    <span id="url" class="help-block">Denriére sauvegarde effectuée le : <?= $save['date'] ?></span>
+                    <span id="url" class="help-block">Taille de l'application : <?= $save['size'] ?></span>
                 </div>
             </div>
             <div class="row">
