@@ -64,13 +64,16 @@ Le service sera rétabli sous peu....</h3>
           refresh();
         }
       });
+      <?= $view['text_type'] ?>
       // Script pour changer de news
       var durree = <?php echo $config['tps_affichage']; ?>;
       var durreeInt = durree * 1000;
+      <?php if($view['text_type'] != "JSON"): ?>
       setInterval('refresh()', durreeInt);
       var animationIn = "<?php echo $current_config['animationOut']; ?>";
       var time = durreeInt - 500;
       setTimeout('out();', time);
+      <?php endif; ?>
     </script>
     <div id="news" class="container-fluid animated hidden">
 
@@ -202,7 +205,9 @@ Le service sera rétabli sous peu....</h3>
             }
           }
         }
+        <?php if($view['text_type'] != "JSON"): ?>
         move();
+        <?php endif; ?>
       </script>
       <?php endif; ?>
 
