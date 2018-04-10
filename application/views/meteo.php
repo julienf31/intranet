@@ -119,6 +119,13 @@ foreach ($infos as $info){
       </div>
     </div>
     <script>
+        $(document).ready(function(){
+        //twitter-widget-0
+            $("#twitter-widget-0").animate({scrollTop: $("#twitter-widget-0").height()}, 1000000, function () {
+               console.log('scroling ended');
+            });
+        });
+     
       function swap() {
         if ($("#meteo-0").hasClass('hidden')) {
           $("#meteo-1").addClass('flipOutX').removeClass('flipInX');
