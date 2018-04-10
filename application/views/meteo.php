@@ -172,6 +172,12 @@ foreach ($infos as $info){
         setTimeout('move();', 500);
       }
       move();
+      $(document).ready(function(){
+        //twitter-widget-0
+          $("#twitter-widget-0").animate({scrollTop: $("#twitter-widget-0").height()}, 1000000, function () {
+            console.log('scroling ended');
+        });
+      });
       $(document).ready('updateDiv("#info")');
       setInterval(function() {
         $('#titre_news').addClass('fadeOutUpBig');
